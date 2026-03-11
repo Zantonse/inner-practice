@@ -1,0 +1,56 @@
+[
+  {
+    "prompt": "Watercolor painting of a person seated in meditation pose, loose brushstrokes in warm mauve-lavender #D7C2EE and soft amber #E4AD75, washes bleeding into cream #F5EAE1 background, ethereal and abstract with visible paint texture, traditional watercolor on handmade paper, fine art illustration style, intentionally imperfect edges",
+    "filename": "hero-meditation.png",
+    "aspect": "4:3",
+    "size": "2K"
+  },
+  {
+    "prompt": "Watercolor painting of a person in tree yoga pose (vrksasana), loose artistic brushstrokes in warm mauve-lavender #D7C2EE and deep violet #592E6B with touches of amber #E4AD75, washes bleeding into cream #F5EAE1 background, traditional watercolor on handmade paper, fine art illustration, ethereal and graceful, visible brush texture",
+    "filename": "hero-yoga.png",
+    "aspect": "4:3",
+    "size": "2K"
+  },
+  {
+    "prompt": "Horizontal watercolor wash stripe, soft lavender #D7C2EE gradually fading to warm cream #F5EAE1, thin decorative band with organic edges, traditional watercolor technique on paper, subtle paint bleeds and feathered edges, panoramic format, minimal and elegant",
+    "filename": "section-divider.png",
+    "aspect": "16:9",
+    "size": "1K"
+  },
+  {
+    "prompt": "Minimal ink drawing of flowing breath or wind curves, three gentle curved lines suggesting airflow, drawn with a fine brush in deep violet #592E6B ink on white background, Japanese sumi-e inspired, elegant calligraphic strokes, simple and meditative",
+    "filename": "icon-breath.png",
+    "aspect": "1:1",
+    "size": "1K"
+  },
+  {
+    "prompt": "Minimal ink drawing of a seated meditation figure with subtle energy lines flowing through the body from base to crown, drawn with a fine brush in deep violet #592E6B ink on white background, Japanese sumi-e inspired, simple elegant lines suggesting inner energy flow, meditative illustration",
+    "filename": "icon-bodyscan.png",
+    "aspect": "1:1",
+    "size": "1K"
+  },
+  {
+    "prompt": "Minimal ink drawing of two open hands gently cradling a soft glowing light or heart shape, drawn with a fine brush in deep violet #592E6B ink with warm amber #E4AD75 wash for the light, on white background, Japanese sumi-e inspired, compassionate and tender, simple elegant strokes",
+    "filename": "icon-loving-kindness.png",
+    "aspect": "1:1",
+    "size": "1K"
+  },
+  {
+    "prompt": "Minimal ink drawing of a person lying down in savasana corpse pose with gentle wave lines suggesting deep relaxation and sleep, drawn with a fine brush in deep violet #592E6B ink on white background, Japanese sumi-e inspired, peaceful and restful, simple meditative illustration",
+    "filename": "icon-yoga-nidra.png",
+    "aspect": "1:1",
+    "size": "1K"
+  },
+  {
+    "prompt": "Minimal ink drawing of a single foot mid-step with gentle motion lines suggesting mindful walking, drawn with a fine brush in deep violet #592E6B ink on white background, Japanese sumi-e inspired, simple and meditative, elegant calligraphic strokes",
+    "filename": "icon-walking.png",
+    "aspect": "1:1",
+    "size": "1K"
+  },
+  {
+    "prompt": "Minimal ink drawing of a closed eye with a soft radiance emanating outward suggesting inner vision or visualization, drawn with a fine brush in deep violet #592E6B ink with subtle amber #E4AD75 wash for the radiance, on white background, Japanese sumi-e inspired, mystical and contemplative",
+    "filename": "icon-visualization.png",
+    "aspect": "1:1",
+    "size": "1K"
+  }
+]

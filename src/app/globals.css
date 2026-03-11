@@ -1,26 +1,469 @@
 @import "tailwindcss";
 
+/* ============================================================
+   INNER PRACTICE — DESIGN SYSTEM
+   Modern Mystic palette · Cormorant Garamond + Raleway
+   ============================================================ */
+
+/* --- CSS Custom Properties (Light Mode) ------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand palette */
+  --color-violet-deep:   #592E6B;
+  --color-violet-mid:    #D7C2EE;
+  --color-violet-pale:   #EDE9FE;
+
+  /* Canvas neutrals */
+  --color-cream:         #F5EAE1;
+  --color-linen:         #EED3C2;
+  --color-stone:         #D9D8DD;
+  --color-taupe:         #C5B4A3;
+
+  /* Amber accent */
+  --color-amber-light:   #E4AD75;
+  --color-amber-deep:    #C07A35;
+
+  /* Text */
+  --color-text:          #2A2A2A;
+  --color-text-muted:    #6B6B6B;
+
+  /* Surface */
+  --color-surface:       #F5EAE1;
+  --color-surface-raised: #EDE9FE;
+  --color-border:        #D9D8DD;
+
+  /* Typography scale */
+  --text-hero:    clamp(52px, 8vw, 96px);
+  --text-h1:      clamp(40px, 6vw, 64px);
+  --text-h2:      clamp(30px, 4vw, 48px);
+  --text-h3:      clamp(22px, 2.5vw, 32px);
+  --text-body-lg: 18px;
+  --text-body:    17px;
+  --text-caption: 13px;
+  --text-label:   12px;
+
+  /* Font families */
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-body:    var(--font-raleway), system-ui, sans-serif;
+  --font-ui:      var(--font-dm-sans), system-ui, sans-serif;
+
+  /* Spacing rhythms */
+  --section-pt-sm:  3rem;
+  --section-pt-md:  5rem;
+  --section-pt-lg:  8rem;
+  --section-pb-sm:  2.5rem;
+  --section-pb-md:  4rem;
+  --section-pb-lg:  7rem;
 }
 
+/* --- Dark Mode -------------------------------------------- */
+[data-theme="dark"] {
+  --color-cream:          #1C1D37;
+  --color-linen:          #242548;
+  --color-stone:          #2A2F5E;
+  --color-taupe:          #4A4E7A;
+  --color-violet-pale:    #2A2F5E;
+  --color-text:           #D6E0EA;
+  --color-text-muted:     #9BA3B5;
+  --color-surface:        #1C1D37;
+  --color-surface-raised: #2A2F5E;
+  --color-border:         #3A3F6E;
+  --color-violet-mid:     #7B5BA6;
+  --color-amber-light:    #D4945A;
+}
+
+/* --- Tailwind v4 theme tokens ----------------------------- */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream:         var(--color-cream);
+  --color-linen:         var(--color-linen);
+  --color-stone:         var(--color-stone);
+  --color-taupe:         var(--color-taupe);
+  --color-violet-deep:   var(--color-violet-deep);
+  --color-violet-mid:    var(--color-violet-mid);
+  --color-violet-pale:   var(--color-violet-pale);
+  --color-amber-light:   var(--color-amber-light);
+  --color-amber-deep:    var(--color-amber-deep);
+  --color-ip-text:       var(--color-text);
+  --color-ip-muted:      var(--color-text-muted);
+  --color-surface:       var(--color-surface);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-border:        var(--color-border);
+
+  --font-display: var(--font-display);
+  --font-body:    var(--font-body);
+  --font-ui:      var(--font-ui);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* --- Base Reset ------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.75;
+  text-align: left;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* --- Grain Texture Overlay -------------------------------- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+[data-theme="dark"] body::after {
+  mix-blend-mode: screen;
+  opacity: 0.025;
+}
+
+/* --- Typography Base -------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  text-wrap: balance;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--text-h1); font-weight: 700; }
+h2 { font-size: var(--text-h2); font-weight: 400; }
+h3 { font-size: var(--text-h3); font-weight: 400; font-style: italic; }
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.8;
+  color: var(--color-text);
+  max-width: 68ch;
+}
+
+a {
+  color: var(--color-violet-deep);
+  text-decoration: none;
+  transition: color 300ms ease;
+}
+
+a:hover {
+  color: var(--color-amber-deep);
+}
+
+/* --- Scroll Progress Bar ---------------------------------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-violet-deep), var(--color-amber-light));
+  transform-origin: left;
+  z-index: 100;
+  animation: scroll-progress linear;
+  animation-timeline: scroll(root block);
+}
+
+@supports not (animation-timeline: scroll()) {
+  .scroll-progress { display: none; }
+}
+
+@keyframes scroll-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* --- Breathing Animation ---------------------------------- */
+@keyframes breathe {
+  0%, 100% { transform: scale(1);    opacity: 0.75; }
+  50%       { transform: scale(1.04); opacity: 1;    }
+}
+
+.breathe {
+  animation: breathe 5s ease-in-out infinite;
+}
+
+/* --- Scroll Reveal ---------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity  1000ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 1000ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-group > *:nth-child(1)  { transition-delay: 0ms; }
+.reveal-group > *:nth-child(2)  { transition-delay: 120ms; }
+.reveal-group > *:nth-child(3)  { transition-delay: 240ms; }
+.reveal-group > *:nth-child(4)  { transition-delay: 360ms; }
+.reveal-group > *:nth-child(5)  { transition-delay: 480ms; }
+.reveal-group > *:nth-child(6)  { transition-delay: 600ms; }
+
+/* --- Card Styles ------------------------------------------ */
+.card {
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  transition:
+    background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color     300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  background-color: var(--color-linen);
+  border-color: var(--color-violet-mid);
+}
+
+[data-theme="dark"] .card:hover {
+  background-color: var(--color-stone);
+}
+
+/* --- Section Label (sticky) ------------------------------- */
+.section-label {
+  position: sticky;
+  top: 60px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: color-mix(in srgb, var(--color-cream) 80%, transparent);
+  z-index: 20;
+  padding: 0.5rem 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+/* --- OKLCH Gradient Utilities ----------------------------- */
+.grad-hero-meditation {
+  background: linear-gradient(160deg,
+    oklch(75% 0.12 295),
+    oklch(97% 0.01 60));
+}
+
+.grad-hero-yoga {
+  background: linear-gradient(160deg,
+    oklch(65% 0.14 310),
+    oklch(80% 0.09 60));
+}
+
+.grad-section-violet {
+  background: linear-gradient(135deg,
+    oklch(45% 0.18 300),
+    oklch(75% 0.12 60));
+}
+
+.grad-amber-wash {
+  background: linear-gradient(160deg,
+    oklch(85% 0.07 60),
+    oklch(97% 0.01 60));
+}
+
+/* --- Pill Tabs -------------------------------------------- */
+.pill-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  transition:
+    background-color 300ms ease,
+    color            300ms ease,
+    border-color     300ms ease;
+}
+
+.pill-tab:hover {
+  background-color: var(--color-violet-pale);
+  color: var(--color-violet-deep);
+  border-color: var(--color-violet-mid);
+}
+
+.pill-tab.active {
+  background-color: var(--color-violet-deep);
+  color: #F5EAE1;
+  border-color: var(--color-violet-deep);
+}
+
+/* --- Split Hero Panel ------------------------------------- */
+.split-panel {
+  flex: 1;
+  transition: flex 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.split-hero:hover .split-panel { flex: 0.6; }
+.split-hero .split-panel:hover { flex: 1.8; }
+
+/* --- Timeline --------------------------------------------- */
+.timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 1.125rem;
+  top: 0.75rem;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-violet-mid),
+    transparent
+  );
+}
+
+.timeline-node {
+  position: absolute;
+  left: -3rem;
+  top: 0.125rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background: var(--color-violet-deep);
+  color: #F5EAE1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* --- Video Facade ----------------------------------------- */
+.video-facade {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+  background: #1a1a1a;
+  cursor: pointer;
+}
+
+.video-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease, opacity 300ms ease;
+}
+
+.video-facade:hover img {
+  transform: scale(1.03);
+  opacity: 0.85;
+}
+
+.video-play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-play-btn svg {
+  width: 4rem;
+  height: 4rem;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
+  transition: transform 300ms ease;
+}
+
+.video-facade:hover .video-play-btn svg {
+  transform: scale(1.12);
+}
+
+/* --- Nav -------------------------------------------------- */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background-color: color-mix(in srgb, var(--color-cream) 85%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  padding: 0 max(1.5rem, 5vw);
+}
+
+/* --- Stat Cards ------------------------------------------- */
+.stat-card {
+  border-left: 3px solid var(--color-amber-light);
+  padding: 1.5rem 1.75rem;
+  background: var(--color-surface-raised);
+}
+
+/* --- Details/Summary reset -------------------------------- */
+details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+details > summary::-webkit-details-marker { display: none; }
+
+/* --- Reduced Motion ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: opacity 200ms ease;
+  }
+
+  .breathe {
+    animation: none;
+  }
+
+  .split-panel {
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* --- Responsive helpers ----------------------------------- */
+@media (max-width: 768px) {
+  .split-hero {
+    flex-direction: column !important;
+  }
+
+  .split-panel {
+    flex: 1 !important;
+    min-height: 50dvh;
+  }
+
+  .split-hero:hover .split-panel,
+  .split-hero .split-panel:hover {
+    flex: 1 !important;
+  }
+
+  .timeline {
+    padding-left: 2.5rem;
+  }
 }
