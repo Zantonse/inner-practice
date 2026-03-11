@@ -273,6 +273,34 @@ a:hover {
     oklch(97% 0.01 60));
 }
 
+/* --- Breathwork / Teal accent ----------------------------- */
+:root {
+  --color-teal-deep:  #2E7070;
+  --color-teal-mid:   #5BA4A4;
+  --color-teal-light: #A8DADA;
+  --color-teal-pale:  #E0F4F4;
+}
+
+[data-theme="dark"] {
+  --color-teal-deep:  #7ECACA;
+  --color-teal-mid:   #5BA4A4;
+  --color-teal-light: #2E6060;
+  --color-teal-pale:  #1A3838;
+}
+
+@theme inline {
+  --color-teal-deep:  var(--color-teal-deep);
+  --color-teal-mid:   var(--color-teal-mid);
+  --color-teal-light: var(--color-teal-light);
+  --color-teal-pale:  var(--color-teal-pale);
+}
+
+.grad-hero-breathwork {
+  background: linear-gradient(160deg,
+    oklch(60% 0.10 196),
+    oklch(85% 0.06 185));
+}
+
 /* --- Pill Tabs -------------------------------------------- */
 .pill-tab {
   display: inline-flex;

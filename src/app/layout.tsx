@@ -30,8 +30,12 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: 'Inner Practice — Stillness. Breath. Release.',
   description:
-    'Meditation, kundalini yoga, and fascia release for beginners. Quiet the mind, awaken your energy, and free the body. Guided sessions, educational resources, and a beginner-friendly practice.',
-  keywords: ['meditation', 'yoga', 'kundalini', 'fascia', 'gua sha', 'mindfulness', 'beginner', 'guided meditation', 'myofascial release'],
+    'Meditation, kundalini yoga, fascia release, and breathwork for beginners. Quiet the mind, awaken your energy, free the body, and command your nervous system. Guided sessions, educational resources, and a beginner-friendly practice.',
+  keywords: [
+    'meditation', 'yoga', 'kundalini', 'fascia', 'gua sha', 'mindfulness', 'beginner',
+    'guided meditation', 'myofascial release', 'breathwork', 'pranayama', 'breathing exercises',
+    'Wim Hof', 'box breathing', 'physiological sigh', 'nervous system', 'HRV', 'vagus nerve',
+  ],
   openGraph: {
     title: 'Inner Practice',
     description: 'Stillness. Breath. Release.',
@@ -132,6 +136,21 @@ export default function RootLayout({
               >
                 Fascia
               </Link>
+              <Link
+                href="/breathe"
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  transition: 'color 300ms ease',
+                }}
+              >
+                Breathe
+              </Link>
               <ThemeToggle />
             </div>
           </div>
@@ -182,7 +201,7 @@ export default function RootLayout({
                   maxWidth: 'none',
                 }}
               >
-                A journey into meditation, yoga &amp; fascia
+                A journey into meditation, yoga, fascia &amp; breath
               </p>
             </div>
             <p

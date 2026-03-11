@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-type PathKey = 'meditate' | 'yoga' | 'fascia';
+type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe';
 
 const paths: {
   key: PathKey;
@@ -58,6 +58,19 @@ const paths: {
     overlayColor: 'rgba(110,55,20,0.6)',
     accentColor: 'var(--color-amber-light)',
   },
+  {
+    key: 'breathe',
+    href: '/breathe',
+    eyebrow: 'The path of breath',
+    title: 'Breathe',
+    tagline: 'Command your nervous system.',
+    image: '/images/hero-breathwork.png',
+    imageAlt: 'Abstract watercolor breathwork illustration',
+    gradFrom: 'oklch(60% 0.10 196)',
+    gradTo: 'oklch(80% 0.07 185)',
+    overlayColor: 'rgba(18,80,80,0.62)',
+    accentColor: '#A8DADA',
+  },
 ];
 
 export default function HomePage() {
@@ -65,7 +78,7 @@ export default function HomePage() {
 
   const getCardFlex = (key: PathKey) => {
     if (hovered === null) return 1;
-    return hovered === key ? 1.7 : 0.65;
+    return hovered === key ? 1.8 : 0.6;
   };
 
   return (
@@ -105,7 +118,7 @@ export default function HomePage() {
                 alt={path.imageAlt}
                 fill
                 priority={path.key === 'meditate'}
-                sizes="33vw"
+                sizes="25vw"
                 style={{
                   objectFit: 'cover',
                   objectPosition: 'center',
@@ -126,7 +139,7 @@ export default function HomePage() {
             />
 
             {/* Vertical divider line (right side, except last card) */}
-            {path.key !== 'fascia' && (
+            {path.key !== 'breathe' && (
               <div
                 style={{
                   position: 'absolute',
@@ -295,7 +308,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Three Path Cards ────────────────────────────────────── */}
+      {/* ── Four Path Cards ─────────────────────────────────────── */}
       <section
         style={{
           padding: '5rem max(1.5rem, 8vw) 8rem',
@@ -306,7 +319,7 @@ export default function HomePage() {
           style={{
             maxWidth: '1100px',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
             gap: '1.75rem',
           }}
         >
@@ -473,6 +486,64 @@ export default function HomePage() {
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 color: 'var(--color-amber-deep)',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
+
+          {/* Breathe card */}
+          <div
+            className="card"
+            style={{ padding: '2.5rem 2.25rem', borderRadius: '2px' }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: 'color-mix(in srgb, #5BA4A4 18%, var(--color-cream))',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              {/* Wind / breath SVG */}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3D8A8A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9.59 4.59A2 2 0 1 1 11 8H2" />
+                <path d="M12.59 19.41A2 2 0 1 0 14 16H2" />
+                <path d="M6.59 11.41A2 2 0 1 0 8 8H2" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: '#3D8A8A',
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Breathe
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              The only voluntary gateway to your autonomic nervous system. Explore 14 techniques — from the physiological sigh to Wim Hof — and learn how a single breath can shift your entire state.
+            </p>
+            <Link
+              href="/breathe"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#3D8A8A',
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
