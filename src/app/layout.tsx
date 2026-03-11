@@ -28,13 +28,13 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Inner Practice — A Beginner\'s Journey',
+  title: 'Inner Practice — Stillness. Breath. Release.',
   description:
-    'Meditation and kundalini yoga for beginners. Quiet the mind, awaken your energy. Guided sessions, educational resources, and a beginner-friendly practice flow.',
-  keywords: ['meditation', 'yoga', 'kundalini', 'mindfulness', 'beginner', 'guided meditation'],
+    'Meditation, kundalini yoga, and fascia release for beginners. Quiet the mind, awaken your energy, and free the body. Guided sessions, educational resources, and a beginner-friendly practice.',
+  keywords: ['meditation', 'yoga', 'kundalini', 'fascia', 'gua sha', 'mindfulness', 'beginner', 'guided meditation', 'myofascial release'],
   openGraph: {
     title: 'Inner Practice',
-    description: 'Quiet the mind. Awaken your energy.',
+    description: 'Stillness. Breath. Release.',
     type: 'website',
   },
 };
@@ -117,6 +117,21 @@ export default function RootLayout({
               >
                 Yoga
               </Link>
+              <Link
+                href="/fascia"
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  transition: 'color 300ms ease',
+                }}
+              >
+                Fascia
+              </Link>
               <ThemeToggle />
             </div>
           </div>
@@ -167,7 +182,7 @@ export default function RootLayout({
                   maxWidth: 'none',
                 }}
               >
-                A beginner&apos;s journey into meditation &amp; yoga
+                A journey into meditation, yoga &amp; fascia
               </p>
             </div>
             <p
