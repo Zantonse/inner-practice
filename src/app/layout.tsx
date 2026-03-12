@@ -85,13 +85,8 @@ export default function RootLayout({
             </Link>
 
             {/* Nav links */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '2rem',
-              }}
-            >
+            <div className="nav-links">
+
               <Link
                 href="/meditate"
                 style={{

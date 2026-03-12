@@ -115,6 +115,7 @@ export default function HomePage() {
       >
         {/* Top row — 3 panels */}
         <div
+          className="hero-row"
           style={{
             display: 'flex',
             flex: 3,
@@ -249,6 +250,7 @@ export default function HomePage() {
 
         {/* Bottom row — 2 panels centered */}
         <div
+          className="hero-row"
           style={{
             display: 'flex',
             flex: 2,

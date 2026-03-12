@@ -465,6 +465,36 @@ a:hover {
   padding: 0 max(1.5rem, 5vw);
 }
 
+/* --- Nav Links (mobile scroll) ----------------------------- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .site-nav {
+    padding: 0 1rem;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to right, transparent, black 0.5rem, black calc(100% - 1rem), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 0.5rem, black calc(100% - 1rem), transparent);
+    padding-right: 1rem;
+  }
+
+  .nav-links::-webkit-scrollbar { display: none; }
+
+  .nav-links a {
+    font-size: 0.75rem !important;
+    white-space: nowrap;
+  }
+}
+
 /* --- Stat Cards ------------------------------------------- */
 .stat-card {
   border-left: 3px solid var(--color-amber-light);
@@ -518,5 +548,14 @@ details > summary::-webkit-details-marker { display: none; }
 
   .timeline {
     padding-left: 2.5rem;
+  }
+
+  .hero-row {
+    flex-direction: column !important;
+  }
+
+  .hero-row > a {
+    min-height: 30dvh !important;
+    flex: none !important;
   }
 }

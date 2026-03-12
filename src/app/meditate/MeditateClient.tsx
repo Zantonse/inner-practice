@@ -1100,6 +1100,54 @@ export default function MeditateClient() {
           </div>
         </div>
       </section>
+
+      {/* ── Cross-Links ──────────────────────────────────────── */}
+      <section
+        style={{
+          padding: 'clamp(3rem, 5vw, 4rem) max(1.5rem, 8vw)',
+          background: 'color-mix(in srgb, var(--color-violet-mid) 10%, var(--color-cream))',
+          borderTop: '1px solid var(--color-border)',
+        }}
+      >
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px' }}>
+            <p
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.6875rem',
+                fontWeight: 500,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: 'var(--color-violet-deep)',
+                margin: '0 0 1rem',
+              }}
+            >
+              Deepen your practice
+            </p>
+            <p style={{ margin: '0 0 2rem', fontSize: '0.9375rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
+              Meditation is a top-down path to the nervous system — the prefrontal cortex quiets the amygdala via the vagus nerve.
+              Combine it with bottom-up practices for a complete approach.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <Link href="/breathe" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
+                Breathwork &rarr;
+              </Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/yoga" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
+                Yoga &rarr;
+              </Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/nervous-system" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
+                Nervous System &rarr;
+              </Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/practice" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
+                Practice Timer &rarr;
+              </Link>
+            </div>
+          </div>
+        </ScrollReveal>
+      </section>
     </>
   );
 }
