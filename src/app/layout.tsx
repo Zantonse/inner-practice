@@ -167,6 +167,21 @@ export default function RootLayout({
               >
                 Nervous System
               </Link>
+              <Link
+                href="/practice"
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  transition: 'color 300ms ease',
+                }}
+              >
+                Practice
+              </Link>
               <ThemeToggle />
             </div>
           </div>
