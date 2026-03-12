@@ -520,6 +520,7 @@ export default function PracticeClient() {
   // Audio init (SSR-safe)
   useEffect(() => {
     audioRef.current = new Audio('/sounds/bowl.wav');
+    audioRef.current.volume = 0.5;
     audioRef.current.preload = 'auto';
   }, []);
 
