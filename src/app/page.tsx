@@ -823,6 +823,127 @@ export default function HomePage() {
               Begin &rarr;
             </Link>
           </div>
+
+          {/* Manifest card */}
+          <div
+            className="card"
+            style={{
+              padding: '2.5rem 2.25rem',
+              borderRadius: '2px',
+              borderTop: '3px solid #D4A74A',
+            }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: 'color-mix(in srgb, #F0D68A 35%, var(--color-cream))',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9A7230" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: '#9A7230',
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Manifest
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              The science of turning intention into reality. How neuroscience, goal science, and ancient contemplative traditions converge into a practical framework for intentional creation.
+            </p>
+            <Link
+              href="/manifest"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#9A7230',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
+
+          {/* Practice card */}
+          <div
+            className="card"
+            style={{
+              padding: '2.5rem 2.25rem',
+              borderRadius: '2px',
+              borderTop: '3px solid var(--color-violet-mid)',
+            }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: 'color-mix(in srgb, var(--color-violet-mid) 35%, var(--color-cream))',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-violet-deep)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: 'var(--color-violet-deep)',
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Practice
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              Guided timers for breath, body, and mind. Open timer, 13 guided presets, and daily routine templates that sequence your practices into morning, midday, and evening blocks.
+            </p>
+            <Link
+              href="/practice"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'var(--color-violet-deep)',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
         </div>
       </section>
     </>

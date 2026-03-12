@@ -69,9 +69,9 @@ const scienceSection: ManifestSectionData = {
   ],
   videos: [
     {
-      id: 'dHUq0_42Gmk',
-      title: 'WOOP: Science-Based Goal Achievement',
-      description: 'Gabriele Oettingen explains the science of Mental Contrasting and how WOOP turns positive thinking into effective action.',
+      id: '7mobxikaYgU',
+      title: 'Rethinking Positive Thinking — Gabriele Oettingen',
+      description: 'Gabriele Oettingen explains Mental Contrasting and WOOP — the science of why pure positive visualization backfires and what works instead.',
     },
   ],
 };
@@ -122,9 +122,9 @@ const lineageSection: ManifestSectionData = {
   ],
   videos: [
     {
-      id: '7H0FKzeuVVs',
-      title: 'Yoga Nidra with Sankalpa — Guided Practice',
-      description: 'A 20-minute Yoga Nidra session with intention-setting at the beginning and deepest point of practice.',
+      id: 'DsGn0QUuRYY',
+      title: '20-Minute Yoga Nidra with Sankalpa',
+      description: 'A guided Yoga Nidra practice with intention-setting — plant your sankalpa at the beginning and deepest point of practice.',
     },
   ],
 };
