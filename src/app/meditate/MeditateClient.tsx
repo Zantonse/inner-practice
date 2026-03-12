@@ -1144,6 +1144,10 @@ export default function MeditateClient() {
               <Link href="/practice" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
                 Practice Timer &rarr;
               </Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/manifest" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
+                Manifest &rarr;
+              </Link>
             </div>
           </div>
         </ScrollReveal>

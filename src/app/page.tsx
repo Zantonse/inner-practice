@@ -42,9 +42,9 @@ const paths: {
     href: '/yoga',
     eyebrow: 'The path of energy',
     title: 'Yoga',
-    tagline: 'Awaken your energy through kundalini.',
+    tagline: 'Every style. Every path.',
     image: '/images/hero-yoga.png',
-    imageAlt: 'Abstract watercolor kundalini yoga illustration',
+    imageAlt: 'Abstract watercolor yoga illustration',
     gradFrom: 'oklch(55% 0.16 310)',
     gradTo: 'oklch(72% 0.1 290)',
     overlayColor: 'rgba(28,29,55,0.65)',
@@ -621,7 +621,7 @@ export default function HomePage() {
               Yoga
             </h3>
             <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
-              A 5-minute daily kundalini practice for beginners. Tune in, breathe, move, and meditate — a structured step-by-step flow that builds real momentum day by day.
+              Explore 10 yoga styles from Hatha to Yoga Nidra. Find the practice that fits your body, your nervous system, and your goals — with the science behind each style.
             </p>
             <Link
               href="/yoga"

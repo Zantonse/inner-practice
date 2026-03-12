@@ -30,16 +30,18 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: 'Inner Practice — Stillness. Breath. Release.',
   description:
-    'Meditation, kundalini yoga, fascia release, breathwork, and nervous system regulation for beginners. Quiet the mind, awaken your energy, free the body, and command your autonomic nervous system. Guided sessions, educational resources, and a beginner-friendly practice.',
+    'Meditation, yoga, fascia release, breathwork, nervous system regulation, and evidence-based manifestation. Explore 10 yoga styles, 14 breathwork techniques, the vagus nerve, Polyvagal Theory, and the science of intention-setting. Guided sessions, practice timers, and daily routine templates.',
   keywords: [
-    'meditation', 'yoga', 'kundalini', 'fascia', 'gua sha', 'mindfulness', 'beginner',
+    'meditation', 'yoga', 'yoga nidra', 'fascia', 'gua sha', 'mindfulness', 'beginner',
     'guided meditation', 'myofascial release', 'breathwork', 'pranayama', 'breathing exercises',
     'Wim Hof', 'box breathing', 'physiological sigh', 'nervous system', 'HRV', 'vagus nerve',
     'polyvagal theory', 'Stephen Porges', 'autonomic nervous system', 'vagal tone', 'eye movement',
+    'manifestation', 'sankalpa', 'WOOP', 'intention setting', 'visualization', 'goal science',
+    'practice timer', 'daily routines',
   ],
   openGraph: {
     title: 'Inner Practice',
-    description: 'Stillness. Breath. Release. Root.',
+    description: 'Meditation, yoga, breathwork, fascia, nervous system regulation, and the science of intention.',
     type: 'website',
   },
 };
@@ -242,7 +244,7 @@ export default function RootLayout({
                   maxWidth: 'none',
                 }}
               >
-                A journey into meditation, yoga, fascia, breath &amp; the nervous system
+                Meditation, yoga, breathwork, fascia, nervous system &amp; intentional practice
               </p>
             </div>
             <p

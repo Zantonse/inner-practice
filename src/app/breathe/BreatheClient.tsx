@@ -1741,6 +1741,31 @@ export default function BreatheClient() {
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </Link>
+                <Link
+                  href="/manifest"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.875rem 1.5rem',
+                    background: 'transparent',
+                    color: '#9A7230',
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.8125rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    borderRadius: '2px',
+                    border: '1px solid #D4A74A',
+                    transition: 'background-color 300ms ease, border-color 300ms ease',
+                  }}
+                >
+                  Manifest
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
             </div>
           </ScrollReveal>
