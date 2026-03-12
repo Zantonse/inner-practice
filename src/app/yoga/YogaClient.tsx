@@ -113,7 +113,7 @@ export default function YogaClient() {
     <>
       {/* HERO */}
       <section style={{ position: 'relative', minHeight: '85dvh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)', background: 'linear-gradient(160deg, oklch(55% 0.16 310), oklch(72% 0.1 290))', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}><Image src="/images/hero-yoga.png" alt="Abstract watercolor yoga illustration" fill priority sizes="100vw" style={{ objectFit: 'cover', opacity: 0.35 }} /></div>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}><Image src="/images/hero-yoga.webp" alt="Abstract watercolor yoga illustration" fill priority sizes="100vw" style={{ objectFit: 'cover', opacity: 0.35 }} /></div>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.7) 0%, rgba(28,29,55,0.15) 50%, transparent 100%)', zIndex: 1 }} />
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '780px' }}>
           <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: AMBER_LIGHT, margin: '0 0 1rem' }}>The path of unity</p>

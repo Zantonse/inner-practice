@@ -441,11 +441,11 @@ export default function FasciaClient() {
             }}
           >
             <Image
-              src="/images/hero-fascia.png"
+              src="/images/hero-fascia.webp"
               alt="Abstract watercolor illustration of fascia web tissue"
               fill
               priority
-              sizes="40vw"
+              sizes="100vw"
               style={{ objectFit: 'cover' }}
             />
           </div>

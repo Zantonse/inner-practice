@@ -38,42 +38,42 @@ const videos: Record<Duration, VideoEntry[]> = {
 // ── Meditation Type Data ─────────────────────────────────────
 const meditationTypes = [
   {
-    icon: '/images/icon-breath.png',
+    icon: '/images/icon-breath.webp',
     name: 'Breath Awareness',
     description: 'Anchor attention to the natural rhythm of breathing.',
     bestFor: 'Beginners · Anxiety',
     iconFallback: '◯',
   },
   {
-    icon: '/images/icon-bodyscan.png',
+    icon: '/images/icon-bodyscan.webp',
     name: 'Body Scan',
     description: 'Systematically bring awareness through each part of the body.',
     bestFor: 'Sleep · Tension',
     iconFallback: '⬡',
   },
   {
-    icon: '/images/icon-loving-kindness.png',
+    icon: '/images/icon-loving-kindness.webp',
     name: 'Loving-Kindness',
     description: 'Cultivate compassion toward yourself and others.',
     bestFor: 'Emotional wellbeing · Relationships',
     iconFallback: '♡',
   },
   {
-    icon: '/images/icon-visualization.png',
+    icon: '/images/icon-visualization.webp',
     name: 'Guided Visualization',
     description: 'Use mental imagery to reach deeper states of relaxation.',
     bestFor: 'Creativity · Stress relief',
     iconFallback: '◈',
   },
   {
-    icon: '/images/icon-yoga-nidra.png',
+    icon: '/images/icon-yoga-nidra.webp',
     name: 'Yoga Nidra',
     description: 'A state between sleep and waking — profound rest.',
     bestFor: 'Exhaustion · Deep rest',
     iconFallback: '◑',
   },
   {
-    icon: '/images/icon-walking.png',
+    icon: '/images/icon-walking.webp',
     name: 'Walking Meditation',
     description: 'Bring full mindful presence to each step you take.',
     bestFor: 'Restless minds · Movement',

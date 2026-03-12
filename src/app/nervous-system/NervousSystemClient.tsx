@@ -849,7 +849,7 @@ export default function NervousSystemClient() {
       >
         <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
           <Image
-            src="/images/hero-nervous-system.png"
+            src="/images/hero-nervous-system.webp"
             alt="Abstract watercolor illustration of the nervous system"
             fill
             priority
@@ -982,7 +982,7 @@ export default function NervousSystemClient() {
           <div style={{ maxWidth: '780px' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
               <Image
-                src="/images/icon-vagus.png"
+                src="/images/icon-vagus.webp"
                 alt="Sumi-e illustration of the vagus nerve"
                 width={80}
                 height={80}
@@ -1288,7 +1288,7 @@ export default function NervousSystemClient() {
           <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
               <Image
-                src="/images/icon-eye.png"
+                src="/images/icon-eye.webp"
                 alt="Sumi-e illustration of an eye"
                 width={80}
                 height={80}
