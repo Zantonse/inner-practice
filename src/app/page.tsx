@@ -4,7 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe';
+// ── Rose accent tokens (Nervous System) ────────────────────────
+const ROSE_DEEP  = '#8B3A62';
+const ROSE_MID   = '#C27BA0';
+const ROSE_LIGHT = '#E8B4CF';
+
+type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system';
 
 const paths: {
   key: PathKey;
@@ -18,7 +23,7 @@ const paths: {
   gradTo: string;
   overlayColor: string;
   accentColor: string;
-} [] = [
+}[] = [
   {
     key: 'meditate',
     href: '/meditate',
@@ -71,157 +76,329 @@ const paths: {
     overlayColor: 'rgba(18,80,80,0.62)',
     accentColor: '#A8DADA',
   },
+  {
+    key: 'nervous-system',
+    href: '/nervous-system',
+    eyebrow: 'The meta-layer',
+    title: 'Nervous System',
+    tagline: 'The root of every practice.',
+    image: '/images/hero-nervous-system.png',
+    imageAlt: 'Abstract watercolor nervous system illustration',
+    gradFrom: 'oklch(55% 0.14 340)',
+    gradTo: 'oklch(78% 0.09 350)',
+    overlayColor: 'rgba(139,58,98,0.62)',
+    accentColor: ROSE_LIGHT,
+  },
 ];
+
+const topRow = paths.slice(0, 3);
+const bottomRow = paths.slice(3);
 
 export default function HomePage() {
   const [hovered, setHovered] = useState<PathKey | null>(null);
 
-  const getCardFlex = (key: PathKey) => {
-    if (hovered === null) return 1;
+  const getCardFlex = (key: PathKey, row: typeof paths) => {
+    const rowHovered = row.find(p => p.key === hovered);
+    if (!rowHovered) return 1;
     return hovered === key ? 1.8 : 0.6;
   };
 
   return (
     <>
-      {/* ── Three-Path Hero ──────────────────────────────────── */}
+      {/* ── Five-Path Hero (3 + 2 row layout) ──────────────────── */}
       <div
         style={{
           display: 'flex',
+          flexDirection: 'column',
           minHeight: 'calc(100dvh - 60px)',
-          position: 'relative',
         }}
       >
-        {paths.map((path) => (
-          <Link
-            key={path.key}
-            href={path.href}
-            style={{
-              flex: getCardFlex(path.key),
-              transition: 'flex 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-              position: 'relative',
-              overflow: 'hidden',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-end',
-              padding: 'clamp(1.75rem, 4vw, 3.5rem)',
-              textDecoration: 'none',
-              background: `linear-gradient(160deg, ${path.gradFrom}, ${path.gradTo})`,
-              minHeight: '55dvh',
-            }}
-            onMouseEnter={() => setHovered(path.key)}
-            onMouseLeave={() => setHovered(null)}
-          >
-            {/* Background image */}
-            <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-              <Image
-                src={path.image}
-                alt={path.imageAlt}
-                fill
-                priority={path.key === 'meditate'}
-                sizes="25vw"
-                style={{
-                  objectFit: 'cover',
-                  objectPosition: 'center',
-                  opacity: hovered === path.key ? 0.55 : 0.38,
-                  transition: 'opacity 550ms ease',
-                }}
-              />
-            </div>
-
-            {/* Gradient overlay */}
-            <div
+        {/* Top row — 3 panels */}
+        <div
+          style={{
+            display: 'flex',
+            flex: 3,
+            position: 'relative',
+          }}
+        >
+          {topRow.map((path) => (
+            <Link
+              key={path.key}
+              href={path.href}
               style={{
-                position: 'absolute',
-                inset: 0,
-                background: `linear-gradient(to top, ${path.overlayColor} 0%, ${path.overlayColor.replace(/[\d.]+\)$/, '0.05)')} 50%, transparent 100%)`,
-                zIndex: 1,
+                flex: getCardFlex(path.key, topRow),
+                transition: 'flex 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                position: 'relative',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-end',
+                padding: 'clamp(1.75rem, 4vw, 3.5rem)',
+                textDecoration: 'none',
+                background: `linear-gradient(160deg, ${path.gradFrom}, ${path.gradTo})`,
+                minHeight: '44dvh',
               }}
-            />
+              onMouseEnter={() => setHovered(path.key)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              {/* Background image */}
+              <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+                <Image
+                  src={path.image}
+                  alt={path.imageAlt}
+                  fill
+                  priority={path.key === 'meditate'}
+                  sizes="33vw"
+                  style={{
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    opacity: hovered === path.key ? 0.55 : 0.38,
+                    transition: 'opacity 550ms ease',
+                  }}
+                />
+              </div>
 
-            {/* Vertical divider line (right side, except last card) */}
-            {path.key !== 'breathe' && (
+              {/* Gradient overlay */}
               <div
                 style={{
                   position: 'absolute',
-                  right: 0,
-                  top: '10%',
-                  bottom: '10%',
-                  width: '1px',
-                  background: 'rgba(245,234,225,0.18)',
+                  inset: 0,
+                  background: `linear-gradient(to top, ${path.overlayColor} 0%, ${path.overlayColor.replace(/[\d.]+\)$/, '0.05)')} 50%, transparent 100%)`,
+                  zIndex: 1,
+                }}
+              />
+
+              {/* Vertical divider line (right side, except last in row) */}
+              {path.key !== 'fascia' && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: 0,
+                    top: '10%',
+                    bottom: '10%',
+                    width: '1px',
+                    background: 'rgba(245,234,225,0.18)',
+                    zIndex: 3,
+                  }}
+                />
+              )}
+
+              {/* Content */}
+              <div style={{ position: 'relative', zIndex: 2 }}>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.65rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(245,234,225,0.6)',
+                    margin: '0 0 0.625rem',
+                  }}
+                >
+                  {path.eyebrow}
+                </p>
+                <h2
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(2.25rem, 4.5vw, 4.5rem)',
+                    fontWeight: 700,
+                    color: '#F5EAE1',
+                    lineHeight: 1.05,
+                    margin: '0 0 0.875rem',
+                  }}
+                >
+                  {path.title}
+                </h2>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 'clamp(0.8125rem, 1.2vw, 0.9375rem)',
+                    color: 'rgba(245,234,225,0.78)',
+                    margin: '0 0 1.5rem',
+                    maxWidth: '24ch',
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {path.tagline}
+                </p>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.7rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: path.accentColor,
+                    opacity: hovered === path.key ? 1 : 0.75,
+                    transition: 'opacity 400ms ease',
+                  }}
+                >
+                  Begin
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Bottom row — 2 panels centered */}
+        <div
+          style={{
+            display: 'flex',
+            flex: 2,
+            position: 'relative',
+          }}
+        >
+          {bottomRow.map((path) => (
+            <Link
+              key={path.key}
+              href={path.href}
+              style={{
+                flex: getCardFlex(path.key, bottomRow),
+                transition: 'flex 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                position: 'relative',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-end',
+                padding: 'clamp(1.75rem, 4vw, 3.5rem)',
+                textDecoration: 'none',
+                background: `linear-gradient(160deg, ${path.gradFrom}, ${path.gradTo})`,
+                minHeight: '34dvh',
+              }}
+              onMouseEnter={() => setHovered(path.key)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              {/* Background image */}
+              <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+                <Image
+                  src={path.image}
+                  alt={path.imageAlt}
+                  fill
+                  sizes="50vw"
+                  style={{
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    opacity: hovered === path.key ? 0.55 : 0.38,
+                    transition: 'opacity 550ms ease',
+                  }}
+                />
+              </div>
+
+              {/* Gradient overlay */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: `linear-gradient(to top, ${path.overlayColor} 0%, ${path.overlayColor.replace(/[\d.]+\)$/, '0.05)')} 50%, transparent 100%)`,
+                  zIndex: 1,
+                }}
+              />
+
+              {/* Vertical divider between bottom row panels */}
+              {path.key === 'breathe' && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: 0,
+                    top: '10%',
+                    bottom: '10%',
+                    width: '1px',
+                    background: 'rgba(245,234,225,0.18)',
+                    zIndex: 3,
+                  }}
+                />
+              )}
+
+              {/* Horizontal divider (top of bottom row) */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: '5%',
+                  right: '5%',
+                  height: '1px',
+                  background: 'rgba(245,234,225,0.15)',
                   zIndex: 3,
                 }}
               />
-            )}
 
-            {/* Content */}
-            <div style={{ position: 'relative', zIndex: 2 }}>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.65rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(245,234,225,0.6)',
-                  margin: '0 0 0.625rem',
-                }}
-              >
-                {path.eyebrow}
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(2.5rem, 5vw, 5rem)',
-                  fontWeight: 700,
-                  color: '#F5EAE1',
-                  lineHeight: 1.05,
-                  margin: '0 0 0.875rem',
-                }}
-              >
-                {path.title}
-              </h2>
-              <p
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: 'clamp(0.8125rem, 1.2vw, 0.9375rem)',
-                  color: 'rgba(245,234,225,0.78)',
-                  margin: '0 0 1.5rem',
-                  maxWidth: '24ch',
-                  lineHeight: 1.65,
-                }}
-              >
-                {path.tagline}
-              </p>
-              <span
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.7rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  color: path.accentColor,
-                  opacity: hovered === path.key ? 1 : 0.75,
-                  transition: 'opacity 400ms ease',
-                }}
-              >
-                Begin
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </span>
-            </div>
-          </Link>
-        ))}
+              {/* Content */}
+              <div style={{ position: 'relative', zIndex: 2 }}>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.65rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(245,234,225,0.6)',
+                    margin: '0 0 0.625rem',
+                  }}
+                >
+                  {path.eyebrow}
+                </p>
+                <h2
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(2.25rem, 4.5vw, 4.5rem)',
+                    fontWeight: 700,
+                    color: '#F5EAE1',
+                    lineHeight: 1.05,
+                    margin: '0 0 0.875rem',
+                  }}
+                >
+                  {path.title}
+                </h2>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 'clamp(0.8125rem, 1.2vw, 0.9375rem)',
+                    color: 'rgba(245,234,225,0.78)',
+                    margin: '0 0 1.5rem',
+                    maxWidth: '28ch',
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {path.tagline}
+                </p>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.7rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: path.accentColor,
+                    opacity: hovered === path.key ? 1 : 0.75,
+                    transition: 'opacity 400ms ease',
+                  }}
+                >
+                  Begin
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
 
         {/* Floating Center Brand */}
         <div
           style={{
             position: 'absolute',
             left: '50%',
-            top: '50%',
+            top: 'calc(44dvh / 2 + 30px)',
             transform: 'translate(-50%, -50%)',
             zIndex: 30,
             textAlign: 'center',
@@ -262,7 +439,7 @@ export default function HomePage() {
                 textTransform: 'uppercase',
               }}
             >
-              Stillness. Breath. Release.
+              Stillness. Breath. Release. Root.
             </p>
           </div>
         </div>
@@ -308,7 +485,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Four Path Cards ─────────────────────────────────────── */}
+      {/* ── Five Path Cards ──────────────────────────────────────── */}
       <section
         style={{
           padding: '5rem max(1.5rem, 8vw) 8rem',
@@ -317,9 +494,9 @@ export default function HomePage() {
       >
         <div
           style={{
-            maxWidth: '1100px',
+            maxWidth: '1200px',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
             gap: '1.75rem',
           }}
         >
@@ -358,7 +535,7 @@ export default function HomePage() {
               Meditate
             </h3>
             <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
-              Explore the science and art of meditation. From basic breath awareness to loving-kindness — discover the technique that resonates with you, then practice with guided videos.
+              Explore the science and art of meditation. From basic breath awareness to loving-kindness — discover the technique that resonates, then practice with guided videos.
             </p>
             <Link
               href="/meditate"
@@ -513,7 +690,6 @@ export default function HomePage() {
                 justifyContent: 'center',
               }}
             >
-              {/* Wind / breath SVG */}
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3D8A8A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9.59 4.59A2 2 0 1 1 11 8H2" />
                 <path d="M12.59 19.41A2 2 0 1 0 14 16H2" />
@@ -544,6 +720,72 @@ export default function HomePage() {
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 color: '#3D8A8A',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
+
+          {/* Nervous System card */}
+          <div
+            className="card"
+            style={{
+              padding: '2.5rem 2.25rem',
+              borderRadius: '2px',
+              borderTop: `3px solid ${ROSE_MID}`,
+            }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: `color-mix(in srgb, ${ROSE_LIGHT} 35%, var(--color-cream))`,
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              {/* Branching nerve SVG */}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={ROSE_DEEP} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2v20" />
+                <path d="M12 7l-4-3" />
+                <path d="M12 7l4-3" />
+                <path d="M12 12l-5-2" />
+                <path d="M12 12l5-2" />
+                <path d="M12 17l-4 3" />
+                <path d="M12 17l4 3" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: ROSE_DEEP,
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Nervous System
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              The meta-layer beneath every practice. Discover the vagus nerve, Polyvagal Theory, 19 stimulation techniques, eye movements, the Wim Hof Method, and how to measure your own vagal tone.
+            </p>
+            <Link
+              href="/nervous-system"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: ROSE_DEEP,
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
