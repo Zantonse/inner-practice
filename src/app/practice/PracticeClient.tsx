@@ -2,6 +2,7 @@
 
 import { useReducer, useEffect, useRef, useCallback, useState } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
+import PracticeBuilderTab from './PracticeBuilderTab';
 
 // ── Accent tokens ──────────────────────────────────────────────
 const VIOLET_DEEP = '#592E6B';
@@ -509,7 +510,7 @@ function DurationSelector({
 // ════════════════════════════════════════════════════════════════
 export default function PracticeClient() {
   const [state, dispatch] = useReducer(timerReducer, initialState);
-  const [activeTab, setActiveTab] = useState<'open' | 'guided'>('open');
+  const [activeTab, setActiveTab] = useState<'open' | 'guided' | 'routines'>('open');
   const [selectedMinutes, setSelectedMinutes] = useState<number | null>(10);
   const [customMin, setCustomMin] = useState('');
 
@@ -650,6 +651,12 @@ export default function PracticeClient() {
               >
                 Guided Presets
               </button>
+              <button
+                className={activeTab === 'routines' ? 'pill-tab active' : 'pill-tab'}
+                onClick={() => setActiveTab('routines')}
+              >
+                Daily Routines
+              </button>
             </div>
           )}
 
@@ -769,6 +776,15 @@ export default function PracticeClient() {
                 </ScrollReveal>
               ))}
             </div>
+          )}
+
+          {/* ── Daily Routines (idle) ─────────────────────── */}
+          {!isTimerActive && activeTab === 'routines' && (
+            <PracticeBuilderTab
+              onStartPreset={() => {
+                setActiveTab('guided');
+              }}
+            />
           )}
 
         </div>
