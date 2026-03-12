@@ -273,7 +273,7 @@ function ManifestSection({ section }: { section: ManifestSectionData }) {
             color: 'var(--color-text-muted)',
             lineHeight: 1.75,
             maxWidth: '780px',
-            margin: '0 auto 3rem 0',
+            margin: '0 auto 3rem',
           }}>{section.intro}</p>
 
           {/* Points */}
@@ -501,19 +501,7 @@ export default function ManifestClient() {
             color: GOLD_MID,
             margin: '0 0 1.5rem',
             lineHeight: 1.4,
-          }}>What neuroscience and ancient practice agree on.</p>
-
-          {/* Description */}
-          <p style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: 'clamp(0.9375rem, 1.5vw, 1.0625rem)',
-            color: 'var(--color-text-muted)',
-            maxWidth: '580px',
-            lineHeight: 1.75,
-            margin: 0,
-          }}>
-            Intention-setting is not magical thinking. It is a trainable cognitive skill with measurable neurological effects — one that contemplative traditions have refined for millennia and that modern psychology is finally catching up to explain.
-          </p>
+          }}>What the science of intention, the wisdom of ancient practice, and your nervous system have in common.</p>
         </div>
       </section>
 
@@ -550,10 +538,10 @@ export default function ManifestClient() {
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
               fontWeight: 600,
-              color: 'var(--color-text)',
+              color: GOLD_DEEP,
               margin: '0 0 1rem',
               lineHeight: 1.2,
-            }}>The Manifestation Protocol</h2>
+            }}>The Inner Practice Protocol</h2>
             <p style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(1rem, 1.5vw, 1.125rem)',
@@ -575,6 +563,22 @@ export default function ManifestClient() {
                 />
               ))}
             </div>
+
+            {/* Closing insight */}
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 'clamp(1rem, 1.5vw, 1.125rem)',
+              fontStyle: 'italic',
+              color: GOLD_DEEP,
+              lineHeight: 1.75,
+              maxWidth: '640px',
+              margin: '3rem 0 0',
+            }}>
+              Inner Practice was designed as a manifestation protocol all along.
+              Breathwork regulates. Yoga resources. Meditation directs attention.
+              Fascia releases stored tension. The nervous system is the substrate.
+              This page is the map that shows how they connect.
+            </p>
           </div>
         </ScrollReveal>
       </section>
