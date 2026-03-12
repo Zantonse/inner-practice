@@ -2,1120 +2,343 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
+import VideoFacade from '@/components/VideoFacade';
 
-// ── Practice Steps Data ──────────────────────────────────────
-const practiceSteps = [
-  {
-    number: 1,
-    title: 'Tune In',
-    duration: '1–2 min',
-    tagline: 'Ground your awareness',
-    summary: 'Sit cross-legged on the floor or in a chair. Bring both hands to your heart center.',
-    details: [
-      'Close your eyes and take three deep breaths through the nose.',
-      'Bring your palms together at the center of your chest, thumbs pressing gently against the sternum.',
-      'On your next exhale, chant "Ong Namo Guru Dev Namo" (I bow to the creative energy; I bow to the divine teacher within) three times.',
-      'This is the adi mantra — it signals to your system that the practice has begun, and is said to connect you to the lineage of teachers.',
-      'Take a moment in stillness. Notice the quality of silence after the final repetition.',
-    ],
-    tip: 'If you\'re not comfortable chanting, you can simply sit with hands at heart and set a clear intention for the practice.',
-  },
-  {
-    number: 2,
-    title: 'Breathe',
-    duration: '3 min',
-    tagline: 'Long deep breathing',
-    summary: 'Sit tall. Begin Long Deep Breathing through the nose — slowly filling from belly to chest.',
-    details: [
-      'Long Deep Breathing (LDB) engages all three chambers of the lungs: first the belly expands, then the chest lifts, then the collarbones rise.',
-      'Exhale in reverse: collarbones drop, chest falls, belly contracts and pulls in and up.',
-      'Aim for 4–8 breaths per minute. This activates the parasympathetic nervous system within minutes.',
-      'Keep the breath smooth and continuous — no pausing at the top or bottom.',
-      'If the mind wanders, anchor back to the physical sensation of breath moving through the nostrils.',
-      'After 3 minutes, pause. Notice the vibratory quality in the body — a buzzing or warmth in the hands is common.',
-    ],
-    tip: 'Long Deep Breathing alone is a complete practice. If you only have 3 minutes today, this is enough.',
-  },
-  {
-    number: 3,
-    title: 'Move',
-    duration: '5–10 min',
-    tagline: 'Spinal series',
-    summary: 'A brief movement sequence to awaken the spine and energize the body.',
-    details: [
-      'SPINAL FLEX — Sit cross-legged, hands on knees. Inhale as you flex the spine forward (chest open), exhale as you round back. Rhythm: 1 cycle per breath. 26–54 repetitions.',
-      'CAT-COW — Come to hands and knees. Inhale: drop the belly, arch the back, look up. Exhale: round the spine, tuck the chin. Move with the breath. 10–15 cycles.',
-      'FROG POSE — Squat with heels together and raised, hands on the floor in front. Inhale as you straighten the legs (head down), exhale as you return to squat (head up). 11–26 repetitions.',
-      'After the sequence, sit or lie in stillness for 1–2 minutes. Let the body integrate the movement.',
-    ],
-    tip: 'The spinal flex is considered the most important exercise in kundalini yoga. Even 26 repetitions per day is said to keep the spine flexible and the mind clear.',
-  },
-  {
-    number: 4,
-    title: 'Meditate',
-    duration: '3 min',
-    tagline: 'Sit. Observe. Return.',
-    summary: 'Hands resting on knees, palms up. Close the eyes and focus at the brow point.',
-    details: [
-      'Bring your awareness to the point between the eyebrows (the third eye or ajna chakra).',
-      'Begin Breath of Fire, or simply continue Long Deep Breathing if Breath of Fire is new to you.',
-      'Breath of Fire: rapid, rhythmic breathing through the nose, equal emphasis on inhale and exhale, driven by the navel point pumping in and out. Aim for 2–3 cycles per second.',
-      'If using breath counting: count each exhale from 1 to 10. When you lose count (and you will), return to 1 without judgment.',
-      'When the timer ends, inhale deeply, hold for a moment, and exhale completely.',
-    ],
-    tip: 'Breath of Fire should not be practiced during pregnancy or menstruation. Long Deep Breathing is always a safe alternative.',
-  },
-  {
-    number: 5,
-    title: 'Close',
-    duration: '1–2 min',
-    tagline: 'Seal the practice',
-    summary: 'Inhale deeply. Stretch both arms overhead, fingers spread wide.',
-    details: [
-      'Shake the hands rapidly above your head for 15–30 seconds — this distributes the energy moved during practice.',
-      'Bring the hands down to the lap. Take one long, slow breath.',
-      'Chant "Sat Nam" (Truth is my identity) once — long Sat, short Nam.',
-      'This closes the practice, acknowledges the work done, and roots the energy back into the body.',
-      'Sit in silence for one final minute. Notice what has shifted.',
-    ],
-    tip: '"Sat Nam" is the most fundamental kundalini mantra. It can also be used throughout the day as an instant centering tool.',
-  },
-];
+// ── Accent tokens ──────────────────────────────────────────────
+const VIOLET_DEEP = '#592E6B';
+const VIOLET_MID  = '#D7C2EE';
+const AMBER_DEEP  = '#C07A35';
+const AMBER_LIGHT = '#E4AD75';
 
-// ── Chakra Data ──────────────────────────────────────────────
-const chakras = [
-  { name: 'Root (Muladhara)', location: 'Base of spine', color: '#CC3333', quality: 'Grounding, safety, survival' },
-  { name: 'Sacral (Svadhisthana)', location: 'Lower abdomen', color: '#E8750A', quality: 'Creativity, emotion, pleasure' },
-  { name: 'Solar Plexus (Manipura)', location: 'Navel center', color: '#E8C10A', quality: 'Power, will, confidence' },
-  { name: 'Heart (Anahata)', location: 'Center of chest', color: '#3DA35D', quality: 'Love, compassion, connection' },
-  { name: 'Throat (Vishuddha)', location: 'Throat', color: '#3D70A3', quality: 'Truth, expression, clarity' },
-  { name: 'Third Eye (Ajna)', location: 'Between eyebrows', color: '#592E6B', quality: 'Intuition, wisdom, perception' },
-  { name: 'Crown (Sahasrara)', location: 'Top of head', color: '#9B59B6', quality: 'Consciousness, transcendence' },
-];
-
-// ── Step Component ───────────────────────────────────────────
-function PracticeStep({ step, isOpen, onToggle }: {
-  step: typeof practiceSteps[0];
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
+// ── StatCard ───────────────────────────────────────────────────
+function StatCard({ source, stat, detail }: { source: string; stat: string; detail: string }) {
   return (
-    <div style={{ position: 'relative', marginBottom: '1.5rem' }}>
-      <div className="timeline-node">{step.number}</div>
-      <div
-        style={{
-          background: 'var(--color-surface-raised)',
-          border: `1px solid ${isOpen ? 'var(--color-violet-mid)' : 'var(--color-border)'}`,
-          borderRadius: '2px',
-          overflow: 'hidden',
-          transition: 'border-color 300ms ease',
-        }}
-      >
-        <button
-          onClick={onToggle}
-          style={{
-            width: '100%',
-            padding: '1.5rem 1.75rem',
-            display: 'flex',
-            alignItems: 'flex-start',
-            justifyContent: 'space-between',
-            gap: '1rem',
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            textAlign: 'left',
-          }}
-        >
-          <div style={{ flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.375rem', flexWrap: 'wrap' }}>
-              <span
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-amber-deep)',
-                }}
-              >
-                {step.duration}
-              </span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.8125rem',
-                  color: 'var(--color-text-muted)',
-                  fontStyle: 'italic',
-                }}
-              >
-                {step.tagline}
-              </span>
-            </div>
-            <h3
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '1.5rem',
-                fontWeight: 600,
-                color: isOpen ? 'var(--color-violet-deep)' : 'var(--color-text)',
-                margin: '0 0 0.5rem',
-                fontStyle: 'normal',
-                transition: 'color 300ms ease',
-              }}
-            >
-              {step.title}
-            </h3>
-            <p
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.9375rem',
-                color: 'var(--color-text-muted)',
-                margin: 0,
-                lineHeight: 1.65,
-              }}
-            >
-              {step.summary}
-            </p>
-          </div>
-          <div
-            style={{
-              width: '1.75rem',
-              height: '1.75rem',
-              flexShrink: 0,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--color-text-muted)',
-              transition: 'transform 300ms ease',
-              transform: isOpen ? 'rotate(180deg)' : 'none',
-              marginTop: '0.25rem',
-            }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </div>
-        </button>
+    <div style={{ borderLeft: `3px solid ${VIOLET_MID}`, padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
+      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.75rem' }}>{source}</p>
+      <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>{stat}</p>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>{detail}</p>
+    </div>
+  );
+}
 
-        {isOpen && (
-          <div
-            style={{
-              padding: '0 1.75rem 1.75rem',
-              borderTop: '1px solid var(--color-border)',
-            }}
-          >
-            <ul
-              style={{
-                margin: '1.25rem 0',
-                padding: 0,
-                listStyle: 'none',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.75rem',
-              }}
-            >
-              {step.details.map((detail, i) => (
-                <li
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    gap: '0.875rem',
-                    alignItems: 'flex-start',
-                  }}
-                >
-                  <span
-                    style={{
-                      flexShrink: 0,
-                      width: '1.25rem',
-                      height: '1.25rem',
-                      marginTop: '0.2rem',
-                      borderRadius: '9999px',
-                      background: 'var(--color-violet-mid)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '0.625rem',
-                      color: 'var(--color-violet-deep)',
-                      fontWeight: 700,
-                    }}
-                  >
-                    {i + 1}
-                  </span>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '0.9375rem',
-                      color: 'var(--color-text)',
-                      margin: 0,
-                      lineHeight: 1.75,
-                    }}
-                  >
-                    {detail}
-                  </p>
-                </li>
-              ))}
-            </ul>
+// ── Style Card (expandable) ────────────────────────────────────
+interface YogaStyleData {
+  id: string;
+  name: string;
+  tradition: string;
+  intensity: 'Low' | 'Moderate' | 'High' | 'Zero';
+  ansBenefit: string;
+  description: string;
+  keyResearch: string;
+  bestFor: string[];
+}
 
-            <div
-              style={{
-                padding: '1rem 1.25rem',
-                background: 'color-mix(in srgb, var(--color-amber-light) 15%, var(--color-cream))',
-                borderLeft: '3px solid var(--color-amber-light)',
-                borderRadius: '0 2px 2px 0',
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-amber-deep)',
-                  margin: '0 0 0.375rem',
-                }}
-              >
-                Teacher&apos;s tip
-              </p>
-              <p
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.875rem',
-                  color: 'var(--color-text)',
-                  margin: 0,
-                  lineHeight: 1.7,
-                }}
-              >
-                {step.tip}
-              </p>
-            </div>
+function intensityColor(level: YogaStyleData['intensity']) {
+  if (level === 'Zero') return { bg: `color-mix(in srgb, ${VIOLET_MID} 30%, var(--color-cream))`, text: VIOLET_DEEP };
+  if (level === 'Low') return { bg: `color-mix(in srgb, ${VIOLET_MID} 25%, var(--color-cream))`, text: VIOLET_DEEP };
+  if (level === 'Moderate') return { bg: 'color-mix(in srgb, var(--color-amber-light) 25%, var(--color-cream))', text: 'var(--color-amber-deep)' };
+  return { bg: 'color-mix(in srgb, #C27BA0 20%, var(--color-cream))', text: '#8B3A62' };
+}
+
+function StyleCard({ style, isOpen, onToggle }: { style: YogaStyleData; isOpen: boolean; onToggle: () => void }) {
+  const ic = intensityColor(style.intensity);
+  return (
+    <div style={{ background: 'var(--color-surface-raised)', border: `1px solid ${isOpen ? VIOLET_DEEP : 'var(--color-border)'}`, borderRadius: '2px', overflow: 'hidden', transition: 'border-color 300ms ease', marginBottom: '0.875rem' }}>
+      <button onClick={onToggle} style={{ width: '100%', padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
+        <div style={{ flex: 1, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.75rem' }}>
+          <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: isOpen ? VIOLET_DEEP : 'var(--color-text)', margin: 0, fontStyle: 'normal', transition: 'color 300ms ease' }}>{style.name}</h4>
+          <span style={{ display: 'inline-block', padding: '0.2rem 0.65rem', borderRadius: '9999px', background: ic.bg, fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: ic.text, letterSpacing: '0.05em' }}>{style.intensity}</span>
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', fontStyle: 'italic', color: 'var(--color-text-muted)' }}>{style.tradition}</span>
+        </div>
+        <div style={{ flexShrink: 0, color: 'var(--color-text-muted)', transition: 'transform 300ms ease', transform: isOpen ? 'rotate(180deg)' : 'none' }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+        </div>
+      </button>
+      {isOpen && (
+        <div style={{ padding: '0 1.5rem 1.5rem', borderTop: '1px solid var(--color-border)' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--color-text)', margin: '1.25rem 0 1rem', lineHeight: 1.8 }}>{style.description}</p>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>Nervous System</p>
+          <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>{style.ansBenefit}</p>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>Key Research</p>
+          <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>{style.keyResearch}</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {style.bestFor.map((b, i) => (
+              <span key={i} style={{ display: 'inline-block', padding: '0.2rem 0.65rem', borderRadius: '9999px', background: `color-mix(in srgb, ${VIOLET_MID} 20%, var(--color-cream))`, fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', fontWeight: 500, color: VIOLET_DEEP, letterSpacing: '0.04em' }}>{b}</span>
+            ))}
           </div>
-        )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Nidra Stage ────────────────────────────────────────────────
+function NidraStage({ number, title, description }: { number: number; title: string; description: string }) {
+  return (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+      <div style={{ width: '2rem', height: '2rem', borderRadius: '9999px', background: VIOLET_DEEP, color: '#F5EAE1', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-ui)', fontSize: '0.75rem', fontWeight: 600, flexShrink: 0 }}>{number}</div>
+      <div>
+        <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.0625rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.35rem', fontStyle: 'normal' }}>{title}</h4>
+        <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>{description}</p>
       </div>
     </div>
   );
 }
 
-// ── Main Component ───────────────────────────────────────────
-export default function YogaClient() {
-  const [openStep, setOpenStep] = useState<number | null>(1);
+// ── Style Data ─────────────────────────────────────────────────
+const activeStyles: YogaStyleData[] = [
+  { id: 'hatha', name: 'Hatha Yoga', tradition: '11th–14th c. Nath Tradition', intensity: 'Low', ansBenefit: 'The strongest parasympathetic enhancer among physical yoga styles. Slow diaphragmatic breathing directly stimulates the vagus nerve, producing HRV improvements of 18–25% and systolic BP reductions of 5–10 mmHg.', description: 'The root of all physical yoga. Hatha means "sun-moon" — the union of opposing forces. Codified in the 14th-century Hatha Yoga Pradipika, it combines postures, breath control, and internal locks as a preparatory path for deeper meditative states. Most modern yoga descends from this tradition via Krishnamacharya.', keyResearch: 'Subbulakshmi et al. (2025, systematic review, 42 studies): HRV +18–25%, SBP -5–10 mmHg, resting HR -4–7 bpm. Kumar (2025, IJSR): "pronounced enhancements in parasympathetic activity." Grabara (2025): qualifies as moderate-intensity exercise for older adults at 60% HRmax.', bestFor: ['Beginners', 'Hypertension', 'Stress reduction', 'Seniors'] },
+  { id: 'vinyasa', name: 'Vinyasa (Flow)', tradition: '1980s, from Ashtanga', intensity: 'Moderate', ansBenefit: 'Biphasic ANS response: moderate sympathetic activation during flow, pronounced parasympathetic rebound after. Systolic BP drops ~8 mmHg post-practice. Over months, trains greater parasympathetic baseline tone.', description: 'Breath-synchronized movement — each inhale accompanies expansion, each exhale accompanies contraction. Evolved from Ashtanga into creative, teacher-designed flows. The "one breath, one movement" principle creates moving meditation: present-moment absorption through physical action.', keyResearch: 'Thrower et al. (2023, PLOS ONE RCT): HR +10.49 bpm during practice, SBP -8.14 mmHg post. Khajuria et al. (2024, systematic review): chronic yoga enhances parasympathetic activity via multimodal biosignal analysis.', bestFor: ['Cardiovascular health', 'Flow state', 'Moving meditation'] },
+  { id: 'ashtanga', name: 'Ashtanga Yoga', tradition: 'K. Pattabhi Jois, 1948', intensity: 'High', ansBenefit: 'Most pronounced biphasic response — high sympathetic during the fixed sequence, strong parasympathetic rebound. Trains autonomic flexibility. Ujjayi breathing maintains vagal engagement throughout.', description: 'A fixed sequence of postures linked without rest, practiced in the same order daily. Six series from Primary (Yoga Chikitsa) to Advanced. The Tristhana method unifies breath (ujjayi), posture, and gaze (drishti) into a single moving meditation. Most physically demanding yoga style.', keyResearch: 'Kothari et al. (2023, Cureus): VO₂ max ~50% higher in yoga group vs. controls. IJMIR (2025): cardiovascular response equivalent to ~46% VO₂max. Kumar (2024, systematic review): significantly reduces perceived stress.', bestFor: ['Athletes', 'Daily discipline', 'Strength + flexibility'] },
+  { id: 'power', name: 'Power Yoga', tradition: '1980s — Kest, Baptiste, Birch', intensity: 'High', ansBenefit: 'Similar biphasic pattern to Vinyasa but higher sympathetic peak. Burns 300–600 kcal/hour. Builds muscular and autonomic resilience through repeated challenge-and-recovery cycles.', description: 'Bryan Kest, Baron Baptiste, and Beryl Bender Birch broke from Ashtanga\'s rigid sequences into fitness-focused flows. One of the only yoga styles addressing all five fitness domains: strength, endurance, cardio, flexibility, and balance in a single session.', keyResearch: 'Journal of Physical Activity and Health: 237–597 kcal per 60-min session. Baptiste consulted for the NFL Philadelphia Eagles. Addresses all five fitness domains simultaneously.', bestFor: ['Fitness enthusiasts', 'Cross-training', 'Weight management'] },
+  { id: 'kundalini', name: 'Kundalini Yoga', tradition: 'Yogi Bhajan, 1969', intensity: 'Low', ansBenefit: 'Direct vagal stimulation via continuous pranayama and chanting. Breath of Fire produces sympathetic activation then parasympathetic rebound. Mantra chanting stimulates laryngeal and auricular vagal branches, producing limbic deactivation matching electrical VNS.', description: 'The "yoga of awareness." Unlike other styles, movement serves energy, not fitness. Kriyas, pranayama (Breath of Fire), mantra chanting, and meditation with mudras target consciousness transformation. Note: the 3HO organization and Yogi Bhajan face documented abuse allegations (An Olive Branch, 2020).', keyResearch: 'Simon et al. (2021, JAMA Psychiatry, n=226): evidence-based for GAD. Grzenda et al. (2024, Translational Psychiatry): reverses aging gene expression, protects hippocampus. UCLA Kirtan Kriya: 12-min daily prevents gray matter atrophy.', bestFor: ['Anxiety (GAD)', 'Cognitive decline', 'Spiritual seekers'] },
+  { id: 'hot', name: 'Hot / Bikram Yoga', tradition: '1970s — Bikram Choudhury', intensity: 'Moderate', ansBenefit: 'Dual stressor: heat + movement creates strongest acute sympathetic activation of any yoga. Pronounced parasympathetic rebound after. Chronic practice upregulates HSP70. Note: Choudhury faces sexual assault allegations; most studios rebranded.', description: 'Originally 26 postures in a 105°F room. Modern "hot yoga" includes flowing sequences and music. Heat warms connective tissue for deeper stretching and creates a controlled hormetic stressor. Safety: risks include dehydration, heat exhaustion, and overstretching.', keyResearch: 'Harvard/MGH RCT (2023, n=80): ~50% depression reduction, 44% full remission — even at 1 session/week. Willmott et al. (2025, Sports Medicine-Open): HSP70 upregulation, improved bone density over 5 years.', bestFor: ['Depression', 'Heat adaptation', 'Bone density'] },
+];
 
-  const toggleStep = (n: number) => {
-    setOpenStep(prev => prev === n ? null : n);
-  };
+const passiveStyles: YogaStyleData[] = [
+  { id: 'yin', name: 'Yin Yoga', tradition: '1970s — Zink, Grilley, Powers', intensity: 'Low', ansBenefit: 'Parasympathetic activation with sustained mild stress. Trains the nervous system to remain calm with discomfort. Fascia holds ~250 million nerve endings; sustained loading triggers mechanotransduction and proprioceptive recalibration.', description: 'Targets connective tissue — fascia, ligaments, joint capsules — not muscles. Long passive holds (3–5 min) at mild stretch enable the "creep" response: viscoelastic elongation and collagen remodeling. Paul Grilley mapped poses onto TCM meridians.', keyResearch: 'PMC10973109 (2024 RCT): 10-week Yin significantly reduced state anxiety. Clark & Paoletti (2019): fascia-yoga interaction confirmed. Emotional release during holds is consistently reported.', bestFor: ['Athletes', 'Desk workers', 'Anxiety', 'Joint health'] },
+  { id: 'restorative', name: 'Restorative Yoga', tradition: 'Judith Lasater (from Iyengar)', intensity: 'Zero', ansBenefit: 'Deepest parasympathetic activation of any physical yoga. Zero effort — if any stretch sensation is present, more props are added. Cortisol drops during the practice itself, not just after.', description: 'Every pose fully supported with props. 4–6 poses per class, each held 5–20 minutes. The goal is NOT flexibility — it is total comfort as a portal to deep nervous system rest. Fundamentally different from Yin: Restorative dissolves sensation; Yin maintains it.', keyResearch: 'PMC4174464: significant cortisol and chronic stress reduction. Kiecolt-Glaser (2015): improved metabolic markers over 48 weeks. van der Kolk (2014): trauma-informed yoga reduced PTSD in treatment-resistant women.', bestFor: ['Burnout', 'Chronic illness', 'Trauma', 'Insomnia'] },
+  { id: 'iyengar', name: 'Iyengar Yoga', tradition: 'B.K.S. Iyengar, 1960s', intensity: 'Low', ansBenefit: 'Long holds activate baroreceptors via vagal afferents. Inversions stretch carotid baroreceptors, triggering parasympathetic responses. Khattab et al. (2008): significantly elevated cardiac vagal modulation — recommended for cardiac rehab.', description: 'The most anatomically precise yoga system. Props — blocks, belts, bolsters, chairs — are tools for intelligent practice. Every posture demands exacting alignment. Specific therapeutic sequences for chronic pain, scoliosis, hypertension, and grief.', keyResearch: 'Nambi et al. (2014 RCT): 72.8% pain reduction in CLBP vs. 42.5% conventional. Goveas et al. (2025, Scientific Reports): medium-large effect sizes for grief (g=0.69–1.28). Khattab (2008): cardiac vagal modulation increase.', bestFor: ['Chronic pain', 'Injury recovery', 'Seniors', 'Cardiac rehab'] },
+];
+
+// ════════════════════════════════════════════════════════════════
+export default function YogaClient() {
+  const [openStyle, setOpenStyle] = useState<string | null>(null);
+  const toggleStyle = (id: string) => setOpenStyle(prev => prev === id ? null : id);
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────── */}
-      <section
-        style={{
-          padding: 'clamp(5rem, 10vw, 9rem) max(1.5rem, 8vw) clamp(3rem, 6vw, 5rem)',
-          background: 'linear-gradient(160deg, oklch(55% 0.16 310), oklch(72% 0.1 290))',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Decorative breathing orb */}
-        <div
-          className="breathe"
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            right: '-5vw',
-            bottom: '-5vw',
-            width: 'clamp(250px, 40vw, 500px)',
-            height: 'clamp(250px, 40vw, 500px)',
-            borderRadius: '9999px',
-            background: 'radial-gradient(circle, oklch(75% 0.1 60 / 0.25) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }}
-        />
-
-        <div style={{ maxWidth: '1100px', position: 'relative' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.65)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            Kundalini Daily
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 0.875rem',
-              maxWidth: '14ch',
-            }}
-          >
-            Your 5-Minute Beginner&apos;s Practice
-          </h1>
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'clamp(0.9375rem, 1.5vw, 1.0625rem)',
-              color: 'rgba(245,234,225,0.82)',
-              margin: '0 0 2.5rem',
-              maxWidth: '50ch',
-              lineHeight: 1.8,
-            }}
-          >
-            A complete daily kundalini sequence — tune in, breathe, move, meditate, and close.
-            Designed for beginners with no prior experience required.
-          </p>
-
-          {/* Nav anchor links */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {['Practice', 'Techniques', 'Chakras', 'Safety'].map(label => (
-              <a
-                key={label}
-                href={`#${label.toLowerCase()}`}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(245,234,225,0.75)',
-                  textDecoration: 'none',
-                  borderBottom: '1px solid rgba(228,173,117,0.5)',
-                  paddingBottom: '2px',
-                  transition: 'color 300ms ease, border-color 300ms ease',
-                }}
-              >
-                {label}
-              </a>
-            ))}
-          </div>
+      {/* HERO */}
+      <section style={{ position: 'relative', minHeight: '85dvh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)', background: 'linear-gradient(160deg, oklch(55% 0.16 310), oklch(72% 0.1 290))', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}><Image src="/images/hero-yoga.png" alt="Abstract watercolor yoga illustration" fill priority sizes="100vw" style={{ objectFit: 'cover', opacity: 0.35 }} /></div>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.7) 0%, rgba(28,29,55,0.15) 50%, transparent 100%)', zIndex: 1 }} />
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '780px' }}>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: AMBER_LIGHT, margin: '0 0 1rem' }}>The path of unity</p>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.75rem, 7vw, 5.5rem)', fontWeight: 700, color: '#F5EAE1', lineHeight: 1.05, margin: '0 0 1.5rem' }}>Yoga</h1>
+          <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2.5vw, 1.75rem)', fontWeight: 400, fontStyle: 'italic', color: 'rgba(245,234,225,0.85)', margin: '0 0 2rem', lineHeight: 1.45 }}>Every Style. Every Path. One Nervous System.</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.875rem, 1.3vw, 1.0625rem)', color: 'rgba(245,234,225,0.75)', margin: 0, lineHeight: 1.75, maxWidth: '60ch' }}>Yoga is not a monolithic practice — it is a diverse spectrum of technologies targeting different physiological systems. From the athletic intensity of Ashtanga to the conscious sleep of Yoga Nidra, each style produces specific neurological adaptations. Find your path.</p>
         </div>
       </section>
 
-      {/* ── What is Kundalini ────────────────────────────── */}
-      <section
-        style={{
-          padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5rem)',
-          background: 'var(--color-cream)',
-        }}
-      >
-        <div style={{ maxWidth: '1100px' }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
-              gap: 'clamp(2.5rem, 5vw, 5rem)',
-              alignItems: 'start',
-            }}
-          >
-            <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1.25rem',
-                }}
-              >
-                Foundation
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.75rem',
-                  lineHeight: 1.2,
-                }}
-              >
-                What is Kundalini?
-              </h2>
-              <p style={{ marginBottom: '1.25rem', lineHeight: 1.85 }}>
-                The word <em>kundalini</em> comes from Sanskrit, meaning &ldquo;coiled.&rdquo; It describes a dormant
-                energy said to lie coiled at the base of the spine like a serpent — the fundamental
-                life force that animates all biological and conscious activity.
-              </p>
-              <p style={{ lineHeight: 1.85, margin: 0 }}>
-                Kundalini yoga is one branch of the eight-limbed path of yoga described in Patanjali&apos;s
-                Yoga Sutras. While hatha yoga emphasizes physical postures and alignment, kundalini
-                works primarily through pranayama (breathwork), mantra, mudra (hand gestures), and
-                meditation to move and direct this energy upward through the chakra system.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal>
-              <p style={{ lineHeight: 1.85, marginBottom: '1.25rem', marginTop: 'clamp(0rem, 2vw, 2rem)' }}>
-                What distinguishes kundalini from other yoga styles is its directness. Rather than
-                using physical flexibility as the goal, kundalini uses the body as a vehicle for
-                consciousness expansion. The kriyas (action sequences) are specifically designed
-                to produce predictable energetic effects — activating the nervous system,
-                clearing blockages, and building what practitioners call &ldquo;shuniya&rdquo; — a state of
-                zero, of pure receptive awareness.
-              </p>
-              <p style={{ lineHeight: 1.85, margin: 0 }}>
-                Brought to the West by Yogi Bhajan in 1969, kundalini yoga was historically kept
-                secret — a &ldquo;householder&apos;s yoga&rdquo; taught only to initiates. Today it remains one of the
-                most transformative and least-understood branches of the tradition.
-              </p>
-            </ScrollReveal>
+      {/* STATS */}
+      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw)', background: 'var(--color-cream)' }}>
+        <ScrollReveal group>
+          <div style={{ maxWidth: '1100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
+            <StatCard source="UCLA RCTs, 2017–2024" stat="Kirtan Kriya prevents gray matter atrophy" detail="12-min daily Kundalini practice preserves hippocampal connectivity in adults at risk for Alzheimer's." />
+            <StatCard source="Kjaer et al., 2002 (PET)" stat="Yoga Nidra increases striatal dopamine 65%" detail="The only practice producing delta brainwaves while maintaining conscious awareness." />
+            <StatCard source="Simon et al., 2021 (JAMA Psychiatry)" stat="Kundalini Yoga is evidence-based for GAD" detail="RCT of 226 adults: clinically meaningful alternative to CBT for generalized anxiety." />
+            <StatCard source="Harvard/MGH RCT, 2023" stat="Hot Yoga: 44% full depression remission" detail="Heat-stress hormesis produces antidepressant effects via HSP70 — even at 1 session/week." />
           </div>
+        </ScrollReveal>
+      </section>
+
+      <SectionDivider />
+
+      {/* 01 — ACTIVE STYLES */}
+      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>01 — The Active Styles</div>
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px', marginBottom: '2rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Yang Yoga — Movement, Heat & Resilience</h2>
+            <p style={{ margin: 0 }}>Active styles temporarily activate the sympathetic nervous system during practice, then facilitate a pronounced parasympathetic rebound. Over months, they train autonomic flexibility: the capacity to mobilize under stress and efficiently downregulate.</p>
+          </div>
+        </ScrollReveal>
+        <div style={{ maxWidth: '780px' }}>
+          {activeStyles.map(s => <StyleCard key={s.id} style={s} isOpen={openStyle === s.id} onToggle={() => toggleStyle(s.id)} />)}
+        </div>
+      </section>
+
+      <SectionDivider flip />
+
+      {/* 02 — PASSIVE STYLES */}
+      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${VIOLET_MID} 8%, var(--color-cream)) 100%)` }}>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>02 — The Passive Styles</div>
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px', marginBottom: '2rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Yin Yoga — Stillness, Fascia & Restoration</h2>
+            <p style={{ margin: 0 }}>Passive styles directly enhance parasympathetic tone. Slow holds, complete support, and sensory withdrawal lower cortisol, increase HRV, and raise GABA levels during the practice itself.</p>
+          </div>
+        </ScrollReveal>
+        <div style={{ maxWidth: '780px' }}>
+          {passiveStyles.map(s => <StyleCard key={s.id} style={s} isOpen={openStyle === s.id} onToggle={() => toggleStyle(s.id)} />)}
         </div>
       </section>
 
       <SectionDivider />
 
-      {/* ── Practice Flow ────────────────────────────────── */}
-      <section
-        id="practice"
-        style={{
-          padding: 'clamp(4.5rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
-          background: 'color-mix(in srgb, var(--color-cream) 92%, var(--color-violet-mid))',
-        }}
-      >
-        <div style={{ maxWidth: '1100px' }}>
-          <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Sequence
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Daily Practice
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '52ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
-              Each step expands to reveal full instructions. Work through the sequence in order.
-              Tap each step to begin.
-            </p>
-          </ScrollReveal>
-
-          <div className="timeline" style={{ maxWidth: '760px' }}>
-            {practiceSteps.map((step) => (
-              <ScrollReveal key={step.number}>
-                <PracticeStep
-                  step={step}
-                  isOpen={openStep === step.number}
-                  onToggle={() => toggleStep(step.number)}
-                />
-              </ScrollReveal>
-            ))}
+      {/* 03 — YOGA NIDRA */}
+      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>03 — Yoga Nidra: The Deep Dive</div>
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>The Sleeper Who Wakes</h2>
+            <p style={{ margin: '0 0 1.5rem' }}>Yoga Nidra — &ldquo;yogic sleep&rdquo; — is a systematic method of inducing complete relaxation while maintaining conscious awareness. Developed by Swami Satyananda Saraswati in the 1960s from the Tantric practice of <em>nyasa</em>, it has become one of the most scientifically validated contemplative practices of the 21st century.</p>
+            <p style={{ margin: '0 0 1.5rem' }}>Unlike meditation (alpha, 8–12 Hz), Yoga Nidra pushes into <strong>theta</strong> (4–8 Hz) and <strong>delta</strong> (0.5–4 Hz) — frequencies normally exclusive to unconscious deep sleep — while practitioners maintain awareness.</p>
           </div>
-        </div>
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px', marginBottom: '3rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 1.5rem', fontStyle: 'normal' }}>The 8 Stages</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <NidraStage number={1} title="Preparation" description="Arriving in savasana. Physical adjustments, breath awareness, establishing receptive consciousness." />
+              <NidraStage number={2} title="Sankalpa (Intention)" description="A short personal resolve planted when the subconscious first becomes accessible." />
+              <NidraStage number={3} title="Rotation of Consciousness" description="Rapid systematic awareness through 31–61 body parts. The core element adapted from Tantric nyasa. Produces pratyahara." />
+              <NidraStage number={4} title="Breath Awareness" description="Counting breaths to deepen withdrawal from external stimuli." />
+              <NidraStage number={5} title="Pairs of Opposites" description="Alternating heaviness/lightness, warmth/cold. Activates both hemispheres, releases emotional polarity." />
+              <NidraStage number={6} title="Visualization" description="Quick-succession archetypal images at 1–2 second intervals. Stimulates the unconscious without cognitive engagement." />
+              <NidraStage number={7} title="Sankalpa (Repetition)" description="Intention repeated at maximum receptivity — theta/delta boundary. Bypasses analytical self-editing." />
+              <NidraStage number={8} title="Externalization" description="Gradual return to waking consciousness. Reorienting to room, body, senses." />
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px', marginBottom: '3rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 1rem', fontStyle: 'normal' }}>The Neuroscience</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
+              <div style={{ borderLeft: `3px solid ${VIOLET_MID}`, padding: '1.5rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>Dopamine</p>
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem' }}>65% striatal dopamine increase</p>
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>Kjaer et al. (2002) PET scan. Replenishes baseline reserves — combats burnout. (n=8; needs replication.)</p>
+              </div>
+              <div style={{ borderLeft: `3px solid ${VIOLET_MID}`, padding: '1.5rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>DMN Deactivation</p>
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem' }}>Default Mode Network decoupling</p>
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>Yadav et al. (2024, Nature Scientific Reports) fMRI: silences the brain&apos;s rumination engine.</p>
+              </div>
+            </div>
+
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 1rem', fontStyle: 'normal' }}>NSDR: Non-Sleep Deep Rest</h3>
+            <p style={{ margin: '0 0 1.5rem' }}>Dr. Andrew Huberman coined &ldquo;NSDR&rdquo; in 2022 as a secular rebranding. <strong>All NSDR research is Yoga Nidra research.</strong> Boukhris et al. (2024, n=65) found a single 10-minute session improved reaction time, accuracy, and emotional balance — benefits from session one, where meditation requires 8 weeks.</p>
+
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 1rem', fontStyle: 'normal' }}>Trauma Recovery: iRest</h3>
+            <p style={{ margin: '0 0 1.5rem' }}>Richard Miller adapted Yoga Nidra into <strong>iRest</strong>. No verbal narrative processing = no retraumatization. Now in <strong>35+ VA centers</strong> and 6 DoD sites. Barber et al. (2025): chronic pain patients dis-identified from pain and reduced opioid use.</p>
+
+            {/* Comparison table */}
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 1.25rem', fontStyle: 'normal' }}>Yoga Nidra vs. Meditation</h3>
+            <div style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'var(--font-body)', fontSize: '0.875rem' }}>
+                <thead><tr style={{ borderBottom: `2px solid ${VIOLET_MID}` }}>
+                  {['Dimension', 'Yoga Nidra', 'Meditation'].map(h => <th key={h} style={{ textAlign: 'left', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP }}>{h}</th>)}
+                </tr></thead>
+                <tbody>
+                  {[['Posture', 'Lying, supported', 'Seated'], ['Guidance', 'Fully guided', 'Self-directed'], ['Effort', 'Effortless', 'Active attention'], ['Brainwaves', 'Theta + Delta', 'Alpha'], ['Time to benefit', '1 session (10 min)', '~8 weeks daily']].map(([d, n, m], i) => (
+                    <tr key={i} style={{ borderBottom: '1px solid var(--color-border)' }}>
+                      <td style={{ padding: '0.75rem 1rem', fontWeight: 500, color: 'var(--color-text)' }}>{d}</td>
+                      <td style={{ padding: '0.75rem 1rem', color: 'var(--color-text-muted)' }}>{n}</td>
+                      <td style={{ padding: '0.75rem 1rem', color: 'var(--color-text-muted)' }}>{m}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.5rem', fontStyle: 'normal' }}>Guided Practice</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.25rem' }}>
+              <div><VideoFacade videoId="rvTF7wbrnVE" title="Yoga Nidra for Sleep" /><p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: '0.75rem 0 0' }}>Yoga Nidra for Sleep — 30 min</p></div>
+              <div><VideoFacade videoId="M0u9GST_j3s" title="NSDR Protocol — Andrew Huberman" /><p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: '0.75rem 0 0' }}>NSDR Protocol — 10 min</p></div>
+            </div>
+          </div>
+        </ScrollReveal>
       </section>
 
-      {/* ── Techniques Section ───────────────────────────── */}
-      <section
-        id="techniques"
-        style={{
-          padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: 'var(--color-cream)',
-          borderTop: '1px solid var(--color-border)',
-        }}
-      >
-        <div style={{ maxWidth: '1100px' }}>
-          <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Techniques
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 2.5rem',
-              }}
-            >
-              Key Techniques
-            </h2>
-          </ScrollReveal>
+      <SectionDivider flip />
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '1.5rem',
-            }}
-          >
+      {/* 04 — FIND YOUR PATH */}
+      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${VIOLET_MID} 10%, var(--color-cream)) 100%)` }}>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>04 — Find Your Path</div>
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Which Style Is Right for You?</h2>
+            <p style={{ margin: 0 }}>Combine 2–3 days active (Yang) + 1–2 days passive (Yin/Restorative) + Yoga Nidra as needed.</p>
+          </div>
+        </ScrollReveal>
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px' }}>
             {[
-              {
-                name: 'Long Deep Breathing',
-                sanskrit: 'Pranayama',
-                description: 'The foundational breath practice. Inhale fully from belly to chest to collarbones. Exhale in reverse. Stimulates the vagus nerve and activates the parasympathetic state.',
-                duration: '3–11 min',
-              },
-              {
-                name: 'Breath of Fire',
-                sanskrit: 'Agni Pranayama',
-                description: 'Rapid, equal-emphasis nasal breath driven by the navel point. Purifies the blood, strengthens the nervous system, energizes. Not for pregnancy or menstruation.',
-                duration: '1–3 min',
-              },
-              {
-                name: 'Root Lock',
-                sanskrit: 'Mulabandha',
-                description: 'A subtle contraction of the muscles at the base of the spine — pelvic floor, perineum, and navel. Applied at the end of each exercise to seal and integrate energy.',
-                duration: 'Brief hold',
-              },
-              {
-                name: 'Sat Nam Mantra',
-                sanskrit: 'Seed Mantra',
-                description: '"Truth is my identity." The most fundamental kundalini mantra. Long Sat, short Nam. Can be chanted aloud, whispered, or repeated mentally with the breath.',
-                duration: 'Throughout',
-              },
-            ].map((t) => (
-              <ScrollReveal key={t.name}>
-                <div
-                  className="card"
-                  style={{ padding: '1.75rem', borderRadius: '2px' }}
-                >
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-ui)',
-                      fontSize: '0.6875rem',
-                      fontWeight: 500,
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      color: 'var(--color-violet-deep)',
-                      margin: '0 0 0.5rem',
-                    }}
-                  >
-                    {t.sanskrit}
-                  </p>
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '1.3rem',
-                      fontWeight: 600,
-                      color: 'var(--color-text)',
-                      margin: '0 0 0.75rem',
-                      fontStyle: 'normal',
-                    }}
-                  >
-                    {t.name}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '0.875rem',
-                      color: 'var(--color-text-muted)',
-                      margin: '0 0 1.25rem',
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    {t.description}
-                  </p>
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      padding: '0.3rem 0.75rem',
-                      borderRadius: '9999px',
-                      background: 'color-mix(in srgb, var(--color-amber-light) 25%, var(--color-cream))',
-                      fontFamily: 'var(--font-ui)',
-                      fontSize: '0.6875rem',
-                      fontWeight: 500,
-                      color: 'var(--color-amber-deep)',
-                    }}
-                  >
-                    Duration: {t.duration}
-                  </span>
+              { goal: 'Burnout / Insomnia / Trauma', style: 'Yoga Nidra or Restorative', why: 'Zero effort. Maximizes parasympathetic healing.' },
+              { goal: 'Depression', style: 'Hot Yoga', why: '44% full remission (Harvard RCT). HSP70 hormesis.' },
+              { goal: 'Cognitive Decline', style: 'Kundalini (Kirtan Kriya)', why: '12 min/day prevents gray matter atrophy (UCLA).' },
+              { goal: 'Chronic Pain', style: 'Iyengar', why: '72.8% pain reduction vs. 42.5% conventional (RCT).' },
+              { goal: 'Fascia / Joint Health', style: 'Yin Yoga', why: 'Only prolonged passive loads remodel connective tissue.' },
+              { goal: 'Cardio / Weight', style: 'Ashtanga / Vinyasa / Power', why: '300–600 kcal/hr. Biphasic ANS training.' },
+              { goal: 'Anxiety (GAD)', style: 'Kundalini', why: 'JAMA Psychiatry: comparable to CBT short-term.' },
+              { goal: 'General Stress', style: 'Hatha', why: 'Strongest parasympathetic. Best for all levels.' },
+            ].map((r, i) => (
+              <div key={i} style={{ display: 'flex', gap: '1.25rem', padding: '1.25rem 0', borderBottom: '1px solid var(--color-border)', flexWrap: 'wrap' }}>
+                <div style={{ minWidth: '140px', flex: '0 0 140px' }}><p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', fontWeight: 600, color: VIOLET_DEEP, margin: 0 }}>{r.goal}</p></div>
+                <div style={{ flex: 1, minWidth: '200px' }}>
+                  <p style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.25rem', fontStyle: 'normal' }}>{r.style}</p>
+                  <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>{r.why}</p>
                 </div>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── Chakras ──────────────────────────────────────── */}
-      <section
-        id="chakras"
-        style={{
-          padding: 'clamp(4.5rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
-          background: 'color-mix(in srgb, var(--color-cream) 88%, var(--color-violet-mid))',
-        }}
-      >
-        <div style={{ maxWidth: '1100px' }}>
-          <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Energy Centers
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Seven Chakras
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '54ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
-              Kundalini energy rises through seven major energy centers. Each chakra governs specific
-              physical, emotional, and spiritual qualities.
-            </p>
-          </ScrollReveal>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0.625rem',
-              maxWidth: '700px',
-            }}
-          >
-            {chakras.map((chakra, i) => (
-              <ScrollReveal key={chakra.name}>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '1.25rem',
-                    padding: '1rem 1.25rem',
-                    background: 'var(--color-surface-raised)',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: '2px',
-                    borderLeft: `4px solid ${chakra.color}`,
-                  }}
-                >
-                  <div
-                    style={{
-                      width: '2rem',
-                      height: '2rem',
-                      borderRadius: '9999px',
-                      background: chakra.color,
-                      flexShrink: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#fff',
-                      fontFamily: 'var(--font-ui)',
-                      fontSize: '0.75rem',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {i + 1}
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-body)',
-                        fontSize: '0.9375rem',
-                        fontWeight: 500,
-                        color: 'var(--color-text)',
-                        margin: 0,
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {chakra.name}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-ui)',
-                        fontSize: '0.75rem',
-                        color: 'var(--color-text-muted)',
-                        margin: '0.125rem 0 0',
-                      }}
-                    >
-                      {chakra.location} · {chakra.quality}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <SectionDivider />
 
-      {/* ── Kundalini Awakening ──────────────────────────── */}
-      <section
-        style={{
-          padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: 'var(--color-cream)',
-        }}
-      >
-        <div style={{ maxWidth: '1100px' }}>
-          <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Understanding
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 2.5rem',
-              }}
-            >
-              Kundalini Awakening
-            </h2>
-          </ScrollReveal>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '2rem',
-            }}
-          >
-            <ScrollReveal>
-              <div
-                className="card"
-                style={{ padding: '2rem 1.75rem', borderRadius: '2px' }}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                    marginBottom: '1.25rem',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: '2.5rem',
-                      height: '2.5rem',
-                      borderRadius: '9999px',
-                      background: 'color-mix(in srgb, var(--color-violet-mid) 40%, var(--color-cream))',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-violet-deep)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 22v-6M9 8l3-6 3 6M6 8h12M8 12l-2 4h12l-2-4" />
-                    </svg>
-                  </div>
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '1.375rem',
-                      fontWeight: 600,
-                      color: 'var(--color-violet-deep)',
-                      margin: 0,
-                      fontStyle: 'normal',
-                    }}
-                  >
-                    Gradual Awakening
-                  </h3>
-                </div>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '0.9375rem',
-                    color: 'var(--color-text-muted)',
-                    margin: 0,
-                    lineHeight: 1.8,
-                  }}
-                >
-                  The most common and sustainable path. Through consistent daily practice over months
-                  and years, energy rises gently and the nervous system adapts. Subtle shifts accumulate:
-                  greater equanimity, clearer intuition, deepening meditative states. The body has time
-                  to integrate each opening. This is the path this practice is designed to support.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal>
-              <div
-                className="card"
-                style={{ padding: '2rem 1.75rem', borderRadius: '2px' }}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                    marginBottom: '1.25rem',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: '2.5rem',
-                      height: '2.5rem',
-                      borderRadius: '9999px',
-                      background: 'color-mix(in srgb, var(--color-amber-light) 30%, var(--color-linen))',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-amber-deep)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                    </svg>
-                  </div>
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '1.375rem',
-                      fontWeight: 600,
-                      color: 'var(--color-amber-deep)',
-                      margin: 0,
-                      fontStyle: 'normal',
-                    }}
-                  >
-                    Spontaneous Awakening
-                  </h3>
-                </div>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '0.9375rem',
-                    color: 'var(--color-text-muted)',
-                    margin: 0,
-                    lineHeight: 1.8,
-                  }}
-                >
-                  Less common, and often more disorienting. Can arise from intense practice, trauma, or
-                  spontaneously without apparent cause. May involve powerful physical sensations (heat,
-                  vibration, involuntary movement), emotional releases, or perceptual shifts. If this
-                  occurs, slow down your practice, ground the body with physical activity, and seek
-                  guidance from an experienced teacher.
-                </p>
-              </div>
-            </ScrollReveal>
+      {/* 05 — ANS CONNECTION */}
+      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>05 — The Nervous System Connection</div>
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px', marginBottom: '2rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>All Yoga Is Vagus Nerve Exercise</h2>
+            <p style={{ margin: '0 0 2rem' }}>Every style interacts with the autonomic nervous system through one of three mechanisms:</p>
           </div>
-        </div>
+        </ScrollReveal>
+        <ScrollReveal group>
+          <div style={{ maxWidth: '1100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+            <div style={{ background: 'var(--color-surface-raised)', borderTop: '3px solid #3D8A5A', borderRadius: '2px', padding: '2rem 1.75rem' }}>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Direct Down-Regulation</h4>
+              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>Slow breathing and physical support stimulate baroreceptors and the ventral vagal complex.</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: '#3D8A5A' }}>Restorative &middot; Yin &middot; Hatha &middot; Yoga Nidra</p>
+            </div>
+            <div style={{ background: 'var(--color-surface-raised)', borderTop: `3px solid ${AMBER_DEEP}`, borderRadius: '2px', padding: '2rem 1.75rem' }}>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Autonomic Flexibility</h4>
+              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>Sympathetic activation → parasympathetic rebound. Trains stress recovery.</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: AMBER_DEEP }}>Ashtanga &middot; Vinyasa &middot; Power &middot; Hot</p>
+            </div>
+            <div style={{ background: 'var(--color-surface-raised)', borderTop: `3px solid ${VIOLET_DEEP}`, borderRadius: '2px', padding: '2rem 1.75rem' }}>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Direct Vagal Stimulation</h4>
+              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>Breathwork and chanting stimulate laryngeal and auricular vagal branches.</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: VIOLET_DEEP }}>Kundalini</p>
+            </div>
+          </div>
+        </ScrollReveal>
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px', marginTop: '2.5rem', textAlign: 'center' }}>
+            <Link href="/nervous-system" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: VIOLET_DEEP, textDecoration: 'none' }}>Explore the Nervous System in depth &rarr;</Link>
+          </div>
+        </ScrollReveal>
       </section>
 
-      {/* ── Safety ───────────────────────────────────────── */}
-      <section
-        id="safety"
-        style={{
-          padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5rem)',
-          background: 'color-mix(in srgb, var(--color-cream) 88%, var(--color-linen))',
-          borderTop: '1px solid var(--color-border)',
-        }}
-      >
-        <div style={{ maxWidth: '860px' }}>
+      {/* CLOSING */}
+      <section style={{ padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)', background: 'linear-gradient(160deg, oklch(55% 0.16 310 / 0.18), oklch(93% 0.04 290))', borderTop: '1px solid var(--color-border)' }}>
+        <div style={{ maxWidth: '820px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Safety
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 1.5rem',
-              }}
-            >
-              Practice Safely
-            </h2>
-            <p style={{ marginBottom: '1.25rem', lineHeight: 1.85, maxWidth: '58ch' }}>
-              Kundalini yoga is a powerful technology. These notes are not warnings to discourage
-              practice — they are reminders to practice intelligently.
-            </p>
+            <blockquote style={{ margin: 0, padding: 0 }}>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.25rem, 3vw, 2rem)', fontStyle: 'italic', fontWeight: 400, lineHeight: 1.5, color: 'var(--color-text)', margin: '0 0 1.5rem', maxWidth: '52ch' }}>&ldquo;Yoga is not about touching your toes. It is about what you learn on the way down.&rdquo;</p>
+              <footer style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '3rem' }}>— Jigar Gor</footer>
+            </blockquote>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              {[{ href: '/meditate', label: 'Meditate' }, { href: '/fascia', label: 'Fascia' }, { href: '/breathe', label: 'Breathe' }, { href: '/nervous-system', label: 'Nervous System' }, { href: '/practice', label: 'Practice Timer' }].map((l, i) => (
+                <span key={l.href} style={{ display: 'contents' }}>
+                  {i > 0 && <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>&middot;</span>}
+                  <Link href={l.href} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>{l.label} &rarr;</Link>
+                </span>
+              ))}
+            </div>
           </ScrollReveal>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '1rem',
-              marginTop: '1.75rem',
-            }}
-          >
-            {[
-              {
-                title: 'Breath of Fire',
-                note: 'Avoid during pregnancy and the first days of menstruation. Long Deep Breathing is always a safe substitute.',
-              },
-              {
-                title: 'Medical conditions',
-                note: 'Consult your physician before beginning any new movement or breathing practice, especially with cardiovascular, spinal, or respiratory conditions.',
-              },
-              {
-                title: 'Intensity',
-                note: 'Kundalini kriyas can produce strong physical and emotional responses. If something feels overwhelming, stop and rest in savasana (lying flat).',
-              },
-              {
-                title: 'Progression',
-                note: 'Start with shorter times and build gradually. 11 minutes of any kriya is considered a complete practice. Don\'t rush to 31 or 62 minutes.',
-              },
-            ].map((item) => (
-              <ScrollReveal key={item.title}>
-                <div
-                  style={{
-                    padding: '1.25rem 1.5rem',
-                    background: 'var(--color-surface-raised)',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: '2px',
-                    borderTop: '3px solid var(--color-violet-mid)',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-ui)',
-                      fontSize: '0.875rem',
-                      fontWeight: 500,
-                      color: 'var(--color-text)',
-                      margin: '0 0 0.5rem',
-                    }}
-                  >
-                    {item.title}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '0.875rem',
-                      color: 'var(--color-text-muted)',
-                      margin: 0,
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    {item.note}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Back link ────────────────────────────────────── */}
-      <section
-        style={{
-          padding: '4rem max(1.5rem, 8vw) 5rem',
-          background: 'var(--color-cream)',
-          borderTop: '1px solid var(--color-border)',
-        }}
-      >
-        <div style={{ maxWidth: '1100px' }}>
-          <Link
-            href="/meditate"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.8125rem',
-              fontWeight: 500,
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              color: 'var(--color-text-muted)',
-              textDecoration: 'none',
-              marginBottom: '2rem',
-            }}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            Also explore meditation
-          </Link>
-
-          <blockquote style={{ margin: 0, padding: 0 }}>
-            <p
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(1.25rem, 2.8vw, 1.75rem)',
-                fontStyle: 'italic',
-                fontWeight: 400,
-                lineHeight: 1.5,
-                color: 'var(--color-text)',
-                margin: '0 0 1.25rem',
-                maxWidth: '54ch',
-              }}
-            >
-              &ldquo;The purpose of kundalini yoga is to provide a direct experience of your own soul. In that experience lies all the love, wisdom, and vitality you will ever need.&rdquo;
-            </p>
-            <footer
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.75rem',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-              }}
-            >
-              — Yogi Bhajan
-            </footer>
-          </blockquote>
         </div>
       </section>
     </>
