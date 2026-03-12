@@ -9,7 +9,7 @@ const ROSE_DEEP  = '#8B3A62';
 const ROSE_MID   = '#C27BA0';
 const ROSE_LIGHT = '#E8B4CF';
 
-type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system';
+type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'manifest' | 'practice';
 
 const paths: {
   key: PathKey;
@@ -89,10 +89,36 @@ const paths: {
     overlayColor: 'rgba(139,58,98,0.62)',
     accentColor: ROSE_LIGHT,
   },
+  {
+    key: 'manifest',
+    href: '/manifest',
+    eyebrow: 'The path of intention',
+    title: 'Manifest',
+    tagline: 'The science of turning intention into reality.',
+    image: '/images/hero-manifest.png',
+    imageAlt: 'Abstract watercolor manifestation illustration with golden light',
+    gradFrom: 'oklch(65% 0.12 75)',
+    gradTo: 'oklch(82% 0.08 60)',
+    overlayColor: 'rgba(154,114,48,0.6)',
+    accentColor: '#F0D68A',
+  },
+  {
+    key: 'practice',
+    href: '/practice',
+    eyebrow: 'The path of discipline',
+    title: 'Practice',
+    tagline: 'Guided timers for breath, body, and mind.',
+    image: '/images/hero-meditation.png',
+    imageAlt: 'Abstract watercolor practice timer illustration',
+    gradFrom: 'oklch(60% 0.10 290)',
+    gradTo: 'oklch(80% 0.06 280)',
+    overlayColor: 'rgba(89,46,107,0.55)',
+    accentColor: '#D7C2EE',
+  },
 ];
 
-const topRow = paths.slice(0, 3);
-const bottomRow = paths.slice(3);
+const topRow = paths.slice(0, 4);
+const bottomRow = paths.slice(4);
 
 export default function HomePage() {
   const [hovered, setHovered] = useState<PathKey | null>(null);
@@ -122,7 +148,7 @@ export default function HomePage() {
             position: 'relative',
           }}
         >
-          {topRow.map((path) => (
+          {topRow.map((path, idx) => (
             <Link
               key={path.key}
               href={path.href}
@@ -149,7 +175,7 @@ export default function HomePage() {
                   alt={path.imageAlt}
                   fill
                   priority={path.key === 'meditate'}
-                  sizes="33vw"
+                  sizes="25vw"
                   style={{
                     objectFit: 'cover',
                     objectPosition: 'center',
@@ -170,7 +196,7 @@ export default function HomePage() {
               />
 
               {/* Vertical divider line (right side, except last in row) */}
-              {path.key !== 'fascia' && (
+              {idx < topRow.length - 1 && (
                 <div
                   style={{
                     position: 'absolute',
@@ -257,7 +283,7 @@ export default function HomePage() {
             position: 'relative',
           }}
         >
-          {bottomRow.map((path) => (
+          {bottomRow.map((path, idx) => (
             <Link
               key={path.key}
               href={path.href}
@@ -304,7 +330,7 @@ export default function HomePage() {
               />
 
               {/* Vertical divider between bottom row panels */}
-              {path.key === 'breathe' && (
+              {idx < bottomRow.length - 1 && (
                 <div
                   style={{
                     position: 'absolute',
