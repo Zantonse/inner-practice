@@ -243,7 +243,7 @@ export default function YogaClient() {
           <div style={{ maxWidth: '780px' }}>
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.5rem', fontStyle: 'normal' }}>Guided Practice</h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.25rem' }}>
-              <div><VideoFacade videoId="rvTF7wbrnVE" title="Yoga Nidra for Sleep" /><p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: '0.75rem 0 0' }}>Yoga Nidra for Sleep — 30 min</p></div>
+              <div><VideoFacade videoId="waC2GIaDKCc" title="Yoga Nidra — Reset Your Nervous System" /><p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: '0.75rem 0 0' }}>Yoga Nidra — Reset Your Nervous System — 30 min</p></div>
               <div><VideoFacade videoId="M0u9GST_j3s" title="NSDR Protocol — Andrew Huberman" /><p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: '0.75rem 0 0' }}>NSDR Protocol — 10 min</p></div>
             </div>
           </div>
