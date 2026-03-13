@@ -1122,6 +1122,112 @@ export default function FasciaClient() {
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
+          CRANIOSACRAL THERAPY
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="craniosacral"
+        style={{
+          padding: 'clamp(4.5rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
+          background: 'var(--color-cream)',
+          borderTop: '1px solid var(--color-border)',
+        }}
+      >
+        <div style={{ maxWidth: '1100px' }}>
+          <ScrollReveal>
+            <p
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.6875rem',
+                fontWeight: 500,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--color-text-muted)',
+                margin: '0 0 1rem',
+              }}
+            >
+              Practitioner-Assisted
+            </p>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-h2)',
+                fontWeight: 400,
+                color: 'var(--color-text)',
+                margin: '0 0 0.75rem',
+              }}
+            >
+              Craniosacral Therapy
+            </h2>
+            <p
+              style={{
+                color: 'var(--color-text-muted)',
+                marginBottom: '3rem',
+                maxWidth: '56ch',
+                fontSize: 'var(--text-body-lg)',
+                lineHeight: 1.75,
+              }}
+            >
+              A gentle, hands-on modality that works with the fascial membrane surrounding the brain and spinal cord &mdash; the dural tube. What the evidence supports, what it doesn&apos;t, and where it fits.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+              <div>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>The Dural Connection</p>
+                <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, margin: 0 }}>
+                  The dura mater &mdash; the outermost meningeal layer &mdash; runs as a continuous fascial tube from the inside of the skull to the sacrum. This is real anatomy, not metaphor. CST practitioners apply approximately 5 grams of pressure (the weight of a nickel) to the skull and sacrum, working with this fascial membrane to release restrictions. Modern fascia research confirms the tissue contains abundant mechanoreceptors and has contractile properties via myofibroblasts.
+                </p>
+              </div>
+              <div>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>ANS Regulation</p>
+                <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, margin: 0 }}>
+                  The most scientifically credible mechanism: gentle cranial touch may stimulate afferent mechanoreceptors that feed into brainstem nuclei involved in autonomic regulation. A 2024 meta-analysis of HRV studies (Cook et al., PMC11329942) found a moderate short-term increase in parasympathetic activity after CST (HF-HRV SMD = &minus;0.46). A 2023 RCT in firefighter cadets (W&oacute;jcik et al.) showed CST significantly reduced cortisol (p &le; 0.0001) and CRH levels after just 5 sessions.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginBottom: '3rem' }}>
+              <div style={{ borderLeft: '3px solid var(--color-amber-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>Cook et al. 2024</p>
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>Moderate parasympathetic increase after CST</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>HF-HRV meta-analysis shows a significant short-term shift toward vagal tone &mdash; the most objective evidence supporting CST&apos;s nervous system claims.</p>
+              </div>
+              <div style={{ borderLeft: '3px solid var(--color-amber-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>Fernandez-Carnero et al. 2024</p>
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>No significant clinical benefit across 15 RCTs</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>The most rigorous 2024 systematic review found CST produces no statistically significant improvements for any musculoskeletal or non-musculoskeletal condition tested.</p>
+              </div>
+              <div style={{ borderLeft: '3px solid var(--color-amber-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>W&oacute;jcik et al. 2023</p>
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>Cortisol significantly reduced after 5 CST sessions</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>Firefighter cadets showed significantly reduced stress hormones (cortisol p &le; 0.0001, CRH p = 0.00067) vs. control &mdash; though the study lacked a sham condition.</p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <div style={{ background: 'color-mix(in srgb, var(--color-amber-light) 10%, var(--color-cream))', border: '1px solid color-mix(in srgb, var(--color-amber-light) 30%, var(--color-border))', borderRadius: '2px', padding: '2rem 2.25rem', maxWidth: '780px' }}>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 1rem' }}>Honest Boundaries</p>
+              <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, margin: '0 0 1rem' }}>
+                The <strong style={{ color: 'var(--color-text)' }}>cranial rhythmic impulse</strong> &mdash; the foundational theoretical construct of CST &mdash; has poor inter-rater reliability. Multiple studies show practitioners cannot agree on its rate or quality in the same patient. Adult cranial sutures are fused and have minimal clinically significant motion.
+              </p>
+              <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, margin: '0 0 1rem' }}>
+                The two largest 2024 meta-analyses (Fernandez-Carnero, 15 RCTs; Amendolara, 24 RCTs / 1,613 participants) both concluded CST demonstrates <strong style={{ color: 'var(--color-text)' }}>no significant effects for any studied indication</strong>. GRADE evidence quality ranges from very low to low.
+              </p>
+              <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, margin: 0 }}>
+                What <em>is</em> supported: CST is low-risk, produces genuine relaxation, and may support short-term autonomic regulation via vagal modulation. The fascial release component sits on more solid biological ground than the CRI theory. If you pursue CST, understand it as a gentle somatic modality that may complement your self-practice &mdash; not as a replacement for evidence-based treatment.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <SectionDivider flip />
+
+      {/* ══════════════════════════════════════════════════════
           THE INNER BODY — SPIRIT & ENERGY
       ══════════════════════════════════════════════════════ */}
       <section
