@@ -14,7 +14,7 @@ const ROSE_LIGHT = '#E8B4CF';
 const ROSE_PALE  = '#F5E0EC';
 
 // ── StatCard ───────────────────────────────────────────────────
-function StatCard({ source, stat, detail }: { source: string; stat: string; detail: string }) {
+function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
   return (
     <div
       style={{
@@ -35,7 +35,7 @@ function StatCard({ source, stat, detail }: { source: string; stat: string; deta
           margin: '0 0 0.75rem',
         }}
       >
-        {source}
+        {url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}
       </p>
       <p
         style={{
@@ -943,21 +943,25 @@ export default function NervousSystemClient() {
               source="Vagus Nerve Anatomy"
               stat="80% of vagal fibers are afferent"
               detail="The vagus is primarily a listening system — body-to-brain signals explain why somatic practices alter mental states."
+              url="https://pmc.ncbi.nlm.nih.gov/articles/PMC9131189/"
             />
             <StatCard
               source="Kalyani et al., 2011 (fMRI)"
               stat="OM chanting matches surgical VNS"
               detail="Limbic deactivation from chanting was identical to electrical vagus nerve stimulation, driven by auricular vibration."
+              url="https://pubmed.ncbi.nlm.nih.gov/21146224/"
             />
             <StatCard
               source="Dr. Kevin Tracey — Cholinergic Pathway"
               stat="Vagal tone directly controls inflammation"
               detail="Low vagal tone = chronic inflammation. Building tone turns off the body's chemical inflammation factories."
+              url="https://pubmed.ncbi.nlm.nih.gov/15922555/"
             />
             <StatCard
               source="Kox et al., 2014 (PNAS)"
               stat="Wim Hof subjects suppressed TNF-α by ~50%"
               detail="Through breathing alone, trained subjects voluntarily controlled their immune response to endotoxin injection."
+              url="https://pubmed.ncbi.nlm.nih.gov/24799686/"
             />
           </div>
         </ScrollReveal>

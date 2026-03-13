@@ -13,7 +13,7 @@ const TEAL_LIGHT   = '#A8DADA';
 const TEAL_PALE    = '#E0F4F4';
 
 // ── Stat Card ─────────────────────────────────────────────────
-function StatCard({ source, stat, detail }: { source: string; stat: string; detail: string }) {
+function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
   return (
     <div
       style={{
@@ -34,7 +34,7 @@ function StatCard({ source, stat, detail }: { source: string; stat: string; deta
           margin: '0 0 0.75rem',
         }}
       >
-        {source}
+        {url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}
       </p>
       <p
         style={{
@@ -919,16 +919,19 @@ export default function BreatheClient() {
                 source="Stanford / James Nestor"
                 stat="4,820% increase in snoring after 10 days mouth breathing"
                 detail="A Stanford experiment plugging nostrils for 10 days produced 4,820% more snoring, 25 sleep apnea events per night, and blood pressure rising to 142 mmHg. Reverting to nasal breathing dropped BP to 124 mmHg and raised HRV by 150% within days."
+                url="https://pubmed.ncbi.nlm.nih.gov/31696236/"
               />
               <StatCard
                 source="Nestor / Elliott — multiple studies"
                 stat="5.5 breaths/min — the universal optimal rate"
                 detail="This frequency appears in the rosary prayer, Om mantra, the S.A.T. Nam mantra, and qigong. It synchronizes the cardiovascular Mayer wave with breathing, maximizing HRV and cardiac coherence. Not a coincidence — it is the architecture of calm."
+                url="https://pmc.ncbi.nlm.nih.gov/articles/PMC5709795/"
               />
               <StatCard
                 source="Stanford RCT — Balban / Huberman, 2023"
                 stat="Cyclic sighing outperformed meditation for stress reduction"
                 detail="A 2023 randomized controlled trial compared cyclic sighing, box breathing, cyclic hyperventilation, and mindfulness meditation. Cyclic sighing showed the greatest improvements in daily positive affect and the largest reductions in resting respiratory rate."
+                url="https://pubmed.ncbi.nlm.nih.gov/36630953/"
               />
             </div>
           </ScrollReveal>

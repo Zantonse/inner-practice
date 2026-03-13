@@ -7,7 +7,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 
 // ── Stat Card ─────────────────────────────────────────────────
-function StatCard({ source, stat, detail }: { source: string; stat: string; detail: string }) {
+function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
   return (
     <div className="stat-card" style={{ borderRadius: '2px' }}>
       <p
@@ -21,7 +21,7 @@ function StatCard({ source, stat, detail }: { source: string; stat: string; deta
           margin: '0 0 0.75rem',
         }}
       >
-        {source}
+        {url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}
       </p>
       <p
         style={{
@@ -607,16 +607,19 @@ export default function FasciaClient() {
                 source="Schleip et al. — Fascia Research"
                 stat="250 million nerve endings — more than skin or eyes"
                 detail="Fascia is the body's largest sensory organ, providing the biological hardware for interoception: the felt sense of the body's interior that underlies all body-scan and somatic meditation."
+                url="https://pubmed.ncbi.nlm.nih.gov/22440512/"
               />
               <StatCard
                 source="Langevin, Harvard — 2002"
                 stat="80% of acupuncture points map to fascial planes"
                 detail="A landmark Harvard study found that 80% of acupuncture points and 50% of meridian pathways correspond directly to connective tissue planes — suggesting the body's ancient energy maps are anatomically real."
+                url="https://pubmed.ncbi.nlm.nih.gov/11893556/"
               />
               <StatCard
                 source="NIH Microdialysis Research"
                 stat="pH below 5.0 at active trigger points"
                 detail="Active fascial trigger points create a biochemical environment as acidic as vinegar — activating the same pain receptors triggered by capsaicin (chili peppers). This is the fascia's hidden pain generator."
+                url="https://pubmed.ncbi.nlm.nih.gov/18439759/"
               />
             </div>
           </ScrollReveal>
@@ -1191,17 +1194,17 @@ export default function FasciaClient() {
           <ScrollReveal>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginBottom: '3rem' }}>
               <div style={{ borderLeft: '3px solid var(--color-amber-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>Cook et al. 2024</p>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11329942/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Cook et al. 2024</a></p>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>Moderate parasympathetic increase after CST</p>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>HF-HRV meta-analysis shows a significant short-term shift toward vagal tone &mdash; the most objective evidence supporting CST&apos;s nervous system claims.</p>
               </div>
               <div style={{ borderLeft: '3px solid var(--color-amber-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>Fernandez-Carnero et al. 2024</p>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10970181/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Fernandez-Carnero et al. 2024</a></p>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>No significant clinical benefit across 15 RCTs</p>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>The most rigorous 2024 systematic review found CST produces no statistically significant improvements for any musculoskeletal or non-musculoskeletal condition tested.</p>
               </div>
               <div style={{ borderLeft: '3px solid var(--color-amber-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>W&oacute;jcik et al. 2023</p>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}><a href="https://www.mdpi.com/2076-328X/13/11/914" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>W&oacute;jcik et al. 2023</a></p>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>Cortisol significantly reduced after 5 CST sessions</p>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>Firefighter cadets showed significantly reduced stress hormones (cortisol p &le; 0.0001, CRH p = 0.00067) vs. control &mdash; though the study lacked a sham condition.</p>
               </div>

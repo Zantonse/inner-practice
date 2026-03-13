@@ -12,7 +12,7 @@ const GOLD_LIGHT = '#F0D68A';
 
 // ─── Interfaces ────────────────────────────────────────────────────────────
 interface ManifestPoint { id: string; title: string; body: string; }
-interface ManifestStat { source: string; stat: string; detail: string; }
+interface ManifestStat { source: string; stat: string; detail: string; url?: string; }
 interface ManifestVideo { id: string; title: string; description: string; }
 interface ManifestSectionData {
   id: string; heading: string; intro: string;
@@ -55,16 +55,19 @@ const scienceSection: ManifestSectionData = {
       source: 'Gollwitzer & Sheeran 2006',
       stat: 'd = 0.65 effect size across 94 tests',
       detail: "Implementation intentions ('if-then' planning) produce a medium-to-large effect on goal achievement across health, academic, and interpersonal domains.",
+      url: 'https://pubmed.ncbi.nlm.nih.gov/16594837/',
     },
     {
       source: 'Oettingen & Wadden 1991',
       stat: 'Positive fantasizers lost less weight',
       detail: 'Obese women who had more positive fantasies about weight loss lost significantly less weight over one year than those with realistic expectations.',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/1757670/',
     },
     {
       source: 'American Physiological Society',
       stat: '~13% strength gains from mental practice alone',
       detail: 'Mental rehearsal of weight lifting produced measurable strength gains without any physical movement — the motor cortex activates nearly identically for imagined and performed movement.',
+      url: 'https://journals.physiology.org/doi/full/10.1152/jn.00386.2003',
     },
   ],
   videos: [
@@ -108,16 +111,19 @@ const lineageSection: ManifestSectionData = {
       source: 'Datta et al. 2022 (AIIMS)',
       stat: 'Prefrontal delta decreased 2.713 dB during Yoga Nidra',
       detail: 'The prefrontal cortex — seat of critical evaluation — showed reduced activity during Yoga Nidra, creating a window for intention-planting with less evaluative resistance.',
+      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9315270/',
     },
     {
       source: 'Elbers & McCraty 2025 (USC RCT)',
       stat: 'Coherence training increased hippocampal volume',
       detail: 'After 4-5 weeks of high-amplitude coherent HRV training, participants showed increased hippocampal brain volume and enhanced cognition-related neuroimaging signals.',
+      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12722655/',
     },
     {
       source: 'Kozhevnikov et al. 2009 (Max Planck)',
       stat: 'Deity visualization enhanced visuospatial processing',
       detail: "Buddhist monks practicing deity meditation showed dramatically improved visualization accuracy — the brain's capacity to hold and manipulate complex internal representations.",
+      url: 'https://pubmed.ncbi.nlm.nih.gov/19645384/',
     },
   ],
   videos: [
@@ -212,7 +218,7 @@ const protocolSteps: ProtocolStep[] = [
 ];
 
 // ─── StatCard ───────────────────────────────────────────────────────────────
-function StatCard({ source, stat, detail }: ManifestStat) {
+function StatCard({ source, stat, detail, url }: ManifestStat) {
   return (
     <div style={{
       borderLeft: `3px solid ${GOLD_DEEP}`,
@@ -228,7 +234,7 @@ function StatCard({ source, stat, detail }: ManifestStat) {
         textTransform: 'uppercase',
         color: GOLD_DEEP,
         margin: '0 0 0.75rem',
-      }}>{source}</p>
+      }}>{url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}</p>
       <p style={{
         fontFamily: 'var(--font-display)',
         fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
