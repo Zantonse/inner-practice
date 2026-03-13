@@ -219,16 +219,21 @@ a:hover {
   border: 1px solid var(--color-border);
   transition:
     background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color     300ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-color     300ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform        300ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow       300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover {
   background-color: var(--color-linen);
   border-color: var(--color-violet-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(89, 46, 107, 0.08);
 }
 
 [data-theme="dark"] .card:hover {
   background-color: var(--color-stone);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* --- Section Label (sticky) ------------------------------- */
@@ -342,7 +347,8 @@ a:hover {
   transition:
     background-color 300ms ease,
     color            300ms ease,
-    border-color     300ms ease;
+    border-color     300ms ease,
+    transform        150ms ease;
 }
 
 .pill-tab:hover {
@@ -355,6 +361,10 @@ a:hover {
   background-color: var(--color-violet-deep);
   color: #F5EAE1;
   border-color: var(--color-violet-deep);
+}
+
+.pill-tab:active {
+  transform: scale(0.96);
 }
 
 /* --- Split Hero Panel ------------------------------------- */
@@ -465,6 +475,33 @@ a:hover {
   padding: 0 max(1.5rem, 5vw);
 }
 
+/* --- Nav Link Interactions --------------------------------- */
+.nav-links a {
+  position: relative;
+  transition: color 300ms ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: var(--color-violet-deep);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-links a:hover {
+  color: var(--color-violet-deep) !important;
+}
+
 /* --- Nav Links (mobile scroll) ----------------------------- */
 .nav-links {
   display: flex;
@@ -500,6 +537,12 @@ a:hover {
   border-left: 3px solid var(--color-amber-light);
   padding: 1.5rem 1.75rem;
   background: var(--color-surface-raised);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 12px rgba(89, 46, 107, 0.06);
 }
 
 /* --- Details/Summary reset -------------------------------- */
@@ -522,6 +565,16 @@ details > summary::-webkit-details-marker { display: none; }
   }
 
   .split-panel {
+    transition: none;
+  }
+
+  .card, .stat-card, .pill-tab {
+    transition: none;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .nav-links a::after {
     transition: none;
   }
 
