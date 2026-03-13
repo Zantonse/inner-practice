@@ -9,7 +9,7 @@ import VideoFacade from '@/components/VideoFacade';
 
 // ── Rose accent tokens (Nervous System) ────────────────────────
 const ROSE_DEEP  = '#8B3A62';
-const ROSE_MID   = '#C27BA0';
+const ROSE_MID   = '#985575';
 const ROSE_LIGHT = '#E8B4CF';
 const ROSE_PALE  = '#F5E0EC';
 

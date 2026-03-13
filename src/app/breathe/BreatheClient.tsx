@@ -8,7 +8,7 @@ import VideoFacade from '@/components/VideoFacade';
 
 // ── Teal accent tokens ─────────────────────────────────────────
 const TEAL_DEEP    = '#2E7070';
-const TEAL_MID     = '#5BA4A4';
+const TEAL_MID     = '#2E7575';
 const TEAL_LIGHT   = '#A8DADA';
 const TEAL_PALE    = '#E0F4F4';
 

@@ -10,7 +10,7 @@ const TEAL_DEEP   = '#2E7070';
 const TEAL_MID    = '#5BA4A4';
 const AMBER_DEEP  = '#C07A35';
 const ROSE_DEEP   = '#8B3A62';
-const ROSE_MID    = '#C27BA0';
+const ROSE_MID    = '#985575';
 
 // ── Types ──────────────────────────────────────────────────────
 type Phase = { label: string; duration: number };

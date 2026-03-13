@@ -314,7 +314,7 @@ button:focus-visible {
 /* --- Breathwork / Teal accent ----------------------------- */
 :root {
   --color-teal-deep:  #2E7070;
-  --color-teal-mid:   #5BA4A4;
+  --color-teal-mid:   #2E7575;
   --color-teal-light: #A8DADA;
   --color-teal-pale:  #E0F4F4;
 }
@@ -322,21 +322,21 @@ button:focus-visible {
 /* --- Nervous System / Rose accent ------------------------- */
 :root {
   --color-rose-deep:  #8B3A62;
-  --color-rose-mid:   #C27BA0;
+  --color-rose-mid:   #985575;
   --color-rose-light: #E8B4CF;
   --color-rose-pale:  #F5E0EC;
 }
 
 [data-theme="dark"] {
   --color-teal-deep:  #7ECACA;
-  --color-teal-mid:   #5BA4A4;
+  --color-teal-mid:   #2E7575;
   --color-teal-light: #2E6060;
   --color-teal-pale:  #1A3838;
 }
 
 [data-theme="dark"] {
   --color-rose-deep:  #E8A0C4;
-  --color-rose-mid:   #C27BA0;
+  --color-rose-mid:   #985575;
   --color-rose-light: #6B2A4A;
   --color-rose-pale:  #2A1420;
 }

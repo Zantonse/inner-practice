@@ -40,7 +40,7 @@ function intensityColor(level: YogaStyleData['intensity']) {
   if (level === 'Zero') return { bg: `color-mix(in srgb, ${VIOLET_MID} 30%, var(--color-cream))`, text: VIOLET_DEEP };
   if (level === 'Low') return { bg: `color-mix(in srgb, ${VIOLET_MID} 25%, var(--color-cream))`, text: VIOLET_DEEP };
   if (level === 'Moderate') return { bg: 'color-mix(in srgb, var(--color-amber-light) 25%, var(--color-cream))', text: 'var(--color-amber-deep)' };
-  return { bg: 'color-mix(in srgb, #C27BA0 20%, var(--color-cream))', text: '#8B3A62' };
+  return { bg: 'color-mix(in srgb, #985575 20%, var(--color-cream))', text: '#8B3A62' };
 }
 
 function StyleCard({ style, isOpen, onToggle }: { style: YogaStyleData; isOpen: boolean; onToggle: () => void }) {
