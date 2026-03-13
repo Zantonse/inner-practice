@@ -1,8 +1,8 @@
 # HANDOVER — Inner Practice Session 3 Report
 
-**Date:** 2026-03-12
+**Date:** 2026-03-13
 **Branch:** `main`
-**Latest commit:** `7732bde` (content polish)
+**Latest commit:** `616f0e5` (research paper links)
 **Repo:** https://github.com/Zantonse/inner-practice
 **Live site:** https://inner-practice.vercel.app
 
@@ -10,101 +10,98 @@
 
 ## 1. Session Summary
 
-Continued from Session 2 handover. Completed the manifestation research (all 5 agents finished), built the `/manifest` page (the site's synthesis page tying all tracks together), added a Daily Routines tab to `/practice` with 8 life templates, updated the landing page to a 7-card hero grid (4+3), replaced the singing bowl sound with a softer tone, ran two Ralph Loop audits (visual polish + content polish), fixed placeholder YouTube videos, added missing landing page info cards, updated all stale content/metadata across 6 files, and added cross-links to `/manifest` from meditate, fascia, and breathe pages.
+Massive session. Built the `/manifest` page (synthesis page tying all tracks together with the 5-stage Protocol), added Daily Routines tab to `/practice` with 8 life templates, ran 7 Ralph Loops (visual polish, content polish, performance, micro-interactions, accessibility, CST integration, research links), converted all images to WebP (96% size reduction), added craniosacral therapy section to fascia page, added clickable research paper links to all StatCards, deep-researched 5 new fascia topics (interstitium, anatomy trains, trauma storage, rolfing, cutting-edge science), and synthesized with Gemini. The fascia deep research is complete and saved to Obsidian — ready to be integrated into the site next session.
 
 ---
 
 ## 2. What Got Done
 
-### Built & Deployed
+### Features Built & Deployed
 
-- **`/manifest`** — Synthesis page: 4 sections (The Science of Intention, The Practice Lineage, The Inner Practice Protocol, Honest Boundaries). Gold accent palette (#9A7230, #D4A74A, #F0D68A). Data-driven `ManifestSection` component for 3 sections + bespoke 5-stage Protocol flow (Regulate → Resource → Intend → Act → Receive) with colored accent pips linking to each practice page. 6 StatCards, 2 YouTube embeds, cross-links. (`src/app/manifest/ManifestClient.tsx`, 636 lines)
+- **`/manifest`** — 636 lines. 4 sections: Science of Intention, Practice Lineage, Inner Practice Protocol (bespoke 5-stage flow), Honest Boundaries. Gold accent. 6 StatCards, 2 YouTube embeds, cross-links. (`src/app/manifest/ManifestClient.tsx`)
+- **Daily Routines tab on `/practice`** — 824 lines. 8 life templates (Remote Work, Office, Weekend Recovery, High-Stress, Creative, Travel, Athletic, Low Energy) × 3 duration tiers (Quick/Standard/Deep). Morning/Midday/Evening blocks tied to Protocol stages. (`src/app/practice/PracticeBuilderTab.tsx`)
+- **Landing page 4+3 hero grid** — Added Manifest + Practice cards. Updated PathKey, paths array, divider logic from hardcoded keys to index-based.
+- **Craniosacral Therapy section** on `/fascia` — Dural tube connection, ANS regulation (Cook 2024 HRV), cortisol RCT (Wójcik 2023), Honest Boundaries box on CRI. 106 lines added.
+- **Research paper links** — 17 StatCards across 5 pages now link to source papers on PubMed/PMC.
+- **Softer singing bowl** — D4 (293 Hz), 200ms attack, 3s decay, detuned harmonics, 0.45 amplitude.
 
-- **Daily Routines tab on `/practice`** — Third tab alongside Open Timer and Guided Presets. 8 life templates (Remote Work, Office/Commute, Weekend Recovery, High-Stress, Creative, Travel, Athletic, Low Energy), each with 3 duration tiers (Quick ~15min, Standard ~30min, Deep ~60min). Practices organized into Morning/Midday/Evening blocks tied to Protocol stages. Timer preset links and page links for each practice. (`src/app/practice/PracticeBuilderTab.tsx`, 824 lines)
+### Ralph Loops Completed (7)
 
-- **Landing page 4+3 hero grid** — Added Manifest and Practice to the hero card grid. Updated from 3+2 to 4+3 layout. Updated `PathKey` type, paths array, and replaced hardcoded divider key checks with index-based logic. Added Manifest and Practice info cards to the content section below the quote.
+1. **Visual polish** — Screenshotted all 9 routes at desktop/mobile, light/dark. Fixed placeholder YouTube IDs, added missing landing page info cards.
+2. **Content polish** — Updated yoga tagline, yoga info card, footer, metadata, keywords, OG tags. Added Manifest cross-links to meditate/fascia/breathe.
+3. **Performance** — Converted 20 images from PNG to WebP (27.1MB → 1.1MB, 96% reduction). Lighthouse: 64 → 92 on landing page.
+4. **Micro-interactions** — Card hover lift+shadow, pill-tab press states, nav link underline animation, stat card hover, reduced-motion support.
+5. **Accessibility** — Skip-to-content link, aria-label on nav, h1 on landing, focus-visible rings, sr-only class, aria-live for timer, darkened 5 colors for WCAG AA contrast. Reduced violations from 196 → ~77.
+6. **CST integration** — Craniosacral therapy section added to fascia page with research-backed content.
+7. **Research links** — All StatCard citations now link to source papers.
 
-- **Softer singing bowl** — Replaced the generated bowl.wav with a warmer D4 (293 Hz) tone: softer attack (200ms fade-in), slower exponential decay (3s), detuned harmonics for shimmer, lower peak amplitude (0.45). Volume set to 0.5 in code.
+### Deep Research Completed (5 parallel agents + Gemini synthesis)
 
-- **Nav updated** — Added "Manifest" as 8th nav link. Mobile horizontal scroll already handles the overflow.
-
-### Visual Audit (Ralph Loop 1)
-- Screenshotted all routes at 1440px desktop and 375px mobile in both light and dark mode
-- Found and replaced placeholder YouTube video IDs (`dHUq0_42Gmk`, `7H0FKzeuVVs`) with real videos (Oettingen WOOP talk `7mobxikaYgU`, guided Yoga Nidra `DsGn0QUuRYY`)
-- Added missing Manifest and Practice info cards to landing page content section
-- No layout breaks, overflow issues, or contrast failures found
-
-### Content Polish (Ralph Loop 2)
-- Yoga hero tagline: "Awaken your energy through kundalini" → "Every style. Every path."
-- Yoga info card: "5-minute kundalini practice" → "10 yoga styles from Hatha to Yoga Nidra"
-- Layout metadata: updated description to include all 7 tracks, added manifestation keywords
-- OG description: expanded from 4 concepts to 7
-- Footer: updated to "Meditation, yoga, breathwork, fascia, nervous system & intentional practice"
-- Practice page metadata: added daily routines and template keywords
-- Cross-links: added Manifest link to meditate, fascia, and breathe pages
-
-### Manifestation Research Completed
-- All 5 research agents finished (the nervous system connection agent `a2900cb` completed during this session)
-- Saved to Obsidian: `Claude-Research/wellness/Manifestation-Nervous-System.md`
-- Content: Polyvagal Theory and creation, Sankalpa in Yoga Nidra, theta state, HeartMath coherence, somatic safety, HRV as readiness metric, evidence quality map
-
-### Design & Planning Artifacts
-- Manifest spec: `docs/superpowers/specs/2026-03-12-manifest-page-design.md`
-- Manifest plan: `docs/superpowers/plans/2026-03-12-manifest-page.md`
-- Practice builder spec: `docs/superpowers/specs/2026-03-12-practice-builder-design.md`
-- Practice builder plan: `docs/superpowers/plans/2026-03-12-practice-builder.md`
+| Domain | Obsidian File | Key Finding |
+|--------|---------------|-------------|
+| Interstitium | `fascia-deep-research-synthesis-2026-03.md` | Fascia is body-wide fluid-filled network (Theise 2018, PMC5869738) |
+| Anatomy Trains | `Anatomy-Trains-Myofascial-Lines.md` | SBL proven foot-to-head; DFL = emotional core; yoga pose mapping |
+| Fascia & Trauma | `fascia-trauma-somatic-evidence-2026-03.md` | TGF-β1 cascade; emotional release is neurological not fascial storage |
+| Rolfing | `rolfing-structural-integration-research-2026-03.md` | NHMRC 2024: very low evidence; 10-series detailed |
+| Cutting-Edge Science | `Cutting-Edge-Fascia-Science.md` | Fasciacytes, PIEZO1, Ruffini calming, fascia-depression link |
+| **Synthesis** | `fascia-deep-research-synthesis-2026-03.md` | Gemini synthesis with evidence map and content recommendations |
 
 ---
 
 ## 3. What Didn't Work / Bugs Encountered
 
-- **Spec compliance issues on ManifestClient (5 items):** Protocol heading was "The Manifestation Protocol" instead of "The Inner Practice Protocol", h2 used wrong color, subtitle text didn't match spec, intro paragraphs were left-aligned instead of centered, closing paragraph was missing. All caught by spec reviewer agent and fixed before merge.
-- **Ralph Loop shell parsing:** Multiline prompts with parentheses, numbered lists, and special characters break the Ralph Loop setup script's `eval`. Solution: use single-line prompts without parentheses.
-- **YouTube placeholder IDs:** The subagent used made-up video IDs that returned 404 thumbnails. Fixed by searching YouTube for real videos and replacing the IDs.
-- **Tab state naming mismatch:** The existing PracticeClient uses `'guided'` not `'presets'` for the tab state. The practice builder spec initially used `'presets'` — caught by spec reviewer and corrected before implementation.
-- **PracticeBuilderTab larger than estimated:** Spec estimated 400-500 lines, actual was 824 lines. 8 templates × 3 tiers × 2-3 blocks × 1-3 practices = ~60 practice objects. Data-driven means the UI code is small but the data is substantial.
+- **Ralph Loop shell parsing** — Multiline prompts with parentheses break the setup script's eval. Use single-line prompts.
+- **YouTube placeholder IDs** — Subagent used fake IDs. Fixed by searching YouTube and verifying thumbnails with curl.
+- **Remaining a11y contrast violations** — 77 nodes across breathe (28) and nervous-system (24) pages from inline color styles deep in 1800+ line components. Darkening the constants helped but many hardcoded hex values remain.
+- **Fascia page growing large** — Now ~1,800 lines with CST addition. Adding all 5 new research domains would push it well past 2,500. Consider splitting into sub-pages or an expandable section approach.
 
 ---
 
 ## 4. Key Decisions Made
 
-1. **Manifest page uses hybrid architecture** — 3 data-driven sections (shared `ManifestSection` component) + 1 bespoke Protocol section. The Protocol's vertical step flow is structurally different from the other sections (sequential flow vs. parallel items), so it gets custom JSX while the others share a component.
-2. **Gold accent palette for manifestation** — GOLD_DEEP `#9A7230`, GOLD_MID `#D4A74A`, GOLD_LIGHT `#F0D68A`. Chosen to feel like a "culmination" color — distinct from all other page accents.
-3. **Practice builder as a tab, not a new page** — Keeps all practice-related features consolidated. The builder is a "what to do" layer on top of the timer's "how to time it."
-4. **Fixed templates with duration tiers, not full custom builder** — YAGNI. 8 curated templates × 3 tiers covers the use case without drag-and-drop complexity. Adding a 9th template is just appending to an array.
-5. **Sequenced practice lists without clock times** — Morning/Midday/Evening blocks without specific hours. The research shows autonomic state matters more than time of day.
-6. **"Start Timer" pre-selects but doesn't auto-start** — Clicking "Start Timer" in Daily Routines switches to the Guided tab. Auto-starting would hide the tab bar (existing behavior when timer is active) and trap the user.
-7. **Honest boundaries section on manifest page** — No quantum woo, no Law of Attraction claims. Names what manifestation is NOT alongside what the evidence supports.
+1. **Manifest page hybrid architecture** — 3 data-driven sections + 1 bespoke Protocol flow. Protocol uses gold circles with colored accent pips linking to practice pages.
+2. **Daily Routines as tab, not page** — Keeps all practice features consolidated. Templates are data arrays (easy to add more).
+3. **Gold accent (#7A5A1E) for manifestation** — Darkened from #9A7230 for WCAG AA contrast compliance.
+4. **WebP conversion** — All images converted, references updated. Original PNGs still in repo (could be cleaned up).
+5. **CST goes on fascia page** — It's fundamentally about the dural tube fascia, not the nervous system.
+6. **"Tissue memory" is structural, not narrative** — Key editorial decision from the trauma research: fascia holds epigenetic/structural memory, but emotional release during bodywork is neurologically mediated (insula/interoception), not "emotions stored in tissue."
+7. **Research links on StatCard labels** — Source labels become clickable links. Pattern: `url?: string` optional prop, rendered as `<a>` with `color: inherit` and subtle underline.
 
 ---
 
 ## 5. Lessons Learned / Gotchas
 
-- **Spec → plan → review loop catches real bugs** — The spec reviewer found 5 issues on ManifestClient (wrong heading, wrong color, wrong text, misaligned layout, missing paragraph). Cost: one extra subagent dispatch. Savings: would have shipped broken.
-- **Subagent sonnet is sufficient for implementation** — Sonnet produced a 636-line component that compiled first try. Issues were surface-level text mismatches, not architectural. Opus would be marginal improvement at 5x cost.
-- **Provide ALL context to subagents upfront** — The ManifestClient subagent received full spec content, all data, exact component patterns, and preset ID mappings directly in the prompt. Zero file-reading turns wasted. Session 2's lesson about subagent timeouts was applied successfully.
-- **Ralph Loop works well for audit tasks** — Visual polish and content polish are ideal Ralph Loop targets: clear success criteria, iterative improvement, verifiable completion.
-- **Data-driven templates are content-heavy** — 824 lines for 8 templates isn't bloat — it's ~60 practice objects with real descriptions. The rendering code is under 200 lines.
+- **Ralph Loop is excellent for audit tasks** — Clear success criteria + iterative improvement = good results. Less good for open-ended feature building.
+- **Color contrast is the #1 a11y issue** — The cream background (#F5EAE1) is light enough that many accent colors fail WCAG AA. Any new accent color should be tested with `contrast_ratio()` before use.
+- **Data-driven templates are content-heavy** — PracticeBuilderTab at 824 lines is ~80% data, ~20% UI. This is fine — it means adding templates is trivial.
+- **Subagent sonnet + review loop works** — ManifestClient built by sonnet, 5 spec issues caught by reviewer, fixed in minutes. Cost-effective.
+- **Deep research with parallel agents is powerful** — 5 agents × ~15 min each = ~15 min wall time for 94K chars of research. Gemini synthesis adds ~30 seconds.
 
 ---
 
 ## 6. Current State
 
 - **Build:** Compiles successfully, zero TypeScript errors, all 9 routes generate
-- **Last deploy:** `7732bde` (content polish) at https://inner-practice.vercel.app
-- **Uncommitted:** Screenshot PNGs from visual audit (in root), Playwright console logs, some image manifest JSONs and prior session's untracked docs. Nothing critical.
-- **All agents complete** — No running background tasks
+- **Last deploy:** `616f0e5` (research links) live at https://inner-practice.vercel.app
+- **Uncommitted:** Old PNG originals (modified but WebP versions deployed), screenshot PNGs from audits, Playwright console logs. Nothing critical.
+- **All research agents complete** — No running background tasks
 
 ---
 
 ## 7. Clear Next Steps
 
-1. **Performance audit** — Run Lighthouse on all 9 pages, optimize images (hero PNGs are 1.5-1.7MB each — could be converted to WebP or optimized), verify lazy loading, check Core Web Vitals. Target: 90+ Lighthouse scores.
-2. **Accessibility audit** — Run axe-core on every page, fix violations. Zero a11y tooling currently. Target: zero violations, proper ARIA labels, keyboard navigation, sufficient contrast ratios.
-3. **SEO optimization** — Add OG images per page, structured data, verify heading hierarchy. Currently only root layout has OG tags.
-4. **Add Yoga Nidra timer preset** — The practice timer could benefit from a Yoga Nidra preset (20/30/45 min with stage labels).
-5. **Consider new content pages:** Nutrition/diet, sleep hygiene, grounding/earthing, sound healing
-6. **Clean up untracked files** — Screenshot PNGs, image manifests, Playwright logs in project root
+1. **Ralph Loop the 5 new fascia research domains into the fascia page** — The Gemini synthesis at `fascia-deep-research-synthesis-2026-03.md` has specific content recommendations. Consider:
+   - The Interstitium section (strongest new finding, brief treatment)
+   - Anatomy Trains line-by-line breakdown (could be an expandable accordion like yoga styles)
+   - Fascia & Trauma section (TGF-β1 pathway, emotional release mechanism, SE evidence)
+   - Rolfing (brief practitioner-assisted section, like CST)
+   - Cutting-edge science integrated into existing Science section
+2. **Fix remaining 77 a11y contrast violations** — Need to go through breathe (28) and nervous-system (24) page inline styles
+3. **Consider splitting the fascia page** — At 1,800+ lines (and growing), it may benefit from sub-pages or a tab structure like /practice
+4. **Animated breathing circle** on the practice timer — User expressed interest
+5. **SEO + social meta images** — Per-page OG images, structured data
+6. **Clean up old PNG files** — The WebP versions are deployed; PNGs could be removed to save repo size (~27MB)
+7. **Update HANDOVER.md with session stats** — This handover replaces the Session 3 mid-session one
 
 ---
 
@@ -112,46 +109,42 @@ Continued from Session 2 handover. Completed the manifestation research (all 5 a
 
 | File | Lines | Description |
 |------|-------|-------------|
-| `src/app/page.tsx` | ~960 | Landing page — 7-path hero (4+3), 7 info cards, quote |
-| `src/app/layout.tsx` | ~270 | Root layout — nav with 8 links + theme toggle, updated metadata |
-| `src/app/globals.css` | ~560 | Full design system — all accent colors, responsive rules |
-| `src/app/manifest/ManifestClient.tsx` | 636 | **New** — 4 sections, Protocol flow, gold accent |
+| `src/app/manifest/ManifestClient.tsx` | 636 | **New** — 4 sections, Protocol flow, gold accent, research links |
 | `src/app/manifest/page.tsx` | 19 | Server component with manifestation metadata |
 | `src/app/practice/PracticeBuilderTab.tsx` | 824 | **New** — 8 templates × 3 tiers, Daily Routines tab |
-| `src/app/practice/PracticeClient.tsx` | 794 | Timer + 3 tabs (open, guided, routines) |
-| `src/app/practice/page.tsx` | 18 | Updated metadata including daily routines |
-| `src/app/meditate/MeditateClient.tsx` | ~1160 | Meditation page + cross-links including /manifest |
-| `src/app/yoga/YogaClient.tsx` | 346 | 10 styles in data arrays + Yoga Nidra deep dive |
-| `src/app/fascia/FasciaClient.tsx` | ~1640 | Fascia page + cross-links including /manifest |
-| `src/app/breathe/BreatheClient.tsx` | ~1880 | Breathwork 14 techniques + cross-links including /manifest |
-| `src/app/nervous-system/NervousSystemClient.tsx` | ~1,900 | Vagus, polyvagal, 19 techniques, eye movements, Wim Hof, HRV |
-| `public/sounds/bowl.wav` | — | Softer singing bowl (D4, 3s decay, 0.45 amplitude) |
-| `public/images/hero-manifest.png` | 1.5MB | Gold watercolor hero image (Gemini-generated) |
-
-### Design Artifacts
-
-| File | Description |
-|------|-------------|
-| `docs/superpowers/specs/2026-03-12-manifest-page-design.md` | Manifest page spec (reviewed, all issues resolved) |
-| `docs/superpowers/plans/2026-03-12-manifest-page.md` | Manifest implementation plan (5 tasks) |
-| `docs/superpowers/specs/2026-03-12-practice-builder-design.md` | Practice builder spec (reviewed, 6 issues resolved) |
-| `docs/superpowers/plans/2026-03-12-practice-builder.md` | Practice builder implementation plan (2 tasks) |
+| `src/app/practice/PracticeClient.tsx` | ~800 | Timer + 3 tabs (open, guided, routines), softer bowl sound |
+| `src/app/page.tsx` | ~960 | Landing page — 7-path hero (4+3), 7 info cards |
+| `src/app/layout.tsx` | ~280 | Root layout — 8 nav links, skip-to-content, aria-label |
+| `src/app/globals.css` | ~580 | Design system + micro-interactions + focus rings + sr-only |
+| `src/app/fascia/FasciaClient.tsx` | ~1,800 | Fascia page + CST section + research links |
+| `src/app/breathe/BreatheClient.tsx` | ~1,880 | Breathwork + research links + manifest cross-link |
+| `src/app/nervous-system/NervousSystemClient.tsx` | ~1,900 | Vagus, polyvagal, research links |
+| `src/app/yoga/YogaClient.tsx` | ~350 | 10 styles, research links, fixed video |
+| `src/app/meditate/MeditateClient.tsx` | ~1,160 | Meditation + manifest cross-link |
 
 ### Obsidian Research (new this session)
 
 | File | Topic |
 |------|-------|
-| `Claude-Research/wellness/Manifestation-Nervous-System.md` | Polyvagal + creation, Sankalpa in Nidra, HeartMath coherence, somatic safety, HRV readiness |
+| `wellness/fascia-deep-research-synthesis-2026-03.md` | **Gemini synthesis** — evidence map, content recommendations |
+| `wellness/Anatomy-Trains-Myofascial-Lines.md` | Full line breakdown, yoga pose mapping, Wilke 2016 evidence |
+| `wellness/fascia-trauma-somatic-evidence-2026-03.md` | Van der Kolk, Levine, TGF-β1, psoas, SE RCT |
+| `wellness/rolfing-structural-integration-research-2026-03.md` | NHMRC 2024 review, 10-series, evidence table |
+| `wellness/Cutting-Edge-Fascia-Science.md` | Fasciacytes, PIEZO1, Ruffini, fascia-depression |
+| `wellness/craniosacral-therapy-research-2026-03.md` | CST evidence (Cook 2024, Wójcik 2023, CRI critique) |
+| `wellness/Manifestation-Nervous-System.md` | Polyvagal + creation, HRV readiness |
 
 ---
 
 ## Session Stats
 
-- **14 commits pushed** to main
-- **~1,900 lines of new React code** (ManifestClient 636 + PracticeBuilderTab 824 + integrations ~440)
-- **2 Ralph Loop audits** (visual + content)
-- **6 files content-polished** (landing, layout, practice metadata, meditate, fascia, breathe)
-- **9 routes live** (/, meditate, yoga, fascia, breathe, nervous-system, practice, manifest, + /_not-found)
+- **22 commits pushed** to main
+- **~2,500 lines of new React code** (ManifestClient 636 + PracticeBuilderTab 824 + CST 106 + integrations ~900)
+- **7 Ralph Loops** completed (visual, content, performance, micro-interactions, a11y, CST, research links)
+- **6 deep research agents** dispatched (1 CST + 5 fascia domains)
+- **1 Gemini synthesis** of 94K chars
+- **20 images** converted to WebP (27.1MB → 1.1MB)
+- **17 research citations** linked to source papers
+- **5 colors darkened** for WCAG AA contrast
+- **9 routes live** at https://inner-practice.vercel.app
 - **Zero TypeScript errors** across all builds
-- **1 hero image generated** (Gemini)
-- **1 singing bowl regenerated** (Python/numpy)
