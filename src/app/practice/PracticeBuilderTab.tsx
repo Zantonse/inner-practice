@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 
-const GOLD_DEEP = '#9A7230';
+const GOLD_DEEP = '#7A5A1E';
 const GOLD_MID  = '#D4A74A';
 const GOLD_LIGHT = '#F0D68A';
 

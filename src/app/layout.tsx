@@ -58,9 +58,10 @@ export default function RootLayout({
         className={`${cormorant.variable} ${raleway.variable} ${dmSans.variable}`}
       >
       <body>
+        <a href="#main-content" className="skip-to-content">Skip to content</a>
         <ProgressBar />
 
-        <nav className="site-nav">
+        <nav className="site-nav" aria-label="Main navigation">
           <div
             style={{
               display: 'flex',
@@ -199,7 +200,7 @@ export default function RootLayout({
           </div>
         </nav>
 
-        <main style={{ paddingTop: '60px' }}>
+        <main id="main-content" style={{ paddingTop: '60px' }}>
           {children}
         </main>
 

@@ -6,7 +6,7 @@ import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 
 // ─── Accent tokens ─────────────────────────────────────────────────────────
-const GOLD_DEEP  = '#9A7230';
+const GOLD_DEEP  = '#7A5A1E';
 const GOLD_MID   = '#D4A74A';
 const GOLD_LIGHT = '#F0D68A';
 

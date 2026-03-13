@@ -20,11 +20,11 @@
 
   /* Amber accent */
   --color-amber-light:   #E4AD75;
-  --color-amber-deep:    #C07A35;
+  --color-amber-deep:    #8A5A1C;
 
   /* Text */
   --color-text:          #2A2A2A;
-  --color-text-muted:    #6B6B6B;
+  --color-text-muted:    #636363;
 
   /* Surface */
   --color-surface:       #F5EAE1;
@@ -157,6 +157,39 @@ a {
 
 a:hover {
   color: var(--color-amber-deep);
+}
+
+/* --- Focus Visible (keyboard navigation) ------------------ */
+:focus-visible {
+  outline: 2px solid var(--color-violet-deep);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-violet-deep);
+  outline-offset: 2px;
+}
+
+/* --- Skip to Content --------------------------------------- */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 999;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-violet-deep);
+  color: #F5EAE1;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: top 200ms ease;
+}
+
+.skip-to-content:focus {
+  top: 0.75rem;
 }
 
 /* --- Scroll Progress Bar ---------------------------------- */
@@ -581,6 +614,19 @@ details > summary::-webkit-details-marker { display: none; }
   html {
     scroll-behavior: auto;
   }
+}
+
+/* --- Screen Reader Only ----------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* --- Responsive helpers ----------------------------------- */

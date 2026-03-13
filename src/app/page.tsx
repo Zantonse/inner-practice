@@ -131,7 +131,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ── Five-Path Hero (3 + 2 row layout) ──────────────────── */}
+      <h1 className="sr-only">Inner Practice — Meditation, Yoga, Breathwork, Fascia, Nervous System, Manifestation &amp; Practice</h1>
+      {/* ── Seven-Path Hero (4 + 3 row layout) ──────────────────── */}
       <div
         style={{
           display: 'flex',
@@ -845,7 +846,7 @@ export default function HomePage() {
                 justifyContent: 'center',
               }}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9A7230" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A5A1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <circle cx="12" cy="12" r="6" />
                 <circle cx="12" cy="12" r="2" />
@@ -856,7 +857,7 @@ export default function HomePage() {
                 fontFamily: 'var(--font-display)',
                 fontSize: '1.625rem',
                 fontWeight: 600,
-                color: '#9A7230',
+                color: '#7A5A1E',
                 margin: '0 0 0.75rem',
                 fontStyle: 'normal',
               }}
@@ -874,7 +875,7 @@ export default function HomePage() {
                 fontWeight: 500,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                color: '#9A7230',
+                color: '#7A5A1E',
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',

@@ -1749,7 +1749,7 @@ export default function BreatheClient() {
                     gap: '0.5rem',
                     padding: '0.875rem 1.5rem',
                     background: 'transparent',
-                    color: '#9A7230',
+                    color: '#7A5A1E',
                     fontFamily: 'var(--font-ui)',
                     fontSize: '0.8125rem',
                     fontWeight: 500,

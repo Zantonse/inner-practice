@@ -678,6 +678,12 @@ export default function PracticeClient() {
                   </p>
                 )}
 
+                {/* Screen reader announcement for phase changes */}
+                <div aria-live="polite" aria-atomic="true" className="sr-only">
+                  {state.status === 'running' && `${state.phases[state.currentPhaseIndex]?.label ?? 'Practice'}. ${Math.floor(state.remainingSeconds / 60)} minutes ${state.remainingSeconds % 60} seconds remaining.`}
+                  {state.status === 'complete' && 'Practice complete.'}
+                </div>
+
                 <TimerDisplay
                   remaining={state.remainingSeconds}
                   total={state.totalSeconds}
