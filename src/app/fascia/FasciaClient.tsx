@@ -276,34 +276,41 @@ const toolkitItems = [
   },
   {
     number: 2,
+    name: 'Cupping',
+    tagline: 'Myofascial Decompression',
+    body: 'The complement to gua sha: where scraping compresses and shears, cupping lifts and separates. Negative pressure (–200 to –400 mmHg) draws skin and superficial fascia away from the muscle, separating adhered layers and drawing blood into hypoxic tissue. Christopher DaPrato\'s Myofascial Decompression protocol combines cup placement with active movement — placing a cup on the posterior hip and performing slow hip circles amplifies the mechanotransduction signal dramatically. Silicone cups make this accessible at home without fire or pumps.',
+    tip: 'Use gua sha and cupping together: scrape first to break collagen cross-links, then cup the same area to separate the freed layers and flood them with fresh blood. Compression + decompression in sequence is more effective than either alone.',
+  },
+  {
+    number: 3,
     name: 'Foam Rolling',
     tagline: 'Self-Myofascial Release',
     body: 'Science confirms foam rolling improves short-term range of motion, reduces muscle soreness (DOMS), and may decrease perception of pain. The mechanism is debated: it likely works through neurological feedback (reducing muscle guarding) as much as through direct structural tissue change. An evidence-based protocol: roll slowly (1 inch per second), pause on tender spots for 20–30 seconds, and work the tissue proximal to the pain point rather than directly on it.',
     tip: 'Roll the IT band\'s origin at the TFL (tensor fascia latae) — the hip — rather than the band itself. The band is too dense to meaningfully compress; the hip is where you create change.',
   },
   {
-    number: 3,
+    number: 4,
     name: 'Yin Yoga',
     tagline: 'Fascial Creep Through Stillness',
     body: 'Yin yoga targets what active movement cannot: the deep connective tissue. By holding passive shapes for 3–5 minutes, you allow muscles to relax fully and let gravitational force communicate directly with the fascial layer. This extended hold triggers "fascial creep" — slow deformation and eventual rehydration of the collagen matrix. Poses like Butterfly, Dragon, Swan, and Shoelace directly target the Deep Front Line, the IT band, and the hip capsule.',
     tip: 'Find your "edge" — the first point of clear sensation — and stop there. Going further contracts the muscle protectively. Yin works in the space of stillness, not through force.',
   },
   {
-    number: 4,
+    number: 5,
     name: 'Fascial Fitness',
     tagline: 'The Catapult Mechanism',
     body: 'Dr. Robert Schleip\'s research reveals that healthy fascia acts like a spring, not just a container. When you load it eccentrically (lengthen under tension) and release, it "catapults" energy — this is how kangaroos hop and Achilles tendons run. Training this elasticity requires bouncy, oscillatory movements: rebounding, skipping, small-amplitude jumps. Sedentary posture destroys this spring quality over years. Fascial fitness restores it.',
     tip: 'Two minutes of gentle bouncing or rebounding first thing in the morning rehydrates your fascial system, activates the spring mechanism, and is arguably the single most efficient investment in long-term tissue health.',
   },
   {
-    number: 5,
-    name: 'Yin Yoga',
+    number: 6,
+    name: 'Nutrition',
     tagline: 'Nutrition for the Web',
     body: 'Fascia is living collagen. It requires specific nutritional inputs: Vitamin C is the essential cofactor for collagen cross-linking — without it, newly synthesized collagen is structurally weak. Glycine and proline (abundant in bone broth) are the primary amino acid building blocks. Hyaluronic acid production depends on adequate water intake — dehydration literally stiffens the fascial glide surface. The two greatest dietary enemies of fascia are refined sugar (which creates AGEs — Advanced Glycation End-products that permanently cross-link and stiffen collagen) and chronically elevated cortisol, which actively degrades collagen.',
     tip: 'The simplest protocol: 500ml of water within 30 minutes of waking, a collagen or bone broth supplement with vitamin C, and elimination of refined sugar. These three changes alone produce measurable tissue quality improvements within 3–6 months.',
   },
   {
-    number: 6,
+    number: 7,
     name: 'The 10-Minute Daily Routine',
     tagline: 'Morning & Evening Protocol',
     body: 'Morning (5 min): Drink 500ml water. 2 minutes of gentle bouncing or rebounding to rehydrate the matrix and wake the spring mechanism. 2 minutes of dynamic, multi-planar spinal movements — cat-cow, side bends, gentle twists. 1 minute of rolling the soles of the feet with a ball to stimulate the plantar fascia and begin releasing the Superficial Back Line from the ground up.\n\nEvening (5 min): Choose one Yin yoga posture — Butterfly, Swan, or Supine Twist — and hold for 3–4 minutes. Follow with 1 minute of neurogenic shaking: stand with loose knees and let the legs vibrate gently, allowing the oscillation to travel up through the body. This discharges accumulated daily tension from the nervous system.',
@@ -352,7 +359,7 @@ const secrets = [
 
 // ── Main Component ────────────────────────────────────────────
 export default function FasciaClient() {
-  const [openToolkit, setOpenToolkit] = useState<number | null>(6);
+  const [openToolkit, setOpenToolkit] = useState<number | null>(7);
 
   const toggleToolkit = (n: number) => {
     setOpenToolkit(prev => (prev === n ? null : n));
@@ -453,7 +460,7 @@ export default function FasciaClient() {
 
           {/* Anchor nav */}
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {['Science', 'Gua Sha', 'Toolkit', 'Spirit', 'Secrets'].map(label => (
+            {['Science', 'Gua Sha', 'Cupping', 'Toolkit', 'Spirit', 'Secrets'].map(label => (
               <a
                 key={label}
                 href={`#${label.toLowerCase().replace(' ', '-')}`}
@@ -1061,6 +1068,234 @@ export default function FasciaClient() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════════════════
+          CUPPING
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="cupping"
+        style={{
+          padding: 'clamp(5rem, 8vw, 8rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6.5rem)',
+          background: 'var(--color-cream)',
+        }}
+      >
+        <div style={{ maxWidth: '1100px' }}>
+          <ScrollReveal>
+            <p
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.6875rem',
+                fontWeight: 500,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--color-text-muted)',
+                margin: '0 0 1rem',
+              }}
+            >
+              Decompression Therapy
+            </p>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-h2)',
+                fontWeight: 400,
+                color: 'var(--color-text)',
+                margin: '0 0 0.75rem',
+              }}
+            >
+              Cupping &amp; Myofascial Decompression
+            </h2>
+            <p
+              style={{
+                color: 'var(--color-text-muted)',
+                marginBottom: '3rem',
+                maxWidth: '56ch',
+                fontSize: 'var(--text-body-lg)',
+                lineHeight: 1.75,
+              }}
+            >
+              Where gua sha compresses, cupping lifts. Negative pressure separates adhered fascial layers,
+              draws blood into hypoxic tissue, and creates the space your fascia needs to glide.
+            </p>
+          </ScrollReveal>
+
+          {/* Mechanism + Comparison */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
+              gap: 'clamp(2rem, 4vw, 4rem)',
+              marginBottom: '3.5rem',
+            }}
+          >
+            <ScrollReveal>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.5rem',
+                  fontWeight: 600,
+                  color: 'var(--color-text)',
+                  margin: '0 0 1rem',
+                  fontStyle: 'normal',
+                }}
+              >
+                The Science of Decompression
+              </h3>
+              <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
+                A cup evacuated of air creates <strong>negative pressure</strong> (–200 to –400 mmHg),
+                lifting skin, superficial fascia, and subcutaneous tissue <em>away</em> from the underlying muscle.
+                This produces two structural effects: <strong>layer separation</strong> between adhered fascial
+                planes, and <strong>fluid redistribution</strong> as blood and interstitial fluid rush into the
+                decompressed zone.
+              </p>
+              <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
+                Mechanical deformation of the vascular endothelium triggers <strong>nitric oxide (NO)</strong> release — a
+                potent local vasodilator. Hyperemia continues 15–30 minutes after cup removal. The cup marks
+                (ecchymosis) activate the same <strong>HO-1 anti-inflammatory cascade</strong> as gua sha petechiae:
+                heme breaks down into bilirubin (antioxidant) and carbon monoxide (anti-inflammatory signaling).
+              </p>
+              <p style={{ lineHeight: 1.85, margin: 0 }}>
+                Langevin et al. (2006) demonstrated that tensile load on fibroblasts — exactly what cupping
+                delivers — triggers cytoskeletal remodeling, MMP-mediated collagen turnover, and new collagen
+                synthesis. Cupping applies this tensile load across a broad tissue area simultaneously.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.5rem',
+                  fontWeight: 600,
+                  color: 'var(--color-text)',
+                  margin: '0 0 1rem',
+                  fontStyle: 'normal',
+                }}
+              >
+                Compression vs. Decompression
+              </h3>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'var(--color-border)', borderRadius: '2px', overflow: 'hidden', marginBottom: '1.5rem' }}>
+                {[
+                  ['', 'Gua Sha', 'Cupping'],
+                  ['Force', 'Into tissue', 'Lifting away'],
+                  ['Fascia effect', 'Shears cross-links', 'Separates layers'],
+                  ['Fluid effect', 'Forces out, rebounds', 'Draws blood in'],
+                  ['Best for', 'Dense adhesions', 'Layer separation'],
+                ].map((row, i) => (
+                  i === 0 ? (
+                    <div key={i} style={{ display: 'contents' }}>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', gridColumn: '1 / 2' }}>{row[1]}</div>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-amber-deep)' }}>{row[2]}</div>
+                    </div>
+                  ) : (
+                    <div key={i} style={{ display: 'contents' }}>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.625rem 1rem' }}>
+                        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 0.25rem' }}>{row[0]}</p>
+                        <p style={{ fontSize: '0.8125rem', color: 'var(--color-text)', margin: 0 }}>{row[1]}</p>
+                      </div>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.625rem 1rem' }}>
+                        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 0.25rem' }}>{row[0]}</p>
+                        <p style={{ fontSize: '0.8125rem', color: 'var(--color-text)', margin: 0 }}>{row[2]}</p>
+                      </div>
+                    </div>
+                  )
+                ))}
+              </div>
+              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>
+                Many skilled practitioners use both in the same session: gua sha first to break cross-linked
+                collagen adhesions, cupping second to separate remaining adhered layers and flood the area
+                with fresh blood. Compression cannot separate stuck fascial layers — it adds more load to
+                already-compressed, hypoxic tissue. Decompression creates the space for layers to slide.
+              </p>
+            </ScrollReveal>
+          </div>
+
+          {/* Self-Cupping Technique */}
+          <ScrollReveal>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.5rem',
+                fontWeight: 600,
+                color: 'var(--color-text)',
+                margin: '0 0 1rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Self-Cupping with Silicone Cups
+            </h3>
+            <p style={{ lineHeight: 1.85, marginBottom: '1.5rem', maxWidth: '56ch' }}>
+              Silicone cups compress, seal, and self-suction — no flame or pump required. The practical home tool
+              for fascial decompression.
+            </p>
+            <div className="timeline" style={{ paddingLeft: '2.5rem', marginBottom: '2rem' }}>
+              {[
+                { step: '1', text: 'Apply light oil (jojoba, sesame, or coconut) to create a seal without excess slip.' },
+                { step: '2', text: 'Squeeze the cup, place on skin, release. Skin should lift 2–3mm. More than 5mm or sharp pain = reduce suction.' },
+                { step: '3', text: 'Stationary: hold 5–10 minutes. Sliding: move at 1–2 inches per second with long, directional strokes.' },
+                { step: '4', text: 'Remove by pressing adjacent skin to break the seal — never pull the cup by the rim.' },
+                { step: '5', text: 'Drink 500ml water. Move lightly or stretch within 30–60 minutes. Marks resolve in 3–7 days.' },
+              ].map((item) => (
+                <div
+                  key={item.step}
+                  style={{ position: 'relative', marginBottom: '1rem' }}
+                >
+                  <div className="timeline-node" style={{ background: 'var(--color-amber-deep)' }}>
+                    {item.step}
+                  </div>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.9rem',
+                      color: 'var(--color-text)',
+                      lineHeight: 1.75,
+                      margin: 0,
+                    }}
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* Research Cards */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+              gap: '1.5rem',
+            }}
+          >
+            <ScrollReveal>
+              <StatCard
+                source="Langevin et al., 2006"
+                stat="Fibroblasts remodel in minutes"
+                detail="Tensile mechanical load triggers cytoskeletal reorganization, MMP-mediated collagen turnover, and new collagen synthesis in connective tissue fibroblasts."
+                url="https://pubmed.ncbi.nlm.nih.gov/16645126/"
+              />
+            </ScrollReveal>
+            <ScrollReveal>
+              <StatCard
+                source="Abo-Raya, 2018"
+                stat="Cupping outperformed laser therapy"
+                detail="RCT showed dry cupping produced greater improvements in pressure pain threshold and cervical range of motion for upper trapezius trigger points vs. low-level laser."
+                url="https://pubmed.ncbi.nlm.nih.gov/29706756/"
+              />
+            </ScrollReveal>
+            <ScrollReveal>
+              <StatCard
+                source="Al-Bedah et al., 2019"
+                stat="Multi-pathway mechanism confirmed"
+                detail="Comprehensive review synthesized cupping's circulatory, neurological, immunological, and fascial mechanisms. The most cited modern mechanism paper."
+                url="https://pubmed.ncbi.nlm.nih.gov/30671385/"
+              />
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
           COMPLETE TOOLKIT
