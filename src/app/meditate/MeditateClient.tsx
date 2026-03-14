@@ -6,6 +6,7 @@ import Image from 'next/image';
 import VideoFacade from '@/components/VideoFacade';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
+import VideoAccent from '@/components/VideoAccent';
 
 // ── Video Data ───────────────────────────────────────────────
 type VideoEntry = {
@@ -315,7 +316,10 @@ export default function MeditateClient() {
         </div>
       </section>
 
-      <SectionDivider />
+      <VideoAccent
+        src="/videos/meditation-loop.mp4"
+        poster="/videos/meditation-poster.jpg"
+      />
 
       {/* The Science */}
       <section

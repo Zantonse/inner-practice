@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
+import VideoAccent from '@/components/VideoAccent';
 
 // ── Stat Card ─────────────────────────────────────────────────
 function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
@@ -555,7 +556,10 @@ export default function FasciaClient() {
         </div>
       </section>
 
-      <SectionDivider />
+      <VideoAccent
+        src="/videos/fascia-loop.mp4"
+        poster="/videos/fascia-poster.jpg"
+      />
 
       {/* ══════════════════════════════════════════════════════
           THE SCIENCE

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
+import VideoAccent from '@/components/VideoAccent';
 import VideoFacade from '@/components/VideoFacade';
 
 // ── Accent tokens ──────────────────────────────────────────────
@@ -167,7 +168,10 @@ export default function YogaClient() {
         </div>
       </section>
 
-      <SectionDivider />
+      <VideoAccent
+        src="/videos/yoga-loop.mp4"
+        poster="/videos/yoga-poster.jpg"
+      />
 
       {/* 03 — YOGA NIDRA */}
       <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
