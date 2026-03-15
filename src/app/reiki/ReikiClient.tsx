@@ -151,7 +151,7 @@ export default function ReikiClient() {
 
           {/* Anchor nav */}
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {['History', 'Science', 'Practice', 'Connection'].map(label => (
+            {['History', 'Science', 'Practice', 'Learn', 'Connection'].map(label => (
               <a
                 key={label}
                 href={`#${label.toLowerCase()}`}
@@ -505,6 +505,182 @@ export default function ReikiClient() {
               Even 10 minutes daily produces cumulative benefit. Usui himself self-treated every morning.
             </p>
           </ScrollReveal>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* ══════════════════════════════════════════════════════
+          LEARN REIKI
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="learn"
+        style={{
+          padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
+          background: `color-mix(in srgb, var(--color-cream) 92%, ${GOLD_LIGHT})`,
+        }}
+      >
+        <div style={{ maxWidth: '1100px' }}>
+          <ScrollReveal>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>The Learning Path</p>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 0.75rem' }}>
+              Learn Reiki
+            </h2>
+            <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '56ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+              A practical curriculum you can follow &mdash; from finding a teacher through daily practice
+              to the Japanese techniques most Western schools never teach.
+            </p>
+          </ScrollReveal>
+
+          {/* Finding a Teacher */}
+          <ScrollReveal>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1rem', fontStyle: 'normal' }}>Finding a Teacher</h3>
+            <p style={{ lineHeight: 1.85, marginBottom: '1.5rem', maxWidth: '56ch' }}>
+              Reiki is transmitted, not just learned. The attunement chain from Usui to your teacher
+              determines what was preserved. Look for: clear lineage they can articulate, an active personal
+              daily practice, emphasis on self-practice over treating clients, reasonable fees, and in-person
+              training for attunements.
+            </p>
+          </ScrollReveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+            {[
+              { name: 'Western Usui', desc: 'Through Takata\u2019s 22 masters. Most common. Simplified hand positions, Western anatomy framing. Good availability but gaps in Japanese techniques.' },
+              { name: 'Jikiden Reiki', desc: 'Through Hayashi \u2192 Yamaguchi family. Closest to pre-Western Japanese practice. Byosen scanning, clinical precision. The most authentic path available.' },
+              { name: 'Gendai Reiki Ho', desc: 'Hiroshi Doi\u2019s synthesis of Japanese and Western. Historically informed, accessible. Bridges the Gakkai\u2019s original system with modern practice.' },
+              { name: 'Komyo Reiki', desc: 'Hyakuten Inamoto\u2019s Zen integration. Emphasis on simplicity, stillness, and the contemplative dimension. For those drawn to meditation.' },
+            ].map(l => (
+              <ScrollReveal key={l.name}>
+                <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.5rem' }}>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', fontStyle: 'normal' }}>{l.name}</h4>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{l.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Level 1 Curriculum */}
+          <ScrollReveal>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', fontStyle: 'normal' }}>Level 1: Shoden &mdash; First Teaching</h3>
+            <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, marginBottom: '2rem', maxWidth: '56ch' }}>
+              The foundation. Self-healing, daily practice, and developing sensitivity. Spend 3&ndash;6 months here
+              before Level 2. The 21-day cleansing period after attunement is real: expect vivid dreams,
+              emotional release, fatigue, and heightened sensitivity.
+            </p>
+          </ScrollReveal>
+
+          {/* Japanese Techniques */}
+          <ScrollReveal>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD_DEEP, margin: '0 0 1.5rem' }}>Core Techniques</p>
+          </ScrollReveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+            {[
+              { jp: 'Hatsurei Ho', kanji: '発霊法', en: 'Awakening Spirit', desc: 'The complete daily practice: Kenyoku \u2192 Joshin Kokyu Ho \u2192 Gassho in a 20\u201345 min seated sequence. The container for all other techniques.' },
+              { jp: 'Kenyoku Ho', kanji: '乾浴法', en: 'Dry Bathing', desc: '3 diagonal chest sweeps + 3 arm sweeps. Firm pressure, exhale on each stroke. Clears the practitioner\u2019s energy field before and after sessions.' },
+              { jp: 'Joshin Kokyu Ho', kanji: '浄心呼吸法', en: 'Cleansing Breath', desc: 'Inhale through crown to hara (lower abdomen). Brief hold, radiate Ki outward. Exhale to release. 10\u201320 minutes. Activates hands for treatment.' },
+              { jp: 'Byosen Reikan Ho', kanji: '病腺霊感法', en: 'Intuitive Scanning', desc: 'Palms 2\u20136 inches above the body, head to feet. 5 levels of sensation: warmth \u2192 heat \u2192 tingling \u2192 pulsing \u2192 pain. The diagnostic foundation of Japanese Reiki.' },
+              { jp: 'Reiji Ho', kanji: '霊示法', en: 'Guided Placement', desc: 'Letting hands be drawn intuitively to where healing is needed. Trust the first impulse. Usui\u2019s original method \u2014 fixed positions came later.' },
+              { jp: 'Gyoshi Ho', kanji: '凝視法', en: 'Healing Gaze', desc: 'Directing Ki through softened eyes. For areas impractical to touch. Combine with hand treatment for dual-channel healing.' },
+            ].map(t => (
+              <ScrollReveal key={t.jp}>
+                <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', color: GOLD_DEEP, margin: '0 0 0.25rem' }}>{t.kanji}</p>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.25rem', fontStyle: 'normal' }}>{t.jp}</h4>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-text-muted)', fontStyle: 'italic', margin: '0 0 0.75rem' }}>{t.en}</p>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{t.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Daily Practice Protocol */}
+          <ScrollReveal>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', fontStyle: 'normal' }}>The Daily Practice</h3>
+            <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, marginBottom: '2rem', maxWidth: '56ch' }}>
+              Three tiers: minimum (10 min), full morning (30 min), and evening (10 min).
+              The most important thing is showing up. Everything else follows.
+            </p>
+          </ScrollReveal>
+          <div className="timeline" style={{ paddingLeft: '2.5rem', marginBottom: '3rem' }}>
+            {[
+              { step: '1', text: 'Gassho + Gokai recitation \u2014 palms together, recite the five precepts. Set the day\u2019s intention. (3 min)' },
+              { step: '2', text: 'Joshin Kokyu Ho \u2014 cleansing breath from crown to hara. 5\u201310 cycles minimum. (5 min)' },
+              { step: '3', text: 'Kenyoku Ho \u2014 3 chest sweeps, 3 arm sweeps. Firm, with exhale. (2 min)' },
+              { step: '4', text: 'Self-treatment positions 1\u20138 \u2014 eyes, temples, occiput, throat, heart, solar plexus, hara, knees/feet. (20 min)' },
+              { step: '5', text: 'Close \u2014 sweep hands crown to feet 3 times. Silent gratitude. Three breaths. (1 min)' },
+            ].map(item => (
+              <div key={item.step} style={{ position: 'relative', marginBottom: '1rem' }}>
+                <div className="timeline-node" style={{ background: GOLD_DEEP }}>{item.step}</div>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--color-text)', lineHeight: 1.75, margin: 0 }}>{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* First Year Progression */}
+          <ScrollReveal>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.5rem', fontStyle: 'normal' }}>First Year Progression</h3>
+          </ScrollReveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+            {[
+              { period: 'Months 1\u20133', title: 'Foundation', desc: 'Establish the daily habit. Use the minimum practice on difficult days. Study the Gokai. Begin logging sensations. By Month 3 the sequence should feel natural.' },
+              { period: 'Months 4\u20136', title: 'Deepening', desc: 'Develop byosen sensitivity. Instead of fixed timing, stay at each position until sensation peaks and subsides. Begin treating others regularly.' },
+              { period: 'Months 7\u201312', title: 'Integration', desc: 'The shift from Reiki as a scheduled practice to Reiki as an orientation. Hands go automatically to pain. Sensation becomes interesting rather than alarming.' },
+            ].map(p => (
+              <ScrollReveal key={p.period}>
+                <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', color: GOLD_DEEP, margin: '0 0 0.5rem' }}>{p.period}</p>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>{p.title}</h4>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{p.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Level 2 Preview */}
+          <ScrollReveal>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', fontStyle: 'normal' }}>Level 2: Okuden &mdash; The Three Symbols</h3>
+            <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, marginBottom: '2rem', maxWidth: '56ch' }}>
+              After 3&ndash;6 months of Level 1, Okuden introduces three symbols that direct and anchor
+              healing intention. Intention becomes explicit: Level 1 asks you to show up with open hands;
+              Level 2 asks you to direct healing across present, past, and future.
+            </p>
+          </ScrollReveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+            {[
+              { name: 'Cho Ku Rei', kanji: '\u30c1\u30e7\u30af\u30ec\u30a4', meaning: 'Power / Activation', desc: 'The ignition key. Concentrates and amplifies energy. Used at session start/close, for space clearing, and to sandwich other symbols: CKR \u2192 [symbol] \u2192 CKR.' },
+              { name: 'Sei He Ki', kanji: '\u30bb\u30a4\u30d8\u30ad', meaning: 'Mental / Emotional', desc: 'Works on the emotional body. Surfaces and dissolves held patterns \u2014 grief, habits, trauma. Applied at the back of the head for subconscious access.' },
+              { name: 'Hon Sha Ze Sho Nen', kanji: '\u30db\u30f3\u30b7\u30e3\u30bc\u30b7\u30e7\u30cd\u30f3', meaning: 'Distance / Time', desc: 'Transcends time and space. Foundation of every distance healing session. Also used for past healing (childhood, old trauma) and future support.' },
+            ].map(s => (
+              <ScrollReveal key={s.name}>
+                <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', color: GOLD_DEEP, margin: '0 0 0.25rem' }}>{s.kanji}</p>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.25rem', fontStyle: 'normal' }}>{s.name}</h4>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-text-muted)', fontStyle: 'italic', margin: '0 0 0.75rem' }}>{s.meaning}</p>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{s.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Recommended Reading */}
+          <ScrollReveal>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.5rem', fontStyle: 'normal' }}>Recommended Reading</h3>
+          </ScrollReveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
+            {[
+              { author: 'Pamela Miles', title: 'Reiki: A Comprehensive Guide', note: 'The clinical standard. Most rigorous, evidence-conscious overview available. Essential for understanding the research landscape.' },
+              { author: 'Frans & Bronwen Stiene', title: 'The Reiki Sourcebook', note: 'The most comprehensive reference text. Covers lineage, techniques, history, and symbols with scholarly rigor. If you buy one book, this is it.' },
+              { author: 'Frank Arjava Petter', title: 'Reiki Fire', note: 'The book that recovered Japanese Reiki materials for the West. Challenges the Western origin myth with primary Japanese sources.' },
+              { author: 'Hiroshi Doi', title: 'Iyashino Gendai Reiki Ho', note: 'Written from inside the original Japanese tradition. Practical, grounded, and philosophically serious.' },
+            ].map(b => (
+              <ScrollReveal key={b.title}>
+                <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.5rem' }}>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD_DEEP, margin: '0 0 0.5rem' }}>{b.author}</p>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', fontStyle: 'italic' }}>{b.title}</h4>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{b.note}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
