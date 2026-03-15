@@ -291,9 +291,148 @@ export default function YogaClient() {
 
       <SectionDivider />
 
-      {/* 05 — ANS CONNECTION */}
+      {/* 05 — HIP OPENING */}
+      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${VIOLET_MID} 8%, var(--color-cream)) 100%)` }}>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>05 — Hip Opening</div>
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Unlock the Body&rsquo;s Keystone</h2>
+            <p style={{ margin: '0 0 1rem' }}>The hip complex is wrapped by over 20 muscles and intersected by multiple fascial lines. Restriction here redistributes load to the lumbar spine, knees, and ankles. The <strong>psoas</strong> &mdash; the only muscle connecting the lumbar spine to the femur &mdash; runs alongside the sympathetic chain and shares fascial continuity with the diaphragm. Chronic psoas tension from sitting and stress maintains low-grade fight-or-flight activation and shallows the breath.</p>
+            <p style={{ margin: 0 }}>Hip openers are not just flexibility work &mdash; they are nervous system release. Tears and trembling in these poses are the body completing unfinished stress responses.</p>
+          </div>
+        </ScrollReveal>
+
+        {/* 6 Hip Movements */}
+        <ScrollReveal>
+          <div style={{ overflowX: 'auto', marginBottom: '2.5rem', maxWidth: '780px' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+              <thead>
+                <tr style={{ borderBottom: `2px solid ${VIOLET_MID}` }}>
+                  {['Movement', 'Key Muscles', 'Fascial Line'].map(h => (
+                    <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: VIOLET_DEEP, padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ['Flexion', 'Psoas, iliacus, rectus femoris', 'Superficial Front'],
+                  ['Extension', 'Glute max, hamstrings', 'Superficial Back'],
+                  ['Abduction', 'Glute med/min, TFL', 'Lateral'],
+                  ['Adduction', 'Adductors, gracilis', 'Deep Front'],
+                  ['External Rotation', 'Piriformis, deep six rotators', 'Spiral'],
+                  ['Internal Rotation', 'Glute medius (ant.), TFL', 'Lateral/Front'],
+                ].map((row, i) => (
+                  <tr key={i} style={{ borderBottom: '1px solid var(--color-border)' }}>
+                    <td style={{ padding: '0.625rem 1rem', fontWeight: 500, color: 'var(--color-text)' }}>{row[0]}</td>
+                    <td style={{ padding: '0.625rem 1rem', color: 'var(--color-text-muted)' }}>{row[1]}</td>
+                    <td style={{ padding: '0.625rem 1rem', color: 'var(--color-text-muted)' }}>{row[2]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </ScrollReveal>
+
+        {/* Key Poses Grid */}
+        <ScrollReveal>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 1.5rem' }}>The Essential Hip Openers</p>
+        </ScrollReveal>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1rem', marginBottom: '2.5rem', maxWidth: '1100px' }}>
+          {[
+            { name: 'Pigeon Pose', sanskrit: 'Eka Pada Rajakapotasana', target: 'Piriformis, hip flexors', cue: 'Flex front foot to protect knee. Blanket under hip if needed.' },
+            { name: 'Low Lunge', sanskrit: 'Anjaneyasana', target: 'Psoas, iliacus', cue: 'Critical: tuck the tailbone. Without this, the psoas is bypassed entirely.' },
+            { name: 'Lizard Pose', sanskrit: 'Utthan Pristhasana', target: 'Hip flexors, adductors', cue: 'Forearms inside front foot. Drive knee out over pinky toe.' },
+            { name: 'Garland Pose', sanskrit: 'Malasana', target: 'Adductors, pelvic floor', cue: 'Elbows press knees wider. Blanket under heels if they rise. Hold 2 min daily.' },
+            { name: 'Butterfly', sanskrit: 'Baddha Konasana', target: 'Inner groin, adductors', cue: 'Do not press knees down. Feet closer = more groin; farther = more inner thigh.' },
+            { name: 'Reclined Pigeon', sanskrit: 'Supta Kapotasana', target: 'Piriformis, rotators', cue: 'Safest option for knee/SI issues. Flex top foot. 2\u20133 min hold.' },
+            { name: 'Happy Baby', sanskrit: 'Ananda Balasana', target: 'Inner groin, sacrum', cue: 'Sacrum stays on floor. Often produces audible SI release.' },
+            { name: 'Frog Pose', sanskrit: 'Mandukasana', target: 'Adductors, inner hip', cue: 'Yin only \u2014 3\u20135 min. Walk knees apart to edge of sensation. Lower to forearms.' },
+            { name: 'Cow Face', sanskrit: 'Gomukhasana', target: 'Deep external rotators', cue: 'Sharp knee pain = stop. Use Figure 4 until rotation develops.' },
+            { name: 'Fire Log', sanskrit: 'Agnistambhasana', target: 'External rotators', cue: 'Stack shins horizontally. Block under top knee if floating.' },
+            { name: 'Crescent Twist', sanskrit: 'Parivrtta Anjaneyasana', target: 'Psoas + spiral line', cue: 'Accesses the psoas\u2019s rotational fibers that straight lunges miss.' },
+            { name: 'Half Lord of the Fishes', sanskrit: 'Ardha Matsyendrasana', target: 'Outer hip, thoracic', cue: 'Inhale tall, exhale deeper. 8\u201310 breaths per side.' },
+          ].map(pose => (
+            <ScrollReveal key={pose.name}>
+              <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.5rem' }}>
+                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.0625rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.125rem', fontStyle: 'normal' }}>{pose.name}</h4>
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.8125rem', fontStyle: 'italic', color: 'var(--color-text-muted)', margin: '0 0 0.5rem' }}>{pose.sanskrit}</p>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>{pose.target}</p>
+                <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', lineHeight: 1.7, margin: 0 }}>{pose.cue}</p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {/* 20-Min Sequence */}
+        <ScrollReveal>
+          <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1rem', fontStyle: 'normal' }}>20-Minute Hip Opening Sequence</h3>
+            <div className="timeline" style={{ paddingLeft: '2.5rem' }}>
+              {[
+                { step: '1', text: 'Constructive rest \u2014 supine, knees bent. Arrive and breathe. (1 min)' },
+                { step: '2', text: 'Reclined Pigeon (Figure 4) \u2014 1 min each side. Gentle piriformis access.' },
+                { step: '3', text: 'Happy Baby \u2014 inner groin and sacrum release. (2 min)' },
+                { step: '4', text: 'Low Lunge (tailbone tucked) \u2014 1 min each side. Psoas lengthening.' },
+                { step: '5', text: 'Lizard Pose \u2014 1 min each side. Deep hip flexor access.' },
+                { step: '6', text: 'Garland Pose \u2014 full squat, elbows press knees. (2 min)' },
+                { step: '7', text: 'Pigeon Pose \u2014 1.5 min each side. The deepest external rotation.' },
+                { step: '8', text: 'Butterfly \u2014 fold forward. (2 min)' },
+                { step: '9', text: 'Wide-Legged Forward Fold \u2014 adductors and hamstrings. (2 min)' },
+                { step: '10', text: 'Supine twist each side + savasana. Integration \u2014 do not skip. (3 min)' },
+              ].map(item => (
+                <div key={item.step} style={{ position: 'relative', marginBottom: '0.75rem' }}>
+                  <div className="timeline-node" style={{ background: VIOLET_DEEP }}>{item.step}</div>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text)', lineHeight: 1.7, margin: 0 }}>{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Yin vs Yang + Emotional Release */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))', gap: 'clamp(2rem, 4vw, 4rem)', maxWidth: '780px' }}>
+          <ScrollReveal>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Yin vs. Yang Approach</h3>
+            <p style={{ fontSize: '0.875rem', lineHeight: 1.85, marginBottom: '0.75rem' }}>
+              <strong>Yang (30&ndash;90s holds):</strong> Muscle lengthening, golgi tendon release. Best for pre-activity warmup.
+            </p>
+            <p style={{ fontSize: '0.875rem', lineHeight: 1.85, marginBottom: '0.75rem' }}>
+              <strong>Yin (3&ndash;5 min holds):</strong> Fascial creep. Sensation intensifies at 1&ndash;2 min, softens at 3&ndash;4 min &mdash; that&rsquo;s fascial release.
+            </p>
+            <p style={{ fontSize: '0.875rem', lineHeight: 1.85, margin: 0 }}>
+              <strong>Grilley&rsquo;s insight:</strong> Bony anatomy sets each person&rsquo;s limit &mdash; up to 40&deg; variation in femoral neck angle. Forcing past bone causes labral tears. The correct measure is sensation, not depth.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>The Emotional Release</h3>
+            <p style={{ fontSize: '0.875rem', lineHeight: 1.85, marginBottom: '0.75rem' }}>
+              The psoas connects to the sympathetic lumbar chain. When deep openers combine tissue access with stillness and slow breath, incomplete threat responses can complete: tears, trembling, waves of anxiety followed by relief. <strong>This is the body completing unfinished business.</strong>
+            </p>
+            <p style={{ fontSize: '0.875rem', lineHeight: 1.85, margin: 0 }}>
+              Soften the jaw. Long exhales. Witness without interpretation. Always close with savasana. Significant trauma history warrants a trauma-informed teacher.
+            </p>
+          </ScrollReveal>
+        </div>
+
+        {/* Research Cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem', marginTop: '2.5rem', maxWidth: '1100px' }}>
+          <ScrollReveal>
+            <StatCard source="Reiman et al., 2016" stat="Hip rotation predicts back pain" detail="Reduced hip internal rotation ROM is significantly associated with non-specific low back pain. The most under-addressed hip movement in yoga." url="https://pubmed.ncbi.nlm.nih.gov/27117726/" />
+          </ScrollReveal>
+          <ScrollReveal>
+            <StatCard source="Grilley, Yin Yoga (2002)" stat="40-degree skeletal variation" detail="Dissection work showed up to 40-degree variation in femoral neck angle between individuals. Pigeon depth is partly bony architecture, not effort." />
+          </ScrollReveal>
+          <ScrollReveal>
+            <StatCard source="van der Kolk, 2014" stat="Yoga reduces treatment-resistant PTSD" detail="Yoga emphasizing interoceptive awareness reliably reduced PTSD scores in populations where conventional therapy had failed. Mechanism: restored vagal tone." url="https://pubmed.ncbi.nlm.nih.gov/25004196/" />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* 06 — ANS CONNECTION */}
       <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
-        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>05 — The Nervous System Connection</div>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>06 — The Nervous System Connection</div>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '2rem' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>All Yoga Is Vagus Nerve Exercise</h2>
