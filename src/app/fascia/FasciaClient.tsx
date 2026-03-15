@@ -2306,6 +2306,44 @@ export default function FasciaClient() {
               >
                 Practice Timer &rarr;
               </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>&middot;</span>
+              <Link
+                href="/sound-healing"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.8125rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  transition: 'color 300ms ease',
+                }}
+              >
+                Sound Healing &rarr;
+              </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>&middot;</span>
+              <Link
+                href="/somatics"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.8125rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  transition: 'color 300ms ease',
+                }}
+              >
+                Somatics &rarr;
+              </Link>
             </div>
           </ScrollReveal>
         </div>

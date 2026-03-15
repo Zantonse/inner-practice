@@ -1141,6 +1141,8 @@ export default function MeditateClient() {
                 { href: '/nervous-system', label: 'Nervous System' },
                 { href: '/practice', label: 'Practice Timer' },
                 { href: '/manifest', label: 'Manifest' },
+                { href: '/sound-healing', label: 'Sound Healing' },
+                { href: '/somatics', label: 'Somatics' },
               ].map((link, i, arr) => (
                 <span key={link.href} style={{ display: 'contents' }}>
                   <Link href={link.href} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
