@@ -1,8 +1,8 @@
-# HANDOVER — Inner Practice Session 3 Report
+# HANDOVER — Inner Practice Session 4 Report
 
-**Date:** 2026-03-13
+**Date:** 2026-03-14
 **Branch:** `main`
-**Latest commit:** `616f0e5` (research paper links)
+**Latest commit:** `b7a4e38` (fascial fitness section)
 **Repo:** https://github.com/Zantonse/inner-practice
 **Live site:** https://inner-practice.vercel.app
 
@@ -10,141 +10,125 @@
 
 ## 1. Session Summary
 
-Massive session. Built the `/manifest` page (synthesis page tying all tracks together with the 5-stage Protocol), added Daily Routines tab to `/practice` with 8 life templates, ran 7 Ralph Loops (visual polish, content polish, performance, micro-interactions, accessibility, CST integration, research links), converted all images to WebP (96% size reduction), added craniosacral therapy section to fascia page, added clickable research paper links to all StatCards, deep-researched 5 new fascia topics (interstitium, anatomy trains, trauma storage, rolfing, cutting-edge science), and synthesized with Gemini. The fascia deep research is complete and saved to Obsidian — ready to be integrated into the site next session.
-
----
+Session 4 added AI-generated ambient video accents to three pages using Google Veo 3.1, added two new content sections to the fascia page (Cupping and Fascial Fitness), updated the Veo skill files to use the LiteLLM proxy instead of requiring gcloud CLI, and began deep research for a new Reiki page. The Reiki page is partially researched but not yet built — that's the primary handoff item.
 
 ## 2. What Got Done
 
-### Features Built & Deployed
+### Veo Video Accents (designed, generated, integrated, deployed)
+- **Design spec:** `docs/superpowers/specs/2026-03-13-veo-video-accents-design.md`
+- **Implementation plan:** `docs/superpowers/plans/2026-03-13-veo-video-accents.md`
+- **Generated 3 Veo 3.1 videos** via LiteLLM proxy (`POST /videos` endpoint):
+  - `public/videos/meditation-loop.mp4` (3.2 MB) — mountain valley mist at golden hour
+  - `public/videos/yoga-loop.mp4` (872 KB) — violet/amber light trails in dark space
+  - `public/videos/fascia-loop.mp4` (3.3 MB) — translucent connective tissue fibers
+- **Processed into seamless loops** using `/video-loop` skill (forward-reverse-crossfade via ffmpeg)
+- **Extracted poster frames:** `*-poster.jpg` for each (JPG, not WebP — ffmpeg lacked webp encoder)
+- **New component:** `src/components/VideoAccent.tsx` — muted autoplay loop with IntersectionObserver play/pause and `prefers-reduced-motion` support
+- **Integrated into 3 pages** (replaced `<SectionDivider />` at specific section transitions):
+  - `src/app/meditate/MeditateClient.tsx` — between Foundation and Research sections
+  - `src/app/yoga/YogaClient.tsx` — between Passive Styles and Yoga Nidra sections
+  - `src/app/fascia/FasciaClient.tsx` — between "Where the Web Gets Stuck" and Science sections
 
-- **`/manifest`** — 636 lines. 4 sections: Science of Intention, Practice Lineage, Inner Practice Protocol (bespoke 5-stage flow), Honest Boundaries. Gold accent. 6 StatCards, 2 YouTube embeds, cross-links. (`src/app/manifest/ManifestClient.tsx`)
-- **Daily Routines tab on `/practice`** — 824 lines. 8 life templates (Remote Work, Office, Weekend Recovery, High-Stress, Creative, Travel, Athletic, Low Energy) × 3 duration tiers (Quick/Standard/Deep). Morning/Midday/Evening blocks tied to Protocol stages. (`src/app/practice/PracticeBuilderTab.tsx`)
-- **Landing page 4+3 hero grid** — Added Manifest + Practice cards. Updated PathKey, paths array, divider logic from hardcoded keys to index-based.
-- **Craniosacral Therapy section** on `/fascia` — Dural tube connection, ANS regulation (Cook 2024 HRV), cortisol RCT (Wójcik 2023), Honest Boundaries box on CRI. 106 lines added.
-- **Research paper links** — 17 StatCards across 5 pages now link to source papers on PubMed/PMC.
-- **Softer singing bowl** — D4 (293 Hz), 200ms attack, 3s decay, detuned harmonics, 0.45 amplitude.
+### Cupping Section (fascia page)
+- Full new section at `/fascia#cupping` with:
+  - Science of decompression (negative pressure, NO release, HO-1 cascade)
+  - Compression vs Decompression comparison table (Gua Sha vs Cupping)
+  - Self-cupping technique (5-step timeline with silicone cups)
+  - 3 research StatCards (Langevin 2006, Abo-Raya 2018, Al-Bedah 2019)
+- Added "Cupping" to toolkit accordion (#2) with MFD protocol
+- Renumbered toolkit items 1-7, updated nav tabs
 
-### Ralph Loops Completed (7)
+### Fascial Fitness Section (fascia page)
+- Full new section at `/fascia#fascial-fitness` with:
+  - The Catapult Mechanism (elastic recoil, collagen crimp)
+  - Muscle vs Fascia Training comparison table
+  - Schleip's 4 Principles card grid (elastic recoil, counter-movement, ninja principle, fascial stretching)
+  - Morning Rehydration Protocol (5-step timeline)
+  - 3 research StatCards (Kawakami 2002, Schleip & Müller 2013, Fascia Research Congress)
 
-1. **Visual polish** — Screenshotted all 9 routes at desktop/mobile, light/dark. Fixed placeholder YouTube IDs, added missing landing page info cards.
-2. **Content polish** — Updated yoga tagline, yoga info card, footer, metadata, keywords, OG tags. Added Manifest cross-links to meditate/fascia/breathe.
-3. **Performance** — Converted 20 images from PNG to WebP (27.1MB → 1.1MB, 96% reduction). Lighthouse: 64 → 92 on landing page.
-4. **Micro-interactions** — Card hover lift+shadow, pill-tab press states, nav link underline animation, stat card hover, reduced-motion support.
-5. **Accessibility** — Skip-to-content link, aria-label on nav, h1 on landing, focus-visible rings, sr-only class, aria-live for timer, darkened 5 colors for WCAG AA contrast. Reduced violations from 196 → ~77.
-6. **CST integration** — Craniosacral therapy section added to fascia page with research-backed content.
-7. **Research links** — All StatCard citations now link to source papers.
+### Veo Skill Updates
+- Updated `/veo` SKILL.md — Phase 5 and Implementation section now default to LiteLLM proxy workflow
+- Updated `/veo-multi-shot` SKILL.md — Phase 6 now shows LiteLLM as preferred generation method
+- Both keep Vertex AI/gcloud as documented fallback
+- Files are in the plugin cache: `/Users/craigverzosa/.claude/plugins/cache/veo-tools/veo-tools/1.0.0/skills/`
 
-### Deep Research Completed (5 parallel agents + Gemini synthesis)
-
-| Domain | Obsidian File | Key Finding |
-|--------|---------------|-------------|
-| Interstitium | `fascia-deep-research-synthesis-2026-03.md` | Fascia is body-wide fluid-filled network (Theise 2018, PMC5869738) |
-| Anatomy Trains | `Anatomy-Trains-Myofascial-Lines.md` | SBL proven foot-to-head; DFL = emotional core; yoga pose mapping |
-| Fascia & Trauma | `fascia-trauma-somatic-evidence-2026-03.md` | TGF-β1 cascade; emotional release is neurological not fascial storage |
-| Rolfing | `rolfing-structural-integration-research-2026-03.md` | NHMRC 2024: very low evidence; 10-series detailed |
-| Cutting-Edge Science | `Cutting-Edge-Fascia-Science.md` | Fasciacytes, PIEZO1, Ruffini calming, fascia-depression link |
-| **Synthesis** | `fascia-deep-research-synthesis-2026-03.md` | Gemini synthesis with evidence map and content recommendations |
-
----
+### Reiki Page Research (INCOMPLETE)
+- Dispatched 6 parallel research agents across domains
+- **3 files completed:**
+  - `/tmp/deep-research/history.md` — Usui origins, Japanese lineage, Takata, Gokai, 3 levels
+  - `/tmp/deep-research/mechanisms.md` — biofield science, biomagnetics, relaxation response, polyvagal, placebo
+  - `/tmp/deep-research/meditation-connection.md` — EEG, parasympathetic activation, co-regulation, body scan overlap
+- **3 files NOT written** (agents hit output token limits or WebFetch auth errors):
+  - `clinical.md` — clinical evidence, RCTs, systematic reviews
+  - `practice.md` — hand positions, self-Reiki protocol, hospital programs
+  - `researchers.md` — Shamini Jain, Ann Baldwin, David Feinstein, hospital programs
 
 ## 3. What Didn't Work / Bugs Encountered
 
-- **Ralph Loop shell parsing** — Multiline prompts with parentheses break the setup script's eval. Use single-line prompts.
-- **YouTube placeholder IDs** — Subagent used fake IDs. Fixed by searching YouTube and verifying thumbnails with curl.
-- **Remaining a11y contrast violations** — 77 nodes across breathe (28) and nervous-system (24) pages from inline color styles deep in 1800+ line components. Darkening the constants helped but many hardcoded hex values remain.
-- **Fascia page growing large** — Now ~1,800 lines with CST addition. Adding all 5 new research domains would push it well past 2,500. Consider splitting into sub-pages or an expandable section approach.
-
----
+- **gcloud CLI not installed** — could not use the standard Veo skill setup. Pivoted to LiteLLM proxy which already had `veo-3.1-generate-preview` configured
+- **ffmpeg WebP encoder missing** — `brew install ffmpeg` installed a build without libwebp. Used JPG poster frames instead (extracted via ffmpeg → JPG, skipped sips WebP conversion which also failed)
+- **ffmpeg 8.x requires `-update 1` flag** — for single-frame extraction, older `-frames:v 1` syntax alone throws an error about missing sequence pattern
+- **Reiki research agents hit max_output_tokens** — the clinical, practice, and researchers agents kept trying to write large files but the Write tool content parameter was empty by the time it hit the API (token limit truncation). The agents need to write in smaller chunks
+- **WebFetch failing with 401** — subagents couldn't use WebFetch because the LiteLLM key doesn't have `claude-haiku-4-5-20251001` access (WebFetch internally uses haiku)
 
 ## 4. Key Decisions Made
 
-1. **Manifest page hybrid architecture** — 3 data-driven sections + 1 bespoke Protocol flow. Protocol uses gold circles with colored accent pips linking to practice pages.
-2. **Daily Routines as tab, not page** — Keeps all practice features consolidated. Templates are data arrays (easy to add more).
-3. **Gold accent (#7A5A1E) for manifestation** — Darkened from #9A7230 for WCAG AA contrast compliance.
-4. **WebP conversion** — All images converted, references updated. Original PNGs still in repo (could be cleaned up).
-5. **CST goes on fascia page** — It's fundamentally about the dural tube fascia, not the nervous system.
-6. **"Tissue memory" is structural, not narrative** — Key editorial decision from the trauma research: fascia holds epigenetic/structural memory, but emotional release during bodywork is neurologically mediated (insula/interoception), not "emotions stored in tissue."
-7. **Research links on StatCard labels** — Source labels become clickable links. Pattern: `url?: string` optional prop, rendered as `<a>` with `color: inherit` and subtle underline.
-
----
+- **Video accents as section breaks, not hero backgrounds** — less intrusive, doesn't compete with existing content
+- **LiteLLM proxy over gcloud for Veo** — Craig can't install gcloud CLI; the proxy at `llm.atko.ai` already has Veo configured with the standard API key
+- **JPG poster frames instead of WebP** — pragmatic fallback; works identically in all browsers
+- **Cupping placed between Gua Sha and Toolkit** — they're complementary opposites (compression vs decompression)
+- **Fascial Fitness as a full section** — was previously just a toolkit accordion entry; Schleip's 4-principle framework warranted deeper coverage
+- **Reiki as a new page** (not a section on an existing page) — it's a distinct modality, warranting its own route at `/reiki`
 
 ## 5. Lessons Learned / Gotchas
 
-- **Ralph Loop is excellent for audit tasks** — Clear success criteria + iterative improvement = good results. Less good for open-ended feature building.
-- **Color contrast is the #1 a11y issue** — The cream background (#F5EAE1) is light enough that many accent colors fail WCAG AA. Any new accent color should be tested with `contrast_ratio()` before use.
-- **Data-driven templates are content-heavy** — PracticeBuilderTab at 824 lines is ~80% data, ~20% UI. This is fine — it means adding templates is trivial.
-- **Subagent sonnet + review loop works** — ManifestClient built by sonnet, 5 spec issues caught by reviewer, fixed in minutes. Cost-effective.
-- **Deep research with parallel agents is powerful** — 5 agents × ~15 min each = ~15 min wall time for 94K chars of research. Gemini synthesis adds ~30 seconds.
-
----
+- **LiteLLM Veo workflow:** `POST /videos` to submit, `GET /v1/videos/{id}` to poll, `GET /v1/videos/{id}/content` to download MP4. Auth header is `Authorization: Bearer ${LITELLM_API_KEY}` for POST, `x-litellm-api-key: ${LITELLM_API_KEY}` for GET. This is saved in mem0.
+- **Veo videos can generate in parallel** — all 3 submitted simultaneously and completed within a couple minutes
+- **Video-loop script doubles clip duration** — 4s input → ~7.5s seamless loop (forward + reverse - crossfade overlap)
+- **WebFetch uses haiku internally** — if the LiteLLM key doesn't include haiku, subagents can't use WebFetch. This blocked 3 of 6 research agents.
+- **The fascia page is now very large** (~1800+ lines) — approaching the point where it should be considered for splitting, though it still builds fine
 
 ## 6. Current State
 
-- **Build:** Compiles successfully, zero TypeScript errors, all 9 routes generate
-- **Last deploy:** `616f0e5` (research links) live at https://inner-practice.vercel.app
-- **Uncommitted:** Old PNG originals (modified but WebP versions deployed), screenshot PNGs from audits, Playwright console logs. Nothing critical.
-- **All research agents complete** — No running background tasks
-
----
+- **Build:** Passes cleanly (`npx next build` — all 11 pages static)
+- **Deployed:** Live at https://inner-practice.vercel.app (latest deploy includes fascial fitness)
+- **Uncommitted changes:** None (all committed). Untracked files are audit screenshots and playwright logs from earlier sessions
+- **Branch:** `main`
+- **Latest commit:** `b7a4e38` — feat: add Fascial Fitness section to fascia page
 
 ## 7. Clear Next Steps
 
-1. **Ralph Loop the 5 new fascia research domains into the fascia page** — The Gemini synthesis at `fascia-deep-research-synthesis-2026-03.md` has specific content recommendations. Consider:
-   - The Interstitium section (strongest new finding, brief treatment)
-   - Anatomy Trains line-by-line breakdown (could be an expandable accordion like yoga styles)
-   - Fascia & Trauma section (TGF-β1 pathway, emotional release mechanism, SE evidence)
-   - Rolfing (brief practitioner-assisted section, like CST)
-   - Cutting-edge science integrated into existing Science section
-2. **Fix remaining 77 a11y contrast violations** — Need to go through breathe (28) and nervous-system (24) page inline styles
-3. **Consider splitting the fascia page** — At 1,800+ lines (and growing), it may benefit from sub-pages or a tab structure like /practice
-4. **Animated breathing circle** on the practice timer — User expressed interest
-5. **SEO + social meta images** — Per-page OG images, structured data
-6. **Clean up old PNG files** — The WebP versions are deployed; PNGs could be removed to save repo size (~27MB)
-7. **Update HANDOVER.md with session stats** — This handover replaces the Session 3 mid-session one
-
----
+1. **Complete Reiki research** — 3 of 6 domains are done. Need to research or write from training knowledge:
+   - Clinical evidence (RCTs, systematic reviews, HRV/cortisol studies, NCCIH position)
+   - The practice (12 hand positions, self-Reiki protocol, hospital programs)
+   - Key researchers (Shamini Jain, Ann Baldwin, David Feinstein)
+   - Available research files are in `/tmp/deep-research/` — read `history.md`, `mechanisms.md`, `meditation-connection.md`
+2. **Synthesize research with Gemini** — concat all specialist outputs, run through `research.py` script
+3. **Build `/reiki` page** — new route at `src/app/reiki/page.tsx` + `ReikiClient.tsx`
+   - Color scheme: warm gold/amber (distinct from existing pages)
+   - Sections: History & Lineage, The Science (honest evidence assessment), Proposed Mechanisms, The Practice (hand positions, self-Reiki protocol), Meditation & NS Connections, Cross-links
+   - Follow existing page patterns (StatCards, ScrollReveal, SectionDivider, inline styles)
+4. **Add Reiki to navigation** — `src/app/layout.tsx` nav links, home page card in `src/app/page.tsx`
+5. **Generate hero image for Reiki** — via `/gemini-image-gen` skill
+6. **Optional: Convert poster frames to WebP** — install `brew install webp` for `cwebp` tool, or use a Node-based converter
 
 ## 8. Important Files Map
 
-| File | Lines | Description |
-|------|-------|-------------|
-| `src/app/manifest/ManifestClient.tsx` | 636 | **New** — 4 sections, Protocol flow, gold accent, research links |
-| `src/app/manifest/page.tsx` | 19 | Server component with manifestation metadata |
-| `src/app/practice/PracticeBuilderTab.tsx` | 824 | **New** — 8 templates × 3 tiers, Daily Routines tab |
-| `src/app/practice/PracticeClient.tsx` | ~800 | Timer + 3 tabs (open, guided, routines), softer bowl sound |
-| `src/app/page.tsx` | ~960 | Landing page — 7-path hero (4+3), 7 info cards |
-| `src/app/layout.tsx` | ~280 | Root layout — 8 nav links, skip-to-content, aria-label |
-| `src/app/globals.css` | ~580 | Design system + micro-interactions + focus rings + sr-only |
-| `src/app/fascia/FasciaClient.tsx` | ~1,800 | Fascia page + CST section + research links |
-| `src/app/breathe/BreatheClient.tsx` | ~1,880 | Breathwork + research links + manifest cross-link |
-| `src/app/nervous-system/NervousSystemClient.tsx` | ~1,900 | Vagus, polyvagal, research links |
-| `src/app/yoga/YogaClient.tsx` | ~350 | 10 styles, research links, fixed video |
-| `src/app/meditate/MeditateClient.tsx` | ~1,160 | Meditation + manifest cross-link |
-
-### Obsidian Research (new this session)
-
-| File | Topic |
-|------|-------|
-| `wellness/fascia-deep-research-synthesis-2026-03.md` | **Gemini synthesis** — evidence map, content recommendations |
-| `wellness/Anatomy-Trains-Myofascial-Lines.md` | Full line breakdown, yoga pose mapping, Wilke 2016 evidence |
-| `wellness/fascia-trauma-somatic-evidence-2026-03.md` | Van der Kolk, Levine, TGF-β1, psoas, SE RCT |
-| `wellness/rolfing-structural-integration-research-2026-03.md` | NHMRC 2024 review, 10-series, evidence table |
-| `wellness/Cutting-Edge-Fascia-Science.md` | Fasciacytes, PIEZO1, Ruffini, fascia-depression |
-| `wellness/craniosacral-therapy-research-2026-03.md` | CST evidence (Cook 2024, Wójcik 2023, CRI critique) |
-| `wellness/Manifestation-Nervous-System.md` | Polyvagal + creation, HRV readiness |
-
----
-
-## Session Stats
-
-- **22 commits pushed** to main
-- **~2,500 lines of new React code** (ManifestClient 636 + PracticeBuilderTab 824 + CST 106 + integrations ~900)
-- **7 Ralph Loops** completed (visual, content, performance, micro-interactions, a11y, CST, research links)
-- **6 deep research agents** dispatched (1 CST + 5 fascia domains)
-- **1 Gemini synthesis** of 94K chars
-- **20 images** converted to WebP (27.1MB → 1.1MB)
-- **17 research citations** linked to source papers
-- **5 colors darkened** for WCAG AA contrast
-- **9 routes live** at https://inner-practice.vercel.app
-- **Zero TypeScript errors** across all builds
+| File | Description |
+|------|-------------|
+| `src/components/VideoAccent.tsx` | New — muted autoplay video with IntersectionObserver play/pause |
+| `src/app/meditate/MeditateClient.tsx` | Modified — added VideoAccent between Foundation and Research |
+| `src/app/yoga/YogaClient.tsx` | Modified — added VideoAccent between Passive Styles and Yoga Nidra |
+| `src/app/fascia/FasciaClient.tsx` | Modified — added VideoAccent, Cupping section, Fascial Fitness section, updated nav/toolkit |
+| `public/videos/*.mp4` | 3 Veo-generated seamless loops (meditation, yoga, fascia) |
+| `public/videos/*-poster.jpg` | 3 poster frames for video loading states |
+| `docs/superpowers/specs/2026-03-13-veo-video-accents-design.md` | Design spec for video accents |
+| `docs/superpowers/plans/2026-03-13-veo-video-accents.md` | Implementation plan for video accents |
+| `/tmp/deep-research/history.md` | Reiki history research (COMPLETE) |
+| `/tmp/deep-research/mechanisms.md` | Reiki mechanisms research (COMPLETE) |
+| `/tmp/deep-research/meditation-connection.md` | Reiki-meditation connections research (COMPLETE) |
+| `/tmp/deep-research/clinical.md` | Reiki clinical evidence (NOT WRITTEN — needs redo) |
+| `/tmp/deep-research/practice.md` | Reiki practice protocol (NOT WRITTEN — needs redo) |
+| `/tmp/deep-research/researchers.md` | Reiki key researchers (NOT WRITTEN — needs redo) |
+| `src/app/layout.tsx` | Global nav — Reiki link needs to be added here |
+| `src/app/page.tsx` | Home page — Reiki card needs to be added to the paths array |
