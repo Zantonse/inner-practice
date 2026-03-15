@@ -1133,25 +1133,22 @@ export default function MeditateClient() {
               Combine it with bottom-up practices for a complete approach.
             </p>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <Link href="/breathe" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
-                Breathwork &rarr;
-              </Link>
-              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
-              <Link href="/yoga" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
-                Yoga &rarr;
-              </Link>
-              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
-              <Link href="/nervous-system" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
-                Nervous System &rarr;
-              </Link>
-              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
-              <Link href="/practice" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
-                Practice Timer &rarr;
-              </Link>
-              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
-              <Link href="/manifest" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
-                Manifest &rarr;
-              </Link>
+              {[
+                { href: '/breathe', label: 'Breathwork' },
+                { href: '/yoga', label: 'Yoga' },
+                { href: '/fascia', label: 'Fascia' },
+                { href: '/reiki', label: 'Reiki' },
+                { href: '/nervous-system', label: 'Nervous System' },
+                { href: '/practice', label: 'Practice Timer' },
+                { href: '/manifest', label: 'Manifest' },
+              ].map((link, i, arr) => (
+                <span key={link.href} style={{ display: 'contents' }}>
+                  <Link href={link.href} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
+                    {link.label} &rarr;
+                  </Link>
+                  {i < arr.length - 1 && <span style={{ color: 'var(--color-border)' }}>&middot;</span>}
+                </span>
+              ))}
             </div>
           </div>
         </ScrollReveal>

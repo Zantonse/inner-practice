@@ -640,6 +640,8 @@ export default function ReikiClient() {
                 { href: '/yoga', label: 'Yoga' },
                 { href: '/fascia', label: 'Fascia' },
                 { href: '/breathe', label: 'Breathe' },
+                { href: '/manifest', label: 'Manifest' },
+                { href: '/practice', label: 'Practice' },
               ].map(link => (
                 <Link
                   key={link.href}

@@ -633,6 +633,8 @@ export default function ManifestClient() {
               <Link href="/nervous-system" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Nervous System &rarr;</Link>
               <span style={{ color: 'var(--color-border)' }}>&middot;</span>
               <Link href="/practice" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Practice &rarr;</Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/reiki" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Reiki &rarr;</Link>
             </div>
           </div>
         </ScrollReveal>

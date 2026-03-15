@@ -1882,6 +1882,18 @@ export default function BreatheClient() {
                 </svg>
                 Fascia
               </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>·</span>
+              <Link href="/reiki" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Reiki &rarr;
+              </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>·</span>
+              <Link href="/nervous-system" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Nervous System &rarr;
+              </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>·</span>
+              <Link href="/practice" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Practice Timer &rarr;
+              </Link>
             </div>
           </ScrollReveal>
         </div>
