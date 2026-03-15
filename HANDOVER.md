@@ -1,8 +1,8 @@
-# HANDOVER — Inner Practice Session 4 (continued)
+# HANDOVER — Inner Practice Session 4 (Final)
 
-**Date:** 2026-03-14/15
+**Date:** 2026-03-15
 **Branch:** `main`
-**Latest commit:** `e1eef50` (cross-links update)
+**Latest commit:** `7f512b3` (cross-links for sound healing + somatics)
 **Repo:** https://github.com/Zantonse/inner-practice
 **Live site:** https://inner-practice.vercel.app
 
@@ -10,83 +10,107 @@
 
 ## Session Summary
 
-Massive session. Added Veo video accents to 3 pages, cupping and fascial fitness sections to fascia, built the entire Reiki page from deep research, updated all cross-links, and researched Reiki learning curriculum. The Reiki learning section is researched but not yet built into the UI.
+Massive session. Built 3 new pages (Reiki, Sound Healing, Somatics), added Veo video accents to 4 pages, added Cupping + Fascial Fitness + Hip Opening sections, updated all cross-links twice, and completed deep research for a Reiki learning curriculum. The site grew from 7 content pages to 10.
 
-## What Got Done
+## Current Site (14 routes)
 
-### Veo Video Accents
-- 3 AI-generated ambient videos (meditation, yoga, fascia) via LiteLLM/Veo 3.1
-- Processed into seamless forward-reverse-crossfade loops with ffmpeg
+| Route | Color | Key Content |
+|-------|-------|-------------|
+| `/` | — | Home page, 5+5 grid |
+| `/meditate` | Violet | Types, videos, research + video accent |
+| `/yoga` | Violet | Active/passive styles, Yoga Nidra, **hip opening (NEW)**, NS connection + video accent |
+| `/fascia` | Amber | Anatomy, gua sha, **cupping (NEW)**, **fascial fitness (NEW)**, toolkit, secrets + video accent |
+| `/breathe` | Teal | 14 techniques |
+| `/nervous-system` | Rose | Polyvagal, vagus nerve, HRV |
+| `/reiki` | Gold | **NEW** — History, science, practice, **learning curriculum**, meditation connection + video accent |
+| `/sound-healing` | Amber | **NEW** — Vibration science, instruments, Nada yoga, sound baths, practice + video accent |
+| `/somatics` | Indigo/teal | **NEW** — SE, TRE, Feldenkrais, Alexander, Rolfing, self-practices + video accent |
+| `/manifest` | Gold | WOOP, visualization, intention science |
+| `/practice` | Violet | Timer with reducer, PracticeBuilderTab with 8 templates |
+
+## Pending: Practice Page Transformation (BRAINSTORMING IN PROGRESS)
+
+Craig wants two things brainstormed and designed:
+
+### 1. Practice Page → Comprehensive Exercise Guide
+
+The current `/practice` page is a timer with templates. Craig wants it transformed into a **"do it" page** — actual guided exercises with step-by-step instructions, timing, and sequences that someone can follow now that they've read and learned about each topic. Think of it as the convergence point: everything taught on the other pages becomes actionable here.
+
+Content to draw from (all already on the site):
+- **Meditation**: Gassho, body scan, Vipassana, loving-kindness (from /meditate)
+- **Yoga**: Sun salutations, hip opening sequence (from /yoga)
+- **Fascia**: Foam rolling protocol, fascial fitness morning routine, self-gua sha, self-cupping (from /fascia)
+- **Breathwork**: Box breathing, Wim Hof, physiological sigh, Bhramari (from /breathe)
+- **Nervous System**: Vagal toning exercises, cold exposure protocol (from /nervous-system)
+- **Reiki**: Self-Reiki 8-position protocol, Hatsurei Ho, Gassho meditation (from /reiki)
+- **Sound Healing**: Bhramari, Om chanting, sound bath (from /sound-healing)
+- **Somatics**: TRE wall sit, constructive rest, Voo sound, orienting, containment (from /somatics)
+
+### 2. Teacher Training Path
+
+Craig wants to learn as many of these modalities as possible and become a teacher. He needs a cohesive path that recognizes these all connect through the nervous system and fascia. This could be:
+- A curriculum page or section showing the learning order
+- Certification paths for each modality
+- How to combine them into a unified teaching practice
+- The underlying framework (everything is nervous system regulation + fascial health)
+
+### Design Approach Needed
+
+Start the next session with:
+```
+pick up from the handover - brainstorm the practice page transformation and teacher training path
+```
+
+The brainstorming skill was invoked but needs to run through its full process:
+1. Explore the current practice page (`src/app/practice/PracticeClient.tsx` + `PracticeBuilderTab.tsx`)
+2. Ask clarifying questions about what exercises Craig wants
+3. Propose 2-3 approaches for the page structure
+4. Design the teacher training path
+5. Write the spec
+
+## What Got Done This Session
+
+### New Pages Built
+- **Reiki** (`/reiki`) — 700+ lines, history, science, practice, learning curriculum, Japanese techniques
+- **Sound Healing** (`/sound-healing`) — Vibration science, 6 instruments, Nada yoga, daily protocol
+- **Somatics** (`/somatics`) — SE, TRE, Feldenkrais, Alexander, Rolfing, 5 self-practices
+
+### New Sections Added
+- **Cupping** on fascia page (compression vs decompression, self-cupping protocol)
+- **Fascial Fitness** on fascia page (Schleip's 4 principles, morning rehydration)
+- **Hip Opening** on yoga page (12 poses, 20-min sequence, emotional release)
+- **Learn Reiki** on reiki page (Level 1/2 curricula, Japanese techniques, daily practice, books)
+
+### Video Accents
+- 4 Veo-generated videos via LiteLLM proxy (meditation, yoga, fascia + reiki, sound healing, somatics)
+- All processed into seamless loops with ffmpeg
 - `VideoAccent` component with IntersectionObserver play/pause
-- Integrated into meditate, yoga, fascia pages
 
-### Fascia Page Additions
-- Cupping & Myofascial Decompression section (compression vs decompression)
-- Fascial Fitness section (Schleip's 4 principles, catapult mechanism)
+### Infrastructure
+- Updated `/veo` and `/veo-multi-shot` skills to use LiteLLM proxy
+- ffmpeg installed via Homebrew
+- All cross-links updated (every page links to every other page)
+- Saved LiteLLM Veo workflow to mem0
 
-### Reiki Page (NEW — full page)
-- Built from 6 parallel deep-research agents (~70K chars)
-- Warm gold color scheme, CSS gradient hero with animated orb
-- Sections: Gokai, History, Science (with honest evidence table), Practice (12 hand positions + self-Reiki protocol), Meditation & NS Connection
-- Veo video accent (golden healing light)
-- Added to nav, home page (8th card, balanced 4x4 grid)
+## Key Files
 
-### Cross-Link Audit & Fix
-- All 7 content pages now cross-link to all other pages
-- Added Reiki links everywhere, filled gaps (fascia→practice, breathe→nervous-system, etc.)
+| File | Lines | Description |
+|------|-------|-------------|
+| `src/app/practice/PracticeClient.tsx` | ~600 | Timer with reducer state machine — TO BE REDESIGNED |
+| `src/app/practice/PracticeBuilderTab.tsx` | ~400 | Routine builder with 8 templates — TO BE REDESIGNED |
+| `src/app/reiki/ReikiClient.tsx` | ~900 | Reiki page with learning section |
+| `src/app/fascia/FasciaClient.tsx` | ~2300 | Largest page (cupping + fascial fitness additions) |
+| `src/app/yoga/YogaClient.tsx` | ~500 | Yoga page with hip opening |
+| `src/app/sound-healing/SoundHealingClient.tsx` | ~250 | Sound healing page |
+| `src/app/somatics/SomaticsClient.tsx` | ~300 | Somatics page |
+| `src/components/VideoAccent.tsx` | ~70 | Video accent component |
+| `public/videos/*.mp4` | 7 files | Veo-generated seamless loops |
 
-### Veo Skill Updates
-- `/veo` and `/veo-multi-shot` SKILL.md files updated to use LiteLLM proxy
+## Lessons Learned
 
-## Current State
-
-- **Build:** Passes (12 pages)
-- **Deployed:** https://inner-practice.vercel.app
-- **Branch:** `main`, commit `e1eef50`
-- **No uncommitted changes**
-
-## Clear Next Steps
-
-### 1. BUILD REIKI LEARNING SECTION (primary task)
-
-5 research files are ready in `/tmp/deep-research/`:
-
-| File | Size | Content |
-|------|------|---------|
-| `reiki-level1.md` | 12K | Shoden curriculum: attunement, 21-day cleanse, hand positions, kenyoku, joshin kokyu ho, gassho, 3-month schedule |
-| `reiki-level2.md` | 12K | Okuden curriculum: 3 symbols (Cho Ku Rei, Sei He Ki, Hon Sha Ze Sho Nen), distance healing, kotodama |
-| `reiki-daily-practice.md` | 12K | Daily routines: morning/evening protocols, weekly deepening, month-by-month first year progression |
-| `reiki-japanese-techniques.md` | 20K | Hatsurei Ho, Kenyoku, Joshin Kokyu Ho, Byosen, Gyoshi Ho, Koki Ho, Reiji Ho, Nentatsu Ho, Jakikiri Joka Ho |
-| `reiki-finding-teacher.md` | 16K | Lineage branches, what to look for, red flags, recommended books, cost expectations |
-
-**Build this as a new section on `/reiki` page** — insert between the Practice section and the Connection section. Use the existing UI patterns:
-- Accordion/expandable items for the level curricula (like fascia toolkit)
-- Timeline nodes for step-by-step techniques
-- Card grids for the Japanese techniques
-- Comparison tables where appropriate
-
-The section should be titled something like "Learn Reiki" or "The Learning Path" and organized as:
-1. Finding a teacher (lineage guidance)
-2. Level 1 curriculum with techniques
-3. Daily practice protocol
-4. Japanese techniques (the advanced practices)
-5. Level 2 curriculum
-6. Recommended reading
-
-### 2. Optional enhancements
-- Generate a hero image for Reiki via `/gemini-image-gen`
-- Add Reiki to the home page hero image (currently uses manifest hero as placeholder)
-
-## Important Files
-
-| File | Description |
-|------|-------------|
-| `src/app/reiki/ReikiClient.tsx` | The Reiki page client component (~700 lines) |
-| `src/app/reiki/page.tsx` | Server component with metadata |
-| `src/components/VideoAccent.tsx` | Ambient video component |
-| `public/videos/reiki-loop.mp4` | Veo-generated golden light video (1.1MB) |
-| `/tmp/deep-research/reiki-level1.md` | Level 1 curriculum research |
-| `/tmp/deep-research/reiki-level2.md` | Level 2 curriculum research |
-| `/tmp/deep-research/reiki-daily-practice.md` | Daily practice routines |
-| `/tmp/deep-research/reiki-japanese-techniques.md` | Japanese technique instructions |
-| `/tmp/deep-research/reiki-finding-teacher.md` | Teacher finding guide |
+- LiteLLM Veo workflow: POST /videos, GET /v1/videos/{id}, GET /v1/videos/{id}/content
+- WebFetch fails for subagents because it uses haiku internally — need model alias in LiteLLM
+- ffmpeg 8.x needs `-update 1` for single frame extraction
+- Brew ffmpeg lacks webp encoder — use JPG posters instead
+- Veo videos generate in parallel and complete in ~30-60 seconds
+- video-loop script doubles clip duration (4s → 7.5s)
