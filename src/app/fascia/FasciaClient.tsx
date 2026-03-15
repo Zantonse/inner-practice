@@ -460,7 +460,7 @@ export default function FasciaClient() {
 
           {/* Anchor nav */}
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {['Science', 'Gua Sha', 'Cupping', 'Toolkit', 'Spirit', 'Secrets'].map(label => (
+            {['Science', 'Gua Sha', 'Cupping', 'Fascial Fitness', 'Toolkit', 'Spirit', 'Secrets'].map(label => (
               <a
                 key={label}
                 href={`#${label.toLowerCase().replace(' ', '-')}`}
@@ -1289,6 +1289,295 @@ export default function FasciaClient() {
                 stat="Multi-pathway mechanism confirmed"
                 detail="Comprehensive review synthesized cupping's circulatory, neurological, immunological, and fascial mechanisms. The most cited modern mechanism paper."
                 url="https://pubmed.ncbi.nlm.nih.gov/30671385/"
+              />
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* ══════════════════════════════════════════════════════
+          FASCIAL FITNESS
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="fascial-fitness"
+        style={{
+          padding: 'clamp(5rem, 8vw, 8rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6.5rem)',
+          background: 'color-mix(in srgb, var(--color-cream) 92%, var(--color-violet-mid))',
+        }}
+      >
+        <div style={{ maxWidth: '1100px' }}>
+          <ScrollReveal>
+            <p
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.6875rem',
+                fontWeight: 500,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--color-text-muted)',
+                margin: '0 0 1rem',
+              }}
+            >
+              Movement Science
+            </p>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-h2)',
+                fontWeight: 400,
+                color: 'var(--color-text)',
+                margin: '0 0 0.75rem',
+              }}
+            >
+              Fascial Fitness
+            </h2>
+            <p
+              style={{
+                color: 'var(--color-text-muted)',
+                marginBottom: '3rem',
+                maxWidth: '56ch',
+                fontSize: 'var(--text-body-lg)',
+                lineHeight: 1.75,
+              }}
+            >
+              Your fascia isn&rsquo;t a passive wrapper &mdash; it&rsquo;s an elastic spring.
+              Dr. Robert Schleip&rsquo;s research at Ulm University reveals that healthy fascia stores and
+              releases kinetic energy like a catapult. Train it right and it carries you. Neglect it
+              and it cements you in place.
+            </p>
+          </ScrollReveal>
+
+          {/* The Catapult Mechanism + Muscle vs Fascia */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
+              gap: 'clamp(2rem, 4vw, 4rem)',
+              marginBottom: '3.5rem',
+            }}
+          >
+            <ScrollReveal>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.5rem',
+                  fontWeight: 600,
+                  color: 'var(--color-text)',
+                  margin: '0 0 1rem',
+                  fontStyle: 'normal',
+                }}
+              >
+                The Catapult Mechanism
+              </h3>
+              <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
+                When you load fascia eccentrically &mdash; lengthen it under tension &mdash; and then release,
+                the stored elastic energy fires like a catapult, requiring <strong>zero metabolic energy</strong> for
+                the release phase. This is how kangaroos hop, how the Achilles tendon returns
+                approximately <strong>35% of running energy</strong> per stride, and why a basketball player bends
+                before jumping.
+              </p>
+              <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
+                The key structure is <strong>collagen crimp</strong> &mdash; the wavy, zigzag arrangement of collagen
+                fibers that acts like a spring. When you pull, the crimp unfolds and stores energy.
+                When you release, it snaps back. Sedentary posture destroys this crimp over years,
+                turning elastic springs into stiff cables. Fascial fitness restores it.
+              </p>
+              <p style={{ lineHeight: 1.85, margin: 0 }}>
+                Counter-movement amplifies the catapult: the pre-stretch in the opposite direction before
+                any primary movement loads the fascial spring more deeply. Counter-movement jumps produce
+                <strong> 10&ndash;15% more height</strong> than dead-stop jumps through elastic storage alone.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.5rem',
+                  fontWeight: 600,
+                  color: 'var(--color-text)',
+                  margin: '0 0 1rem',
+                  fontStyle: 'normal',
+                }}
+              >
+                Muscle Training vs. Fascia Training
+              </h3>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'var(--color-border)', borderRadius: '2px', overflow: 'hidden', marginBottom: '1.5rem' }}>
+                {[
+                  ['', 'Muscle-Focused', 'Fascia-Focused'],
+                  ['Load', 'Heavy, slow', 'Light, bouncy'],
+                  ['Quality', 'Controlled reps', 'Oscillatory, elastic'],
+                  ['Speed', 'Slow tempo', 'Quick recoil'],
+                  ['Adaptation', 'Weeks', '6\u201324 months'],
+                  ['Failure mode', 'Fatigue', 'Stiffness, injury'],
+                ].map((row, i) => (
+                  i === 0 ? (
+                    <div key={i} style={{ display: 'contents' }}>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', gridColumn: '1 / 2' }}>{row[1]}</div>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-amber-deep)' }}>{row[2]}</div>
+                    </div>
+                  ) : (
+                    <div key={i} style={{ display: 'contents' }}>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.625rem 1rem' }}>
+                        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 0.25rem' }}>{row[0]}</p>
+                        <p style={{ fontSize: '0.8125rem', color: 'var(--color-text)', margin: 0 }}>{row[1]}</p>
+                      </div>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.625rem 1rem' }}>
+                        <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 0.25rem' }}>{row[0]}</p>
+                        <p style={{ fontSize: '0.8125rem', color: 'var(--color-text)', margin: 0 }}>{row[2]}</p>
+                      </div>
+                    </div>
+                  )
+                ))}
+              </div>
+              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>
+                The key warning: athletes trained exclusively with heavy resistance often develop
+                powerful muscles inside increasingly stiff, less elastic fascial sheaths. Strength without
+                elasticity is fragile. The strongest body is one where muscle power rides on fascial spring.
+              </p>
+            </ScrollReveal>
+          </div>
+
+          {/* The Four Principles */}
+          <ScrollReveal>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.5rem',
+                fontWeight: 600,
+                color: 'var(--color-text)',
+                margin: '0 0 0.5rem',
+                fontStyle: 'normal',
+              }}
+            >
+              The Four Principles
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, marginBottom: '2rem', maxWidth: '56ch' }}>
+              Schleip and Divo M&uuml;ller&rsquo;s training framework, refined through the International
+              Fascia Research Congress.
+            </p>
+          </ScrollReveal>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+              gap: '1.5rem',
+              marginBottom: '3rem',
+            }}
+          >
+            {[
+              {
+                num: '01',
+                title: 'Elastic Recoil',
+                desc: 'Bouncy, oscillatory movements — skipping, rebounding, mini-trampoline. Load the spring, let it fire. 2\u20133x per week, 5\u201315 minutes.',
+              },
+              {
+                num: '02',
+                title: 'Counter-Movement',
+                desc: 'Pre-stretch in the opposite direction before every primary movement. Wind up to release. Swings, cat-camel oscillations, throwing motions.',
+              },
+              {
+                num: '03',
+                title: 'The Ninja Principle',
+                desc: 'Proprioceptive refinement. Slow attentive movement, eyes-closed balance, variable surfaces. Train fascia\u2019s 250 million sensory nerve endings.',
+              },
+              {
+                num: '04',
+                title: 'Fascial Stretching',
+                desc: 'Long holds (90\u2013120s minimum), multi-planar, yielding. Hydrates the ground substance through thixotropic wringing. Yin yoga is the gold standard.',
+              },
+            ].map((p) => (
+              <ScrollReveal key={p.num}>
+                <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>{p.num}</p>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>{p.title}</h4>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{p.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Morning Protocol */}
+          <ScrollReveal>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.5rem',
+                fontWeight: 600,
+                color: 'var(--color-text)',
+                margin: '0 0 1rem',
+                fontStyle: 'normal',
+              }}
+            >
+              The Morning Rehydration Protocol
+            </h3>
+            <p style={{ lineHeight: 1.85, marginBottom: '1.5rem', maxWidth: '56ch' }}>
+              During sleep, mechanical pumping ceases and hyaluronic acid superaggregates &mdash; your fascial
+              matrix becomes temporarily viscous. The first morning movement is the highest-leverage
+              hydration practice of the day.
+            </p>
+            <div className="timeline" style={{ paddingLeft: '2.5rem', marginBottom: '2.5rem' }}>
+              {[
+                { step: '1', text: 'Drink 500ml water within 30 minutes of waking.' },
+                { step: '2', text: 'Pandiculate — the instinctive yawning stretch. Let it be big, whole-body, undirected. This is evolutionarily ancient fascial rehydration.' },
+                { step: '3', text: '2 minutes of gentle bouncing or rebounding. Feet barely leave the floor. This pumps fluid through the matrix and wakes the spring mechanism.' },
+                { step: '4', text: '2 minutes of multi-directional spinal waves — cat-cow, side bends, gentle twists. Move in every plane.' },
+                { step: '5', text: '1 minute rolling the soles of the feet with a ball. Stimulates the plantar fascia and begins releasing the Superficial Back Line from the ground up.' },
+              ].map((item) => (
+                <div
+                  key={item.step}
+                  style={{ position: 'relative', marginBottom: '1rem' }}
+                >
+                  <div className="timeline-node" style={{ background: 'var(--color-amber-deep)' }}>
+                    {item.step}
+                  </div>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.9rem',
+                      color: 'var(--color-text)',
+                      lineHeight: 1.75,
+                      margin: 0,
+                    }}
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* Research Cards */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+              gap: '1.5rem',
+            }}
+          >
+            <ScrollReveal>
+              <StatCard
+                source="Kawakami et al., 2002"
+                stat="Muscle barely shortens during walking"
+                detail="The Achilles tendon, not the calf muscle, does most of the work during locomotion — storing and returning ~35% of each stride's energy through elastic recoil."
+                url="https://pubmed.ncbi.nlm.nih.gov/12068110/"
+              />
+            </ScrollReveal>
+            <ScrollReveal>
+              <StatCard
+                source="Schleip & Müller, 2013"
+                stat="Fascial fitness: 4-principle framework"
+                detail="Published training guidelines for fascia: elastic recoil, preparatory counter-movement, proprioceptive refinement, and fascial stretching. Foundational paper for the field."
+                url="https://pubmed.ncbi.nlm.nih.gov/23294691/"
+              />
+            </ScrollReveal>
+            <ScrollReveal>
+              <StatCard
+                source="Fascia Research Congress"
+                stat="6–24 month remodeling timeline"
+                detail="Collagen crimp architecture adapts slowly. Consistent oscillatory training produces measurable elasticity improvements, but structural fascial change requires months, not weeks."
               />
             </ScrollReveal>
           </div>
