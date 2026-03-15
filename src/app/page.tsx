@@ -9,7 +9,7 @@ const ROSE_DEEP  = '#8B3A62';
 const ROSE_MID   = '#985575';
 const ROSE_LIGHT = '#E8B4CF';
 
-type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'reiki' | 'manifest' | 'practice';
+type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'sound-healing' | 'somatics' | 'reiki' | 'manifest' | 'practice';
 
 const paths: {
   key: PathKey;
@@ -90,6 +90,32 @@ const paths: {
     accentColor: ROSE_LIGHT,
   },
   {
+    key: 'sound-healing',
+    href: '/sound-healing',
+    eyebrow: 'The path of vibration',
+    title: 'Sound Healing',
+    tagline: 'Vibration as medicine.',
+    image: '/images/hero-manifest.webp',
+    imageAlt: 'Abstract watercolor sound waves illustration',
+    gradFrom: 'oklch(50% 0.08 55)',
+    gradTo: 'oklch(75% 0.06 45)',
+    overlayColor: 'rgba(139,105,20,0.55)',
+    accentColor: '#F0D68A',
+  },
+  {
+    key: 'somatics',
+    href: '/somatics',
+    eyebrow: 'The path of release',
+    title: 'Somatics',
+    tagline: 'The body completes what the mind cannot.',
+    image: '/images/hero-nervous-system.webp',
+    imageAlt: 'Abstract watercolor somatic healing illustration',
+    gradFrom: 'oklch(38% 0.08 255)',
+    gradTo: 'oklch(60% 0.06 240)',
+    overlayColor: 'rgba(45,58,106,0.6)',
+    accentColor: '#5BA8A0',
+  },
+  {
     key: 'reiki',
     href: '/reiki',
     eyebrow: 'The path of presence',
@@ -130,8 +156,8 @@ const paths: {
   },
 ];
 
-const topRow = paths.slice(0, 4);
-const bottomRow = paths.slice(4);
+const topRow = paths.slice(0, 5);
+const bottomRow = paths.slice(5);
 
 export default function HomePage() {
   const [hovered, setHovered] = useState<PathKey | null>(null);

@@ -166,6 +166,36 @@ export default function RootLayout({
                 Nervous System
               </Link>
               <Link
+                href="/sound-healing"
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  transition: 'color 300ms ease',
+                }}
+              >
+                Sound
+              </Link>
+              <Link
+                href="/somatics"
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  transition: 'color 300ms ease',
+                }}
+              >
+                Somatics
+              </Link>
+              <Link
                 href="/reiki"
                 style={{
                   fontFamily: 'var(--font-ui)',
