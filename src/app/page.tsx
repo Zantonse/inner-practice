@@ -9,7 +9,7 @@ const ROSE_DEEP  = '#8B3A62';
 const ROSE_MID   = '#985575';
 const ROSE_LIGHT = '#E8B4CF';
 
-type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'manifest' | 'practice';
+type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'reiki' | 'manifest' | 'practice';
 
 const paths: {
   key: PathKey;
@@ -88,6 +88,19 @@ const paths: {
     gradTo: 'oklch(78% 0.09 350)',
     overlayColor: 'rgba(139,58,98,0.62)',
     accentColor: ROSE_LIGHT,
+  },
+  {
+    key: 'reiki',
+    href: '/reiki',
+    eyebrow: 'The path of presence',
+    title: 'Reiki',
+    tagline: 'Heal through presence and gentle touch.',
+    image: '/images/hero-manifest.webp',
+    imageAlt: 'Abstract watercolor golden healing light illustration',
+    gradFrom: 'oklch(55% 0.10 65)',
+    gradTo: 'oklch(78% 0.08 50)',
+    overlayColor: 'rgba(139,105,20,0.6)',
+    accentColor: '#F0D68A',
   },
   {
     key: 'manifest',
