@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import ScrollReveal from '@/components/ScrollReveal';
 import ExercisesTab from './ExercisesTab';
 import PracticeBuilderTab from './PracticeBuilderTab';
 import TeacherPathTab from './TeacherPathTab';
@@ -92,27 +91,21 @@ export default function PracticeClient() {
 
           {/* ── Tab Content — all always mounted, inactive hidden ── */}
           <div style={{ display: activeTab === 'exercises' ? undefined : 'none' }}>
-            <ScrollReveal>
-              <ExercisesTab
-                expandedExerciseId={expandedExerciseId}
-                preSelectedMinutes={preSelectedMinutes}
-                onExpandExercise={(id) => setExpandedExerciseId(id)}
-              />
-            </ScrollReveal>
+            <ExercisesTab
+              expandedExerciseId={expandedExerciseId}
+              preSelectedMinutes={preSelectedMinutes}
+              onExpandExercise={(id) => setExpandedExerciseId(id)}
+            />
           </div>
 
           <div style={{ display: activeTab === 'routines' ? undefined : 'none' }}>
-            <ScrollReveal>
-              <PracticeBuilderTab
-                onStartPreset={handleStartPreset}
-              />
-            </ScrollReveal>
+            <PracticeBuilderTab
+              onStartPreset={handleStartPreset}
+            />
           </div>
 
           <div style={{ display: activeTab === 'teacher' ? undefined : 'none' }}>
-            <ScrollReveal>
-              <TeacherPathTab />
-            </ScrollReveal>
+            <TeacherPathTab />
           </div>
 
         </div>
