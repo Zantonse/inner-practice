@@ -39,6 +39,7 @@ const videos: Record<Duration, VideoEntry[]> = {
 // ── Meditation Type Data ─────────────────────────────────────
 const meditationTypes = [
   {
+    id: 'breath-awareness',
     icon: '/images/icon-breath.webp',
     name: 'Breath Awareness',
     description: 'Anchor attention to the natural rhythm of breathing.',
@@ -46,6 +47,7 @@ const meditationTypes = [
     iconFallback: '◯',
   },
   {
+    id: 'body-scan',
     icon: '/images/icon-bodyscan.webp',
     name: 'Body Scan',
     description: 'Systematically bring awareness through each part of the body.',
@@ -53,6 +55,7 @@ const meditationTypes = [
     iconFallback: '⬡',
   },
   {
+    id: 'loving-kindness',
     icon: '/images/icon-loving-kindness.webp',
     name: 'Loving-Kindness',
     description: 'Cultivate compassion toward yourself and others.',
@@ -60,6 +63,7 @@ const meditationTypes = [
     iconFallback: '♡',
   },
   {
+    id: 'visualization',
     icon: '/images/icon-visualization.webp',
     name: 'Guided Visualization',
     description: 'Use mental imagery to reach deeper states of relaxation.',
@@ -67,6 +71,7 @@ const meditationTypes = [
     iconFallback: '◈',
   },
   {
+    id: 'yoga-nidra',
     icon: '/images/icon-yoga-nidra.webp',
     name: 'Yoga Nidra',
     description: 'A state between sleep and waking — profound rest.',
@@ -74,6 +79,7 @@ const meditationTypes = [
     iconFallback: '◑',
   },
   {
+    id: 'walking-meditation',
     icon: '/images/icon-walking.webp',
     name: 'Walking Meditation',
     description: 'Bring full mindful presence to each step you take.',
@@ -442,6 +448,7 @@ export default function MeditateClient() {
             {meditationTypes.map((type, i) => (
               <div
                 key={type.name}
+                id={type.id}
                 className="card reveal"
                 style={{
                   padding: '2rem 1.75rem',

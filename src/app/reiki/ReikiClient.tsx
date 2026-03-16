@@ -482,6 +482,7 @@ export default function ReikiClient() {
           </div>
 
           {/* Self-Reiki Protocol */}
+          <div id="self-reiki" />
           <ScrollReveal>
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', fontStyle: 'normal' }}>Daily Self-Reiki Protocol</h3>
             <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', maxWidth: '56ch', lineHeight: 1.75 }}>
@@ -574,15 +575,15 @@ export default function ReikiClient() {
           </ScrollReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
             {[
-              { jp: 'Hatsurei Ho', kanji: '発霊法', en: 'Awakening Spirit', desc: 'The complete daily practice: Kenyoku \u2192 Joshin Kokyu Ho \u2192 Gassho in a 20\u201345 min seated sequence. The container for all other techniques.' },
-              { jp: 'Kenyoku Ho', kanji: '乾浴法', en: 'Dry Bathing', desc: '3 diagonal chest sweeps + 3 arm sweeps. Firm pressure, exhale on each stroke. Clears the practitioner\u2019s energy field before and after sessions.' },
-              { jp: 'Joshin Kokyu Ho', kanji: '浄心呼吸法', en: 'Cleansing Breath', desc: 'Inhale through crown to hara (lower abdomen). Brief hold, radiate Ki outward. Exhale to release. 10\u201320 minutes. Activates hands for treatment.' },
-              { jp: 'Byosen Reikan Ho', kanji: '病腺霊感法', en: 'Intuitive Scanning', desc: 'Palms 2\u20136 inches above the body, head to feet. 5 levels of sensation: warmth \u2192 heat \u2192 tingling \u2192 pulsing \u2192 pain. The diagnostic foundation of Japanese Reiki.' },
-              { jp: 'Reiji Ho', kanji: '霊示法', en: 'Guided Placement', desc: 'Letting hands be drawn intuitively to where healing is needed. Trust the first impulse. Usui\u2019s original method \u2014 fixed positions came later.' },
-              { jp: 'Gyoshi Ho', kanji: '凝視法', en: 'Healing Gaze', desc: 'Directing Ki through softened eyes. For areas impractical to touch. Combine with hand treatment for dual-channel healing.' },
+              { jp: 'Hatsurei Ho', id: 'hatsurei-ho', kanji: '発霊法', en: 'Awakening Spirit', desc: 'The complete daily practice: Kenyoku \u2192 Joshin Kokyu Ho \u2192 Gassho in a 20\u201345 min seated sequence. The container for all other techniques.' },
+              { jp: 'Kenyoku Ho', id: 'kenyoku-ho', kanji: '乾浴法', en: 'Dry Bathing', desc: '3 diagonal chest sweeps + 3 arm sweeps. Firm pressure, exhale on each stroke. Clears the practitioner\u2019s energy field before and after sessions.' },
+              { jp: 'Joshin Kokyu Ho', id: 'joshin-kokyu-ho', kanji: '浄心呼吸法', en: 'Cleansing Breath', desc: 'Inhale through crown to hara (lower abdomen). Brief hold, radiate Ki outward. Exhale to release. 10\u201320 minutes. Activates hands for treatment.' },
+              { jp: 'Byosen Reikan Ho', id: 'byosen-reikan-ho', kanji: '病腺霊感法', en: 'Intuitive Scanning', desc: 'Palms 2\u20136 inches above the body, head to feet. 5 levels of sensation: warmth \u2192 heat \u2192 tingling \u2192 pulsing \u2192 pain. The diagnostic foundation of Japanese Reiki.' },
+              { jp: 'Reiji Ho', id: 'reiji-ho', kanji: '霊示法', en: 'Guided Placement', desc: 'Letting hands be drawn intuitively to where healing is needed. Trust the first impulse. Usui\u2019s original method \u2014 fixed positions came later.' },
+              { jp: 'Gyoshi Ho', id: 'gyoshi-ho', kanji: '凝視法', en: 'Healing Gaze', desc: 'Directing Ki through softened eyes. For areas impractical to touch. Combine with hand treatment for dual-channel healing.' },
             ].map(t => (
               <ScrollReveal key={t.jp}>
-                <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
+                <div id={t.id} style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
                   <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', color: GOLD_DEEP, margin: '0 0 0.25rem' }}>{t.kanji}</p>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.25rem', fontStyle: 'normal' }}>{t.jp}</h4>
                   <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-text-muted)', fontStyle: 'italic', margin: '0 0 0.75rem' }}>{t.en}</p>
@@ -593,6 +594,7 @@ export default function ReikiClient() {
           </div>
 
           {/* Daily Practice Protocol */}
+          <div id="gassho" />
           <ScrollReveal>
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', fontStyle: 'normal' }}>The Daily Practice</h3>
             <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, marginBottom: '2rem', maxWidth: '56ch' }}>

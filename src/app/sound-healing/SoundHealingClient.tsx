@@ -93,15 +93,15 @@ export default function SoundHealingClient() {
           </ScrollReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
             {[
-              { name: 'Tibetan Singing Bowls', desc: 'Hand-hammered bronze alloys producing rich multi-harmonic tones. The beating effect between harmonics entrains brainwaves. Striking gives transient tone; rimming gives continuous.' },
-              { name: 'Crystal Singing Bowls', desc: 'Spun from fused quartz. Purer sustained tone with fewer overtones. Louder and effective for group sessions. Each bowl tuned to a specific note.' },
-              { name: 'Binaural Beats', desc: 'Two slightly different frequencies in each ear (headphones required). The brain generates a pulsing perception at the difference frequency. Garcia-Argibay 2019: moderate evidence for anxiety reduction.' },
-              { name: 'Mantra & Chanting', desc: 'Om traverses the entire vocal cavity. The terminal "M" produces strong laryngeal vibration activating vagal mechanoreceptors. Kirtan synchronizes group respiration and co-regulation.' },
-              { name: 'Tuning Forks', desc: 'Weighted forks (128 Hz) pressed on bone transmit vibration through bone conduction. Stimulates proprioceptors and pain gating. Used in neurology for vibration-sense testing.' },
-              { name: 'The Human Voice', desc: 'Humming is the most accessible sound practice. Bhramari pranayama (bee breath): sustained "hmmmm" on exhale. 5\u201310 min produces measurable heart rate and blood pressure reductions.' },
+              { id: 'singing-bowls', name: 'Tibetan Singing Bowls', desc: 'Hand-hammered bronze alloys producing rich multi-harmonic tones. The beating effect between harmonics entrains brainwaves. Striking gives transient tone; rimming gives continuous.' },
+              { id: 'crystal-bowls', name: 'Crystal Singing Bowls', desc: 'Spun from fused quartz. Purer sustained tone with fewer overtones. Louder and effective for group sessions. Each bowl tuned to a specific note.' },
+              { id: 'binaural-beats', name: 'Binaural Beats', desc: 'Two slightly different frequencies in each ear (headphones required). The brain generates a pulsing perception at the difference frequency. Garcia-Argibay 2019: moderate evidence for anxiety reduction.' },
+              { id: 'chanting', name: 'Mantra & Chanting', desc: 'Om traverses the entire vocal cavity. The terminal "M" produces strong laryngeal vibration activating vagal mechanoreceptors. Kirtan synchronizes group respiration and co-regulation.' },
+              { id: 'tuning-forks', name: 'Tuning Forks', desc: 'Weighted forks (128 Hz) pressed on bone transmit vibration through bone conduction. Stimulates proprioceptors and pain gating. Used in neurology for vibration-sense testing.' },
+              { id: 'bhramari', name: 'The Human Voice', desc: 'Humming is the most accessible sound practice. Bhramari pranayama (bee breath): sustained "hmmmm" on exhale. 5\u201310 min produces measurable heart rate and blood pressure reductions.' },
             ].map(t => (
               <ScrollReveal key={t.name}>
-                <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
+                <div id={t.id} style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>{t.name}</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{t.desc}</p>
                 </div>
@@ -117,7 +117,7 @@ export default function SoundHealingClient() {
               <p style={{ lineHeight: 1.85, margin: 0 }}>Nada meditation involves sealing the ears (Shanmukhi Mudra) and listening inward, progressing through subtler inner sounds &mdash; ocean, thunder, bells, flutes, bees &mdash; to the primordial vibration.</p>
             </ScrollReveal>
             <ScrollReveal>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1rem', fontStyle: 'normal' }}>Sound Baths</h3>
+              <h3 id="sound-bath" style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1rem', fontStyle: 'normal' }}>Sound Baths</h3>
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>Participants lie supine while a practitioner plays continuously for 30&ndash;90 minutes: crystal and Tibetan bowls, gongs, chimes, tingsha cymbals, shruti box, and voice.</p>
               <p style={{ lineHeight: 1.85, margin: 0 }}>Physical stillness, darkness, and continuous complex auditory input create conditions for <strong>theta brainwave dominance</strong> (4&ndash;8 Hz). Acoustic driving prevents full sleep while enabling very deep relaxation. Hypnagogic imagery is common.</p>
             </ScrollReveal>

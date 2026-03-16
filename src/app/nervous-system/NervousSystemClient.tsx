@@ -95,6 +95,7 @@ function TechniqueItem({
   const lc = levelColor(item.level);
   return (
     <div
+      id={item.id}
       style={{
         background: 'var(--color-surface-raised)',
         border: `1px solid ${isOpen ? ROSE_MID : 'var(--color-border)'}`,

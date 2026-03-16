@@ -125,6 +125,7 @@ function ToolCard({
 // ── Toolkit Accordion Item ────────────────────────────────────
 function ToolkitItem({
   number,
+  id,
   name,
   tagline,
   body,
@@ -133,6 +134,7 @@ function ToolkitItem({
   onToggle,
 }: {
   number: number;
+  id?: string;
   name: string;
   tagline: string;
   body: string;
@@ -141,7 +143,7 @@ function ToolkitItem({
   onToggle: () => void;
 }) {
   return (
-    <div style={{ position: 'relative', marginBottom: '1.25rem' }}>
+    <div id={id} style={{ position: 'relative', marginBottom: '1.25rem' }}>
       <div className="timeline-node">{number}</div>
       <div
         style={{
@@ -269,6 +271,7 @@ function ToolkitItem({
 const toolkitItems = [
   {
     number: 1,
+    id: 'mfr',
     name: 'John Barnes MFR',
     tagline: 'Myofascial Release',
     body: 'The John F. Barnes method is the gold standard of hands-on fascial work. It relies on one critical factor: time. Gentle, sustained pressure must be held for 90–120 seconds minimum before fascial tissue begins to "creep" — its slow, viscoelastic yielding. Most massage is too fast to reach the fascia; MFR waits for it. Therapists apply gentle, cross-hand compression or stretching into the tissue barrier, then hold without movement until release is felt.',
@@ -276,6 +279,7 @@ const toolkitItems = [
   },
   {
     number: 2,
+    id: 'toolkit-cupping',
     name: 'Cupping',
     tagline: 'Myofascial Decompression',
     body: 'The complement to gua sha: where scraping compresses and shears, cupping lifts and separates. Negative pressure (–200 to –400 mmHg) draws skin and superficial fascia away from the muscle, separating adhered layers and drawing blood into hypoxic tissue. Christopher DaPrato\'s Myofascial Decompression protocol combines cup placement with active movement — placing a cup on the posterior hip and performing slow hip circles amplifies the mechanotransduction signal dramatically. Silicone cups make this accessible at home without fire or pumps.',
@@ -283,6 +287,7 @@ const toolkitItems = [
   },
   {
     number: 3,
+    id: 'foam-rolling',
     name: 'Foam Rolling',
     tagline: 'Self-Myofascial Release',
     body: 'Science confirms foam rolling improves short-term range of motion, reduces muscle soreness (DOMS), and may decrease perception of pain. The mechanism is debated: it likely works through neurological feedback (reducing muscle guarding) as much as through direct structural tissue change. An evidence-based protocol: roll slowly (1 inch per second), pause on tender spots for 20–30 seconds, and work the tissue proximal to the pain point rather than directly on it.',

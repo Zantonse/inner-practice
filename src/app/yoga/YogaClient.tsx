@@ -174,7 +174,7 @@ export default function YogaClient() {
       />
 
       {/* 03 — YOGA NIDRA */}
-      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
+      <section id="yoga-nidra" style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
         <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>03 — Yoga Nidra: The Deep Dive</div>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>
@@ -257,7 +257,7 @@ export default function YogaClient() {
       <SectionDivider flip />
 
       {/* 04 — FIND YOUR PATH */}
-      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${VIOLET_MID} 10%, var(--color-cream)) 100%)` }}>
+      <section id="pose-hold" style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${VIOLET_MID} 10%, var(--color-cream)) 100%)` }}>
         <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>04 — Find Your Path</div>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>
@@ -292,7 +292,7 @@ export default function YogaClient() {
       <SectionDivider />
 
       {/* 05 — HIP OPENING */}
-      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${VIOLET_MID} 8%, var(--color-cream)) 100%)` }}>
+      <section id="hip-opening" style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${VIOLET_MID} 8%, var(--color-cream)) 100%)` }}>
         <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>05 — Hip Opening</div>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>

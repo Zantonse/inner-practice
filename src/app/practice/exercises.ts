@@ -11,7 +11,7 @@ export const EXERCISES: Exercise[] = [
     level: 'beginner',
     duration: '1–3 breaths',
     description: 'Double inhale through the nose, long exhale through the mouth. Fastest known calm-down signal.',
-    learnMorePath: '/breathe#physiological-sigh',
+    learnMorePath: '/breathe#physio-sigh',
     phases: [
       { label: 'Sniff In', duration: 2 },
       { label: 'Sniff In', duration: 1 },
@@ -46,7 +46,7 @@ export const EXERCISES: Exercise[] = [
     level: 'beginner',
     duration: '2–5 min',
     description: "Dr. Andrew Weil's calming breath. Activates the vagus nerve.",
-    learnMorePath: '/breathe#4-7-8-breathing',
+    learnMorePath: '/breathe#4-7-8',
     phases: [
       { label: 'Inhale', duration: 4 },
       { label: 'Hold', duration: 7 },
@@ -63,7 +63,7 @@ export const EXERCISES: Exercise[] = [
     level: 'beginner',
     duration: '5–15 min',
     description: 'Deep belly breathing that activates the parasympathetic nervous system.',
-    learnMorePath: '/breathe#diaphragmatic-breathing',
+    learnMorePath: '/breathe#diaphragmatic',
     instructions: [
       'Place one hand on your chest, one on your belly.',
       'Breathe in slowly through the nose — feel your belly rise, chest stays still.',
@@ -117,7 +117,7 @@ export const EXERCISES: Exercise[] = [
     level: 'beginner',
     duration: '10–20 min',
     description: '5.5s in, 5.5s out at ~5.5 breaths per minute. Maximizes vagal tone.',
-    learnMorePath: '/breathe#coherent-breathing',
+    learnMorePath: '/breathe#coherent',
     phases: [
       { label: 'Inhale', duration: 5.5 },
       { label: 'Exhale', duration: 5.5 },
@@ -533,7 +533,7 @@ export const EXERCISES: Exercise[] = [
     level: 'intermediate',
     duration: '1–3 min',
     description: 'Cold exposure builds stress resilience and dopamine. Start with 30 seconds.',
-    learnMorePath: '/nervous-system#cold-exposure',
+    learnMorePath: '/nervous-system#cold-showers',
     phases: [{ label: 'Cold Exposure', duration: 60 }],
     defaultCycles: 1,
     defaultRounds: 1,
@@ -546,7 +546,7 @@ export const EXERCISES: Exercise[] = [
     level: 'beginner',
     duration: '2–5 min',
     description: 'Ear massage targets the auricular branch of the vagus nerve (ABVN).',
-    learnMorePath: '/nervous-system#auricular',
+    learnMorePath: '/nervous-system#auricular-massage',
     instructions: [
       'Gently massage the outer ear (tragus and concha) between thumb and forefinger.',
       'Apply gentle pressure in circular motions for 2-3 minutes.',
