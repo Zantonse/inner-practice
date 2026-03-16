@@ -75,6 +75,7 @@ export default function RootLayout({
             {/* Brand */}
             <Link
               href="/"
+              className="nav-brand"
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: '1.375rem',
@@ -82,6 +83,8 @@ export default function RootLayout({
                 letterSpacing: '0.03em',
                 color: 'var(--color-violet-deep)',
                 textDecoration: 'none',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
               }}
             >
               Inner Practice

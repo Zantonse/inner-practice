@@ -544,7 +544,13 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   .site-nav {
-    padding: 0 1rem;
+    padding: 0 0.75rem;
+  }
+
+  .nav-brand {
+    font-size: 1rem !important;
+    letter-spacing: 0 !important;
+    margin-right: 0.5rem;
   }
 
   .nav-links {
