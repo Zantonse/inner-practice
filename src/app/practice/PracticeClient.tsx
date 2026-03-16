@@ -104,8 +104,7 @@ export default function PracticeClient() {
           <div style={{ display: activeTab === 'routines' ? undefined : 'none' }}>
             <ScrollReveal>
               <PracticeBuilderTab
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onStartPreset={handleStartPreset as any}
+                onStartPreset={handleStartPreset}
               />
             </ScrollReveal>
           </div>

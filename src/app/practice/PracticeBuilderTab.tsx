@@ -35,7 +35,7 @@ interface RoutineTemplate {
 }
 
 interface PracticeBuilderTabProps {
-  onStartPreset?: (presetId: string) => void;
+  onStartPreset?: (exerciseId: string, minutes: number) => void;
 }
 
 function getTotalMinutes(blocks: RoutineBlock[]): number {
@@ -53,7 +53,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'rw-q-1', title: 'Coherent Breathing', duration: 5, description: 'Five and a half seconds in, five and a half seconds out. Brings heart rate variability into coherence and shifts the nervous system toward ventral vagal.', why: 'Regulate: establish nervous system safety before the workday begins.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'rw-q-1', title: 'Coherent Breathing', duration: 6, description: 'Five and a half seconds in, five and a half seconds out. Brings heart rate variability into coherence and shifts the nervous system toward ventral vagal.', why: 'Regulate: establish nervous system safety before the workday begins.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
           ],
         },
         {
@@ -67,8 +67,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'rw-s-1', title: 'Coherent Breathing', duration: 5, description: 'Five and a half seconds in, five and a half seconds out. Brings HRV into coherence.', why: 'Regulate: shift the ANS toward safety.', timerPreset: 'coherent', pageLink: '/breathe' },
-            { id: 'rw-s-2', title: 'Seated Meditation', duration: 10, description: 'Open monitoring or focused attention. Sit comfortably, observe without engaging.', why: 'Resource: build attentional capacity for the day ahead.', timerPreset: 'med-10', pageLink: '/meditate' },
+            { id: 'rw-s-1', title: 'Coherent Breathing', duration: 6, description: 'Five and a half seconds in, five and a half seconds out. Brings HRV into coherence.', why: 'Regulate: shift the ANS toward safety.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
+            { id: 'rw-s-2', title: 'Seated Meditation', duration: 10, description: 'Open monitoring or focused attention. Sit comfortably, observe without engaging.', why: 'Resource: build attentional capacity for the day ahead.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
         {
@@ -88,8 +88,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate & Resource',
           practices: [
-            { id: 'rw-d-1', title: 'Coherent Breathing', duration: 10, description: 'Extended coherence session. Five and a half seconds in, five and a half seconds out. Feel the shift from sympathetic to ventral vagal.', why: 'Regulate: deep nervous system reset.', timerPreset: 'coherent', pageLink: '/breathe' },
-            { id: 'rw-d-2', title: 'Seated Meditation', duration: 20, description: 'Open monitoring meditation. Observe thoughts, sensations, and sounds without engaging.', why: 'Resource: build the sustained attention that supports clarity throughout the day.', timerPreset: 'med-20', pageLink: '/meditate' },
+            { id: 'rw-d-1', title: 'Coherent Breathing', duration: 11, description: 'Extended coherence session. Five and a half seconds in, five and a half seconds out. Feel the shift from sympathetic to ventral vagal.', why: 'Regulate: deep nervous system reset.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
+            { id: 'rw-d-2', title: 'Seated Meditation', duration: 20, description: 'Open monitoring meditation. Observe thoughts, sensations, and sounds without engaging.', why: 'Resource: build the sustained attention that supports clarity throughout the day.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
         {
@@ -118,13 +118,13 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'oc-q-1', title: 'Box Breathing', duration: 5, description: 'Inhale 4 counts, hold 4, exhale 4, hold 4. Commute-friendly — no mat required. Can be done in transit or before leaving home.', why: 'Regulate: shift out of morning rush sympathetic activation before the workday begins.', timerPreset: 'box', pageLink: '/breathe' },
+            { id: 'oc-q-1', title: 'Box Breathing', duration: 5, description: 'Inhale 4 counts, hold 4, exhale 4, hold 4. Commute-friendly — no mat required. Can be done in transit or before leaving home.', why: 'Regulate: shift out of morning rush sympathetic activation before the workday begins.', timerPreset: 'breath-box', pageLink: '/breathe' },
           ],
         },
         {
           time: 'evening', label: 'Evening — Intend',
           practices: [
-            { id: 'oc-q-2', title: 'Seated Meditation', duration: 10, description: 'Sit comfortably. Observe breath, thoughts, and sensations without engaging. Let the day settle.', why: 'Intend: create a clean transition from work mind to home mind.', timerPreset: 'med-10', pageLink: '/meditate' },
+            { id: 'oc-q-2', title: 'Seated Meditation', duration: 10, description: 'Sit comfortably. Observe breath, thoughts, and sensations without engaging. Let the day settle.', why: 'Intend: create a clean transition from work mind to home mind.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
       ],
@@ -132,8 +132,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'oc-s-1', title: 'Box Breathing', duration: 5, description: 'Inhale 4, hold 4, exhale 4, hold 4. Equal-ratio breathing activates the parasympathetic without requiring a reclining position.', why: 'Regulate: establish calm coherence before commuting.', timerPreset: 'box', pageLink: '/breathe' },
-            { id: 'oc-s-2', title: 'Physiological Sighs', duration: 5, description: 'Double inhale through the nose, long exhale through the mouth. The fastest known method to offload CO2 and reduce acute anxiety.', why: 'Regulate: rapidly discharge residual stress before heading into a social environment.', timerPreset: 'sigh', pageLink: '/breathe' },
+            { id: 'oc-s-1', title: 'Box Breathing', duration: 5, description: 'Inhale 4, hold 4, exhale 4, hold 4. Equal-ratio breathing activates the parasympathetic without requiring a reclining position.', why: 'Regulate: establish calm coherence before commuting.', timerPreset: 'breath-box', pageLink: '/breathe' },
+            { id: 'oc-s-2', title: 'Physiological Sighs', duration: 5, description: 'Double inhale through the nose, long exhale through the mouth. The fastest known method to offload CO2 and reduce acute anxiety.', why: 'Regulate: rapidly discharge residual stress before heading into a social environment.', timerPreset: 'breath-sigh', pageLink: '/breathe' },
           ],
         },
         {
@@ -145,7 +145,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'evening', label: 'Evening — Intend',
           practices: [
-            { id: 'oc-s-4', title: 'Seated Meditation', duration: 15, description: 'Open monitoring. Sit for 15 minutes and let the office residue dissolve. No technique required — simply witness.', why: 'Intend: clear the cognitive and emotional residue of the workday.', timerPreset: 'med-10', pageLink: '/meditate' },
+            { id: 'oc-s-4', title: 'Seated Meditation', duration: 15, description: 'Open monitoring. Sit for 15 minutes and let the office residue dissolve. No technique required — simply witness.', why: 'Intend: clear the cognitive and emotional residue of the workday.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
       ],
@@ -153,8 +153,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'oc-d-1', title: 'Box Breathing', duration: 10, description: 'Extended box breathing session. Equal-ratio 4-4-4-4 for nervous system coherence. Extend to 5-5-5-5 as it becomes comfortable.', why: 'Regulate: a full 10 minutes of box breathing measurably reduces cortisol and heart rate.', timerPreset: 'box', pageLink: '/breathe' },
-            { id: 'oc-d-2', title: 'Seated Meditation', duration: 10, description: 'Focused attention on breath. When the mind wanders, note it and return. This noticing-and-returning is the training.', why: 'Resource: 10 minutes of focused attention improves sustained concentration for 2-3 hours post-practice.', timerPreset: 'med-10', pageLink: '/meditate' },
+            { id: 'oc-d-1', title: 'Box Breathing', duration: 10, description: 'Extended box breathing session. Equal-ratio 4-4-4-4 for nervous system coherence. Extend to 5-5-5-5 as it becomes comfortable.', why: 'Regulate: a full 10 minutes of box breathing measurably reduces cortisol and heart rate.', timerPreset: 'breath-box', pageLink: '/breathe' },
+            { id: 'oc-d-2', title: 'Seated Meditation', duration: 10, description: 'Focused attention on breath. When the mind wanders, note it and return. This noticing-and-returning is the training.', why: 'Resource: 10 minutes of focused attention improves sustained concentration for 2-3 hours post-practice.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
         {
@@ -166,8 +166,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'evening', label: 'Evening — Intend & Receive',
           practices: [
-            { id: 'oc-d-4', title: 'Seated Meditation', duration: 20, description: 'Open monitoring for 20 minutes. Allow the full day to be witnessed — the wins, the friction, the unfinished threads. No fixing required.', why: 'Intend: deep witnessing creates the internal space where new intentions can be planted.', timerPreset: 'med-20', pageLink: '/meditate' },
-            { id: 'oc-d-5', title: '4-7-8 Breathing', duration: 5, description: 'Inhale 4, hold 7, exhale 8. The extended exhale activates the dorsal vagal brake and prepares the nervous system for deep rest.', why: 'Receive: signal the body that the workday is fully complete. Permission to stop.', timerPreset: '478', pageLink: '/breathe' },
+            { id: 'oc-d-4', title: 'Seated Meditation', duration: 20, description: 'Open monitoring for 20 minutes. Allow the full day to be witnessed — the wins, the friction, the unfinished threads. No fixing required.', why: 'Intend: deep witnessing creates the internal space where new intentions can be planted.', timerPreset: 'med-breath', pageLink: '/meditate' },
+            { id: 'oc-d-5', title: '4-7-8 Breathing', duration: 5, description: 'Inhale 4, hold 7, exhale 8. The extended exhale activates the dorsal vagal brake and prepares the nervous system for deep rest.', why: 'Receive: signal the body that the workday is fully complete. Permission to stop.', timerPreset: 'breath-478', pageLink: '/breathe' },
           ],
         },
       ],
@@ -183,7 +183,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Resource',
           practices: [
-            { id: 'wr-q-1', title: 'Coherent Breathing', duration: 10, description: 'Five and a half seconds in, five and a half seconds out. The weekend gives you time to fully arrive in the practice. Let the coherence deepen.', why: 'Resource: longer coherence sessions build cumulative HRV resilience over the week.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'wr-q-1', title: 'Coherent Breathing', duration: 11, description: 'Five and a half seconds in, five and a half seconds out. The weekend gives you time to fully arrive in the practice. Let the coherence deepen.', why: 'Resource: longer coherence sessions build cumulative HRV resilience over the week.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
           ],
         },
         {
@@ -197,7 +197,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Resource',
           practices: [
-            { id: 'wr-s-1', title: 'Coherent Breathing', duration: 10, description: 'Five and a half seconds in, five and a half seconds out. Extended morning coherence session.', why: 'Resource: build the HRV baseline that buffers stress throughout the coming week.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'wr-s-1', title: 'Coherent Breathing', duration: 11, description: 'Five and a half seconds in, five and a half seconds out. Extended morning coherence session.', why: 'Resource: build the HRV baseline that buffers stress throughout the coming week.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
             { id: 'wr-s-2', title: 'Yoga Flow', duration: 15, description: 'Sun salutations and standing poses. Move with breath, not against it. The weekend gives you time to stay in poses and feel the tissue respond.', why: 'Resource: fluid movement flushes metabolic waste from connective tissue loaded during the week.', pageLink: '/yoga' },
           ],
         },
@@ -218,7 +218,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Resource',
           practices: [
-            { id: 'wr-d-1', title: 'Coherent Breathing', duration: 15, description: 'Fifteen minutes of heart coherence. The first five minutes shift the system; the next ten restructure it. Stay through any restlessness.', why: 'Resource: extended coherence sessions create measurable shifts in autonomic tone that persist for days.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'wr-d-1', title: 'Coherent Breathing', duration: 15, description: 'Fifteen minutes of heart coherence. The first five minutes shift the system; the next ten restructure it. Stay through any restlessness.', why: 'Resource: extended coherence sessions create measurable shifts in autonomic tone that persist for days.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
             { id: 'wr-d-2', title: 'Yoga Flow', duration: 25, description: 'Unhurried yoga practice. Sun salutations to warm, standing sequence, floor work, and a 5-minute savasana. Let the body set the pace.', why: 'Resource: the combination of breath, movement, and sustained holds addresses all layers — muscle, fascia, and nervous system.', pageLink: '/yoga' },
           ],
         },
@@ -232,7 +232,7 @@ const TEMPLATES: RoutineTemplate[] = [
           time: 'evening', label: 'Evening — Receive',
           practices: [
             { id: 'wr-d-4', title: 'Yoga Nidra', duration: 30, description: 'Extended Nidra session. Complete body rotation, sense withdrawal, visualization, and deep sankalpa planting. The 30-minute format reaches the deepest restoration states.', why: 'Receive: the longest format penetrates chronic holding patterns that shorter sessions cannot reach.', pageLink: '/yoga' },
-            { id: 'wr-d-5', title: 'Yin Hold Closing', duration: 10, description: 'One or two long yin holds — dragon pose or supported fish — as the Nidra afterglow settles. Stay for 5 minutes each side. Breathe into resistance.', why: 'Receive: yin holds in a post-Nidra state allow the deepest fascial release, when the nervous system is most receptive.', timerPreset: 'yin-hold', pageLink: '/yoga' },
+            { id: 'wr-d-5', title: 'Yin Hold Closing', duration: 10, description: 'One or two long yin holds — dragon pose or supported fish — as the Nidra afterglow settles. Stay for 5 minutes each side. Breathe into resistance.', why: 'Receive: yin holds in a post-Nidra state allow the deepest fascial release, when the nervous system is most receptive.', timerPreset: 'yoga-posehold', pageLink: '/yoga' },
           ],
         },
       ],
@@ -248,7 +248,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'hs-q-1', title: 'Physiological Sighs', duration: 5, description: 'Double inhale through the nose, long slow exhale through the mouth. Repeat for 5 minutes. The fastest tool to reduce acute physiological stress.', why: 'Regulate: physiological sighs offload CO2 faster than any other breath pattern, rapidly reducing the panic signal.', timerPreset: 'sigh', pageLink: '/breathe' },
+            { id: 'hs-q-1', title: 'Physiological Sighs', duration: 5, description: 'Double inhale through the nose, long slow exhale through the mouth. Repeat for 5 minutes. The fastest tool to reduce acute physiological stress.', why: 'Regulate: physiological sighs offload CO2 faster than any other breath pattern, rapidly reducing the panic signal.', timerPreset: 'breath-sigh', pageLink: '/breathe' },
           ],
         },
         {
@@ -262,8 +262,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'hs-s-1', title: 'Physiological Sighs', duration: 5, description: 'Double inhale, long exhale. Repeat. Prioritize the exhale — make it twice as long as the inhale.', why: 'Regulate: exhale-dominant breathing activates the vagal brake and reduces heart rate within minutes.', timerPreset: 'sigh', pageLink: '/breathe' },
-            { id: 'hs-s-2', title: 'Box Breathing', duration: 5, description: 'After the sighs, transition to box breathing to stabilize: inhale 4, hold 4, exhale 4, hold 4. Box breathing consolidates the regulation.', why: 'Regulate: box breathing sustains the coherence state initiated by the sighs.', timerPreset: 'box', pageLink: '/breathe' },
+            { id: 'hs-s-1', title: 'Physiological Sighs', duration: 5, description: 'Double inhale, long exhale. Repeat. Prioritize the exhale — make it twice as long as the inhale.', why: 'Regulate: exhale-dominant breathing activates the vagal brake and reduces heart rate within minutes.', timerPreset: 'breath-sigh', pageLink: '/breathe' },
+            { id: 'hs-s-2', title: 'Box Breathing', duration: 5, description: 'After the sighs, transition to box breathing to stabilize: inhale 4, hold 4, exhale 4, hold 4. Box breathing consolidates the regulation.', why: 'Regulate: box breathing sustains the coherence state initiated by the sighs.', timerPreset: 'breath-box', pageLink: '/breathe' },
           ],
         },
         {
@@ -283,9 +283,9 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'hs-d-1', title: 'Physiological Sighs', duration: 5, description: 'Double inhale, extended exhale. Do not rush. Let the exhale be audible. Stay with it for the full 5 minutes.', why: 'Regulate: the most potent acute intervention. Begin here regardless of what follows.', timerPreset: 'sigh', pageLink: '/breathe' },
-            { id: 'hs-d-2', title: 'Box Breathing', duration: 10, description: 'Transition from sighs to box breathing. Extended 10-minute session. Allow the box pattern to become effortless.', why: 'Regulate: 10 minutes of box breathing measurably reduces cortisol and stabilizes the stress response.', timerPreset: 'box', pageLink: '/breathe' },
-            { id: 'hs-d-3', title: 'Grounding Meditation', duration: 10, description: 'Feel the weight of your body. Name 5 things you can see, 4 you can touch, 3 you can hear. Then sit and observe the body from inside.', why: 'Regulate: sensory grounding interrupts the threat-narrative loop and returns attention to present-moment safety.', timerPreset: 'med-10', pageLink: '/meditate' },
+            { id: 'hs-d-1', title: 'Physiological Sighs', duration: 5, description: 'Double inhale, extended exhale. Do not rush. Let the exhale be audible. Stay with it for the full 5 minutes.', why: 'Regulate: the most potent acute intervention. Begin here regardless of what follows.', timerPreset: 'breath-sigh', pageLink: '/breathe' },
+            { id: 'hs-d-2', title: 'Box Breathing', duration: 10, description: 'Transition from sighs to box breathing. Extended 10-minute session. Allow the box pattern to become effortless.', why: 'Regulate: 10 minutes of box breathing measurably reduces cortisol and stabilizes the stress response.', timerPreset: 'breath-box', pageLink: '/breathe' },
+            { id: 'hs-d-3', title: 'Grounding Meditation', duration: 10, description: 'Feel the weight of your body. Name 5 things you can see, 4 you can touch, 3 you can hear. Then sit and observe the body from inside.', why: 'Regulate: sensory grounding interrupts the threat-narrative loop and returns attention to present-moment safety.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
         {
@@ -297,7 +297,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'evening', label: 'Evening — Receive',
           practices: [
-            { id: 'hs-d-5', title: 'Yin Hold', duration: 15, description: 'Supported child\'s pose or reclined butterfly for 5-7 minutes each. Use bolsters or pillows. Do not stretch — simply rest inside the shape.', why: 'Receive: yin poses held for 5+ minutes activate the parasympathetic response through mechanoreceptor stimulation in the fascia.', timerPreset: 'yin-hold', pageLink: '/yoga' },
+            { id: 'hs-d-5', title: 'Yin Hold', duration: 15, description: 'Supported child\'s pose or reclined butterfly for 5-7 minutes each. Use bolsters or pillows. Do not stretch — simply rest inside the shape.', why: 'Receive: yin poses held for 5+ minutes activate the parasympathetic response through mechanoreceptor stimulation in the fascia.', timerPreset: 'yoga-posehold', pageLink: '/yoga' },
             { id: 'hs-d-6', title: 'Yoga Nidra', duration: 20, description: 'Full Nidra session. After a high-stress day, a 20-minute Nidra is the most potent single recovery tool available. Let it do the work.', why: 'Receive: Nidra after yin produces a compounding effect — the body is already open; the Nidra deepens into that openness.', pageLink: '/yoga' },
           ],
         },
@@ -314,7 +314,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Intend',
           practices: [
-            { id: 'cw-q-1', title: 'Coherent Breathing', duration: 5, description: 'Five and a half seconds in, five and a half seconds out. Bring the nervous system into coherence before engaging with the creative challenge.', why: 'Intend: coherence increases access to intuitive processing and reduces the self-censorship that kills creative flow.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'cw-q-1', title: 'Coherent Breathing', duration: 6, description: 'Five and a half seconds in, five and a half seconds out. Bring the nervous system into coherence before engaging with the creative challenge.', why: 'Intend: coherence increases access to intuitive processing and reduces the self-censorship that kills creative flow.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
             { id: 'cw-q-2', title: 'WOOP Intention Setting', duration: 5, description: 'Wish, Outcome, Obstacle, Plan. Identify one specific creative or deep-work goal. Vividly imagine completion, then the main internal obstacle.', why: 'Intend: WOOP activates the implementation intention circuitry, significantly increasing follow-through on creative work.', pageLink: '/manifest' },
           ],
         },
@@ -323,14 +323,14 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Intend',
           practices: [
-            { id: 'cw-s-1', title: 'Coherent Breathing', duration: 10, description: 'Extended coherence session. Allow the first 3 minutes to discharge urgency, then sink into the rhythm.', why: 'Intend: 10 minutes of coherence produces a measurable shift in prefrontal function, improving both focus and divergent thinking.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'cw-s-1', title: 'Coherent Breathing', duration: 11, description: 'Extended coherence session. Allow the first 3 minutes to discharge urgency, then sink into the rhythm.', why: 'Intend: 10 minutes of coherence produces a measurable shift in prefrontal function, improving both focus and divergent thinking.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
             { id: 'cw-s-2', title: 'WOOP Intention Setting', duration: 5, description: 'Wish, Outcome, Obstacle, Plan. Specific goal. Vivid outcome visualization. Identify the single biggest internal obstacle. Form a concrete if-then plan.', why: 'Intend: the WOOP method doubles follow-through rates compared to simple goal-setting or positive visualization alone.', pageLink: '/manifest' },
           ],
         },
         {
           time: 'evening', label: 'Evening — Intend',
           practices: [
-            { id: 'cw-s-3', title: 'Reflective Meditation', duration: 10, description: 'Sit with the day\'s creative output. Review what emerged without judgment. Notice what wants to continue tomorrow.', why: 'Intend: brief evening reflection consolidates the day\'s insights and seeds the subconscious for overnight processing.', timerPreset: 'med-10', pageLink: '/meditate' },
+            { id: 'cw-s-3', title: 'Reflective Meditation', duration: 10, description: 'Sit with the day\'s creative output. Review what emerged without judgment. Notice what wants to continue tomorrow.', why: 'Intend: brief evening reflection consolidates the day\'s insights and seeds the subconscious for overnight processing.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
       ],
@@ -338,9 +338,9 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Intend',
           practices: [
-            { id: 'cw-d-1', title: 'Coherent Breathing', duration: 10, description: 'Full coherence session before engaging the creative challenge. Feel the nervous system shift from scanning to presence.', why: 'Intend: coherence is the prerequisite for flow states — it reduces threat-detection noise so the creative signal can emerge.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'cw-d-1', title: 'Coherent Breathing', duration: 11, description: 'Full coherence session before engaging the creative challenge. Feel the nervous system shift from scanning to presence.', why: 'Intend: coherence is the prerequisite for flow states — it reduces threat-detection noise so the creative signal can emerge.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
             { id: 'cw-d-2', title: 'WOOP Intention Setting', duration: 5, description: 'Full WOOP protocol with written notes if possible. Wish → Outcome → Obstacle → Plan. Be specific about the obstacle — it is the most important step.', why: 'Intend: writing WOOP increases implementation probability by a further 30-40% over mental WOOP alone.', pageLink: '/manifest' },
-            { id: 'cw-d-3', title: 'Focused Meditation', duration: 10, description: 'Focused attention on breath. Build the attentional muscle that deep work requires. When distraction arises, note it and return. This is the skill.', why: 'Act: the focused attention practice directly trains the same neural circuitry used in deep creative work.', timerPreset: 'med-10', pageLink: '/meditate' },
+            { id: 'cw-d-3', title: 'Focused Meditation', duration: 10, description: 'Focused attention on breath. Build the attentional muscle that deep work requires. When distraction arises, note it and return. This is the skill.', why: 'Act: the focused attention practice directly trains the same neural circuitry used in deep creative work.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
         {
@@ -353,7 +353,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'evening', label: 'Evening — Intend',
           practices: [
-            { id: 'cw-d-6', title: 'Reflective Meditation', duration: 20, description: 'Extended evening reflection. Sit with the full arc of the day\'s creative work — what emerged, what resisted, what is unresolved. Witness without fixing.', why: 'Intend: 20 minutes of reflective meditation seeds the subconscious problem-solving that occurs during sleep.', timerPreset: 'med-20', pageLink: '/meditate' },
+            { id: 'cw-d-6', title: 'Reflective Meditation', duration: 20, description: 'Extended evening reflection. Sit with the full arc of the day\'s creative work — what emerged, what resisted, what is unresolved. Witness without fixing.', why: 'Intend: 20 minutes of reflective meditation seeds the subconscious problem-solving that occurs during sleep.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
       ],
@@ -369,13 +369,13 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'tv-q-1', title: 'Box Breathing', duration: 5, description: 'Inhale 4, hold 4, exhale 4, hold 4. Can be done seated in transit, at a gate, in a hotel room. No equipment or space required.', why: 'Regulate: travel disrupts circadian rhythm and activates background stress. Box breathing counteracts the physiological cost.', timerPreset: 'box', pageLink: '/breathe' },
+            { id: 'tv-q-1', title: 'Box Breathing', duration: 5, description: 'Inhale 4, hold 4, exhale 4, hold 4. Can be done seated in transit, at a gate, in a hotel room. No equipment or space required.', why: 'Regulate: travel disrupts circadian rhythm and activates background stress. Box breathing counteracts the physiological cost.', timerPreset: 'breath-box', pageLink: '/breathe' },
           ],
         },
         {
           time: 'evening', label: 'Evening — Receive',
           practices: [
-            { id: 'tv-q-2', title: 'Body Scan Meditation', duration: 10, description: 'Lie down or sit reclined. Sweep attention through the body from feet to crown. No technique required — simply feel each area.', why: 'Receive: body scan after travel helps the nervous system locate itself in the new environment.', timerPreset: 'med-10', pageLink: '/meditate' },
+            { id: 'tv-q-2', title: 'Body Scan Meditation', duration: 10, description: 'Lie down or sit reclined. Sweep attention through the body from feet to crown. No technique required — simply feel each area.', why: 'Receive: body scan after travel helps the nervous system locate itself in the new environment.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
       ],
@@ -383,8 +383,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'tv-s-1', title: 'Box Breathing', duration: 5, description: 'Equal-ratio breathing for nervous system coherence. Commute and transit friendly.', why: 'Regulate: establish a regulated baseline before entering the sensory load of airports, train stations, or new environments.', timerPreset: 'box', pageLink: '/breathe' },
-            { id: 'tv-s-2', title: 'Coherent Breathing', duration: 5, description: 'Five and a half seconds in, five and a half seconds out. Follow up box breathing with coherent breathing to deepen regulation.', why: 'Regulate: the transition from box to coherent brings the ANS from stabilized to deeply coherent.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'tv-s-1', title: 'Box Breathing', duration: 5, description: 'Equal-ratio breathing for nervous system coherence. Commute and transit friendly.', why: 'Regulate: establish a regulated baseline before entering the sensory load of airports, train stations, or new environments.', timerPreset: 'breath-box', pageLink: '/breathe' },
+            { id: 'tv-s-2', title: 'Coherent Breathing', duration: 6, description: 'Five and a half seconds in, five and a half seconds out. Follow up box breathing with coherent breathing to deepen regulation.', why: 'Regulate: the transition from box to coherent brings the ANS from stabilized to deeply coherent.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
           ],
         },
         {
@@ -396,7 +396,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'evening', label: 'Evening — Receive',
           practices: [
-            { id: 'tv-s-4', title: 'Body Scan Meditation', duration: 15, description: 'Extended body scan. Sweep from feet to crown and back. Feel the new location in the body. Ground in the present geography.', why: 'Receive: arriving in a new place without grounding the body creates a dissociated presence. The body scan lands you.', timerPreset: 'med-10', pageLink: '/meditate' },
+            { id: 'tv-s-4', title: 'Body Scan Meditation', duration: 15, description: 'Extended body scan. Sweep from feet to crown and back. Feel the new location in the body. Ground in the present geography.', why: 'Receive: arriving in a new place without grounding the body creates a dissociated presence. The body scan lands you.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
       ],
@@ -404,8 +404,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'tv-d-1', title: 'Box Breathing', duration: 5, description: 'Box breathing to establish initial regulation. 4-4-4-4 ratio.', why: 'Regulate: begin the travel day from a baseline of coherence rather than urgency.', timerPreset: 'box', pageLink: '/breathe' },
-            { id: 'tv-d-2', title: 'Coherent Breathing', duration: 10, description: 'Extended coherent breathing to deepen the morning regulation. Five and a half in, five and a half out.', why: 'Regulate: 10 minutes of coherence buffers against the cumulative stress load of a full travel day.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'tv-d-1', title: 'Box Breathing', duration: 5, description: 'Box breathing to establish initial regulation. 4-4-4-4 ratio.', why: 'Regulate: begin the travel day from a baseline of coherence rather than urgency.', timerPreset: 'breath-box', pageLink: '/breathe' },
+            { id: 'tv-d-2', title: 'Coherent Breathing', duration: 11, description: 'Extended coherent breathing to deepen the morning regulation. Five and a half in, five and a half out.', why: 'Regulate: 10 minutes of coherence buffers against the cumulative stress load of a full travel day.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
           ],
         },
         {
@@ -417,7 +417,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'evening', label: 'Evening — Receive',
           practices: [
-            { id: 'tv-d-4', title: 'Body Scan Meditation', duration: 20, description: 'Full body scan meditation. Feel every region of the body in the new location. Let the nervous system update its map.', why: 'Receive: after travel the nervous system holds a stale body map. The body scan updates it, reducing ambient tension.', timerPreset: 'med-20', pageLink: '/meditate' },
+            { id: 'tv-d-4', title: 'Body Scan Meditation', duration: 20, description: 'Full body scan meditation. Feel every region of the body in the new location. Let the nervous system update its map.', why: 'Receive: after travel the nervous system holds a stale body map. The body scan updates it, reducing ambient tension.', timerPreset: 'med-breath', pageLink: '/meditate' },
             { id: 'tv-d-5', title: 'Yoga Nidra', duration: 10, description: 'Short Nidra session to complete the landing. Follow the guided rotation and plant a simple sankalpa for the trip.', why: 'Receive: Nidra after a body scan compounds the landing process and sets the intention for the journey ahead.', pageLink: '/yoga' },
           ],
         },
@@ -434,7 +434,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Resource',
           practices: [
-            { id: 'at-q-1', title: 'Wim Hof Breathwork', duration: 5, description: '3 rounds of 30 deep breaths, breath retention, and recovery breath. Activates the sympathetic system and alkalizes the blood. Pre-workout activation.', why: 'Resource: Wim Hof breathing increases adrenaline, reduces inflammation markers, and primes the body for intense physical effort.', timerPreset: 'wimhof', pageLink: '/breathe' },
+            { id: 'at-q-1', title: 'Wim Hof Breathwork', duration: 5, description: '3 rounds of 30 deep breaths, breath retention, and recovery breath. Activates the sympathetic system and alkalizes the blood. Pre-workout activation.', why: 'Resource: Wim Hof breathing increases adrenaline, reduces inflammation markers, and primes the body for intense physical effort.', timerPreset: 'breath-wimhof', pageLink: '/breathe' },
           ],
         },
         {
@@ -448,8 +448,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Resource',
           practices: [
-            { id: 'at-s-1', title: 'Wim Hof Breathwork', duration: 5, description: '3 rounds. 30 deep breaths, exhale retention, inhale retention. Follow the structure.', why: 'Resource: pre-training Wim Hof increases exercise capacity and reduces perceived exertion during the session.', timerPreset: 'wimhof', pageLink: '/breathe' },
-            { id: 'at-s-2', title: 'Dynamic Pose Hold', duration: 5, description: 'Warrior I, Warrior II, and a balance pose (tree or eagle). 60 seconds each. Activate the stabilizer system before loading.', why: 'Resource: pre-activation of stabilizers reduces injury risk and improves force transfer during athletic movement.', timerPreset: 'pose-hold', pageLink: '/yoga' },
+            { id: 'at-s-1', title: 'Wim Hof Breathwork', duration: 5, description: '3 rounds. 30 deep breaths, exhale retention, inhale retention. Follow the structure.', why: 'Resource: pre-training Wim Hof increases exercise capacity and reduces perceived exertion during the session.', timerPreset: 'breath-wimhof', pageLink: '/breathe' },
+            { id: 'at-s-2', title: 'Dynamic Pose Hold', duration: 5, description: 'Warrior I, Warrior II, and a balance pose (tree or eagle). 60 seconds each. Activate the stabilizer system before loading.', why: 'Resource: pre-activation of stabilizers reduces injury risk and improves force transfer during athletic movement.', timerPreset: 'yoga-posehold', pageLink: '/yoga' },
           ],
         },
         {
@@ -469,8 +469,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Resource',
           practices: [
-            { id: 'at-d-1', title: 'Wim Hof Breathwork', duration: 10, description: 'Extended session: 4-5 rounds. Feel the full alkalizing effect before training. End with a cold exposure if available.', why: 'Resource: 4-5 rounds produce stronger anti-inflammatory and performance-priming effects than the standard 3-round protocol.', timerPreset: 'wimhof', pageLink: '/breathe' },
-            { id: 'at-d-2', title: 'Dynamic Pose Holds', duration: 10, description: 'Full activation sequence: Warrior I, II, III, balance pose, hip opener. 60-90 seconds each. Move between poses slowly.', why: 'Resource: comprehensive pre-activation of the stabilizer and proprioceptive systems prepares the body for maximal output.', timerPreset: 'pose-hold', pageLink: '/yoga' },
+            { id: 'at-d-1', title: 'Wim Hof Breathwork', duration: 10, description: 'Extended session: 4-5 rounds. Feel the full alkalizing effect before training. End with a cold exposure if available.', why: 'Resource: 4-5 rounds produce stronger anti-inflammatory and performance-priming effects than the standard 3-round protocol.', timerPreset: 'breath-wimhof', pageLink: '/breathe' },
+            { id: 'at-d-2', title: 'Dynamic Pose Holds', duration: 10, description: 'Full activation sequence: Warrior I, II, III, balance pose, hip opener. 60-90 seconds each. Move between poses slowly.', why: 'Resource: comprehensive pre-activation of the stabilizer and proprioceptive systems prepares the body for maximal output.', timerPreset: 'yoga-posehold', pageLink: '/yoga' },
           ],
         },
         {
@@ -483,7 +483,7 @@ const TEMPLATES: RoutineTemplate[] = [
           time: 'evening', label: 'Evening — Receive',
           practices: [
             { id: 'at-d-4', title: 'Recovery Yoga Nidra', duration: 20, description: 'Full recovery Nidra. Extended rotation through the trained areas. Feel each muscle group surrender progressively. Plant a recovery and performance sankalpa.', why: 'Receive: 20-minute post-training Nidra measurably reduces DOMS and accelerates readiness for the next session.', pageLink: '/yoga' },
-            { id: 'at-d-5', title: 'Cold Exposure', duration: 5, description: 'Cold shower or ice bath for 3-5 minutes. Breathe through the initial shock. Find stillness inside the cold. This is also a nervous system practice.', why: 'Receive: cold exposure after training reduces inflammation, boosts norepinephrine, and trains composure under physiological stress.', timerPreset: 'cold-1', pageLink: '/breathe' },
+            { id: 'at-d-5', title: 'Cold Exposure', duration: 5, description: 'Cold shower or ice bath for 3-5 minutes. Breathe through the initial shock. Find stillness inside the cold. This is also a nervous system practice.', why: 'Receive: cold exposure after training reduces inflammation, boosts norepinephrine, and trains composure under physiological stress.', timerPreset: 'ns-coldshower', pageLink: '/breathe' },
           ],
         },
       ],
@@ -499,7 +499,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'le-q-1', title: 'Coherent Breathing', duration: 5, description: 'Five and a half seconds in, five and a half seconds out. Gentle, effortless. No performance required — simply ride the breath rhythm.', why: 'Regulate: on low energy days, coherent breathing restores baseline function without taxing depleted resources.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'le-q-1', title: 'Coherent Breathing', duration: 6, description: 'Five and a half seconds in, five and a half seconds out. Gentle, effortless. No performance required — simply ride the breath rhythm.', why: 'Regulate: on low energy days, coherent breathing restores baseline function without taxing depleted resources.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
           ],
         },
         {
@@ -513,7 +513,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'le-s-1', title: 'Coherent Breathing', duration: 10, description: 'Extended gentle coherence session. Five and a half seconds in, five and a half seconds out. Move slowly. No urgency.', why: 'Regulate: 10 minutes of coherent breathing on a low-energy day provides enough nervous system resourcing to function without depleting further.', timerPreset: 'coherent', pageLink: '/breathe' },
+            { id: 'le-s-1', title: 'Coherent Breathing', duration: 11, description: 'Extended gentle coherence session. Five and a half seconds in, five and a half seconds out. Move slowly. No urgency.', why: 'Regulate: 10 minutes of coherent breathing on a low-energy day provides enough nervous system resourcing to function without depleting further.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
           ],
         },
         {
@@ -527,8 +527,8 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'le-d-1', title: 'Coherent Breathing', duration: 10, description: 'Gentle, sustained coherence. No forcing the pace or the rhythm. Let the breath find its own length.', why: 'Regulate: even on low energy days, 10 minutes of coherence creates a physiological floor that prevents further depletion.', timerPreset: 'coherent', pageLink: '/breathe' },
-            { id: 'le-d-2', title: 'Gentle Seated Meditation', duration: 10, description: 'Open monitoring, no technique. Sit and observe. If the mind wanders, let it — notice when you notice, and return without judgment.', why: 'Regulate: light meditation without performance pressure provides gentle resourcing without the effortful engagement that depletes further.', timerPreset: 'med-10', pageLink: '/meditate' },
+            { id: 'le-d-1', title: 'Coherent Breathing', duration: 11, description: 'Gentle, sustained coherence. No forcing the pace or the rhythm. Let the breath find its own length.', why: 'Regulate: even on low energy days, 10 minutes of coherence creates a physiological floor that prevents further depletion.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
+            { id: 'le-d-2', title: 'Gentle Seated Meditation', duration: 10, description: 'Open monitoring, no technique. Sit and observe. If the mind wanders, let it — notice when you notice, and return without judgment.', why: 'Regulate: light meditation without performance pressure provides gentle resourcing without the effortful engagement that depletes further.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
         },
         {
@@ -541,7 +541,7 @@ const TEMPLATES: RoutineTemplate[] = [
           time: 'evening', label: 'Evening — Receive',
           practices: [
             { id: 'le-d-4', title: 'Yoga Nidra', duration: 30, description: 'The longest Nidra format. Be completely horizontal. Let everything go. This is the primary medicine for depletion.', why: 'Receive: 30 minutes of Nidra is the most potent non-sleep recovery intervention available. On a low energy day, this is the entire practice.', pageLink: '/yoga' },
-            { id: 'le-d-5', title: '4-7-8 Breathing', duration: 10, description: 'After Nidra, 4-7-8 breathing to complete the transition into rest: inhale 4, hold 7, exhale 8. Repeat for 10 minutes. Let sleep approach.', why: 'Receive: 4-7-8 after Nidra creates the deepest possible preparation for sleep — the body is already open and the breath invitation simply completes it.', timerPreset: '478', pageLink: '/breathe' },
+            { id: 'le-d-5', title: '4-7-8 Breathing', duration: 10, description: 'After Nidra, 4-7-8 breathing to complete the transition into rest: inhale 4, hold 7, exhale 8. Repeat for 10 minutes. Let sleep approach.', why: 'Receive: 4-7-8 after Nidra creates the deepest possible preparation for sleep — the body is already open and the breath invitation simply completes it.', timerPreset: 'breath-478', pageLink: '/breathe' },
           ],
         },
       ],
@@ -557,7 +557,7 @@ const TIER_LABELS: Record<DurationTier, string> = {
 
 const TIERS: DurationTier[] = ['quick', 'standard', 'deep'];
 
-function PracticeItem({ practice, onStartPreset }: { practice: RoutinePractice; onStartPreset?: (id: string) => void }) {
+function PracticeItem({ practice, onStartPreset }: { practice: RoutinePractice; onStartPreset?: (exerciseId: string, minutes: number) => void }) {
   return (
     <div style={{ marginBottom: '1.25rem', paddingLeft: '1rem', borderLeft: `2px solid ${GOLD_LIGHT}` }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.375rem' }}>
@@ -587,7 +587,7 @@ function PracticeItem({ practice, onStartPreset }: { practice: RoutinePractice; 
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
         {practice.timerPreset && onStartPreset && (
           <button
-            onClick={() => onStartPreset(practice.timerPreset!)}
+            onClick={() => onStartPreset(practice.timerPreset!, practice.duration)}
             style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: GOLD_MID, fontFamily: 'var(--font-body)', fontSize: '0.8125rem', fontWeight: 500 }}
           >
             Start Timer →
@@ -617,7 +617,7 @@ function RoutineDetail({
   tier: DurationTier;
   onTierChange: (t: DurationTier) => void;
   onBack: () => void;
-  onStartPreset?: (id: string) => void;
+  onStartPreset?: (exerciseId: string, minutes: number) => void;
 }) {
   const blocks = template.tiers[tier];
 
