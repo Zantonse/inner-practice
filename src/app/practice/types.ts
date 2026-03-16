@@ -2,7 +2,7 @@
 
 export type Modality =
   | 'meditation' | 'breathwork' | 'yoga' | 'fascia'
-  | 'nervous-system' | 'reiki' | 'sound-healing' | 'somatics';
+  | 'nervous-system' | 'reiki' | 'sound-healing' | 'somatics' | 'sleep';
 
 export type ExerciseType = 'structured' | 'reference';
 export type Level = 'beginner' | 'intermediate' | 'advanced';
@@ -51,6 +51,7 @@ export const MODALITY_META: Record<Modality, { label: string; deep: string; pale
   reiki:            { label: 'Reiki',           deep: '#7A5A1E', pale: '#FFF8E1' },
   'sound-healing':  { label: 'Sound Healing',   deep: '#6B4E8B', pale: '#F0E8F7' },
   somatics:         { label: 'Somatics',        deep: '#2D3A6A', pale: '#E8EAF6' },
+  sleep:            { label: 'Sleep',           deep: '#1B4D5C', pale: '#E8F2F4' },
 };
 
 export const LEVEL_COLORS: Record<Level, string> = {
