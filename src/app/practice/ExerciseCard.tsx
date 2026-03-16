@@ -117,12 +117,11 @@ function TimerRing({
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            fontFamily: 'var(--font-display)',
+            fontFamily: 'var(--font-body)',
             fontSize: 'clamp(1.75rem, 5vw, 2.5rem)',
             fontWeight: 300,
             color: 'var(--color-text)',
             margin: 0,
-            letterSpacing: '0.04em',
             fontVariantNumeric: 'tabular-nums',
             whiteSpace: 'nowrap',
           }}

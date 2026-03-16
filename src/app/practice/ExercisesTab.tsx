@@ -305,12 +305,11 @@ function FreeformTimerCard({ preSelectedMinutes }: { preSelectedMinutes?: number
                   top: '50%',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
-                  fontFamily: 'var(--font-display)',
+                  fontFamily: 'var(--font-body)',
                   fontSize: 'clamp(1.75rem, 5vw, 2.5rem)',
                   fontWeight: 300,
                   color: 'var(--color-text)',
                   margin: 0,
-                  letterSpacing: '0.04em',
                   fontVariantNumeric: 'tabular-nums',
                   whiteSpace: 'nowrap',
                 }}
@@ -540,13 +539,11 @@ export default function ExercisesTab({
         <div
           style={{
             display: 'flex',
+            flexWrap: 'wrap',
             gap: '0.5rem',
             padding: '0.75rem 0',
-            overflowX: 'auto',
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
+            justifyContent: 'center',
           }}
-          // Hide webkit scrollbar via inline style on the element; CSS would be in globals
         >
           {/* "All" pill */}
           <button
