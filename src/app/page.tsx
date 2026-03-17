@@ -9,7 +9,7 @@ const ROSE_DEEP  = '#8B3A62';
 const ROSE_MID   = '#985575';
 const ROSE_LIGHT = '#E8B4CF';
 
-type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'sound-healing' | 'somatics' | 'reiki' | 'sleep' | 'qigong' | 'manifest' | 'practice';
+type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'sound-healing' | 'somatics' | 'reiki' | 'sleep' | 'qigong' | 'chakras' | 'manifest' | 'practice';
 
 const paths: {
   key: PathKey;
@@ -155,6 +155,19 @@ const paths: {
     accentColor: '#A8D5BA',
   },
   {
+    key: 'chakras',
+    href: '/chakras',
+    eyebrow: 'The path of energy',
+    title: 'Chakras',
+    tagline: 'The body-mind map. Seven centers, one system.',
+    image: '/images/hero-meditation.webp',
+    imageAlt: 'Abstract watercolor chakra energy illustration',
+    gradFrom: 'oklch(30% 0.12 300)',
+    gradTo: 'oklch(45% 0.15 280)',
+    overlayColor: 'rgba(107,63,160,0.62)',
+    accentColor: '#B39DDB',
+  },
+  {
     key: 'manifest',
     href: '/manifest',
     eyebrow: 'The path of intention',
@@ -182,8 +195,8 @@ const paths: {
   },
 ];
 
-const topRow = paths.slice(0, 6);
-const bottomRow = paths.slice(6);
+const topRow = paths.slice(0, 7);
+const bottomRow = paths.slice(7);
 
 export default function HomePage() {
   const [hovered, setHovered] = useState<PathKey | null>(null);
@@ -1275,6 +1288,69 @@ export default function HomePage() {
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 color: '#2D6B4F',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
+
+          {/* Chakras card */}
+          <div
+            className="card"
+            style={{
+              padding: '2.5rem 2.25rem',
+              borderRadius: '2px',
+              borderTop: '3px solid #6B3FA0',
+            }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: 'color-mix(in srgb, #B39DDB 35%, var(--color-cream))',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B3FA0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="4" r="1.5" />
+                <circle cx="12" cy="8" r="1.5" />
+                <circle cx="12" cy="12" r="1.5" />
+                <circle cx="12" cy="16" r="1.5" />
+                <circle cx="12" cy="20" r="1.5" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: '#6B3FA0',
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Chakras
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              The body-mind map — seven energy centers mapped to nerve plexuses, endocrine glands, and polyvagal states. See how every practice on this site connects to specific chakras.
+            </p>
+            <Link
+              href="/chakras"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#6B3FA0',
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
