@@ -1,134 +1,103 @@
-# HANDOVER — Inner Practice Session 5
+# HANDOVER — Inner Practice Session 6
 
-**Date:** 2026-03-15
+## 1. Session Summary
+
+**Date:** 2026-03-16 to 2026-03-17
 **Branch:** `main`
-**Latest commit:** `fabb794` — Update HANDOVER.md — practice page transformation brainstorm queued
-**Repo:** https://github.com/Zantonse/inner-practice
-**Live site:** https://inner-practice.vercel.app
+**Latest commit:** `315ffa2`
+**Goal:** Add Sleep & Circadian Rhythm page, Qigong page, homepage overview section, mobile responsiveness fixes, and educational illustrations.
 
----
+All goals accomplished. Two new content pages (Sleep, Qigong) built end-to-end: deep research → design spec → code review → implementation plan → subagent-driven development → Vercel deploy. Homepage updated with overview section. Mobile audit passed all 14 pages. 13 educational illustrations generated.
 
-## Session Summary
+## 2. What Got Done
 
-This was a brief session — no code changes were made. The previous session (Session 4) left a handover requesting brainstorming for the practice page transformation and teacher training path. This session generated the updated handover to capture the full project state and queue up the next substantive session.
+### Sleep Page (`/sleep`)
+- Deep research: 6-domain synthesis → 755-line Obsidian brief (`Claude-Research/wellness/sleep-circadian-rhythm-research-2026-03.md`)
+- `src/app/sleep/page.tsx` — server component
+- `src/app/sleep/SleepClient.tsx` — 2298 lines, 14 sections (hero, architecture, circadian 24hr map, HRV, yoga nidra, breathwork, hygiene polyvagal, wind-down, videos, cross-links)
+- 5 sleep exercises added to practice page
+- `sleep` modality: `{ deep: '#1B4D5C', pale: '#E8F2F4' }`
 
-The project is a Next.js meditation/wellness site with 10 content pages, a practice timer, and Veo video accents. It builds cleanly, has 47 commits across its history, and is 15 commits ahead of origin (not yet pushed).
+### Qigong Page (`/qigong`)
+- Deep research: 6-domain synthesis → 617-line Obsidian brief (`Claude-Research/wellness/qigong-research-2026-03.md`)
+- `src/app/qigong/page.tsx` — server component
+- `src/app/qigong/QigongClient.tsx` — 1980 lines, 14 sections (hero, history, slow movement, forms guide, qi science, ANS, clinical evidence, 90-day protocol, videos, cross-links)
+- 4 qigong exercises added to practice page
+- `qigong` modality: `{ deep: '#2D6B4F', pale: '#E6F4EC' }`
 
-## What Got Done
+### Homepage (`/`)
+- Sleep + Qigong added to hero selectors (now 6+6 layout)
+- "Every Practice Connects" overview: Three Layers, 6 goal cards, Practice CTA
+- 5 new path cards (Sleep, Qigong, Sound Healing, Somatics, Reiki)
 
-- Updated this HANDOVER.md with current project state, verified build, and confirmed no regressions
+### Mobile Fixes
+- Reiki: table overflow → scroll container, evidence pills 9px → 10px
+- Breathe: evidence labels 9.6px → 10px
+- Sound Healing: evidence pills 9px → 10px
+- Playwright audit: 0 horizontal overflow across all 14 pages
 
-## What Didn't Work / Bugs Encountered
+### 13 Educational Illustrations
+- `public/images/illustrations/*.jpg` — watercolor/ink wash style
+- Fascia (4): web-network, thixotropic-gel, myofascial-release, anatomy-trains
+- Nervous System (3): polyvagal-ladder, vagus-nerve, hrv
+- Sleep (2): architecture, glymphatic
+- Qigong (2): ba-duan-jin, meridian-flow
+- Breathwork (2): diaphragm, vagal-brake
+- **NOT yet wired into page JSX**
 
-- No bugs this session. Build passes. All 14 routes generate as static pages.
+### Tool Fix
+- `~/.claude/skills/deep-research/scripts/research.py` — fixed `ensure_openai()` → `ensure_anthropic()`
 
-## Key Decisions Made
+## 3. What Didn't Work / Bugs Encountered
 
-- None this session — carrying forward all decisions from Session 4
+- **Firecrawl 403:** Needs re-auth. Workaround: training knowledge → Gemini synthesis.
+- **WebFetch 401 in subagents:** Uses haiku model not on LiteLLM key. Same workaround.
+- **QigongClient timeout:** 2000+ line file too large for single subagent. Workaround: cp SleepClient → transform.
+- **Ralph Loop script bug:** `PROMPT_PARTS[*]` unbound variable. Used Playwright instead.
+- **Gemini image 429:** Rate limited on parallel gen. Retried with delay.
+- **`/tmp` cleanup:** Files vanished between calls. Used specific subdirectory paths.
 
-## Lessons Learned / Gotchas
+## 4. Key Decisions Made
 
-- Carried forward from Session 4:
-  - LiteLLM Veo workflow: `POST /videos`, `GET /v1/videos/{id}`, `GET /v1/videos/{id}/content`
-  - WebFetch fails for subagents because it uses haiku internally — need model alias in LiteLLM
-  - ffmpeg 8.x needs `-update 1` for single frame extraction
-  - Brew ffmpeg lacks webp encoder — use JPG posters instead
-  - Veo videos generate in parallel and complete in ~30-60 seconds
-  - `video-loop` script doubles clip duration (4s → 7.5s)
+- Sleep: Midnight Teal `#1B4D5C`, circadian timing map as centerpiece
+- Qigong: Jade Green `#2D6B4F`, forms guide as centerpiece
+- Copy-and-transform pattern for QigongClient (3x faster than from-scratch)
+- JPG for illustrations (PNG 1.3-2.4MB → JPG 233-553KB, no visible quality loss)
+- Homepage 6+6 hero layout with all 12 practices represented
 
-## Current State
+## 5. Lessons Learned
 
-- **Build:** Passes (`npm run build` — all 14 static routes generated)
-- **Tests:** No test suite configured
-- **Uncommitted changes:** Modified hero images (slightly smaller PNGs) and a playwright log. No code changes.
-- **Branch:** `main`, 15 commits ahead of `origin/main` (not pushed)
-- **Latest commit:** `fabb794`
+- Subagent web tools (firecrawl, WebFetch) are both broken — write domain content directly
+- Large files need template-based generation, not from-scratch
+- Code review catches real TypeScript bugs: `'timed'→'structured'`, `seconds→duration`, `MODALITY_META` shape
+- `research.py` had stale function name after previous refactor
 
-## Clear Next Steps
+## 6. Current State
 
-### 1. Push to origin
-The local branch is 15 commits ahead. Push when ready:
-```
-git push origin main
-```
+- **Build:** Clean (`npm run build` — 14 routes static)
+- **TypeScript:** Clean
+- **Deployed:** https://inner-practice.vercel.app
+- **Pushed:** GitHub up to date
+- **Uncommitted:** Only `.playwright-mcp/console-*.log`
 
-### 2. Brainstorm Practice Page Transformation (PRIMARY TASK)
+## 7. Clear Next Steps
 
-The current `/practice` page is a timer with 8 templates (`PracticeClient.tsx` + `PracticeBuilderTab.tsx`, ~1600 lines combined). Craig wants it transformed into a **"do it" page** — actual guided exercises with step-by-step instructions, timing, and sequences.
+1. **Wire 13 illustrations into page JSX** — images deployed but not embedded in components
+2. **Chakras deep research** — user requested, NOT started
+3. **Mobile UI visual polish** — user requested "improve UI with ralph loop for mobile"
+4. **Add Sleep/Qigong to cross-links on other pages** — existing pages don't reference new pages yet
+5. **Build chakras page** — after research completes
 
-Start with:
-```
-pick up from the handover - brainstorm the practice page transformation and teacher training path
-```
+## 8. Important Files
 
-The brainstorming skill was invoked in Session 4 but needs to run through its full process:
-1. Explore the current practice page (`src/app/practice/PracticeClient.tsx` + `PracticeBuilderTab.tsx`)
-2. Ask clarifying questions about what exercises Craig wants
-3. Propose 2-3 approaches for the page structure
-4. Design the teacher training path
-5. Write the spec
-
-Content to draw from (all already on the site):
-- **Meditation**: Gassho, body scan, Vipassana, loving-kindness (from /meditate)
-- **Yoga**: Sun salutations, hip opening sequence (from /yoga)
-- **Fascia**: Foam rolling protocol, fascial fitness morning routine, self-gua sha, self-cupping (from /fascia)
-- **Breathwork**: Box breathing, Wim Hof, physiological sigh, Bhramari (from /breathe)
-- **Nervous System**: Vagal toning exercises, cold exposure protocol (from /nervous-system)
-- **Reiki**: Self-Reiki 8-position protocol, Hatsurei Ho, Gassho meditation (from /reiki)
-- **Sound Healing**: Bhramari, Om chanting, sound bath (from /sound-healing)
-- **Somatics**: TRE wall sit, constructive rest, Voo sound, orienting, containment (from /somatics)
-
-### 3. Teacher Training Path
-
-Craig wants to learn these modalities and become a teacher. Design a cohesive path:
-- Curriculum page showing learning order
-- Certification paths per modality
-- How to combine them into a unified teaching practice
-- Underlying framework: nervous system regulation + fascial health
-
-### 4. Cleanup untracked files
-
-There are ~30 untracked files in the project root (audit screenshots, manifest JSONs, icons). Decide what to commit, gitignore, or delete:
-- `audit-*.png` — screenshot audits, probably temporary
-- `landing-*.png`, `practice-mobile.png`, `presets-mobile.png` — more screenshots
-- `public/images/icon-*.png` — may be needed for practice page redesign
-- `public/images/*-manifest.json` — image generation manifests
-- `public/videos/.next/` — stale build artifact, should be deleted
-- `.playwright-mcp/` logs — probably gitignored
-
-## Important Files Map
-
-| File | Lines | Description |
-|------|-------|-------------|
-| `src/app/page.tsx` | — | Home page with 5+5 grid linking to all content pages |
-| `src/app/practice/PracticeClient.tsx` | 800 | Timer with `useReducer` state machine — **TO BE REDESIGNED** |
-| `src/app/practice/PracticeBuilderTab.tsx` | 824 | Routine builder with 8 life templates — **TO BE REDESIGNED** |
-| `src/app/reiki/ReikiClient.tsx` | 850 | Reiki page: history, science, practice, learning curriculum |
-| `src/app/fascia/FasciaClient.tsx` | 2353 | Largest page: anatomy, gua sha, cupping, fascial fitness, toolkit |
-| `src/app/yoga/YogaClient.tsx` | 489 | Yoga page: 10 styles, hip opening, Nidra |
-| `src/app/sound-healing/SoundHealingClient.tsx` | 217 | Sound healing: vibration science, instruments, Nada yoga |
-| `src/app/somatics/SomaticsClient.tsx` | 223 | Somatics: SE, TRE, Feldenkrais, Alexander, Rolfing |
-| `src/app/meditate/MeditateClient.tsx` | — | Meditation types, videos, research |
-| `src/app/breathe/BreatheClient.tsx` | — | 14 breathwork techniques |
-| `src/app/nervous-system/NervousSystemClient.tsx` | — | Polyvagal, vagus nerve, HRV |
-| `src/app/manifest/ManifestClient.tsx` | — | WOOP, visualization, intention science |
-| `src/components/VideoAccent.tsx` | 79 | Veo video loop component with IntersectionObserver |
-| `public/videos/*.mp4` | 6 files | Veo-generated seamless loops (meditation, yoga, fascia, reiki, somatics, sound-healing) |
-| `docs/superpowers/specs/2026-03-11-practice-timer-design.md` | — | Original practice timer spec (will be superseded) |
-| `docs/superpowers/plans/2026-03-11-practice-timer.md` | — | Original practice timer plan (will be superseded) |
-
-## Current Site Map (14 routes)
-
-| Route | Color | Key Content |
-|-------|-------|-------------|
-| `/` | — | Home page, 5+5 grid |
-| `/meditate` | Violet | Types, videos, research + video accent |
-| `/yoga` | Violet | Active/passive styles, Yoga Nidra, hip opening, NS connection + video accent |
-| `/fascia` | Amber | Anatomy, gua sha, cupping, fascial fitness, toolkit, secrets + video accent |
-| `/breathe` | Teal | 14 techniques |
-| `/nervous-system` | Rose | Polyvagal, vagus nerve, HRV |
-| `/reiki` | Gold | History, science, practice, learning curriculum + video accent |
-| `/sound-healing` | Amber | Vibration science, instruments, Nada yoga, sound baths + video accent |
-| `/somatics` | Indigo/teal | SE, TRE, Feldenkrais, Alexander, Rolfing, self-practices + video accent |
-| `/manifest` | Gold | WOOP, visualization, intention science |
-| `/practice` | Violet | Timer with reducer, PracticeBuilderTab with 8 templates |
+| File | Description |
+|------|-------------|
+| `src/app/sleep/SleepClient.tsx` | 2298-line Sleep page (14 sections) |
+| `src/app/qigong/QigongClient.tsx` | 1980-line Qigong page (14 sections) |
+| `src/app/page.tsx` | Homepage with overview section |
+| `src/app/layout.tsx` | Nav with 12 links + Practice |
+| `src/app/practice/types.ts` | Modality union (now includes sleep + qigong) |
+| `src/app/practice/exercises.ts` | 48 exercises total |
+| `public/images/illustrations/*.jpg` | 13 illustrations (not in JSX yet) |
+| `docs/superpowers/specs/2026-03-16-sleep-page-design.md` | Sleep spec |
+| `docs/superpowers/specs/2026-03-16-qigong-page-design.md` | Qigong spec |
