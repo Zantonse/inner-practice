@@ -9,7 +9,7 @@ const ROSE_DEEP  = '#8B3A62';
 const ROSE_MID   = '#985575';
 const ROSE_LIGHT = '#E8B4CF';
 
-type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'sound-healing' | 'somatics' | 'reiki' | 'manifest' | 'practice';
+type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'sound-healing' | 'somatics' | 'reiki' | 'sleep' | 'qigong' | 'manifest' | 'practice';
 
 const paths: {
   key: PathKey;
@@ -129,6 +129,32 @@ const paths: {
     accentColor: '#F0D68A',
   },
   {
+    key: 'sleep',
+    href: '/sleep',
+    eyebrow: 'The path of restoration',
+    title: 'Sleep',
+    tagline: 'Where every practice comes to rest.',
+    image: '/images/hero-nervous-system.webp',
+    imageAlt: 'Abstract watercolor sleep illustration',
+    gradFrom: 'oklch(35% 0.08 210)',
+    gradTo: 'oklch(52% 0.10 195)',
+    overlayColor: 'rgba(27,77,92,0.62)',
+    accentColor: '#A3C4CC',
+  },
+  {
+    key: 'qigong',
+    href: '/qigong',
+    eyebrow: 'The path of flow',
+    title: 'Qigong',
+    tagline: 'Ancient movement. Modern science.',
+    image: '/images/hero-yoga.webp',
+    imageAlt: 'Abstract watercolor qigong illustration',
+    gradFrom: 'oklch(35% 0.10 160)',
+    gradTo: 'oklch(50% 0.12 145)',
+    overlayColor: 'rgba(45,107,79,0.62)',
+    accentColor: '#A8D5BA',
+  },
+  {
     key: 'manifest',
     href: '/manifest',
     eyebrow: 'The path of intention',
@@ -156,8 +182,8 @@ const paths: {
   },
 ];
 
-const topRow = paths.slice(0, 5);
-const bottomRow = paths.slice(5);
+const topRow = paths.slice(0, 6);
+const bottomRow = paths.slice(6);
 
 export default function HomePage() {
   const [hovered, setHovered] = useState<PathKey | null>(null);
@@ -512,6 +538,216 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* ── How It All Fits Together ──────────────────────────── */}
+      <section style={{
+        padding: 'clamp(5rem, 10vw, 8rem) max(1.5rem, 8vw)',
+        background: 'var(--color-cream)',
+      }}>
+        <div style={{ maxWidth: '960px' }}>
+
+          {/* Section header */}
+          <p style={{
+            fontFamily: 'var(--font-ui)',
+            fontSize: '0.6875rem',
+            fontWeight: 500,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            color: 'var(--color-violet-deep)',
+            margin: '0 0 1.25rem',
+          }}>
+            HOW TO USE THIS SITE
+          </p>
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(30px, 4vw, 48px)',
+            fontWeight: 700,
+            color: 'var(--color-text)',
+            margin: '0 0 1.5rem',
+            lineHeight: 1.15,
+          }}>
+            Every Practice Connects
+          </h2>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '1.0625rem',
+            lineHeight: 1.8,
+            color: 'var(--color-text)',
+            margin: '0 0 3rem',
+            maxWidth: '680px',
+          }}>
+            Inner Practice isn&apos;t a collection of separate topics — it&apos;s a single system viewed through different lenses. The breath regulates the nervous system. The nervous system determines how fascia holds tension. Fascia hydration changes how you move. Movement changes how you sleep. Sleep is when the nervous system does its deepest repair. Every page here feeds every other page.
+          </p>
+
+          {/* The Three Layers */}
+          <h3 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(22px, 2.5vw, 32px)',
+            fontWeight: 600,
+            color: 'var(--color-text)',
+            margin: '0 0 2rem',
+            fontStyle: 'normal',
+          }}>
+            Three Layers, One System
+          </h3>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: '1.5rem',
+            marginBottom: '3.5rem',
+          }}>
+            {/* Layer 1: The Foundation */}
+            <div style={{
+              borderLeft: '3px solid #8B3A62',
+              padding: '1.75rem',
+              background: 'var(--color-surface-raised)',
+              borderRadius: '2px',
+            }}>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8B3A62', margin: '0 0 0.75rem' }}>
+                LAYER 1 — THE FOUNDATION
+              </p>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>
+                The Nervous System
+              </h4>
+              <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>
+                Everything starts here. The vagus nerve, polyvagal theory, HRV, and autonomic regulation are the meta-layer beneath every practice. Understand this and everything else makes sense — breathwork works because it stimulates the vagus nerve, yoga works because it regulates the autonomic nervous system, sleep works because the parasympathetic system finally gets to run the show.
+              </p>
+            </div>
+
+            {/* Layer 2: The Practices */}
+            <div style={{
+              borderLeft: '3px solid var(--color-violet-deep)',
+              padding: '1.75rem',
+              background: 'var(--color-surface-raised)',
+              borderRadius: '2px',
+            }}>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-violet-deep)', margin: '0 0 0.75rem' }}>
+                LAYER 2 — THE PRACTICES
+              </p>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>
+                Movement, Breath, Stillness
+              </h4>
+              <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>
+                Six core modalities — each a different doorway into the same nervous system. <strong>Meditation</strong> trains attention and awareness. <strong>Breathwork</strong> is the only voluntary control over the autonomic nervous system. <strong>Yoga</strong> combines posture, breath, and intention. <strong>Qigong</strong> adds slow flowing movement that hydrates fascia. <strong>Fascia</strong> work releases the tissue where the body stores tension. <strong>Somatics</strong> completes what the mind cannot.
+              </p>
+            </div>
+
+            {/* Layer 3: The Integration */}
+            <div style={{
+              borderLeft: '3px solid #1B4D5C',
+              padding: '1.75rem',
+              background: 'var(--color-surface-raised)',
+              borderRadius: '2px',
+            }}>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1B4D5C', margin: '0 0 0.75rem' }}>
+                LAYER 3 — THE INTEGRATION
+              </p>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>
+                Sleep, Sound, Energy, Intention
+              </h4>
+              <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>
+                <strong>Sleep</strong> is when the nervous system does its deepest regulation — glymphatic clearance, emotional processing, autonomic restoration. <strong>Sound healing</strong> uses vibration to shift brainwave states. <strong>Reiki</strong> works through presence and the relaxation response. <strong>Manifestation</strong> applies neuroscience and goal science to intention-setting. These aren&apos;t separate — they&apos;re the same system expressing through different channels.
+              </p>
+            </div>
+          </div>
+
+          {/* Where to Start */}
+          <h3 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(22px, 2.5vw, 32px)',
+            fontWeight: 600,
+            color: 'var(--color-text)',
+            margin: '0 0 2rem',
+            fontStyle: 'normal',
+          }}>
+            Where to Start
+          </h3>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: '1.25rem',
+            marginBottom: '3.5rem',
+          }}>
+            {[
+              { goal: 'I want to reduce stress', path: 'Start with Breathwork → then Nervous System → then Meditation', links: [{ text: 'Breathwork', href: '/breathe' }, { text: 'Nervous System', href: '/nervous-system' }] },
+              { goal: 'I want to sleep better', path: 'Start with Sleep → then Breathwork → then Yoga Nidra', links: [{ text: 'Sleep', href: '/sleep' }, { text: 'Breathwork', href: '/breathe' }] },
+              { goal: 'I want to release tension', path: 'Start with Fascia → then Somatics → then Qigong', links: [{ text: 'Fascia', href: '/fascia' }, { text: 'Somatics', href: '/somatics' }] },
+              { goal: 'I want to build a daily practice', path: 'Start with Practice → choose exercises → build routines', links: [{ text: 'Practice', href: '/practice' }, { text: 'Meditation', href: '/meditate' }] },
+              { goal: 'I want to understand how it all works', path: 'Start with Nervous System → it explains everything else', links: [{ text: 'Nervous System', href: '/nervous-system' }, { text: 'Sleep', href: '/sleep' }] },
+              { goal: 'I want gentle movement', path: 'Start with Qigong → then Yoga → then Fascia', links: [{ text: 'Qigong', href: '/qigong' }, { text: 'Yoga', href: '/yoga' }] },
+            ].map((item) => (
+              <div key={item.goal} style={{
+                padding: '1.5rem',
+                background: 'var(--color-surface-raised)',
+                border: '1px solid var(--color-border)',
+                borderRadius: '2px',
+              }}>
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.0625rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', fontStyle: 'italic' }}>
+                  &ldquo;{item.goal}&rdquo;
+                </p>
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 0.75rem', lineHeight: 1.6 }}>
+                  {item.path}
+                </p>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  {item.links.map((link) => (
+                    <Link key={link.href} href={link.href} style={{
+                      fontFamily: 'var(--font-ui)',
+                      fontSize: '0.6875rem',
+                      fontWeight: 500,
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-violet-deep)',
+                      textDecoration: 'none',
+                      borderBottom: '1px solid var(--color-violet-mid)',
+                      paddingBottom: '1px',
+                    }}>
+                      {link.text} →
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* The Practice Page */}
+          <div style={{
+            padding: '2rem 2.25rem',
+            background: 'color-mix(in srgb, var(--color-violet-pale) 50%, var(--color-cream))',
+            borderRadius: '2px',
+            border: '1px solid var(--color-violet-mid)',
+          }}>
+            <h3 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1.25rem',
+              fontWeight: 600,
+              color: 'var(--color-violet-deep)',
+              margin: '0 0 0.75rem',
+              fontStyle: 'normal',
+            }}>
+              Ready to practice?
+            </h3>
+            <p style={{ fontSize: '0.9375rem', color: 'var(--color-text)', margin: '0 0 1.25rem', lineHeight: 1.7 }}>
+              The Practice page brings everything together — 48 guided exercises with timers, daily routine templates (morning, midday, evening), and a teacher certification path. Every exercise links back to the science page that explains why it works.
+            </p>
+            <Link href="/practice" style={{
+              fontFamily: 'var(--font-ui)',
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: 'var(--color-violet-deep)',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+            }}>
+              Open Practice →
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ── Quote ──────────────────────────────────────────────── */}
       <section
@@ -908,6 +1144,322 @@ export default function HomePage() {
             </p>
             <Link
               href="/manifest"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#7A5A1E',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
+
+          {/* Sleep card */}
+          <div
+            className="card"
+            style={{
+              padding: '2.5rem 2.25rem',
+              borderRadius: '2px',
+              borderTop: '3px solid #1B4D5C',
+            }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: '#A3C4CC',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B4D5C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                <circle cx="17" cy="5" r="1" fill="#1B4D5C" stroke="none" />
+                <circle cx="20" cy="3" r="0.75" fill="#1B4D5C" stroke="none" />
+                <circle cx="19" cy="8" r="0.75" fill="#1B4D5C" stroke="none" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: '#1B4D5C',
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Sleep
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              The science of sleep architecture, circadian timing, overnight HRV, and how every practice on this site either prepares you for sleep or benefits from it. Includes a 24-hour practice timing map.
+            </p>
+            <Link
+              href="/sleep"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#1B4D5C',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
+
+          {/* Qigong card */}
+          <div
+            className="card"
+            style={{
+              padding: '2.5rem 2.25rem',
+              borderRadius: '2px',
+              borderTop: '3px solid #2D6B4F',
+            }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: '#A8D5BA',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D6B4F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12c0-3.87 3.13-7 7-7s7 3.13 7 7" />
+                <path d="M5 12c0 3.87 3.13 7 7 7s7-3.13 7-7" />
+                <path d="M12 5c-2 3-2 11 0 14" />
+                <path d="M12 5c2 3 2 11 0 14" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: '#2D6B4F',
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Qigong
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              3,000 years of energy cultivation through slow flowing movement. Hydrates fascia, activates the vagus nerve, and trains interoception — the bridge between every practice on this site.
+            </p>
+            <Link
+              href="/qigong"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#2D6B4F',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
+
+          {/* Sound Healing card */}
+          <div
+            className="card"
+            style={{
+              padding: '2.5rem 2.25rem',
+              borderRadius: '2px',
+              borderTop: '3px solid #D4A74A',
+            }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: 'color-mix(in srgb, #F0D68A 35%, var(--color-cream))',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A5A1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18V5l12-2v13" />
+                <circle cx="6" cy="18" r="3" />
+                <circle cx="18" cy="16" r="3" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: '#7A5A1E',
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Sound Healing
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              Vibration as medicine. Explore how singing bowls, binaural beats, and resonance therapy shift brainwave states, entrain the nervous system, and create the conditions for deep repair.
+            </p>
+            <Link
+              href="/sound-healing"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#7A5A1E',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
+
+          {/* Somatics card */}
+          <div
+            className="card"
+            style={{
+              padding: '2.5rem 2.25rem',
+              borderRadius: '2px',
+              borderTop: '3px solid #2D3A6A',
+            }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: '#E8EAF6',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D3A6A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2a4 4 0 0 1 4 4" />
+                <path d="M12 2a4 4 0 0 0-4 4" />
+                <path d="M12 22V10" />
+                <path d="M8 10c0 0-3 1-3 5" />
+                <path d="M16 10c0 0 3 1 3 5" />
+                <path d="M9 22l3-4 3 4" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: '#2D3A6A',
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Somatics
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              The body completes what the mind cannot. Somatic practices use slow, mindful movement to rewire the nervous system&apos;s habitual tension patterns — releasing what talk therapy alone cannot reach.
+            </p>
+            <Link
+              href="/somatics"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#2D3A6A',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
+
+          {/* Reiki card */}
+          <div
+            className="card"
+            style={{
+              padding: '2.5rem 2.25rem',
+              borderRadius: '2px',
+              borderTop: '3px solid #D4A74A',
+            }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: 'color-mix(in srgb, #F0D68A 35%, var(--color-cream))',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A5A1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2v4" />
+                <path d="M12 18v4" />
+                <path d="M4.93 4.93l2.83 2.83" />
+                <path d="M16.24 16.24l2.83 2.83" />
+                <path d="M2 12h4" />
+                <path d="M18 12h4" />
+                <path d="M4.93 19.07l2.83-2.83" />
+                <path d="M16.24 7.76l2.83-2.83" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: '#7A5A1E',
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Reiki
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              Heal through presence and gentle touch. Explore how Reiki activates the relaxation response, the science behind biofield therapies, and how to integrate energy work into a complete practice.
+            </p>
+            <Link
+              href="/reiki"
               style={{
                 fontFamily: 'var(--font-ui)',
                 fontSize: '0.75rem',
