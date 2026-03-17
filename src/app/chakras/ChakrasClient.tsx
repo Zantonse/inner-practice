@@ -422,6 +422,15 @@ export default function ChakrasClient() {
             </p>
           </ScrollReveal>
 
+          <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+            <img
+              src="/images/illustrations/chakras-seven-centers.jpg"
+              alt="The seven chakras aligned along the spine — Muladhara through Sahasrara with their traditional colors"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              loading="lazy"
+            />
+          </div>
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             {CHAKRA_LIST.map((chakra) => {
               const psychMap: Record<string, { domain: string; balance: string[]; imbalance: string[] }> = {
@@ -782,6 +791,15 @@ export default function ChakrasClient() {
             </ScrollReveal>
           </div>
 
+          <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+            <img
+              src="/images/illustrations/chakras-polyvagal-overlay.jpg"
+              alt="Polyvagal theory mapped to the chakra system — dorsal vagal maps to root and sacral, sympathetic to solar plexus, ventral vagal to heart and throat, integration to third eye and crown"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              loading="lazy"
+            />
+          </div>
+
           {/* Evidence table */}
           <ScrollReveal>
             <h3
@@ -797,6 +815,16 @@ export default function ChakrasClient() {
               Science Correspondences
             </h3>
           </ScrollReveal>
+
+          <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+            <img
+              src="/images/illustrations/chakras-nerve-endocrine.jpg"
+              alt="Science meets tradition — nerve plexuses on the left and endocrine glands on the right both correspond to the seven chakra locations"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              loading="lazy"
+            />
+          </div>
+
           <div
             style={{
               display: 'grid',
@@ -1237,6 +1265,15 @@ export default function ChakrasClient() {
               requires careful preparation.
             </p>
           </ScrollReveal>
+
+          <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+            <img
+              src="/images/illustrations/chakras-kundalini.jpg"
+              alt="Kundalini energy rising — the coiled serpent at the base of the spine awakens and spirals upward through each chakra to the thousand-petaled lotus at the crown"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              loading="lazy"
+            />
+          </div>
 
           <div
             style={{
