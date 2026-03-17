@@ -202,7 +202,7 @@ export default function HomePage() {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          minHeight: 'calc(100dvh - 60px)',
+          minHeight: '100dvh',
         }}
       >
         {/* Top row — 3 panels */}
@@ -492,7 +492,7 @@ export default function HomePage() {
           style={{
             position: 'absolute',
             left: '50%',
-            top: 'calc(44dvh / 2 + 30px)',
+            top: 'calc(44dvh / 2)',
             transform: 'translate(-50%, -50%)',
             zIndex: 30,
             textAlign: 'center',

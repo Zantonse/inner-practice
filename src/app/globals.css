@@ -493,18 +493,13 @@ button:focus-visible {
 
 /* --- Nav -------------------------------------------------- */
 .site-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 50;
   height: 60px;
   display: flex;
   align-items: center;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background-color: color-mix(in srgb, var(--color-cream) 85%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  background-color: var(--color-cream);
+  border-bottom: 1px solid var(--color-border);
   padding: 0 max(1.5rem, 5vw);
 }
 

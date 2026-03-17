@@ -293,7 +293,7 @@ export default function RootLayout({
           </div>
         </nav>
 
-        <main id="main-content" style={{ paddingTop: '60px' }}>
+        <main id="main-content">
           {children}
         </main>
 
