@@ -205,7 +205,7 @@ export default function SoundHealingClient() {
           <ScrollReveal>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1.5rem' }}>Continue Exploring</h2>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              {[{ href: '/meditate', label: 'Meditate' }, { href: '/breathe', label: 'Breathe' }, { href: '/reiki', label: 'Reiki' }, { href: '/nervous-system', label: 'Nervous System' }, { href: '/yoga', label: 'Yoga' }, { href: '/somatics', label: 'Somatics' }, { href: '/fascia', label: 'Fascia' }, { href: '/manifest', label: 'Manifest' }, { href: '/practice', label: 'Practice' }, { href: '/sleep', label: 'Sleep' }, { href: '/qigong', label: 'Qigong' }].map(link => (
+              {[{ href: '/meditate', label: 'Meditate' }, { href: '/breathe', label: 'Breathe' }, { href: '/reiki', label: 'Reiki' }, { href: '/nervous-system', label: 'Nervous System' }, { href: '/yoga', label: 'Yoga' }, { href: '/somatics', label: 'Somatics' }, { href: '/fascia', label: 'Fascia' }, { href: '/manifest', label: 'Manifest' }, { href: '/practice', label: 'Practice' }, { href: '/sleep', label: 'Sleep' }, { href: '/qigong', label: 'Qigong' }, { href: '/chakras', label: 'Chakras' }].map(link => (
                 <Link key={link.href} href={link.href} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: AMBER_DEEP, textDecoration: 'none', padding: '0.625rem 1.25rem', border: `1px solid ${AMBER_MID}`, borderRadius: '2px' }}>{link.label}</Link>
               ))}
             </div>

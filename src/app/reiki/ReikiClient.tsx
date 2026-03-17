@@ -824,6 +824,7 @@ export default function ReikiClient() {
                 { href: '/somatics', label: 'Somatics' },
                 { href: '/sleep', label: 'Sleep' },
                 { href: '/qigong', label: 'Qigong' },
+                { href: '/chakras', label: 'Chakras' },
               ].map(link => (
                 <Link
                   key={link.href}

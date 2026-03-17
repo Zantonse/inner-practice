@@ -643,6 +643,8 @@ export default function ManifestClient() {
               <Link href="/sleep" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Sleep &rarr;</Link>
               <span style={{ color: 'var(--color-border)' }}>&middot;</span>
               <Link href="/qigong" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Qigong &rarr;</Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/chakras" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Chakras &rarr;</Link>
             </div>
           </div>
         </ScrollReveal>

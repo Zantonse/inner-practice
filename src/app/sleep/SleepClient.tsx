@@ -2208,6 +2208,11 @@ export default function SleepClient() {
                 label: 'Somatics',
                 desc: 'Somatic practices that discharge the residual tension preventing deep sleep.',
               },
+              {
+                href: '/chakras',
+                label: 'Chakras',
+                desc: 'The subtle energy centers and their relationship to sleep, rest, and nervous system restoration.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

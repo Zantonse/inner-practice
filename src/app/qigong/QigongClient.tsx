@@ -1891,6 +1891,11 @@ export default function QigongClient() {
                 label: 'Sleep',
                 desc: 'How qigong&rsquo;s HRV and cortisol effects translate into deeper sleep and stronger overnight autonomic recovery.',
               },
+              {
+                href: '/chakras',
+                label: 'Chakras',
+                desc: 'The subtle energy centers of yogic anatomy &mdash; the energetic map that qigong&rsquo;s meridian system parallels and intersects.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link
