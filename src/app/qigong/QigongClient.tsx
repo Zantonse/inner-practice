@@ -581,6 +581,17 @@ export default function QigongClient() {
             </ScrollReveal>
 
             <ScrollReveal>
+              <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+                <img
+                  src="/images/illustrations/qigong-meridian-flow.jpg"
+                  alt="The flow of qi through meridian lines along the body"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                  loading="lazy"
+                />
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal>
               <h3
                 style={{
                   fontFamily: 'var(--font-display)',
@@ -737,6 +748,17 @@ export default function QigongClient() {
                   'Bouncing on the Toes — triple warmer vibration and integration',
                 ]}
               />
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+                <img
+                  src="/images/illustrations/qigong-ba-duan-jin.jpg"
+                  alt="Ba Duan Jin Eight Brocades — all eight qigong positions illustrated"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                  loading="lazy"
+                />
+              </div>
             </ScrollReveal>
 
             <ScrollReveal>

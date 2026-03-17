@@ -564,6 +564,17 @@ export default function FasciaClient() {
                 where the web is stuck.
               </p>
             </ScrollReveal>
+
+            <ScrollReveal>
+              <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+                <img
+                  src="/images/illustrations/fascia-web-network.jpg"
+                  alt="Illustration of the fascial web connecting muscles, organs, and nerves throughout the body"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                  loading="lazy"
+                />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -636,6 +647,17 @@ export default function FasciaClient() {
                 stat="pH below 5.0 at active trigger points"
                 detail="Active fascial trigger points create a biochemical environment as acidic as vinegar — activating the same pain receptors triggered by capsaicin (chili peppers). This is the fascia's hidden pain generator."
                 url="https://pubmed.ncbi.nlm.nih.gov/18439759/"
+              />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+              <img
+                src="/images/illustrations/fascia-thixotropic-gel.jpg"
+                alt="Comparison of dehydrated rigid fascia versus hydrated fluid fascia — the thixotropic gel concept"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                loading="lazy"
               />
             </div>
           </ScrollReveal>
@@ -906,6 +928,17 @@ export default function FasciaClient() {
                 and the ground substance is rehydrated. Western clinical equivalents — IASTM (Instrument-Assisted
                 Soft Tissue Mobilization) and the Graston Technique — produce identical physiological effects.
               </p>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+                <img
+                  src="/images/illustrations/fascia-myofascial-release.jpg"
+                  alt="Cross-section showing myofascial release technique — pressure applied to fascial adhesion layers"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                  loading="lazy"
+                />
+              </div>
             </ScrollReveal>
 
             <ScrollReveal>
@@ -1909,6 +1942,17 @@ export default function FasciaClient() {
               </ScrollReveal>
             ))}
           </div>
+
+          <ScrollReveal>
+            <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+              <img
+                src="/images/illustrations/fascia-anatomy-trains.jpg"
+                alt="Tom Myers anatomy trains — superficial back line and lateral line running through the body"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                loading="lazy"
+              />
+            </div>
+          </ScrollReveal>
 
           {/* Cross-links to meditate and yoga */}
           <ScrollReveal>

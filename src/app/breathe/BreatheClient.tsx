@@ -831,6 +831,14 @@ export default function BreatheClient() {
                 with vagal receptors. When you breathe shallowly into the chest, you activate stress. When you breathe
                 deeply into the diaphragm, you activate calm. Every breath is a vote.
               </p>
+              <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+                <img
+                  src="/images/illustrations/breathwork-diaphragm.jpg"
+                  alt="Diaphragm mechanics — inhale with diaphragm descending and lungs expanding versus exhale with diaphragm rising"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                  loading="lazy"
+                />
+              </div>
               <p style={{ lineHeight: 1.85, marginBottom: '1.25rem' }}>
                 Across every major contemplative tradition — Buddhist anapanasati, yogic pranayama, Taoist embryonic
                 breathing, Sufi zhikr, Christian hesychasm — the same empirical insight emerges: conscious breath is
@@ -1013,6 +1021,17 @@ export default function BreatheClient() {
                   </p>
                 </div>
               ))}
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+              <img
+                src="/images/illustrations/breathwork-vagal-brake.jpg"
+                alt="The vagal brake concept — extended exhale activates the vagus nerve to slow heart rate"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                loading="lazy"
+              />
             </div>
           </ScrollReveal>
         </div>

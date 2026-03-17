@@ -1013,6 +1013,15 @@ export default function NervousSystemClient() {
               The vagus nerve (Cranial Nerve X) is the longest cranial nerve in the body. It originates in the brainstem&apos;s medulla oblongata and &ldquo;wanders&rdquo; through the throat, chest, and abdomen — the Latin <em>vagus</em> means &ldquo;wandering.&rdquo; It touches nearly every major organ.
             </p>
 
+            <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+              <img
+                src="/images/illustrations/nervous-system-vagus-nerve.jpg"
+                alt="The vagus nerve pathway from brainstem through throat, heart, lungs, diaphragm, and gut"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                loading="lazy"
+              />
+            </div>
+
             <h3
               style={{
                 fontFamily: 'var(--font-display)',
@@ -1170,6 +1179,17 @@ export default function NervousSystemClient() {
               indicators={['Numbness', 'Dissociation', 'Fatigue', 'Depression', 'Collapse']}
               accentColor="#7A7A8A"
               bgColor="var(--color-surface-raised)"
+            />
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+            <img
+              src="/images/illustrations/nervous-system-polyvagal-ladder.jpg"
+              alt="The polyvagal ladder — ventral vagal safe state, sympathetic fight-or-flight, and dorsal vagal shutdown"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              loading="lazy"
             />
           </div>
         </ScrollReveal>
@@ -1693,6 +1713,15 @@ export default function NervousSystemClient() {
                   Indicates sympathetic dominance and chronic stress. Correlated with anxiety, cardiovascular risk, and reduced capacity for emotional regulation.
                 </p>
               </div>
+            </div>
+
+            <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+              <img
+                src="/images/illustrations/nervous-system-hrv.jpg"
+                alt="Heart rate variability comparison — high HRV healthy and responsive versus low HRV stressed and rigid"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                loading="lazy"
+              />
             </div>
 
             <h3

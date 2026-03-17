@@ -616,6 +616,17 @@ export default function SleepClient() {
                 </p>
               </div>
             </ScrollReveal>
+
+            <ScrollReveal>
+              <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+                <img
+                  src="/images/illustrations/sleep-architecture.jpg"
+                  alt="Sleep architecture diagram showing four 90-minute cycles with more deep sleep early and more REM late"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                  loading="lazy"
+                />
+              </div>
+            </ScrollReveal>
           </div>
 
           {/* Stat Cards */}
@@ -698,6 +709,17 @@ export default function SleepClient() {
               </p>
             </ScrollReveal>
           </div>
+
+          <ScrollReveal>
+            <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
+              <img
+                src="/images/illustrations/sleep-glymphatic.jpg"
+                alt="The glymphatic system — brain cells shrink 60 percent during sleep creating channels for cerebrospinal fluid to flush waste"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                loading="lazy"
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
