@@ -244,6 +244,21 @@ export default function RootLayout({
                 Qigong
               </Link>
               <Link
+                href="/chakras"
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  transition: 'color 300ms ease',
+                }}
+              >
+                Chakras
+              </Link>
+              <Link
                 href="/practice"
                 style={{
                   fontFamily: 'var(--font-ui)',
