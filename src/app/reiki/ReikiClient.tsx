@@ -349,8 +349,8 @@ export default function ReikiClient() {
 
           {/* Evidence Quality Table */}
           <ScrollReveal>
-            <div style={{ overflowX: 'auto', marginBottom: '3rem' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+            <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem', marginBottom: '3rem' }}>
+              <table style={{ width: '100%', minWidth: '480px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
                   <tr style={{ borderBottom: `2px solid ${GOLD_MID}` }}>
                     {['Domain', 'Evidence Quality', 'Direction', 'Note'].map(h => (
@@ -419,7 +419,7 @@ export default function ReikiClient() {
             ].map((m) => (
               <ScrollReveal key={m.title}>
                 <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: m.label === 'Established' ? '#2D6A4F' : m.label === 'Plausible' ? GOLD_DEEP : 'var(--color-text-muted)', margin: '0 0 0.75rem', padding: '0.15rem 0.5rem', display: 'inline-block', borderRadius: '9999px', background: m.label === 'Established' ? 'rgba(45,106,79,0.1)' : m.label === 'Plausible' ? `color-mix(in srgb, ${GOLD_LIGHT} 20%, var(--color-cream))` : 'var(--color-surface-raised)', border: '1px solid var(--color-border)' }}>{m.label}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: m.label === 'Established' ? '#2D6A4F' : m.label === 'Plausible' ? GOLD_DEEP : 'var(--color-text-muted)', margin: '0 0 0.75rem', padding: '0.15rem 0.5rem', display: 'inline-block', borderRadius: '9999px', background: m.label === 'Established' ? 'rgba(45,106,79,0.1)' : m.label === 'Plausible' ? `color-mix(in srgb, ${GOLD_LIGHT} 20%, var(--color-cream))` : 'var(--color-surface-raised)', border: '1px solid var(--color-border)' }}>{m.label}</p>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>{m.title}</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{m.desc}</p>
                 </div>

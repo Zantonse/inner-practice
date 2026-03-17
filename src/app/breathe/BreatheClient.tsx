@@ -1216,7 +1216,7 @@ export default function BreatheClient() {
                   <p
                     style={{
                       fontFamily: 'var(--font-ui)',
-                      fontSize: '0.6rem',
+                      fontSize: '0.625rem',
                       fontWeight: 500,
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
