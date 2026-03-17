@@ -1903,6 +1903,14 @@ export default function BreatheClient() {
               <Link href="/somatics" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
                 Somatics &rarr;
               </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>·</span>
+              <Link href="/sleep" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Sleep &rarr;
+              </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>·</span>
+              <Link href="/qigong" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Qigong &rarr;
+              </Link>
             </div>
           </ScrollReveal>
         </div>

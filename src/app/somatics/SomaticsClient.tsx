@@ -211,7 +211,7 @@ export default function SomaticsClient() {
           <ScrollReveal>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1.5rem' }}>Continue Exploring</h2>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              {[{ href: '/nervous-system', label: 'Nervous System' }, { href: '/fascia', label: 'Fascia' }, { href: '/reiki', label: 'Reiki' }, { href: '/yoga', label: 'Yoga' }, { href: '/meditate', label: 'Meditate' }, { href: '/breathe', label: 'Breathe' }, { href: '/sound-healing', label: 'Sound Healing' }, { href: '/manifest', label: 'Manifest' }, { href: '/practice', label: 'Practice' }].map(link => (
+              {[{ href: '/nervous-system', label: 'Nervous System' }, { href: '/fascia', label: 'Fascia' }, { href: '/reiki', label: 'Reiki' }, { href: '/yoga', label: 'Yoga' }, { href: '/meditate', label: 'Meditate' }, { href: '/breathe', label: 'Breathe' }, { href: '/sound-healing', label: 'Sound Healing' }, { href: '/manifest', label: 'Manifest' }, { href: '/practice', label: 'Practice' }, { href: '/sleep', label: 'Sleep' }, { href: '/qigong', label: 'Qigong' }].map(link => (
                 <Link key={link.href} href={link.href} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: INDIGO_DEEP, textDecoration: 'none', padding: '0.625rem 1.25rem', border: `1px solid ${INDIGO_MID}`, borderRadius: '2px' }}>{link.label}</Link>
               ))}
             </div>
