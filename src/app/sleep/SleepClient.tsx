@@ -2233,6 +2233,11 @@ export default function SleepClient() {
                 label: 'Chakras',
                 desc: 'The subtle energy centers and their relationship to sleep, rest, and nervous system restoration.',
               },
+              {
+                href: '/trauma',
+                label: 'Trauma',
+                desc: 'How unresolved trauma disrupts sleep architecture and how somatic, breath, and nervous system practices heal the pattern.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

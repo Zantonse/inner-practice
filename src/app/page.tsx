@@ -9,7 +9,7 @@ const ROSE_DEEP  = '#8B3A62';
 const ROSE_MID   = '#985575';
 const ROSE_LIGHT = '#E8B4CF';
 
-type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'sound-healing' | 'somatics' | 'reiki' | 'sleep' | 'qigong' | 'chakras' | 'manifest' | 'practice';
+type PathKey = 'meditate' | 'yoga' | 'fascia' | 'breathe' | 'nervous-system' | 'sound-healing' | 'somatics' | 'reiki' | 'sleep' | 'qigong' | 'chakras' | 'trauma' | 'manifest' | 'practice';
 
 const paths: {
   key: PathKey;
@@ -166,6 +166,19 @@ const paths: {
     gradTo: 'oklch(45% 0.15 280)',
     overlayColor: 'rgba(107,63,160,0.62)',
     accentColor: '#B39DDB',
+  },
+  {
+    key: 'trauma',
+    href: '/trauma',
+    eyebrow: 'The path of healing',
+    title: 'Trauma',
+    tagline: 'The inherited nervous system. Heal the pattern.',
+    image: '/images/hero-nervous-system.webp',
+    imageAlt: 'Abstract watercolor trauma healing illustration',
+    gradFrom: 'oklch(35% 0.08 55)',
+    gradTo: 'oklch(50% 0.10 40)',
+    overlayColor: 'rgba(139,94,60,0.62)',
+    accentColor: '#C4956A',
   },
   {
     key: 'manifest',
@@ -1351,6 +1364,68 @@ export default function HomePage() {
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 color: '#6B3FA0',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              Begin &rarr;
+            </Link>
+          </div>
+
+          {/* Trauma card */}
+          <div
+            className="card"
+            style={{
+              padding: '2.5rem 2.25rem',
+              borderRadius: '2px',
+              borderTop: '3px solid #8B5E3C',
+            }}
+          >
+            <div
+              style={{
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '9999px',
+                background: 'color-mix(in srgb, #C4956A 25%, var(--color-cream))',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B5E3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                <path d="M8 12s1.5-2 4-2 4 2 4 2" />
+                <path d="M9 9h.01" />
+                <path d="M15 9h.01" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.625rem',
+                fontWeight: 600,
+                color: '#8B5E3C',
+                margin: '0 0 0.75rem',
+                fontStyle: 'normal',
+              }}
+            >
+              Trauma
+            </h3>
+            <p style={{ color: 'var(--color-text-muted)', margin: '0 0 1.75rem', lineHeight: 1.75, fontSize: '0.9375rem' }}>
+              How trauma passes through generations via epigenetics, autonomic patterns, and fascial storage. The science of inheritance and how every practice on this site addresses a different layer of the inherited pattern.
+            </p>
+            <Link
+              href="/trauma"
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#8B5E3C',
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',

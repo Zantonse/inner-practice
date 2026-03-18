@@ -1918,6 +1918,11 @@ export default function QigongClient() {
                 label: 'Chakras',
                 desc: 'The subtle energy centers of yogic anatomy &mdash; the energetic map that qigong&rsquo;s meridian system parallels and intersects.',
               },
+              {
+                href: '/trauma',
+                label: 'Trauma',
+                desc: 'How qigong&rsquo;s slow, rhythmic movement discharges stored survival responses and supports intergenerational healing through the nervous system.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

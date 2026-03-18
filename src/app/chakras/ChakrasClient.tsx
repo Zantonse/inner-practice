@@ -1765,6 +1765,11 @@ export default function ChakrasClient() {
                 label: 'Practice',
                 desc: 'The full practice library with chakra filters — find the right technique for the center you are working with.',
               },
+              {
+                href: '/trauma',
+                label: 'Trauma',
+                desc: 'Stored trauma lodges in the lower chakras — Root, Sacral, Solar Plexus. Healing the pattern clears the foundation of the whole system.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

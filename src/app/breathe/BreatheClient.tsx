@@ -1933,6 +1933,10 @@ export default function BreatheClient() {
               <Link href="/chakras" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
                 Chakras &rarr;
               </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>·</span>
+              <Link href="/trauma" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Trauma &rarr;
+              </Link>
             </div>
           </ScrollReveal>
         </div>
