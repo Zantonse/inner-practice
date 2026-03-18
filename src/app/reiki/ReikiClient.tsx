@@ -7,7 +7,7 @@ import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
 
 // ── Accent tokens (warm gold / sacred amber) ──────────────────
-const GOLD_DEEP = '#8B6914';
+const GOLD_DEEP = '#6B5010';
 const GOLD_MID = '#D4A843';
 const GOLD_LIGHT = '#F0D68A';
 

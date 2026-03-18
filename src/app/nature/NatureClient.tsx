@@ -172,7 +172,7 @@ export default function NatureClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: SAGE_MID,
+              color: SAGE_DEEP,
               margin: '0 0 1.25rem',
             }}
           >
@@ -226,7 +226,7 @@ export default function NatureClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: SAGE_MID,
+                  color: SAGE_DEEP,
                   textDecoration: 'none',
                   borderBottom: `1px solid ${SAGE_MID}`,
                   paddingBottom: '0.25rem',
@@ -1213,7 +1213,7 @@ export default function NatureClient() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
             fontStyle: 'italic',
-            color: SAGE_MID,
+            color: '#E2EDDF',
             margin: 0,
             whiteSpace: 'nowrap',
           }}

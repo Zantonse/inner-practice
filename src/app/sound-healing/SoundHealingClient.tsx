@@ -5,7 +5,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
 
-const AMBER_DEEP = '#8B6914';
+const AMBER_DEEP = '#6B5010';
 const AMBER_MID = '#D4A843';
 const AMBER_LIGHT = '#F0D68A';
 

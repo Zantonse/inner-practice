@@ -230,7 +230,7 @@ export default function TemperatureClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: ICE_MID,
+              color: ICE_DEEP,
               margin: '0 0 1.25rem',
             }}
           >
@@ -283,7 +283,7 @@ export default function TemperatureClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: ICE_MID,
+                  color: ICE_DEEP,
                   textDecoration: 'none',
                   borderBottom: `1px solid ${ICE_MID}`,
                   paddingBottom: '0.25rem',
@@ -1271,7 +1271,7 @@ export default function TemperatureClient() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
             fontStyle: 'italic',
-            color: ICE_MID,
+            color: '#ffffff',
             margin: 0,
             whiteSpace: 'nowrap',
           }}
