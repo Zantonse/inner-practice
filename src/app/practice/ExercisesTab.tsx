@@ -525,7 +525,7 @@ export default function ExercisesTab({
       <div
         style={{
           position: 'sticky',
-          top: '108px',
+          top: '0px',
           zIndex: 10,
           background: 'color-mix(in srgb, var(--color-cream) 88%, transparent)',
           backdropFilter: 'blur(12px)',
@@ -602,7 +602,7 @@ export default function ExercisesTab({
                 <div
                   style={{
                     position: 'sticky',
-                    top: '152px',
+                    top: '44px',
                     zIndex: 9,
                     background:
                       'color-mix(in srgb, var(--color-cream) 88%, transparent)',

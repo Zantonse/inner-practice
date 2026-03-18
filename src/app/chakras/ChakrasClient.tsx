@@ -1165,8 +1165,8 @@ export default function ChakrasClient() {
                   key={row.chakra}
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: 'minmax(0, 100px) minmax(0, 1fr) minmax(0, 160px)',
-                    gap: '1rem',
+                    gridTemplateColumns: 'minmax(0, 80px) minmax(0, 1fr)',
+                    gap: '0.75rem',
                     alignItems: 'start',
                     borderLeft: `3px solid ${row.color}`,
                     padding: '1rem 1.25rem',
@@ -1187,21 +1187,24 @@ export default function ChakrasClient() {
                   >
                     {row.chakra}
                   </p>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>
-                    {row.technique}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-ui)',
-                      fontSize: '0.75rem',
-                      color: 'var(--color-text-muted)',
-                      fontStyle: 'italic',
-                      margin: 0,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {row.timing}
-                  </p>
+                  <div>
+                    <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 0.25rem', lineHeight: 1.6 }}>
+                      {row.technique}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-ui)',
+                        fontSize: '0.6875rem',
+                        color: row.color,
+                        fontStyle: 'italic',
+                        margin: 0,
+                        lineHeight: 1.5,
+                        opacity: 0.8,
+                      }}
+                    >
+                      {row.timing}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
