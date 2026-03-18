@@ -212,36 +212,36 @@ type VideoTab = 'mindful-eating' | 'gut-health' | 'fasting';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   'mindful-eating': [
     {
-      videoId: '6tw2MThRt3Q',
-      title: 'Mindful Eating — A Simple Practice',
+      videoId: '9eBtrZPGoKQ',
+      title: 'Gut-Immune Brain Axis',
       description:
         'How the act of eating slowly, chewing thoroughly, and eating without distraction activates the cephalic phase digestive response — the first stage of digestion that begins in the brain before food even enters the stomach. Parasympathetic eating versus sympathetic eating.',
     },
     {
-      videoId: 'Ltp-X35IZQM',
-      title: 'How Your Gut Affects Your Brain',
+      videoId: 'SZSRgyl7pyQ',
+      title: 'Dr. Science of Gut Sense',
       description:
         'An overview of the emerging psychobiotic research: how gut bacteria produce neurotransmitters, modulate inflammation, and directly influence mood and cognition via the vagus nerve. Covers Lactobacillus rhamnosus, fermented foods, and the Bravo 2011 fMRI study.',
     },
   ],
   'gut-health': [
     {
-      videoId: 'B9RruLkAUm8',
-      title: 'The Gut-Brain Connection',
+      videoId: '_67egFHXuTE',
+      title: 'Microbiota-Gut-Brain Axis',
       description:
         'Sonnenburg Lab research at Stanford: a high-fermented-food diet increased microbiome diversity and decreased 19 inflammatory markers including IL-6 and IL-12p70, while a high-fiber diet without adequate fermented foods had mixed results. The case for daily fermented foods.',
     },
     {
-      videoId: 'W5vSoJTSRHU',
-      title: 'Microbiome and Mental Health',
+      videoId: 'm9BBEVzr0BU',
+      title: 'GI Disorders Gut-Brain Connection',
       description:
         'How EPA and DHA reduce neuroinflammation, support myelin integrity, and modulate the HPA axis stress response. Meta-analysis by Sublette et al. (2011) showed EPA dominance (d=0.53) as the active antidepressant component. Dosing, sourcing, and the omega-6:omega-3 ratio.',
     },
   ],
   fasting: [
     {
-      videoId: 'WHbhMVfgpBs',
-      title: 'Intermittent Fasting — What the Science Says',
+      videoId: '1xCN5o0glHg',
+      title: 'The Misunderstood Science of Intermittent Fasting',
       description:
         "Satchin Panda's research on circadian-aligned eating: consuming all calories within a 10–12 hour window aligned to daylight improves metabolic health, sleep quality, and inflammatory markers. Wilkinson et al. (2020) showed 14:10 TRE reduced blood pressure and atherogenic lipids in metabolic syndrome.",
     },
@@ -300,7 +300,7 @@ export default function NutritionClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: OLIVE_DEEP,
+              color: 'rgba(245,234,225,0.7)',
               margin: '0 0 1.25rem',
             }}
           >
@@ -311,7 +311,7 @@ export default function NutritionClient() {
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-hero)',
               fontWeight: 700,
-              color: 'var(--color-text)',
+              color: '#F5EAE1',
               lineHeight: 1.05,
               margin: '0 0 1.5rem',
               maxWidth: '18ch',
@@ -322,7 +322,7 @@ export default function NutritionClient() {
           <p
             style={{
               fontSize: 'var(--text-body-lg)',
-              color: 'var(--color-text-muted)',
+              color: 'rgba(245,234,225,0.85)',
               margin: '0 0 2.5rem',
               maxWidth: '52ch',
               lineHeight: 1.75,
@@ -354,7 +354,7 @@ export default function NutritionClient() {
                   textTransform: 'uppercase',
                   color: OLIVE_MID,
                   textDecoration: 'none',
-                  borderBottom: `1px solid ${OLIVE_MID}`,
+                  borderBottom: `1px solid rgba(143,160,118,0.5)`,
                   paddingBottom: '0.25rem',
                   transition: 'opacity 200ms ease',
                 }}

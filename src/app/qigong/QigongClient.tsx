@@ -263,7 +263,7 @@ export default function QigongClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: JADE_DEEP,
+              color: 'rgba(245,234,225,0.7)',
               margin: '0 0 1.25rem',
             }}
           >
@@ -274,7 +274,7 @@ export default function QigongClient() {
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-hero)',
               fontWeight: 700,
-              color: 'var(--color-text)',
+              color: '#F5EAE1',
               lineHeight: 1.05,
               margin: '0 0 1.5rem',
               maxWidth: '18ch',
@@ -285,7 +285,7 @@ export default function QigongClient() {
           <p
             style={{
               fontSize: 'var(--text-body-lg)',
-              color: 'var(--color-text-muted)',
+              color: 'rgba(245,234,225,0.85)',
               margin: '0 0 2.5rem',
               maxWidth: '52ch',
               lineHeight: 1.75,
@@ -317,9 +317,9 @@ export default function QigongClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: JADE_DEEP,
+                  color: JADE_MID,
                   textDecoration: 'none',
-                  borderBottom: `1px solid ${JADE_MID}`,
+                  borderBottom: `1px solid rgba(168,213,186,0.5)`,
                   paddingBottom: '0.25rem',
                   transition: 'opacity 200ms ease',
                 }}

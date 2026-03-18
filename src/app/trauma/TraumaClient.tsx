@@ -89,22 +89,22 @@ type VideoTab = 'trauma-yoga' | 'somatic' | 'grounding';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   'trauma-yoga': [
     {
-      videoId: '53RX2ESUqpE',
-      title: 'Bessel van der Kolk — The Body Keeps the Score',
+      videoId: 'iTefkqYQz8g',
+      title: 'How the Body Keeps the Score — Bessel van der Kolk',
       description: 'A trauma-informed yoga session drawing on the Trauma Center Trauma Sensitive Yoga (TCTSY) framework. All choices are offered — not directed — allowing the body to reclaim agency that trauma interrupted.',
     },
   ],
   somatic: [
     {
-      videoId: 'nmJDkzDMllc',
-      title: 'Peter Levine — Somatic Experiencing',
+      videoId: 'nm92_PMUwiA',
+      title: 'Body Keeps The Score Author: We Got Trauma All Wrong',
       description: 'David Berceli\'s TRE protocol activates the body\'s natural trembling mechanism to discharge frozen survival energy stored in the psoas and deep hip flexors. The shaking completes the incomplete defensive response.',
     },
   ],
   grounding: [
     {
-      videoId: 'ByefRCzza3I',
-      title: 'Gabor Maté — Trauma and Healing',
+      videoId: '9KG-V5iV82o',
+      title: 'Dr. Bessel van der Kolk: The Body Keeps the Score',
       description: 'Somatic grounding anchors awareness in the present body when trauma pulls consciousness into past threat states. This practice teaches the nervous system that the present moment is safe.',
     },
   ],
@@ -162,7 +162,7 @@ export default function TraumaClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: AMBER_DEEP,
+              color: 'rgba(245,234,225,0.7)',
               margin: '0 0 1.25rem',
             }}
           >
@@ -173,7 +173,7 @@ export default function TraumaClient() {
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-hero)',
               fontWeight: 700,
-              color: 'var(--color-text)',
+              color: '#F5EAE1',
               lineHeight: 1.05,
               margin: '0 0 1.5rem',
               maxWidth: '18ch',
@@ -184,7 +184,7 @@ export default function TraumaClient() {
           <p
             style={{
               fontSize: 'var(--text-body-lg)',
-              color: 'var(--color-text-muted)',
+              color: 'rgba(245,234,225,0.85)',
               margin: '0 0 2.5rem',
               maxWidth: '52ch',
               lineHeight: 1.75,
@@ -217,9 +217,9 @@ export default function TraumaClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: AMBER_DEEP,
+                  color: AMBER_MID,
                   textDecoration: 'none',
-                  borderBottom: `1px solid ${AMBER_MID}`,
+                  borderBottom: `1px solid rgba(196,149,106,0.5)`,
                   paddingBottom: '0.25rem',
                   transition: 'opacity 200ms ease',
                 }}

@@ -100,22 +100,22 @@ type VideoTab = 'chakra-meditation' | 'kundalini-yoga' | 'bija-mantra';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   'chakra-meditation': [
     {
-      videoId: 'sSDhMQ-cZ1s',
-      title: 'Chakra Meditation — All 7 Centers',
+      videoId: 'fuC9aB6wmpE',
+      title: 'Seven Chakra Guided Meditation',
       description: 'A guided meditation moving through all seven chakras from root to crown. Each center receives breath, attention, and the associated bija mantra. Suitable for daily practice.',
     },
   ],
   'kundalini-yoga': [
     {
-      videoId: '1k9SzVBOZCE',
-      title: 'Guided Kundalini Meditation',
+      videoId: '-DO_GgchYPA',
+      title: 'Easy Kundalini Yoga Practice for Beginners',
       description: 'A complete Kundalini yoga set (kriya) designed to activate and move prana through the chakra column. Includes breathwork, movement, and meditation components.',
     },
   ],
   'bija-mantra': [
     {
-      videoId: 'dGJkw1oEljQ',
-      title: 'Understanding the Chakra System',
+      videoId: 'NmAHY_tg9Es',
+      title: 'Quick 7 Chakra Cleansing Seed Mantras',
       description: 'Guided chanting of the seven seed syllables (LAM, VAM, RAM, YAM, HAM, OM, Silence) with sustained tones. The vibrational resonance of each mantra targets the associated plexus.',
     },
   ],
@@ -173,7 +173,7 @@ export default function ChakrasClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: AMETHYST_DEEP,
+              color: 'rgba(245,234,225,0.7)',
               margin: '0 0 1.25rem',
             }}
           >
@@ -184,7 +184,7 @@ export default function ChakrasClient() {
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-hero)',
               fontWeight: 700,
-              color: 'var(--color-text)',
+              color: '#F5EAE1',
               lineHeight: 1.05,
               margin: '0 0 1.5rem',
               maxWidth: '18ch',
@@ -195,7 +195,7 @@ export default function ChakrasClient() {
           <p
             style={{
               fontSize: 'var(--text-body-lg)',
-              color: 'var(--color-text-muted)',
+              color: 'rgba(245,234,225,0.85)',
               margin: '0 0 2.5rem',
               maxWidth: '52ch',
               lineHeight: 1.75,
@@ -226,9 +226,9 @@ export default function ChakrasClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: AMETHYST_DEEP,
+                  color: AMETHYST_MID,
                   textDecoration: 'none',
-                  borderBottom: `1px solid ${AMETHYST_MID}`,
+                  borderBottom: `1px solid rgba(179,157,219,0.5)`,
                   paddingBottom: '0.25rem',
                   transition: 'opacity 200ms ease',
                 }}

@@ -152,27 +152,27 @@ type VideoTab = 'cold' | 'wim-hof' | 'sauna';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   cold: [
     {
-      videoId: 'AJiQMFTnR04',
-      title: 'The Science of Cold Exposure',
+      videoId: 'D6EPuUdIC1E',
+      title: 'Doctor Dissects Wim Hof Cold Hard Science',
       description: 'Andrew Huberman breaks down the exact mechanisms of deliberate cold exposure — norepinephrine, dopamine, brown fat activation, and the Søeberg principle. The most evidence-grounded cold protocol overview available.',
     },
     {
-      videoId: 'x3MnWCcaBeo',
-      title: 'Cold Shower Benefits — What Happens to Your Body',
+      videoId: '5ItdELJsvCo',
+      title: 'Wim Hof Method Explained',
       description: 'Practical walkthrough of cold water immersion protocols from 30-second cold finishes to full ice baths. Covers temperature ranges, duration, timing, and what the research says about recovery and mental health.',
     },
   ],
   'wim-hof': [
     {
-      videoId: 'nRGfUK6WQTY',
-      title: 'Wim Hof Method Explained',
+      videoId: 'WlOy1MtQ4Wg',
+      title: 'Wim Hof: Your Brain Can Heal Your Body',
       description: 'The original Wim Hof breathing and cold exposure method. Covers the three-pillar approach: breathing, cold, and commitment. Note: the breathing component is activating — do not practice before bed.',
     },
   ],
   sauna: [
     {
-      videoId: 'eKDo-YjnjiQ',
-      title: 'Sauna Benefits — The Finnish Evidence',
+      videoId: 'RWkv9ad7zvc',
+      title: 'Sauna Benefits Deep Dive — Dr. Rhonda Patrick',
       description: 'The Laukkanen 20-year Kuopio cohort study unpacked. Covers frequency, temperature, duration, and the cardiovascular mechanism. Also discusses heat shock proteins and why sauna 4–7 times weekly is the optimal dose.',
     },
   ],
@@ -230,7 +230,7 @@ export default function TemperatureClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: ICE_DEEP,
+              color: 'rgba(245,234,225,0.7)',
               margin: '0 0 1.25rem',
             }}
           >
@@ -241,7 +241,7 @@ export default function TemperatureClient() {
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-hero)',
               fontWeight: 700,
-              color: 'var(--color-text)',
+              color: '#F5EAE1',
               lineHeight: 1.05,
               margin: '0 0 1.5rem',
               maxWidth: '18ch',
@@ -252,7 +252,7 @@ export default function TemperatureClient() {
           <p
             style={{
               fontSize: 'var(--text-body-lg)',
-              color: 'var(--color-text-muted)',
+              color: 'rgba(245,234,225,0.85)',
               margin: '0 0 2.5rem',
               maxWidth: '52ch',
               lineHeight: 1.75,
@@ -283,9 +283,9 @@ export default function TemperatureClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: ICE_DEEP,
+                  color: ICE_MID,
                   textDecoration: 'none',
-                  borderBottom: `1px solid ${ICE_MID}`,
+                  borderBottom: `1px solid rgba(123,184,212,0.5)`,
                   paddingBottom: '0.25rem',
                   transition: 'opacity 200ms ease',
                 }}
