@@ -653,6 +653,12 @@ export default function ManifestClient() {
               <Link href="/temperature" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Temperature &rarr;</Link>
               <span style={{ color: 'var(--color-border)' }}>&middot;</span>
               <Link href="/nature" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Nature &rarr;</Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/taichi" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Tai Chi &rarr;</Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/fasting" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Fasting &rarr;</Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/psychedelics" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Psychedelics &rarr;</Link>
             </div>
           </div>
         </ScrollReveal>

@@ -1157,6 +1157,9 @@ export default function MeditateClient() {
                 { href: '/nutrition', label: 'Nutrition' },
                 { href: '/temperature', label: 'Temperature' },
                 { href: '/nature', label: 'Nature' },
+                { href: '/taichi', label: 'Tai Chi' },
+                { href: '/fasting', label: 'Fasting' },
+                { href: '/psychedelics', label: 'Psychedelics' },
               ].map((link, i, arr) => (
                 <span key={link.href} style={{ display: 'contents' }}>
                   <Link href={link.href} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>

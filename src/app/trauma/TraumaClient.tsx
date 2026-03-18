@@ -1687,6 +1687,21 @@ export default function TraumaClient() {
                 label: 'Nature',
                 desc: 'Nature immersion downregulates the default mode network and restores parasympathetic tone — a direct counter to the hypervigilance of trauma.',
               },
+              {
+                href: '/taichi',
+                label: 'Tai Chi',
+                desc: 'Slow embodied movement is bottom-up somatic processing. Tai chi is one of the safest trauma-sensitive movement practices available.',
+              },
+              {
+                href: '/fasting',
+                label: 'Fasting',
+                desc: 'BDNF elevation during fasting may support trauma recovery, though fasting should be approached carefully by those with trauma-related eating patterns.',
+              },
+              {
+                href: '/psychedelics',
+                label: 'Psychedelics',
+                desc: 'MDMA-assisted therapy creates the ventral vagal safety window for trauma reprocessing — the most evidence-based trauma treatment currently in trials.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

@@ -1736,6 +1736,16 @@ export default function FastingClient() {
                 label: 'Chakras',
                 desc: 'Traditional solar plexus (Manipura) practices are associated with digestive fire and personal transformation — a metaphorical framework for fasting\'s metabolic activation.',
               },
+              {
+                href: '/taichi',
+                label: 'Tai Chi',
+                desc: 'Traditional Chinese Medicine and tai chi both emphasize cultivating Jing — fasting conserves and clarifies the foundational essence.',
+              },
+              {
+                href: '/psychedelics',
+                label: 'Psychedelics',
+                desc: 'Fasting before a psychedelic session is a traditional preparation protocol that increases sensitivity, clarity, and the depth of the experience.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

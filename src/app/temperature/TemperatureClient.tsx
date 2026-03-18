@@ -1483,6 +1483,21 @@ export default function TemperatureClient() {
                 label: 'Nutrition',
                 desc: 'Brown fat activation, metabolic rate, and the hormonal cascades triggered by temperature — nutrition and cold are deeply linked.',
               },
+              {
+                href: '/taichi',
+                label: 'Tai Chi',
+                desc: 'Tai chi cultivates internal heat (nei gong) through slow movement — a complementary inside-out approach to external temperature protocols.',
+              },
+              {
+                href: '/fasting',
+                label: 'Fasting',
+                desc: 'Cold and fasting both activate AMPK, elevate norepinephrine, and enhance brown adipose tissue — synergistic metabolic interventions.',
+              },
+              {
+                href: '/psychedelics',
+                label: 'Psychedelics',
+                desc: 'Both reset the default mode network. Temperature shock and psychedelics share acute stress-induced neuroplasticity pathways.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

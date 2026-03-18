@@ -1874,6 +1874,16 @@ export default function TaiChiClient() {
                 label: 'Nature',
                 desc: 'Traditional tai chi practice is outdoors — morning light, earthing, and natural environment amplify every mechanism.',
               },
+              {
+                href: '/fasting',
+                label: 'Fasting',
+                desc: 'Fasted morning tai chi enhances fat oxidation and BDNF while preserving the metabolic clarity that supports intent-based practice.',
+              },
+              {
+                href: '/psychedelics',
+                label: 'Psychedelics',
+                desc: 'Both cultivate heightened interoceptive awareness. Tai chi practice during integration helps anchor expanded states in the body.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

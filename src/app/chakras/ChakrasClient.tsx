@@ -1785,6 +1785,21 @@ export default function ChakrasClient() {
                 label: 'Nature',
                 desc: 'The Root chakra grounds through direct contact with earth. Nature immersion is a direct practice for the lower chakras and parasympathetic regulation.',
               },
+              {
+                href: '/taichi',
+                label: 'Tai Chi',
+                desc: 'The Three Dantians in tai chi correspond directly to the lower, middle, and upper chakra groupings — a parallel energetic map.',
+              },
+              {
+                href: '/fasting',
+                label: 'Fasting',
+                desc: 'Traditional solar plexus (Manipura) practices are associated with digestive fire — a metaphorical framework for fasting\'s metabolic activation.',
+              },
+              {
+                href: '/psychedelics',
+                label: 'Psychedelics',
+                desc: 'Somatic energy at chakra points is intensified during psychedelic states and available for integration work in the days after.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

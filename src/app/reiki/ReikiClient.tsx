@@ -830,6 +830,9 @@ export default function ReikiClient() {
                 { href: '/nutrition', label: 'Nutrition' },
                 { href: '/temperature', label: 'Temperature' },
                 { href: '/nature', label: 'Nature' },
+                { href: '/taichi', label: 'Tai Chi' },
+                { href: '/fasting', label: 'Fasting' },
+                { href: '/psychedelics', label: 'Psychedelics' },
               ].map(link => (
                 <Link
                   key={link.href}

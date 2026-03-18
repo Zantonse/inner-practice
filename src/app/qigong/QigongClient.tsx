@@ -1938,6 +1938,21 @@ export default function QigongClient() {
                 label: 'Nature',
                 desc: 'Classical qigong is practiced outdoors to absorb Qi from the natural environment — trees, earth, sky, and seasonal rhythms.',
               },
+              {
+                href: '/taichi',
+                label: 'Tai Chi',
+                desc: 'The martial expression of qigong — silk-reeling, rooting, and yielding as a complete moving meditation practice.',
+              },
+              {
+                href: '/fasting',
+                label: 'Fasting',
+                desc: 'Traditional Chinese Medicine and qigong both emphasize cultivating Jing — fasting conserves and clarifies the foundational essence.',
+              },
+              {
+                href: '/psychedelics',
+                label: 'Psychedelics',
+                desc: 'Both open the same interoceptive channels — qi sensitivity and expanded body awareness share neurological underpinnings.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

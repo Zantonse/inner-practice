@@ -1573,6 +1573,21 @@ export default function NutritionClient() {
                 label: 'Temperature',
                 desc: 'Cold and heat exposure modulate inflammation via the same pathways as anti-inflammatory nutrition.',
               },
+              {
+                href: '/taichi',
+                label: 'Tai Chi',
+                desc: 'Traditional Chinese Medicine and tai chi both center on Jing — the foundational essence that nutrition either replenishes or depletes.',
+              },
+              {
+                href: '/fasting',
+                label: 'Fasting',
+                desc: 'Fasting and nutrition are inseparable. What you eat in your eating window determines how cleanly you fast and how deeply autophagy is triggered.',
+              },
+              {
+                href: '/psychedelics',
+                label: 'Psychedelics',
+                desc: 'Gut microbiome health influences serotonin production — the primary target of psychedelic compounds. Nutrition is psychedelic preparation.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

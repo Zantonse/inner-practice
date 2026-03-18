@@ -1424,6 +1424,21 @@ export default function NatureClient() {
                 label: 'Trauma',
                 desc: 'Predictable natural rhythms as co-regulation — why nature-based therapy works through the nervous system.',
               },
+              {
+                href: '/taichi',
+                label: 'Tai Chi',
+                desc: 'Traditional tai chi practice is outdoors — morning light, earthing, and natural environment amplify every mechanism.',
+              },
+              {
+                href: '/fasting',
+                label: 'Fasting',
+                desc: 'Early morning light exposure during the fasted state maximally amplifies the cortisol awakening response and circadian clock resetting.',
+              },
+              {
+                href: '/psychedelics',
+                label: 'Psychedelics',
+                desc: 'Biophilia is amplified after psychedelic experiences — time outdoors during integration deepens the felt sense of connection to living systems.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

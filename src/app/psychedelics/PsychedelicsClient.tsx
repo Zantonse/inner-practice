@@ -1888,6 +1888,16 @@ export default function PsychedelicsClient() {
                 label: 'Somatics',
                 desc: 'Somatic practices discharge physical material that surfaces during psychedelic experiences and integration.',
               },
+              {
+                href: '/taichi',
+                label: 'Tai Chi',
+                desc: 'Tai chi during integration anchors expanded states into the body through slow, deliberate movement and interoceptive awareness.',
+              },
+              {
+                href: '/fasting',
+                label: 'Fasting',
+                desc: 'Fasting before a session is a traditional preparation protocol that increases sensitivity, reduces body burden, and deepens the experience.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

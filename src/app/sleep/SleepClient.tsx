@@ -2253,6 +2253,21 @@ export default function SleepClient() {
                 label: 'Nature',
                 desc: 'Natural light entrains the circadian clock, and outdoor time regulates cortisol rhythms that govern the sleep-wake cycle.',
               },
+              {
+                href: '/taichi',
+                label: 'Tai Chi',
+                desc: 'Evening tai chi reduces inflammatory markers and cortisol, supporting the biological conditions for deep sleep.',
+              },
+              {
+                href: '/fasting',
+                label: 'Fasting',
+                desc: 'Time-restricted eating and circadian alignment directly improve sleep quality and overnight HRV by synchronizing peripheral clocks.',
+              },
+              {
+                href: '/psychedelics',
+                label: 'Psychedelics',
+                desc: 'Slow-wave sleep architecture improves post-session. Sleep consolidates the neuroplastic changes triggered by psychedelic experiences.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link
