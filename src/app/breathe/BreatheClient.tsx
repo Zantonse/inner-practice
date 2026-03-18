@@ -1937,6 +1937,18 @@ export default function BreatheClient() {
               <Link href="/trauma" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
                 Trauma &rarr;
               </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>·</span>
+              <Link href="/nutrition" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Nutrition &rarr;
+              </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>·</span>
+              <Link href="/temperature" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Temperature &rarr;
+              </Link>
+              <span style={{ color: 'var(--color-border)', alignSelf: 'center' }}>·</span>
+              <Link href="/nature" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Nature &rarr;
+              </Link>
             </div>
           </ScrollReveal>
         </div>

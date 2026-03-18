@@ -647,6 +647,12 @@ export default function ManifestClient() {
               <Link href="/chakras" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Chakras &rarr;</Link>
               <span style={{ color: 'var(--color-border)' }}>&middot;</span>
               <Link href="/trauma" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Trauma &rarr;</Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/nutrition" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Nutrition &rarr;</Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/temperature" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Temperature &rarr;</Link>
+              <span style={{ color: 'var(--color-border)' }}>&middot;</span>
+              <Link href="/nature" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>Nature &rarr;</Link>
             </div>
           </div>
         </ScrollReveal>

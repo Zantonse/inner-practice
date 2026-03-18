@@ -1923,6 +1923,21 @@ export default function QigongClient() {
                 label: 'Trauma',
                 desc: 'How qigong&rsquo;s slow, rhythmic movement discharges stored survival responses and supports intergenerational healing through the nervous system.',
               },
+              {
+                href: '/nutrition',
+                label: 'Nutrition',
+                desc: 'Traditional Chinese Medicine and qigong both center on Jing — the foundational essence that nutrition either replenishes or depletes.',
+              },
+              {
+                href: '/temperature',
+                label: 'Temperature',
+                desc: 'Qigong cultivates internal heat (nei gong) through breath and movement — a complementary approach to cold and heat exposure protocols.',
+              },
+              {
+                href: '/nature',
+                label: 'Nature',
+                desc: 'Classical qigong is practiced outdoors to absorb Qi from the natural environment — trees, earth, sky, and seasonal rhythms.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

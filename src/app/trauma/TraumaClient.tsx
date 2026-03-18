@@ -1672,6 +1672,21 @@ export default function TraumaClient() {
                 label: 'Manifestation',
                 desc: 'Addresses the inherited limiting beliefs installed by survival-mode caregivers — rewriting the story at the identity level.',
               },
+              {
+                href: '/nutrition',
+                label: 'Nutrition',
+                desc: 'The gut-brain axis is dysregulated by chronic trauma — inflammation, cortisol, and microbiome disruption. Nutrition is nervous system repair.',
+              },
+              {
+                href: '/temperature',
+                label: 'Temperature',
+                desc: 'Cold exposure activates the same norepinephrine pathways that trauma dysregulated — a direct physiological intervention for the stress response.',
+              },
+              {
+                href: '/nature',
+                label: 'Nature',
+                desc: 'Nature immersion downregulates the default mode network and restores parasympathetic tone — a direct counter to the hypervigilance of trauma.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

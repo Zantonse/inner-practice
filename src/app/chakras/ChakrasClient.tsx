@@ -1770,6 +1770,21 @@ export default function ChakrasClient() {
                 label: 'Trauma',
                 desc: 'Stored trauma lodges in the lower chakras — Root, Sacral, Solar Plexus. Healing the pattern clears the foundation of the whole system.',
               },
+              {
+                href: '/nutrition',
+                label: 'Nutrition',
+                desc: 'Each chakra has traditional food correspondences — root vegetables for Root, orange foods for Sacral, greens for Heart — reflecting embodied nourishment.',
+              },
+              {
+                href: '/temperature',
+                label: 'Temperature',
+                desc: 'Heat and cold exposure affect the same energy centers that chakra work targets — Agni (digestive fire) in the Solar Plexus, cooling in the Crown.',
+              },
+              {
+                href: '/nature',
+                label: 'Nature',
+                desc: 'The Root chakra grounds through direct contact with earth. Nature immersion is a direct practice for the lower chakras and parasympathetic regulation.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link

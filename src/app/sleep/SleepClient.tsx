@@ -2238,6 +2238,21 @@ export default function SleepClient() {
                 label: 'Trauma',
                 desc: 'How unresolved trauma disrupts sleep architecture and how somatic, breath, and nervous system practices heal the pattern.',
               },
+              {
+                href: '/nutrition',
+                label: 'Nutrition',
+                desc: 'How blood sugar stability, magnesium, and gut-brain signaling set the biochemical foundation for deep sleep.',
+              },
+              {
+                href: '/temperature',
+                label: 'Temperature',
+                desc: 'Core body temperature must drop 1–2°C to initiate sleep. Cold exposure and evening cooling protocols directly support this mechanism.',
+              },
+              {
+                href: '/nature',
+                label: 'Nature',
+                desc: 'Natural light entrains the circadian clock, and outdoor time regulates cortisol rhythms that govern the sleep-wake cycle.',
+              },
             ].map(link => (
               <ScrollReveal key={link.href}>
                 <Link
