@@ -509,7 +509,7 @@ const respiratoryTechniques: TechniqueData[] = [
     tradition: 'Vedic Tradition',
     duration: '5–15 min',
     level: 'Beginner',
-    description: 'A landmark 2011 fMRI study (Kalyani et al.) showed that OM chanting produces significant limbic deactivation identical to electrical vagus nerve stimulation — driven by auricular and pharyngeal vibration.',
+    description: 'A landmark 2011 fMRI study (Kalyani et al.) showed that OM chanting produces significant limbic deactivation similar in pattern to effects observed in vagus nerve stimulation studies — though the Kalyani study compared OM to a silent control, not directly to VNS — driven by auricular and pharyngeal vibration.',
     steps: [
       'Sit upright with eyes closed.',
       'Inhale deeply through the nose.',
@@ -646,7 +646,7 @@ const thermalTechniques: TechniqueData[] = [
     tradition: 'Myofascial Release',
     duration: '10–20 min',
     level: 'Beginner',
-    description: 'Fascia contains approximately 250 million nerve endings. Releasing cervical and diaphragmatic fascia mechanically frees vagal signaling pathways that have become restricted through chronic tension and trauma.',
+    description: 'Fascia contains millions of nerve endings — making it one of the body\'s richest sensory organs. Releasing cervical and diaphragmatic fascia mechanically frees vagal signaling pathways that have become restricted through chronic tension and trauma.',
     steps: [
       'Focus on neck and jaw fascia first (where the vagus passes).',
       'Use slow, sustained pressure — hold for 90+ seconds per spot.',
@@ -769,7 +769,7 @@ const cognitiveTechniques: TechniqueData[] = [
     tradition: 'Microbiome Science',
     duration: 'Ongoing',
     level: 'Beginner',
-    description: '90% of the body\'s serotonin is produced in the gut. Microbiome signals travel directly to the brain via vagal afferents. The gut-brain axis is not a metaphor — it is a physical vagal nerve highway.',
+    description: 'Approximately 95% of the body\'s serotonin is produced in the gut, though gut-derived serotonin does not directly cross the blood-brain barrier. Microbiome signals travel to the brain via vagal afferents. The gut-brain axis is not a metaphor — it is a physical vagal nerve highway.',
     steps: [
       'Include fermented foods daily — yogurt, kimchi, sauerkraut, kefir.',
       'Consider targeted probiotic strains (Lactobacillus rhamnosus shown to affect GABA).',
@@ -795,7 +795,7 @@ const eyeExercises = [
   {
     id: 'optic-flow',
     title: 'Optic Flow Walking',
-    description: 'When you walk forward, the visual field streams laterally past you — this "optic flow" generates signals that suppress the amygdala. Studies show 5 minutes of outdoor walking with attention on this lateral flow produces measurable anxiolytic effects equivalent to low-dose medication.',
+    description: 'When you walk forward, the visual field streams laterally past you — this "optic flow" generates signals that suppress the amygdala. Studies show 5 minutes of outdoor walking with attention on this lateral flow produces measurable reductions in anxiety markers, likely through combined effects of bilateral movement, visual processing load, and autonomic regulation.',
   },
   {
     id: 'lateral',
@@ -948,14 +948,14 @@ export default function NervousSystemClient() {
             />
             <StatCard
               source="Kalyani et al., 2011 (fMRI)"
-              stat="OM chanting matches surgical VNS"
-              detail="Limbic deactivation from chanting was identical to electrical vagus nerve stimulation, driven by auricular vibration."
+              stat="OM chanting — limbic deactivation pattern similar to VNS studies"
+              detail="Limbic deactivation from chanting was similar in pattern to effects observed in vagus nerve stimulation studies — though the Kalyani study compared OM to a silent control, not directly to VNS — driven by auricular vibration."
               url="https://pubmed.ncbi.nlm.nih.gov/21146224/"
             />
             <StatCard
               source="Dr. Kevin Tracey — Cholinergic Pathway"
-              stat="Vagal tone directly controls inflammation"
-              detail="Low vagal tone = chronic inflammation. Building tone turns off the body's chemical inflammation factories."
+              stat="Vagal tone plays a significant role in regulating inflammation"
+              detail="Low vagal tone correlates with chronic inflammation (Tracey, 2002), though the relationship in humans remains an active area of research. Building tone supports anti-inflammatory signaling pathways."
               url="https://pubmed.ncbi.nlm.nih.gov/15922555/"
             />
             <StatCard
@@ -1442,7 +1442,7 @@ export default function NervousSystemClient() {
                 Breathing Protocol
               </h3>
               <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>
-                30–40 power breaths (deep inhale, passive exhale) followed by an empty-lung retention. This causes respiratory alkalosis and a massive adrenaline spike — 200–300% above baseline — which paradoxically trains the system to stay calm under biochemical stress.
+                30–40 power breaths (deep inhale, passive exhale) followed by an empty-lung retention. This causes respiratory alkalosis and a massive adrenaline spike — approximately 2- to 3-fold above baseline (Kox et al., 2014) — which paradoxically trains the system to stay calm under biochemical stress.
               </p>
             </div>
             <div
@@ -1753,7 +1753,7 @@ export default function NervousSystemClient() {
               Resonance Frequency Breathing
             </h3>
             <p style={{ margin: 0 }}>
-              Every person has an individual resonance frequency — typically between 4.5 and 7 breaths per minute — where HRV is maximized. At this rate, respiratory sinus arrhythmia, heart rate oscillations, and blood pressure waves all synchronize. Breathing at your resonance frequency is the single most efficient way to train vagal tone, and it is the mechanism underlying the rosary, Sanskrit chanting, and the physiological sigh.
+              Every person has an individual resonance frequency — typically falls between approximately 4.5 and 7 breaths per minute, though individual variation exists — where HRV is maximized. At this rate, respiratory sinus arrhythmia, heart rate oscillations, and blood pressure waves all synchronize. Breathing at your resonance frequency is the single most efficient way to train vagal tone, and it is the mechanism underlying the rosary, Sanskrit chanting, and the physiological sigh.
             </p>
           </div>
         </ScrollReveal>

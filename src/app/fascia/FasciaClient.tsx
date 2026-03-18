@@ -358,7 +358,7 @@ const secrets = [
   {
     number: 7,
     title: 'Fascia is the organ of presence',
-    body: 'With approximately 250 million sensory nerve endings — more than skin, more than eyes — fascia is the biological hardware of interoception: the felt sense of the inner body. When experienced meditators describe a shift from "watching the breath" to "being inside the body," they are describing a shift in fascial awareness. The body-scan meditation is, at its deepest level, a fascial listening practice.',
+    body: 'With millions of sensory nerve endings — making fascia one of the body\'s richest sensory organs (Schleip, 2003) — fascia is the biological hardware of interoception: the felt sense of the inner body. When experienced meditators describe a shift from "watching the breath" to "being inside the body," they are describing a shift in fascial awareness. The body-scan meditation is, at its deepest level, a fascial listening practice.',
   },
 ];
 
@@ -437,7 +437,7 @@ export default function FasciaClient() {
               lineHeight: 1.85,
             }}
           >
-            Your body&apos;s hidden communication network. 250 million nerve endings. The physical
+            Your body&apos;s hidden communication network. Millions of sensory nerve endings. The physical
             substrate of emotion, the mirror of your meridians, and the forgotten foundation of every yoga pose you&apos;ve ever held.
           </p>
 
@@ -632,8 +632,8 @@ export default function FasciaClient() {
             >
               <StatCard
                 source="Schleip et al. — Fascia Research"
-                stat="250 million nerve endings — more than skin or eyes"
-                detail="Fascia is the body's largest sensory organ, providing the biological hardware for interoception: the felt sense of the body's interior that underlies all body-scan and somatic meditation."
+                stat="Millions of sensory nerve endings — one of the body's richest sensory organs"
+                detail="Fascia (Schleip, 2003) provides the biological hardware for interoception: the felt sense of the body's interior that underlies all body-scan and somatic meditation."
                 url="https://pubmed.ncbi.nlm.nih.gov/22440512/"
               />
               <StatCard
@@ -1023,7 +1023,7 @@ export default function FasciaClient() {
                 emoji: '🪨',
                 name: 'Bian Stone',
                 origin: 'Most prized in TCM',
-                description: 'The oldest tool in Traditional Chinese Medicine. Dense volcanic stone that emits far-infrared radiation and negative ions. Heavy, deeply penetrating pressure.',
+                description: 'A dense volcanic stone traditionally used in Chinese medicine. Practitioners value its smooth texture and thermal conductivity for scraping techniques. Heavy, deeply penetrating pressure.',
                 bestFor: 'Deep tissue, chronic restriction',
               },
               {
@@ -1193,9 +1193,9 @@ export default function FasciaClient() {
                 heme breaks down into bilirubin (antioxidant) and carbon monoxide (anti-inflammatory signaling).
               </p>
               <p style={{ lineHeight: 1.85, margin: 0 }}>
-                Langevin et al. (2006) demonstrated that tensile load on fibroblasts — exactly what cupping
-                delivers — triggers cytoskeletal remodeling, MMP-mediated collagen turnover, and new collagen
-                synthesis. Cupping applies this tensile load across a broad tissue area simultaneously.
+                The tissue loading principles demonstrated by Langevin et al. (2006) may apply to cupping, though
+                the specific mechanism has not been directly studied in a cupping context. Cupping applies tensile
+                load across a broad tissue area simultaneously, triggering cytoskeletal remodeling, MMP-mediated collagen turnover, and new collagen synthesis.
               </p>
             </ScrollReveal>
 
@@ -1519,7 +1519,7 @@ export default function FasciaClient() {
               {
                 num: '03',
                 title: 'The Ninja Principle',
-                desc: 'Proprioceptive refinement. Slow attentive movement, eyes-closed balance, variable surfaces. Train fascia\u2019s 250 million sensory nerve endings.',
+                desc: 'Proprioceptive refinement. Slow attentive movement, eyes-closed balance, variable surfaces. Train fascia\u2019s millions of sensory nerve endings.',
               },
               {
                 num: '04',
@@ -1883,13 +1883,13 @@ export default function FasciaClient() {
               {
                 title: 'Why We Cry in Hip Openers',
                 subtitle: 'Psoas, Amygdala & Release',
-                body: 'Deep hip openers — Pigeon pose, Lizard, Yin Dragon — stretch the psoas and the entire Deep Front Line. Because the psoas is richly innervated by the sympathetic nervous system and intimately connected to the amygdala (the brain\'s threat-detection center), releasing it signals the nervous system that a long-held threat has finally passed. This triggers a parasympathetic cascade: spontaneous tears, trembling, or profound relief. This is not psychological drama — it is fascial biology.',
+                body: 'Deep hip openers — Pigeon pose, Lizard, Yin Dragon — stretch the psoas and the entire Deep Front Line. Because the psoas is innervated by the sympathetic nervous system and activated during the fear response — a pathway that originates in the amygdala but reaches the psoas indirectly through the sympathetic chain — releasing it signals the nervous system that a long-held threat has finally passed. This triggers a parasympathetic cascade: spontaneous tears, trembling, or profound relief. This is not psychological drama — it is fascial biology.',
                 accent: 'var(--color-amber-light)',
               },
               {
                 title: 'Fascia as the Organ of Presence',
                 subtitle: 'Interoception & Meditation',
-                body: 'With 250 million nerve endings, fascia is the biological hardware of interoception — the felt sense of the body\'s interior. When experienced meditators describe a shift from "watching the breath" to "being inside the body," they are describing a shift in fascial awareness. The body-scan meditation is, at its deepest level, a practice of fascial listening. Stillness is not absence — it is the condition in which the body\'s subtlest signals finally become audible.',
+                body: 'With millions of sensory nerve endings — making fascia one of the body\'s richest sensory organs (Schleip, 2003) — fascia is the biological hardware of interoception — the felt sense of the body\'s interior. When experienced meditators describe a shift from "watching the breath" to "being inside the body," they are describing a shift in fascial awareness. The body-scan meditation is, at its deepest level, a practice of fascial listening. Stillness is not absence — it is the condition in which the body\'s subtlest signals finally become audible.',
                 accent: 'var(--color-linen)',
               },
             ].map((item) => (
