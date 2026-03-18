@@ -568,6 +568,21 @@ button:focus-visible {
     display: inline-flex;
     align-items: center;
   }
+
+  /* Reduce text scale for mobile */
+  :root {
+    --text-hero:    clamp(36px, 8vw, 52px);
+    --text-h1:      clamp(30px, 6vw, 40px);
+    --text-h2:      clamp(24px, 4vw, 30px);
+    --text-h3:      clamp(18px, 2.5vw, 22px);
+    --text-body:    15px;
+    --text-body-lg: 16px;
+  }
+
+  body {
+    font-size: var(--text-body);
+    line-height: 1.7;
+  }
 }
 
 /* --- Stat Cards ------------------------------------------- */
