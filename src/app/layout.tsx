@@ -282,6 +282,15 @@ export default function RootLayout({
               <Link href="/nature" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.875rem', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
                 Nature
               </Link>
+              <Link href="/taichi" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.875rem', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Tai Chi
+              </Link>
+              <Link href="/fasting" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.875rem', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Fasting
+              </Link>
+              <Link href="/psychedelics" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.875rem', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Psychedelics
+              </Link>
               <Link
                 href="/practice"
                 style={{
