@@ -7,7 +7,7 @@ import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 
 // ── Accent tokens (qigong / jade green) ─────────────────────
-const JADE_DEEP = '#2D6B4F';
+const JADE_DEEP = '#1D5038';
 const JADE_MID  = '#A8D5BA';
 const JADE_PALE = '#E6F4EC';
 

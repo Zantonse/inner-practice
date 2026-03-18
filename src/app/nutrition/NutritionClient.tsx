@@ -7,7 +7,7 @@ import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 
 // ── Accent tokens (nutrition / warm olive) ─────────────────────
-const OLIVE_DEEP = '#5C6B3C';
+const OLIVE_DEEP = '#3D4D28';
 const OLIVE_MID  = '#8FA076';
 const OLIVE_PALE = '#E8EDDF';
 

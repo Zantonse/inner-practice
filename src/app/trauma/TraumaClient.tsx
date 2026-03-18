@@ -7,7 +7,7 @@ import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 
 // ── Accent tokens (trauma / deep amber) ─────────────────────
-const AMBER_DEEP = '#8B5E3C';
+const AMBER_DEEP = '#6B4528';
 const AMBER_MID  = '#C4956A';
 const AMBER_PALE = '#F5E6D8';
 

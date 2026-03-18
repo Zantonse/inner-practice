@@ -1161,8 +1161,8 @@ export default function NervousSystemClient() {
               subtitle="Safe & Social"
               description="The optimal state. You feel calm, connected, curious, and engaged. The social engagement system is online — facial expressions are animated, voice has natural prosody, eye contact feels easy. This is the window of tolerance."
               indicators={['Calm', 'Connected', 'Curious', 'Creative', 'Compassionate']}
-              accentColor="#3D8A5A"
-              bgColor="color-mix(in srgb, #3D8A5A 8%, var(--color-surface-raised))"
+              accentColor="#2D7A4A"
+              bgColor="color-mix(in srgb, #2D7A4A 8%, var(--color-surface-raised))"
             />
             <StateCard
               title="Sympathetic"
@@ -1667,8 +1667,8 @@ export default function NervousSystemClient() {
             >
               <div
                 style={{
-                  background: `color-mix(in srgb, #3D8A5A 8%, var(--color-surface-raised))`,
-                  borderTop: '3px solid #3D8A5A',
+                  background: `color-mix(in srgb, #2D7A4A 8%, var(--color-surface-raised))`,
+                  borderTop: '3px solid #2D7A4A',
                   borderRadius: '2px',
                   padding: '1.5rem',
                 }}

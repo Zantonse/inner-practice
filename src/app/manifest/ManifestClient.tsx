@@ -400,7 +400,7 @@ function ProtocolStepCard({ step, isLast }: { step: ProtocolStep; isLast: boolea
           fontFamily: 'var(--font-ui)',
           fontSize: '0.8125rem',
           fontWeight: 500,
-          color: GOLD_MID,
+          color: GOLD_DEEP,
           margin: '0 0 1rem',
           letterSpacing: '0.03em',
         }}>{step.description}</p>
@@ -504,7 +504,7 @@ export default function ManifestClient() {
             fontFamily: 'var(--font-display)',
             fontStyle: 'italic',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.625rem)',
-            color: GOLD_MID,
+            color: GOLD_DEEP,
             margin: '0 0 1.5rem',
             lineHeight: 1.4,
           }}>What the science of intention, the wisdom of ancient practice, and your nervous system have in common.</p>

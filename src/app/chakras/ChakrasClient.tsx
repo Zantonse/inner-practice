@@ -7,7 +7,7 @@ import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 
 // ── Accent tokens (chakras / rainbow + amethyst) ────────────────
-const AMETHYST_DEEP = '#6B3FA0';
+const AMETHYST_DEEP = '#4E2D78';
 const AMETHYST_MID = '#B39DDB';
 const AMETHYST_PALE = '#EDE3F7';
 

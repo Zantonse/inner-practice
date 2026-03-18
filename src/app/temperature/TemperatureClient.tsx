@@ -7,7 +7,7 @@ import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 
 // ── Accent tokens (temperature / ice blue) ─────────────────────
-const ICE_DEEP = '#3B7A9E';
+const ICE_DEEP = '#1F5A7A';
 const ICE_MID  = '#7BB8D4';
 const ICE_PALE = '#DFF0F7';
 

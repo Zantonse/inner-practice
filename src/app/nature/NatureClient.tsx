@@ -7,7 +7,7 @@ import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 
 // ── Accent tokens (nature / forest sage) ───────────────────────
-const SAGE_DEEP = '#4A6B52';
+const SAGE_DEEP = '#2D5038';
 const SAGE_MID  = '#8AAF7E';
 const SAGE_PALE = '#E2EDDF';
 
@@ -89,33 +89,33 @@ type VideoTab = 'forest-bathing' | 'grounding' | 'nature-meditation';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   'forest-bathing': [
     {
-      videoId: 'GBx6GnplDL8',
-      title: 'Shinrin-Yoku: The Art of Forest Bathing',
-      description: 'Dr. Qing Li introduces the science of forest bathing — phytoncides, NK cell activation, and the protocol developed by the Japanese Forestry Agency. A full introduction to the practice and its evidence base.',
+      videoId: 'sLdByMwPptM',
+      title: 'The Science of Forest Bathing',
+      description: 'An introduction to Shinrin-yoku — the Japanese practice of forest bathing. Covers phytoncides, NK cell activation, cortisol reduction, and the protocol developed by Dr. Qing Li.',
     },
     {
-      videoId: '3sMSbHzgmRc',
-      title: 'Forest Bathing with Dr. Qing Li',
-      description: 'A guided forest bathing walk demonstrating the slow, sensory-engagement method — stopping to touch bark, listen to birdsong, smell the soil. The opposite of exercise; the goal is presence, not movement.',
+      videoId: 'fNqHEVHRj5I',
+      title: 'How Trees Heal Us — Forest Bathing Explained',
+      description: 'The science behind why time in forests improves immune function, reduces stress hormones, and shifts the autonomic nervous system toward parasympathetic dominance.',
     },
   ],
   grounding: [
     {
-      videoId: 'B4_IhqNClrw',
-      title: 'The Science of Earthing / Grounding',
-      description: 'Overview of the electron transfer hypothesis — how direct skin contact with the earth may transfer free electrons that neutralize reactive oxygen species. Covers the Oschman 2015 review and Chevalier 2012 grounded sleep study.',
+      videoId: 'rAhFnFJ1kCw',
+      title: 'Earthing — The Science of Grounding',
+      description: 'The electron transfer hypothesis — how direct skin contact with the earth may reduce inflammation. Covers the research and practical protocols for grounding practice.',
     },
   ],
   'nature-meditation': [
     {
-      videoId: 'MIr3RsUWrdo',
-      title: 'Forest Meditation — Open Awareness',
-      description: 'A guided open-awareness meditation designed for outdoor practice. Attention Restoration Theory (Kaplan 1995) shows that involuntary attention to natural stimuli restores directed attention capacity — this practice uses that mechanism deliberately.',
+      videoId: 'eKFTSSKCzWA',
+      title: 'Guided Nature Meditation',
+      description: 'A guided meditation designed for outdoor practice — using natural sounds, sensations, and the visual complexity of fractals in nature to restore directed attention and activate the parasympathetic nervous system.',
     },
     {
-      videoId: 'ViPnCtF_lGE',
-      title: 'Grounding Meditation with Earth Connection',
-      description: 'A seated grounding meditation combining barefoot earth contact with breath and body awareness. For use during the 15–20 minute sitting portion of the Qing Li forest bathing protocol.',
+      videoId: 'lE6RYpe9IT0',
+      title: '10-Minute Grounding Meditation',
+      description: 'A seated grounding meditation combining breath awareness with earth connection. Ideal for the sitting portion of a forest bathing session or standalone barefoot practice.',
     },
   ],
 };
