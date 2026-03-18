@@ -1,80 +1,100 @@
-# HANDOVER — Inner Practice Session 6
+# HANDOVER — Inner Practice Session 7
 
 ## 1. Session Summary
 
-**Date:** 2026-03-16 to 2026-03-17
+**Date:** 2026-03-16 to 2026-03-18
 **Branch:** `main`
-**Latest commit:** `315ffa2`
-**Goal:** Add Sleep & Circadian Rhythm page, Qigong page, homepage overview section, mobile responsiveness fixes, and educational illustrations.
+**Latest commit:** `be3ad52`
 
-All goals accomplished. Two new content pages (Sleep, Qigong) built end-to-end: deep research → design spec → code review → implementation plan → subagent-driven development → Vercel deploy. Homepage updated with overview section. Mobile audit passed all 14 pages. 13 educational illustrations generated.
+Massive expansion session. Built 7 new content pages (Sleep, Qigong, Chakras, Trauma, Nutrition, Temperature, Nature), consolidated the homepage from 14 panels to 6 category pillars, generated 17 educational illustrations, ran a full fact-check audit (31 corrections), fixed mobile responsiveness across all pages, improved WCAG contrast compliance, and fully cross-linked all 19 routes. The site went from 12 to 19 pages with 60+ practice exercises.
 
 ## 2. What Got Done
 
-### Sleep Page (`/sleep`)
-- Deep research: 6-domain synthesis → 755-line Obsidian brief (`Claude-Research/wellness/sleep-circadian-rhythm-research-2026-03.md`)
-- `src/app/sleep/page.tsx` — server component
-- `src/app/sleep/SleepClient.tsx` — 2298 lines, 14 sections (hero, architecture, circadian 24hr map, HRV, yoga nidra, breathwork, hygiene polyvagal, wind-down, videos, cross-links)
-- 5 sleep exercises added to practice page
-- `sleep` modality: `{ deep: '#1B4D5C', pale: '#E8F2F4' }`
+### New Pages Built (7)
+- `src/app/sleep/SleepClient.tsx` (2298 lines) — Sleep architecture, circadian timing, HRV, Yoga Nidra, breathwork for sleep
+- `src/app/qigong/QigongClient.tsx` (1980 lines) — History, slow movement science, 5 forms, qi research, clinical evidence
+- `src/app/chakras/ChakrasClient.tsx` (~2000 lines) — Rainbow accent, 7 chakras, polyvagal overlay, practice cross-reference map
+- `src/app/trauma/TraumaClient.tsx` (~2000 lines) — Epigenetics, autonomic inheritance, body map, healing protocols, safety
+- `src/app/nutrition/NutritionClient.tsx` (1662 lines) — Gut-brain axis, anti-inflammatory diet, fasting, adaptogens
+- `src/app/temperature/TemperatureClient.tsx` (~2000 lines) — Cold exposure, sauna, contrast therapy, protocols
+- `src/app/nature/NatureClient.tsx` (~2000 lines) — Shinrin-yoku, phytoncides, grounding, light/circadian
 
-### Qigong Page (`/qigong`)
-- Deep research: 6-domain synthesis → 617-line Obsidian brief (`Claude-Research/wellness/qigong-research-2026-03.md`)
-- `src/app/qigong/page.tsx` — server component
-- `src/app/qigong/QigongClient.tsx` — 1980 lines, 14 sections (hero, history, slow movement, forms guide, qi science, ANS, clinical evidence, 90-day protocol, videos, cross-links)
-- 4 qigong exercises added to practice page
-- `qigong` modality: `{ deep: '#2D6B4F', pale: '#E6F4EC' }`
+### Deep Research (7 briefs in Obsidian)
+- `Claude-Research/wellness/sleep-circadian-rhythm-research-2026-03.md` (755 lines)
+- `Claude-Research/wellness/qigong-research-2026-03.md` (617 lines)
+- `Claude-Research/wellness/chakras-research-2026-03.md` (787 lines)
+- `Claude-Research/wellness/generational-trauma-research-2026-03.md` (733 lines)
+- `Claude-Research/wellness/nutrition-gut-brain-research-2026-03.md` (565 lines)
+- `Claude-Research/wellness/cold-heat-therapy-research-2026-03.md` (388 lines)
+- `Claude-Research/wellness/nature-forest-bathing-research-2026-03.md` (412 lines)
 
-### Homepage (`/`)
-- Sleep + Qigong added to hero selectors (now 6+6 layout)
-- "Every Practice Connects" overview: Three Layers, 6 goal cards, Practice CTA
-- 5 new path cards (Sleep, Qigong, Sound Healing, Somatics, Reiki)
+### Homepage Rebuild
+- `src/app/page.tsx` — Consolidated from 14 individual panels to 6 category pillars (Mind, Body, Breath, Energy, Healing, Practice). Removed redundant 14-card grid. Trimmed overview from 6 to 3 goal cards. Net: -1000 lines.
 
-### Mobile Fixes
-- Reiki: table overflow → scroll container, evidence pills 9px → 10px
-- Breathe: evidence labels 9.6px → 10px
-- Sound Healing: evidence pills 9px → 10px
-- Playwright audit: 0 horizontal overflow across all 14 pages
+### 17 Educational Illustrations
+- `public/images/illustrations/` — 13 base + 4 chakras. Watercolor/ink wash style. All wired into page JSX. JPG optimized (233KB-553KB each).
+- Trauma illustrations queued but blocked by Gemini image quota exhaustion.
 
-### 13 Educational Illustrations
-- `public/images/illustrations/*.jpg` — watercolor/ink wash style
-- Fascia (4): web-network, thixotropic-gel, myofascial-release, anatomy-trains
-- Nervous System (3): polyvagal-ladder, vagus-nerve, hrv
-- Sleep (2): architecture, glymphatic
-- Qigong (2): ba-duan-jin, meridian-flow
-- Breathwork (2): diaphragm, vagal-brake
-- **NOT yet wired into page JSX**
+### Mobile Responsiveness
+- Playwright audit: all 18 pages pass at 375px iPhone viewport
+- Nav touch targets: 44px minimum height
+- Nav: changed from fixed to scroll-with-page
+- Reiki table: overflow-x scroll container
+- Evidence pills: min font size 10px
+- Mobile text scale reduction (hero 36px, h1 30px, h2 24px, body 15px)
+- Practice page: sticky filter repositioned for non-fixed nav
+- Chakras balancing: 3-col → 2-col grid
 
-### Tool Fix
-- `~/.claude/skills/deep-research/scripts/research.py` — fixed `ensure_openai()` → `ensure_anthropic()`
+### Fact-Check Audit
+- 4 parallel subagents audited all 12 content pages
+- 12 HIGH, 18 MEDIUM, 10 LOW findings
+- All HIGH and MEDIUM fixed: 31 corrections across breathe, nervous-system, fascia, sleep, meditate, reiki
+
+### Contrast Fixes
+- Playwright contrast audit across all 18 pages
+- Hero eyebrow/anchor nav: MID → DEEP accent on 7 pages
+- Evidence pills: same-color text/bg → white text
+- Reiki/Sound Healing gold: darkened #8B6914 → #6B5010
+- "Now, practice." separators: improved text contrast
+
+### Cross-Linking
+- All 19 routes fully cross-linked to each other
+- Each page's footer links to all relevant other pages
+
+### Practice Page Exercises
+- 60+ exercises total across all modalities
+- New modalities: sleep (5), qigong (4), chakras (4), trauma (3), nutrition (1), temperature (2), nature (2)
 
 ## 3. What Didn't Work / Bugs Encountered
 
-- **Firecrawl 403:** Needs re-auth. Workaround: training knowledge → Gemini synthesis.
-- **WebFetch 401 in subagents:** Uses haiku model not on LiteLLM key. Same workaround.
-- **QigongClient timeout:** 2000+ line file too large for single subagent. Workaround: cp SleepClient → transform.
-- **Ralph Loop script bug:** `PROMPT_PARTS[*]` unbound variable. Used Playwright instead.
-- **Gemini image 429:** Rate limited on parallel gen. Retried with delay.
-- **`/tmp` cleanup:** Files vanished between calls. Used specific subdirectory paths.
+- **Firecrawl CLI 403:** Needs re-auth. All deep research used training knowledge → Gemini synthesis.
+- **WebFetch 401 in subagents:** Haiku model not on LiteLLM key. Same workaround.
+- **QigongClient subagent timeout:** 2000+ line file too large from scratch. Solved: cp SleepClient → transform.
+- **Ralph Loop script bug:** `PROMPT_PARTS[*]` unbound. Used Playwright instead.
+- **Gemini image quota exhausted:** 17 illustrations maxed the daily quota. Trauma illustrations deferred.
+- **research.py stale function:** `ensure_openai()` → `ensure_anthropic()` fixed.
+- **Contrast audit false positives:** Homepage hero panels detected as cream-on-cream because the script sees page bg, not gradient. Skipped.
 
 ## 4. Key Decisions Made
 
-- Sleep: Midnight Teal `#1B4D5C`, circadian timing map as centerpiece
-- Qigong: Jade Green `#2D6B4F`, forms guide as centerpiece
-- Copy-and-transform pattern for QigongClient (3x faster than from-scratch)
-- JPG for illustrations (PNG 1.3-2.4MB → JPG 233-553KB, no visible quality loss)
-- Homepage 6+6 hero layout with all 12 practices represented
+- **Copy-and-transform for page building:** Using SleepClient as template and transforming content was 3x faster than from-scratch. Every page after Sleep used this approach.
+- **6 category pillars:** Homepage consolidated from 14 individual panels to 6 groups (Mind/Body/Breath/Energy/Healing/Practice). Reduces visual complexity while maintaining access to all 19 pages.
+- **Rainbow accent for Chakras:** Per-chakra colors instead of single page accent. Unique on the site.
+- **Deep amber for Trauma:** Warm, grounded, healing feel. Distinct from all existing accents.
+- **Olive/Ice Blue/Forest Sage for Nutrition/Temperature/Nature:** Each distinct from existing palette.
+- **Fact-check corrections kept qualifiers:** Instead of removing claims, added honest qualifiers ("according to estimates," "in the informal self-experiment"). Preserves content while improving accuracy.
 
 ## 5. Lessons Learned
 
-- Subagent web tools (firecrawl, WebFetch) are both broken — write domain content directly
-- Large files need template-based generation, not from-scratch
-- Code review catches real TypeScript bugs: `'timed'→'structured'`, `seconds→duration`, `MODALITY_META` shape
-- `research.py` had stale function name after previous refactor
+- **Subagent web tools are broken:** Both firecrawl (auth) and WebFetch (haiku model) fail in subagents. Write domain content directly → Gemini synthesis works better anyway.
+- **Large file generation needs templates:** cp existing file → transform is the only reliable approach for 2000+ line components.
+- **Code review catches real bugs:** TypeScript-breaking issues (wrong type names, missing fields) caught every time.
+- **Contrast audit is essential:** 190 issues found on first pass. Most were systematic (same MID-color-on-cream pattern repeated across all pages built from the same template).
+- **Parallel subagent builds work for different files:** 3 page builds running simultaneously with no conflicts.
 
 ## 6. Current State
 
-- **Build:** Clean (`npm run build` — 14 routes static)
+- **Build:** Clean (`npm run build` — 19 routes, all static)
 - **TypeScript:** Clean
 - **Deployed:** https://inner-practice.vercel.app
 - **Pushed:** GitHub up to date
@@ -82,22 +102,29 @@ All goals accomplished. Two new content pages (Sleep, Qigong) built end-to-end: 
 
 ## 7. Clear Next Steps
 
-1. **Wire 13 illustrations into page JSX** — images deployed but not embedded in components
-2. **Chakras deep research** — user requested, NOT started
-3. **Mobile UI visual polish** — user requested "improve UI with ralph loop for mobile"
-4. **Add Sleep/Qigong to cross-links on other pages** — existing pages don't reference new pages yet
-5. **Build chakras page** — after research completes
+1. **Generate trauma illustrations** — 4 planned, blocked by Gemini image quota. Retry when quota resets.
+2. **Wire trauma illustrations** into TraumaClient.tsx once generated
+3. **Generate illustrations for new pages** — Nutrition, Temperature, Nature pages have no illustrations yet
+4. **Add Nutrition/Temperature/Nature to homepage overview "Three Layers"** section text
+5. **Dark mode audit** — verify all 19 pages look correct in dark mode
+6. **SEO audit** — verify all meta descriptions, OG tags, and structured data across 19 pages
+7. **Performance audit** — check Lighthouse scores, optimize any heavy pages
 
 ## 8. Important Files
 
 | File | Description |
 |------|-------------|
-| `src/app/sleep/SleepClient.tsx` | 2298-line Sleep page (14 sections) |
-| `src/app/qigong/QigongClient.tsx` | 1980-line Qigong page (14 sections) |
-| `src/app/page.tsx` | Homepage with overview section |
-| `src/app/layout.tsx` | Nav with 12 links + Practice |
-| `src/app/practice/types.ts` | Modality union (now includes sleep + qigong) |
-| `src/app/practice/exercises.ts` | 48 exercises total |
-| `public/images/illustrations/*.jpg` | 13 illustrations (not in JSX yet) |
-| `docs/superpowers/specs/2026-03-16-sleep-page-design.md` | Sleep spec |
-| `docs/superpowers/specs/2026-03-16-qigong-page-design.md` | Qigong spec |
+| `src/app/page.tsx` | Homepage with 6 category pillars + overview |
+| `src/app/layout.tsx` | Root layout with nav (19 links + Practice) |
+| `src/app/practice/types.ts` | All modalities (14 total) |
+| `src/app/practice/exercises.ts` | 60+ exercises |
+| `src/app/sleep/SleepClient.tsx` | Sleep page (2298 lines) — the template all others copy |
+| `src/app/qigong/QigongClient.tsx` | Qigong page (1980 lines) |
+| `src/app/chakras/ChakrasClient.tsx` | Chakras page (rainbow accent) |
+| `src/app/trauma/TraumaClient.tsx` | Generational Trauma page |
+| `src/app/nutrition/NutritionClient.tsx` | Nutrition & Gut-Brain page |
+| `src/app/temperature/TemperatureClient.tsx` | Cold & Heat Therapy page |
+| `src/app/nature/NatureClient.tsx` | Nature & Forest Bathing page |
+| `src/app/globals.css` | Design system + mobile responsive rules |
+| `public/images/illustrations/*.jpg` | 17 educational illustrations |
+| `~/Documents/ObsidianNotes/Claude-Research/wellness/` | 7 deep research briefs |
