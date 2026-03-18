@@ -89,32 +89,32 @@ type VideoTab = 'forest-bathing' | 'grounding' | 'nature-meditation';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   'forest-bathing': [
     {
-      videoId: 'sLdByMwPptM',
-      title: 'The Science of Forest Bathing',
+      videoId: '12CCjoixpkA',
+      title: 'The Art and Science of Forest Bathing — Dr. Qing Li',
       description: 'An introduction to Shinrin-yoku — the Japanese practice of forest bathing. Covers phytoncides, NK cell activation, cortisol reduction, and the protocol developed by Dr. Qing Li.',
     },
     {
-      videoId: 'fNqHEVHRj5I',
-      title: 'How Trees Heal Us — Forest Bathing Explained',
+      videoId: '02CXKnftM-4',
+      title: 'Shinrin-Yoku: A Forest Bathing Guide',
       description: 'The science behind why time in forests improves immune function, reduces stress hormones, and shifts the autonomic nervous system toward parasympathetic dominance.',
     },
   ],
   grounding: [
     {
-      videoId: 'rAhFnFJ1kCw',
-      title: 'Earthing — The Science of Grounding',
+      videoId: '8Rsb7IB21iM',
+      title: 'The Science of Earthing and Grounding',
       description: 'The electron transfer hypothesis — how direct skin contact with the earth may reduce inflammation. Covers the research and practical protocols for grounding practice.',
     },
   ],
   'nature-meditation': [
     {
-      videoId: 'eKFTSSKCzWA',
+      videoId: 'BR6yH4S1UMU',
       title: 'Guided Nature Meditation',
       description: 'A guided meditation designed for outdoor practice — using natural sounds, sensations, and the visual complexity of fractals in nature to restore directed attention and activate the parasympathetic nervous system.',
     },
     {
-      videoId: 'lE6RYpe9IT0',
-      title: '10-Minute Grounding Meditation',
+      videoId: 'HE9iP3B4Azo',
+      title: 'Outdoor Mindfulness Meditation',
       description: 'A seated grounding meditation combining breath awareness with earth connection. Ideal for the sitting portion of a forest bathing session or standalone barefoot practice.',
     },
   ],
