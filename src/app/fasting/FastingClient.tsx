@@ -218,27 +218,32 @@ type VideoTab = 'science' | 'circadian' | 'protocols';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   science: [
     {
-      videoId: 'qXP0RKQK1M0',
-      title: 'Autophagy Explained — Yoshinori Ohsumi',
+      videoId: '1xCN5o0glHg',
+      title: 'The Misunderstood Science of Intermittent Fasting',
       description: 'The Nobel Prize lecture from Yoshinori Ohsumi explaining the discovery of autophagy, how cells self-digest damaged components, and why fasting is its most potent trigger. The foundational science behind every fasting protocol.',
     },
     {
-      videoId: 'n9BXb3KKHVY',
-      title: 'The Metabolic Switch — Ketones and Brain Health',
+      videoId: 'AKzfb3d3Ztg',
+      title: 'Autophagy & Intermittent Fasting | cellular Recycling',
       description: 'Mark Mattson\'s research on the metabolic switch from glucose to ketone metabolism during fasting, BDNF elevation, and why brief fasting periods may protect against neurodegenerative disease.',
     },
   ],
   circadian: [
     {
-      videoId: 'erBJuxVR7IE',
-      title: 'Time-Restricted Eating — Satchin Panda',
+      videoId: '12eTMH2PSYI',
+      title: 'What is autophagy and what are the fasting & autophagy stages',
       description: 'Satchin Panda presents the science of circadian eating: why when you eat matters as much as what you eat, how an 8–10 hour eating window aligns with circadian clocks, and the landmark mouse and human studies from the Salk Institute.',
     },
   ],
   protocols: [
     {
-      videoId: 'PM55OYTDkwY',
-      title: 'Fasting Protocols — A Practical Guide',
+      videoId: 'NtOpAhDpYbo',
+      title: 'Your Body Will Eat Its Own Diseases | Dr. Pradip Jamnadas',
+      description: 'A clinical overview of fasting protocols from 12:12 to extended fasting. Covers who should and should not fast, how to structure the first 4 weeks, electrolyte management, and how to break a fast properly.',
+    },
+    {
+      videoId: 'XLj2Qu4SuNQ',
+      title: 'Top Autophagy Benefits | Jason Fung',
       description: 'A clinical overview of fasting protocols from 12:12 to extended fasting. Covers who should and should not fast, how to structure the first 4 weeks, electrolyte management, and how to break a fast properly.',
     },
   ],

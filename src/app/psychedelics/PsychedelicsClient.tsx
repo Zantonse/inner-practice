@@ -255,32 +255,37 @@ type VideoTab = 'integration' | 'research' | 'microdosing';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   integration: [
     {
-      videoId: 'gXjCODQHLEk',
-      title: 'Psychedelic Integration Practice',
+      videoId: 'NgwtDPDTM3E',
+      title: 'Psychedelic Treatment with Psilocybin Relieves Major Depression',
       description: 'A guided meditation specifically designed for the integration window — the 4–6 weeks after a psychedelic experience when neuroplasticity is elevated and new patterns can take root most easily.',
     },
     {
-      videoId: 'MmfKqJGGJAQ',
-      title: 'Somatic Integration: Working with the Body',
+      videoId: 'dBK1cBNr6Ss',
+      title: 'Psilocybin for Treatment-Resistant Depression | NEJM',
       description: 'Somatic practice for psychedelic integration. The body holds what the mind processes — this practice works with physical sensations, emotions, and residual states that arise in the weeks after a session.',
     },
   ],
   research: [
     {
-      videoId: 'vp5jDHu3oS8',
-      title: 'Robin Carhart-Harris — Default Mode Network',
+      videoId: 'fcxjwA4C4Cw',
+      title: 'The Science of Psychedelics for Mental Health | Dr. Robin Carhart-Harris',
       description: "The lead researcher behind the entropic brain hypothesis explains the neuroscience of psilocybin. Covers DMN suppression, increased neural entropy, and why psychedelics create a state of 'unconstrained cognition.'",
     },
     {
-      videoId: 'Q9XD8yRPxc8',
-      title: 'MDMA-Assisted Therapy — Mitchell et al.',
+      videoId: 'h8Thc-BDvZ0',
+      title: 'How Psychedelics Rewire the Brain',
       description: 'Overview of the Phase 3 MDMA-assisted therapy trials for PTSD. Explains the mechanism by which MDMA reduces amygdala hyperreactivity while creating the psychological safety needed for trauma reprocessing.',
     },
   ],
   microdosing: [
     {
-      videoId: 'fwHmBnvuFJw',
-      title: 'The Microdosing Evidence — What We Know',
+      videoId: '1GpJtUIN39I',
+      title: 'Microdosing: Fact or Fiction? - UC Davis Psychedelic Summit',
+      description: 'An honest review of the evidence for microdosing. Covers the Polito 2019 positive self-report findings, the Szigeti 2021 placebo-controlled study showing no significant difference, and what this means for practice.',
+    },
+    {
+      videoId: '3IfYiMWeBJ8',
+      title: 'Doctor Explains the Science behind Microdosing',
       description: 'An honest review of the evidence for microdosing. Covers the Polito 2019 positive self-report findings, the Szigeti 2021 placebo-controlled study showing no significant difference, and what this means for practice.',
     },
   ],

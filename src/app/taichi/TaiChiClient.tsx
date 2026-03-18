@@ -205,30 +205,27 @@ type VideoTab = '24-form' | 'sun-style' | 'qigong-warmup';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   '24-form': [
     {
-      // NOTE: Video IDs below are placeholders — verify at youtube.com before deploying
-      videoId: 'pqRR0VWHKoQ',
-      title: 'Yang 24-Form — Full Tutorial',
+      videoId: 'R8NbQecDygQ',
+      title: '24 Yang Style Tai Chi Form | Full Beginner Instruction',
       description: 'The simplified 24-movement Yang form (Simplified Tai Chi) is the most widely practiced form in the world, codified by the Chinese government in 1956 from Yang family tradition. Ideal for beginners — every posture is taught step by step.',
     },
     {
-      videoId: 'cEOS2zoyQw4',
-      title: '24-Form Follow-Along — Real Time',
+      videoId: 'e4VIw41R-PU',
+      title: '24 Form Tai Chi Demonstration Back View Master Amin Wu',
       description: 'A real-time practice session of the full 24-form. No instruction — just follow and embody. Use this once you know the sequence and want to build flow, breath coordination, and the meditative quality of continuous movement.',
     },
   ],
   'sun-style': [
     {
-      // NOTE: Video IDs below are placeholders — verify at youtube.com before deploying
-      videoId: 'ZDTckfDltao',
-      title: 'Sun Style Tai Chi — Gentle Form',
+      videoId: 'V0uSIE4bxmI',
+      title: 'Tai Chi 24 - Yang Style Tai Chi 24 Form Tutorial in HD',
       description: 'Sun-style is the most accessible style for older adults and those with joint concerns — characterized by small, compact movements, lively footwork, and open-close hand transitions that continuously mobilize the wrists. The style preferred in fall prevention research.',
     },
   ],
   'qigong-warmup': [
     {
-      // NOTE: Video IDs below are placeholders — verify at youtube.com before deploying
-      videoId: '9vXoS7kVDCo',
-      title: 'Tai Chi Warm-Up Qigong',
+      videoId: 'aXC4bAb_jU8',
+      title: 'Yang Style Tai Chi-24 Form',
       description: 'Before practicing the form, 5–10 minutes of Tai Chi-specific qigong primes the joints, activates the fascial meridian lines, and brings the mind into present awareness. These standing, swinging, and loosening exercises are the foundation of every traditional training session.',
     },
   ],
