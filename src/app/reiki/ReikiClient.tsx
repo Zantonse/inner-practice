@@ -392,10 +392,10 @@ export default function ReikiClient() {
             <ScrollReveal>
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1rem', fontStyle: 'normal' }}>The Honest Limits</h3>
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
-                The two best-powered HRV studies directly conflict: Mackay (2004, n=45) found Reiki
-                outperformed sham on vagal tone; Holt (2009, n=189) found no difference. The larger
-                study suggests observed improvements may reflect general relaxation and safe touch,
-                not Reiki-specific mechanisms.
+                Some small studies have found Reiki outperforms sham for HRV measures, while larger
+                studies have found no significant difference &mdash; the evidence remains mixed and
+                methodologically limited. The larger studies suggest observed improvements may reflect
+                general relaxation and safe touch, not Reiki-specific mechanisms.
               </p>
               <p style={{ lineHeight: 1.85, margin: 0 }}>
                 The NCCIH states: &ldquo;No scientific studies have shown Reiki to be effective for treating
@@ -429,7 +429,7 @@ export default function ReikiClient() {
 
           {/* Research Cards */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
-            <ScrollReveal><StatCard source="McManus, 2017" stat="13 RCTs reviewed" detail="Reiki consistently outperformed sham conditions for reducing anxiety and pain in the most comprehensive systematic review." url="https://pubmed.ncbi.nlm.nih.gov/28874060/" /></ScrollReveal>
+            <ScrollReveal><StatCard source="McManus, 2017" stat="13 RCTs reviewed" detail="Reiki showed positive trends for anxiety and pain reduction, though the review noted significant methodological limitations across studies." url="https://pubmed.ncbi.nlm.nih.gov/28874060/" /></ScrollReveal>
             <ScrollReveal><StatCard source="Baldwin et al., 2006" stat="Animal models eliminate placebo" detail="Noise-stressed rats receiving Reiki showed reduced microvascular damage. Because rats don't believe in Reiki, these effects cannot be attributed to expectation." url="https://pubmed.ncbi.nlm.nih.gov/16646732/" /></ScrollReveal>
             <ScrollReveal><StatCard source="Joyce & Herbison, 2015" stat="Cochrane: insufficient evidence" detail="The gold-standard Cochrane Review found only 3 qualifying RCTs. Conclusion: insufficient to say whether Reiki is effective. Evidence quality: Very Low." url="https://pubmed.ncbi.nlm.nih.gov/25629820/" /></ScrollReveal>
           </div>
@@ -714,11 +714,12 @@ export default function ReikiClient() {
             <ScrollReveal>
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1rem', fontStyle: 'normal' }}>The Practitioner&rsquo;s Brain</h3>
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
-                C. Maxwell Cade&rsquo;s Mind Mirror EEG research found that <strong>Reiki Master-Teachers
-                during active treatment show the same &ldquo;Awakened Mind&rdquo; brainwave pattern</strong> as
-                Zen masters with 20+ years of practice: simultaneous beta, alpha, theta, and delta activity.
-                The practitioner doesn&rsquo;t just <em>do</em> Reiki &mdash; they enter a meditative state
-                indistinguishable from deep contemplative practice.
+                C. Maxwell Cade&rsquo;s informal EEG observations (not peer-reviewed) suggested that
+                <strong> Reiki Master-Teachers during active treatment show the same &ldquo;Awakened Mind&rdquo;
+                brainwave pattern</strong> as Zen masters with 20+ years of practice: simultaneous beta, alpha,
+                theta, and delta activity. This is practitioner literature, not controlled research &mdash; but
+                the practitioner state it describes aligns with what controlled meditation studies do confirm:
+                deep contemplative practice produces measurable shifts in neural oscillation.
               </p>
               <p style={{ lineHeight: 1.85, margin: 0 }}>
                 The predominance of <strong>theta (4&ndash;7 Hz)</strong> is significant: the same band that
@@ -738,8 +739,8 @@ export default function ReikiClient() {
               <p style={{ lineHeight: 1.85, margin: 0 }}>
                 The critical difference: body scan meditation is self-directed. Reiki is <strong>relational</strong> &mdash;
                 one person holds awareness for another, activating the social engagement system in a way solo
-                practice cannot. The fascia&rsquo;s 250 million nerve endings respond to the sustained gentle
-                touch, creating a dialogic interoceptive experience.
+                practice cannot. The fascia&rsquo;s millions of sensory nerve endings respond to the sustained
+                gentle touch, creating a dialogic interoceptive experience.
               </p>
             </ScrollReveal>
           </div>

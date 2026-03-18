@@ -342,7 +342,7 @@ const quickResets: TechniqueData[] = [
     tradition: 'Navy SEAL / Military',
     duration: '4–10 minutes',
     level: 'Beginner',
-    description: 'Used by US Navy SEALs to regulate the nervous system under extreme stress. The equal-phase structure of inhale, hold, exhale, hold creates a predictable rhythm that anchors attention and suppresses the fight-or-flight response. Research shows it improves decision-making accuracy by up to 47% under high-pressure conditions.',
+    description: 'Used by US Navy SEALs to regulate the nervous system under extreme stress. The equal-phase structure of inhale, hold, exhale, hold creates a predictable rhythm that anchors attention and suppresses the fight-or-flight response. Research suggests it significantly improves cognitive performance under high-pressure conditions by reducing sympathetic arousal and improving working memory.',
     steps: [
       'Sit upright with your back straight. Exhale completely to begin.',
       'Inhale through your nose for exactly 4 counts.',
@@ -430,7 +430,7 @@ const calmingBalancing: TechniqueData[] = [
     tradition: 'Stephen Elliott / Science-based',
     duration: '10–20 minutes',
     level: 'Beginner',
-    description: 'The most evidence-backed technique for maximizing Heart Rate Variability (HRV). 5.5 breaths per minute (5.5 seconds in, 5.5 seconds out) synchronizes breathing with the cardiovascular Mayer wave and respiratory sinus arrhythmia. This frequency appears in virtually every major contemplative tradition — the rosary prayer, the Om mantra, and the S.A.T. Nam mantra all naturally produce approximately 5.5 breaths per minute. In clinical trials, it significantly reduces blood pressure and anxiety.',
+    description: 'The most evidence-backed technique for maximizing Heart Rate Variability (HRV). 5.5 breaths per minute (5.5 seconds in, 5.5 seconds out) synchronizes breathing with the cardiovascular Mayer wave and respiratory sinus arrhythmia. Research on the rosary prayer confirmed this rate (Bernardi et al., 2001, BMJ). Similar patterns have been observed in other traditions — including the Om mantra and the S.A.T. Nam mantra — though the precise rates vary across practitioners. In clinical trials, it significantly reduces blood pressure and anxiety.',
     steps: [
       'Find a comfortable seated or lying position.',
       'Begin to breathe in and out through your nose only.',
@@ -484,7 +484,7 @@ const energizing: TechniqueData[] = [
     tradition: 'Wim Hof / Modern',
     duration: '15–30 minutes',
     level: 'Intermediate',
-    description: 'The technique that produced the first scientific proof that humans can consciously modulate their innate immune system. A 2014 Radboud University study (published in PNAS) found trained Wim Hof practitioners could suppress inflammatory cytokines in response to bacterial endotoxin injection — something previously thought biologically impossible. The mechanism involves rapid oxygen loading, adrenaline spike during retention, and CO2 recalibration. Contraindicated near water, while driving, or standing.',
+    description: 'The technique behind among the first controlled demonstrations that humans can consciously modulate their innate immune system. A 2014 Radboud University study (published in PNAS) found trained Wim Hof practitioners could suppress inflammatory cytokines in response to bacterial endotoxin injection — something previously thought biologically impossible. The mechanism involves rapid oxygen loading, adrenaline spike during retention, and CO2 recalibration. Contraindicated near water, while driving, or standing.',
     steps: [
       'Lie down in a comfortable position. You may feel lightheaded — lying down prevents falls.',
       'Take 30–40 deep, powerful breaths through the nose (or mouth if needed). Inhale fully; let the exhale be passive and unforced.',
@@ -520,7 +520,7 @@ const deepPractice: TechniqueData[] = [
     tradition: 'Tibetan Vajrayana Buddhism',
     duration: '20–60 minutes',
     level: 'Advanced',
-    description: 'The "inner fire" meditation of Tibetan Buddhism — one of the Six Yogas of Naropa. Tummo combines specific breath retentions (kumbhaka), bandhas (energy locks — primarily mula bandha and uddiyana bandha), and vivid visualization of an inner flame at the navel center to generate intense somatic heat. Studies by Herbert Benson at Harvard measured monks capable of raising peripheral body temperature by up to 17°F through Tummo practice. It is considered the most advanced and transformative of all breathing practices.',
+    description: 'The "inner fire" meditation of Tibetan Buddhism — one of the Six Yogas of Naropa. Tummo combines specific breath retentions (kumbhaka), bandhas (energy locks — primarily mula bandha and uddiyana bandha), and vivid visualization of an inner flame at the navel center to generate intense somatic heat. Studies by Herbert Benson at Harvard measured monks capable of raising peripheral skin temperature (fingers and toes) by up to 17°F through Tummo practice. It is considered the most advanced and transformative of all breathing practices.',
     steps: [
       'Establish a strong Vajra posture (full lotus or cross-legged with spine perfectly erect).',
       'Visualize an AH syllable (a flame) at the navel center — intensely bright, hot, and alive.',
@@ -537,7 +537,7 @@ const deepPractice: TechniqueData[] = [
     tradition: 'Dr. Stanislav Grof',
     duration: '2–3 hours',
     level: 'Advanced',
-    description: 'Developed by psychiatrist Dr. Stanislav Grof as a non-pharmacological method for accessing non-ordinary states of consciousness. Continuous connected breathing — slightly faster and deeper than normal, with no pause between inhale and exhale — is maintained for 2–3 hours to music. Participants often experience somatic release, emotional catharsis, and states described as transpersonal. A 2025 neuroimaging study found significant blood flow shifts in the amygdala and hippocampus. Must be practiced with a trained facilitator; self-practice is not recommended.',
+    description: 'Developed by psychiatrist Dr. Stanislav Grof as a non-pharmacological method for accessing non-ordinary states of consciousness. Continuous connected breathing — slightly faster and deeper than normal, with no pause between inhale and exhale — is maintained for 2–3 hours to music. Participants often experience somatic release, emotional catharsis, and states described as transpersonal. Preliminary research and clinical observations suggest significant shifts in brain activity during hyperventilatory states, though controlled neuroimaging studies of Holotropic Breathwork remain limited. Must be practiced with a trained facilitator; self-practice is not recommended.',
     steps: [
       'This practice requires a trained facilitator and a designated "sitter" partner.',
       'Lie down on a mat in a comfortable position. Have an eye mask and blanket available.',
@@ -573,7 +573,7 @@ const wellnessCards = [
     condition: 'Anxiety & Depression',
     icon: '🌊',
     evidence: 'Nature meta-analysis, 2023 — g = −0.32 to −0.40',
-    body: 'Slow extended exhales directly downregulate the amygdala via the vagus nerve. A 2023 Nature Scientific Reports meta-analysis found breathwork produces significant reductions in stress (g = −0.35), anxiety (g = −0.32), and depression (g = −0.40) — effect sizes comparable to medication with no side effects.',
+    body: 'Slow extended exhales directly downregulate the amygdala via the vagus nerve. A 2023 Nature Scientific Reports meta-analysis found breathwork produces significant reductions in stress (g = −0.35), anxiety (g = −0.32), and depression (g = −0.40).',
     techniques: ['Physiological Sigh', 'Coherent Breathing', 'Nadi Shodhana'],
     accent: TEAL_MID,
   },
@@ -597,7 +597,7 @@ const wellnessCards = [
     condition: 'Athletic Performance',
     icon: '⚡',
     evidence: 'CO2 tolerance studies; Box breathing accuracy research',
-    body: 'Functional nasal breathing improves tissue oxygenation via the Bohr Effect and nitric oxide vasodilation. Box breathing pre-competition improves decision-making accuracy by 47% under stress. CO2 tolerance (measured by BOLT score) is one of the strongest predictors of aerobic performance.',
+    body: 'Functional nasal breathing improves tissue oxygenation via the Bohr Effect and nitric oxide vasodilation. Research suggests box breathing significantly improves cognitive performance under high-pressure conditions by reducing sympathetic arousal and improving working memory. CO2 tolerance (measured by BOLT score) is one of the strongest predictors of aerobic performance.',
     techniques: ['Buteyko Method', 'Box Breathing', 'Diaphragmatic Breathing'],
     accent: TEAL_MID,
   },
@@ -720,7 +720,7 @@ export default function BreatheClient() {
               lineHeight: 1.6,
             }}
           >
-            The only voluntary gateway to your nervous system
+            The most direct voluntary gateway to your nervous system
           </p>
           <p
             style={{
@@ -867,7 +867,7 @@ export default function BreatheClient() {
                     lineHeight: 1.4,
                   }}
                 >
-                  5.5 breaths per minute — the optimal rate found consistently across all traditions and now confirmed by cardiology research.
+                  5.5 breaths per minute — the optimal rate confirmed in the rosary prayer (Bernardi et al., 2001, BMJ) and observed across contemplative traditions, now studied by cardiology research.
                 </p>
               </div>
             </ScrollReveal>
@@ -925,10 +925,9 @@ export default function BreatheClient() {
               }}
             >
               <StatCard
-                source="Stanford / James Nestor"
+                source="Nestor, Breath (2020) — self-experiment with Dr. Nayak, Stanford"
                 stat="4,820% increase in snoring after 10 days mouth breathing"
-                detail="A Stanford experiment plugging nostrils for 10 days produced 4,820% more snoring, 25 sleep apnea events per night, and blood pressure rising to 142 mmHg. Reverting to nasal breathing dropped BP to 124 mmHg and raised HRV by 150% within days."
-                url="https://pubmed.ncbi.nlm.nih.gov/31696236/"
+                detail="An informal journalist self-experiment (not a controlled RCT) plugging nostrils for 10 days produced 4,820% more snoring, 25 sleep apnea events per night, and blood pressure rising to 142 mmHg. Reverting to nasal breathing dropped BP to 124 mmHg and raised HRV by 150% (in the informal self-experiment reported in Nestor's Breath, 2020) within days. Based on an informal journalist self-experiment, not a controlled RCT."
               />
               <StatCard
                 source="Nestor / Elliott — multiple studies"
@@ -970,7 +969,7 @@ export default function BreatheClient() {
                 {
                   title: 'Nitric Oxide',
                   subtitle: 'The vasodilator of nasal breathing',
-                  body: 'The paranasal sinuses produce nitric oxide — a potent vasodilator and bronchodilator — that is drawn into the lungs only through nasal breathing. Nasal breathing increases oxygen absorption by up to 18% compared to mouth breathing, and the NO produced provides direct anti-microbial effects in the respiratory tract.',
+                  body: 'The paranasal sinuses produce nitric oxide — a potent vasodilator and bronchodilator — that is drawn into the lungs only through nasal breathing. Nasal breathing increases oxygen absorption by up to 18% compared to mouth breathing, according to estimates derived from nitric oxide research (Lundberg et al., 1996), and the NO produced provides direct anti-microbial effects in the respiratory tract.',
                   accent: TEAL_MID,
                 },
               ].map(item => (

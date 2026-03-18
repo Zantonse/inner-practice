@@ -292,7 +292,7 @@ const timingRows = [
   {
     window: 'Wake + 6–8 hrs',
     state: 'Natural circadian alertness dip; propensity for light sleep rises',
-    practices: 'NSDR / Yoga Nidra (10–20 min) — restores dopamine, consolidates morning learning',
+    practices: 'NSDR / Yoga Nidra (10–20 min) — supports midday recovery, consolidates morning learning',
   },
   {
     window: '2–3 hrs before bed',
@@ -391,7 +391,7 @@ const videoData: Record<VideoTab, Array<{ videoId: string; title: string; descri
     {
       videoId: '0cSGMChJO94',
       title: 'Body Scan for Sleep',
-      description: 'A systematic body scan meditation moving from feet to crown. This technique — the backbone of MBSR — consistently outperforms sleep medication in CBT-I trials when practiced regularly for 8 weeks.',
+      description: 'A systematic body scan meditation moving from feet to crown. CBT-I — a structured program that includes relaxation techniques like the body scan — outperforms sleep medication for chronic insomnia in long-term trials (Mitchell et al., 2012).',
     },
   ],
 };
@@ -597,7 +597,7 @@ export default function SleepClient() {
               </p>
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 Stage percentages in a healthy adult: N1 (5%), N2 (45%), SWS/N3 (25%), REM (25%).
-                SWS is when growth hormone is secreted (70% of daily total). REM is when emotional memories
+                SWS is when the majority of daily growth hormone is secreted. REM is when emotional memories
                 are consolidated and threat responses are recalibrated.
               </p>
               <div
@@ -653,8 +653,8 @@ export default function SleepClient() {
               />
               <StatCard
                 source="Takahashi et al., 1968"
-                stat="70%"
-                detail="Proportion of daily growth hormone secreted during Slow Wave Sleep. Physical recovery, tissue repair, immune consolidation — all gated behind SWS."
+                stat="Majority"
+                detail="The majority of daily growth hormone is secreted during slow-wave sleep (Takahashi et al., 1968). Physical recovery, tissue repair, immune consolidation — all gated behind SWS."
               />
             </div>
           </ScrollReveal>
@@ -900,7 +900,7 @@ export default function SleepClient() {
                 time: 'Wake + 5–8 hrs',
                 color: TEAL_MID,
                 textColor: TEAL_DEEP,
-                desc: 'The natural alertness dip at the midday is a built-in NSDR window. A 10–20 minute Yoga Nidra or NSDR protocol here restores dopamine and improves cognitive performance for the rest of the afternoon.',
+                desc: 'The natural alertness dip at the midday is a built-in NSDR window. A 10–20 minute Yoga Nidra or NSDR protocol here supports recovery and may improve cognitive performance for the rest of the afternoon.',
               },
               {
                 label: 'Evening Window',
@@ -1214,7 +1214,7 @@ export default function SleepClient() {
               },
               {
                 practice: 'Yoga Nidra / NSDR',
-                effect: 'Preliminary data suggests midday NSDR improves evening HRV readiness. Mechanism: dopamine restoration reduces sympathetic baseline. Research is nascent.',
+                effect: 'Preliminary research suggests NSDR may support recovery, though the specific mechanisms in humans are still being studied.',
                 direction: 'positive',
               },
               {
@@ -1361,11 +1361,9 @@ export default function SleepClient() {
                 Conscious Delta &mdash; The Evidence
               </h3>
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
-                Datta (2021) and related Yoga Nidra EEG work documents an unusual pattern: delta
-                waves (0.5&ndash;4 Hz, normally only present during unconscious deep sleep) appearing
-                in practitioners who remain verbally responsive. This &ldquo;conscious delta&rdquo; may
-                represent a trained capacity to access the physiology of deep sleep without losing
-                awareness.
+                EEG research on experienced Yoga Nidra practitioners has documented theta wave
+                dominance with occasional delta intrusions &mdash; suggesting states neurologically
+                distinct from normal sleep.
               </p>
               <div
                 style={{

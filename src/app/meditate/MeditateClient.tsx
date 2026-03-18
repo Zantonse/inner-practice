@@ -376,14 +376,14 @@ export default function MeditateClient() {
                 detail="Regular meditation increases gray matter density in the hippocampus and prefrontal cortex — regions linked to learning, memory, and self-awareness."
               />
               <StatCard
-                source="Mount Sinai — 2025"
+                source="EEG Research — Cahn &amp; Polich, 2006"
                 stat="10 minutes alters brain waves on your first session"
-                detail="Even a single 10-minute session produces measurable changes in alpha and theta wave activity, associated with relaxed focus and reduced cognitive chatter."
+                detail="Even brief meditation sessions produce measurable increases in alpha and theta wave activity, associated with relaxed alertness (Cahn &amp; Polich, Psychological Bulletin, 2006)."
               />
               <StatCard
                 source="Johns Hopkins University"
-                stat="As effective as antidepressants for anxiety"
-                detail="A meta-analysis of 47 clinical trials found mindfulness meditation programs had moderate evidence for improving anxiety, depression, and pain."
+                stat="Moderate evidence for anxiety and depression"
+                detail="A meta-analysis of 47 clinical trials found mindfulness meditation programs had moderate evidence for improving anxiety, depression, and pain — with effect sizes in a similar range to those reported for antidepressants in some analyses, though the original study did not make this direct comparison."
               />
             </div>
           </ScrollReveal>
