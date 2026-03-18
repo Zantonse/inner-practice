@@ -100,22 +100,22 @@ type VideoTab = 'chakra-meditation' | 'kundalini-yoga' | 'bija-mantra';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   'chakra-meditation': [
     {
-      videoId: '4vMXx8Qrmb0',
-      title: 'Chakra Meditation',
+      videoId: 'sSDhMQ-cZ1s',
+      title: 'Chakra Meditation — All 7 Centers',
       description: 'A guided meditation moving through all seven chakras from root to crown. Each center receives breath, attention, and the associated bija mantra. Suitable for daily practice.',
     },
   ],
   'kundalini-yoga': [
     {
-      videoId: '2KNKSMQ_HPo',
-      title: 'Kundalini Yoga',
+      videoId: '1k9SzVBOZCE',
+      title: 'Guided Kundalini Meditation',
       description: 'A complete Kundalini yoga set (kriya) designed to activate and move prana through the chakra column. Includes breathwork, movement, and meditation components.',
     },
   ],
   'bija-mantra': [
     {
-      videoId: 'VHrNKHZOqf4',
-      title: 'Bija Mantra Chanting',
+      videoId: 'dGJkw1oEljQ',
+      title: 'Understanding the Chakra System',
       description: 'Guided chanting of the seven seed syllables (LAM, VAM, RAM, YAM, HAM, OM, Silence) with sustained tones. The vibrational resonance of each mantra targets the associated plexus.',
     },
   ],

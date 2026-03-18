@@ -152,27 +152,27 @@ type VideoTab = 'cold' | 'wim-hof' | 'sauna';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   cold: [
     {
-      videoId: 'pq6WHJzOkno',
-      title: 'Cold Exposure Science — Huberman',
+      videoId: 'AJiQMFTnR04',
+      title: 'The Science of Cold Exposure',
       description: 'Andrew Huberman breaks down the exact mechanisms of deliberate cold exposure — norepinephrine, dopamine, brown fat activation, and the Søeberg principle. The most evidence-grounded cold protocol overview available.',
     },
     {
-      videoId: 'WCSZcBQLI9s',
-      title: 'Ice Bath Protocol & Benefits',
+      videoId: 'x3MnWCcaBeo',
+      title: 'Cold Shower Benefits — What Happens to Your Body',
       description: 'Practical walkthrough of cold water immersion protocols from 30-second cold finishes to full ice baths. Covers temperature ranges, duration, timing, and what the research says about recovery and mental health.',
     },
   ],
   'wim-hof': [
     {
-      videoId: 'tybOi4hjZFQ',
-      title: 'Wim Hof Method — Full Tutorial',
+      videoId: 'nRGfUK6WQTY',
+      title: 'Wim Hof Method Explained',
       description: 'The original Wim Hof breathing and cold exposure method. Covers the three-pillar approach: breathing, cold, and commitment. Note: the breathing component is activating — do not practice before bed.',
     },
   ],
   sauna: [
     {
-      videoId: 'mFMqOuqBl0A',
-      title: 'Sauna Science & Protocols',
+      videoId: 'eKDo-YjnjiQ',
+      title: 'Sauna Benefits — The Finnish Evidence',
       description: 'The Laukkanen 20-year Kuopio cohort study unpacked. Covers frequency, temperature, duration, and the cardiovascular mechanism. Also discusses heat shock proteins and why sauna 4–7 times weekly is the optimal dose.',
     },
   ],

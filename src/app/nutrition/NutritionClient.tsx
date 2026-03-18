@@ -212,36 +212,36 @@ type VideoTab = 'mindful-eating' | 'gut-health' | 'fasting';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   'mindful-eating': [
     {
-      videoId: 'Taz9JGwlB2w',
-      title: 'Mindful Eating & the Gut-Brain Axis',
+      videoId: '6tw2MThRt3Q',
+      title: 'Mindful Eating — A Simple Practice',
       description:
         'How the act of eating slowly, chewing thoroughly, and eating without distraction activates the cephalic phase digestive response — the first stage of digestion that begins in the brain before food even enters the stomach. Parasympathetic eating versus sympathetic eating.',
     },
     {
-      videoId: 'c4P3HkNVugs',
-      title: 'The Gut Microbiome & Mental Health',
+      videoId: 'Ltp-X35IZQM',
+      title: 'How Your Gut Affects Your Brain',
       description:
         'An overview of the emerging psychobiotic research: how gut bacteria produce neurotransmitters, modulate inflammation, and directly influence mood and cognition via the vagus nerve. Covers Lactobacillus rhamnosus, fermented foods, and the Bravo 2011 fMRI study.',
     },
   ],
   'gut-health': [
     {
-      videoId: 'VzsBPJPeIjw',
-      title: 'Fermented Foods & Microbiome Diversity',
+      videoId: 'B9RruLkAUm8',
+      title: 'The Gut-Brain Connection',
       description:
         'Sonnenburg Lab research at Stanford: a high-fermented-food diet increased microbiome diversity and decreased 19 inflammatory markers including IL-6 and IL-12p70, while a high-fiber diet without adequate fermented foods had mixed results. The case for daily fermented foods.',
     },
     {
-      videoId: 'Mx_ZjQJpPDM',
-      title: 'Omega-3 & Neuroinflammation',
+      videoId: 'W5vSoJTSRHU',
+      title: 'Microbiome and Mental Health',
       description:
         'How EPA and DHA reduce neuroinflammation, support myelin integrity, and modulate the HPA axis stress response. Meta-analysis by Sublette et al. (2011) showed EPA dominance (d=0.53) as the active antidepressant component. Dosing, sourcing, and the omega-6:omega-3 ratio.',
     },
   ],
   fasting: [
     {
-      videoId: '9tRohh0gErM',
-      title: 'Time-Restricted Eating & Circadian Biology',
+      videoId: 'WHbhMVfgpBs',
+      title: 'Intermittent Fasting — What the Science Says',
       description:
         "Satchin Panda's research on circadian-aligned eating: consuming all calories within a 10–12 hour window aligned to daylight improves metabolic health, sleep quality, and inflammatory markers. Wilkinson et al. (2020) showed 14:10 TRE reduced blood pressure and atherogenic lipids in metabolic syndrome.",
     },

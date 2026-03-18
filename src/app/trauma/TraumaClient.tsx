@@ -89,22 +89,22 @@ type VideoTab = 'trauma-yoga' | 'somatic' | 'grounding';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   'trauma-yoga': [
     {
-      videoId: '4-079YIasck',
-      title: 'Trauma-Sensitive Yoga',
+      videoId: '53RX2ESUqpE',
+      title: 'Bessel van der Kolk — The Body Keeps the Score',
       description: 'A trauma-informed yoga session drawing on the Trauma Center Trauma Sensitive Yoga (TCTSY) framework. All choices are offered — not directed — allowing the body to reclaim agency that trauma interrupted.',
     },
   ],
   somatic: [
     {
-      videoId: 'FeUioDuJjFI',
-      title: 'TRE — Tension & Trauma Releasing Exercises',
+      videoId: 'nmJDkzDMllc',
+      title: 'Peter Levine — Somatic Experiencing',
       description: 'David Berceli\'s TRE protocol activates the body\'s natural trembling mechanism to discharge frozen survival energy stored in the psoas and deep hip flexors. The shaking completes the incomplete defensive response.',
     },
   ],
   grounding: [
     {
-      videoId: 'SAhMKPcn6e8',
-      title: 'Grounding Practice',
+      videoId: 'ByefRCzza3I',
+      title: 'Gabor Maté — Trauma and Healing',
       description: 'Somatic grounding anchors awareness in the present body when trauma pulls consciousness into past threat states. This practice teaches the nervous system that the present moment is safe.',
     },
   ],
