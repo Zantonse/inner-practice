@@ -3,7 +3,8 @@
 export type Modality =
   | 'meditation' | 'breathwork' | 'yoga' | 'fascia'
   | 'nervous-system' | 'reiki' | 'sound-healing' | 'somatics' | 'sleep' | 'qigong' | 'chakras' | 'trauma'
-  | 'nutrition' | 'temperature' | 'nature';
+  | 'nutrition' | 'temperature' | 'nature'
+  | 'taichi' | 'fasting' | 'psychedelics';
 
 export type ExerciseType = 'structured' | 'reference';
 export type Level = 'beginner' | 'intermediate' | 'advanced';
@@ -59,6 +60,9 @@ export const MODALITY_META: Record<Modality, { label: string; deep: string; pale
   nutrition:        { label: 'Nutrition',         deep: '#5C6B3C', pale: '#E8EDDF' },
   temperature:      { label: 'Temperature',       deep: '#3B7A9E', pale: '#DFF0F7' },
   nature:           { label: 'Nature',            deep: '#4A6B52', pale: '#E2EDDF' },
+  taichi:           { label: 'Tai Chi',           deep: '#5A4E3C', pale: '#EDE8DF' },
+  fasting:          { label: 'Fasting',           deep: '#7A6B3C', pale: '#F0EBDB' },
+  psychedelics:     { label: 'Psychedelics',      deep: '#5C3D7A', pale: '#EDE3F7' },
 };
 
 export const LEVEL_COLORS: Record<Level, string> = {
