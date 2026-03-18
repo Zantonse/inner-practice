@@ -263,7 +263,7 @@ export default function QigongClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: JADE_MID,
+              color: JADE_DEEP,
               margin: '0 0 1.25rem',
             }}
           >
@@ -317,7 +317,7 @@ export default function QigongClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: JADE_MID,
+                  color: JADE_DEEP,
                   textDecoration: 'none',
                   borderBottom: `1px solid ${JADE_MID}`,
                   paddingBottom: '0.25rem',

@@ -173,7 +173,7 @@ export default function ChakrasClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: AMETHYST_MID,
+              color: AMETHYST_DEEP,
               margin: '0 0 1.25rem',
             }}
           >
@@ -226,7 +226,7 @@ export default function ChakrasClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: AMETHYST_MID,
+                  color: AMETHYST_DEEP,
                   textDecoration: 'none',
                   borderBottom: `1px solid ${AMETHYST_MID}`,
                   paddingBottom: '0.25rem',

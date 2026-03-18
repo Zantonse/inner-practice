@@ -300,7 +300,7 @@ export default function NutritionClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: OLIVE_MID,
+              color: OLIVE_DEEP,
               margin: '0 0 1.25rem',
             }}
           >
