@@ -273,6 +273,15 @@ export default function RootLayout({
               >
                 Trauma
               </Link>
+              <Link href="/nutrition" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.875rem', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Nutrition
+              </Link>
+              <Link href="/temperature" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.875rem', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Temperature
+              </Link>
+              <Link href="/nature" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.875rem', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 300ms ease' }}>
+                Nature
+              </Link>
               <Link
                 href="/practice"
                 style={{
