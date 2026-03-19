@@ -24,7 +24,7 @@ export default function PracticeClient() {
       <section
         style={{
           padding: 'clamp(5rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(2rem, 4vw, 3rem)',
-          background: 'linear-gradient(160deg, oklch(60% 0.14 300 / 0.15), oklch(93% 0.03 300))',
+          background: 'linear-gradient(160deg, oklch(60% 0.14 300 / 0.15), var(--color-cream))',
           textAlign: 'center',
         }}
       >

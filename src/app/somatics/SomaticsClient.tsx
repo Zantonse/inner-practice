@@ -198,7 +198,7 @@ export default function SomaticsClient() {
       </section>
 
       {/* CROSS-LINKS */}
-      <section style={{ padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)', background: `linear-gradient(160deg, oklch(38% 0.08 255 / 0.18), oklch(93% 0.04 240))`, borderTop: '1px solid var(--color-border)' }}>
+      <section style={{ padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)', background: `linear-gradient(160deg, oklch(38% 0.08 255 / 0.18), var(--color-cream))`, borderTop: '1px solid var(--color-border)' }}>
         <div style={{ maxWidth: '860px', textAlign: 'center' }}>
           <ScrollReveal>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1.5rem' }}>Continue Exploring</h2>

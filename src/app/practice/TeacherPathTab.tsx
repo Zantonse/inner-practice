@@ -276,7 +276,7 @@ export default function TeacherPathTab() {
             {/* Nervous System */}
             <div
               style={{
-                background: '#F5E0EC',
+                background: 'var(--color-surface-raised)',
                 border: '1.5px solid #8B3A62',
                 borderRadius: 4,
                 padding: '0.75rem 1.25rem',
@@ -311,7 +311,7 @@ export default function TeacherPathTab() {
             {/* Fascia */}
             <div
               style={{
-                background: '#FEF3E2',
+                background: 'var(--color-surface-raised)',
                 border: '1.5px solid #8A5A1C',
                 borderRadius: 4,
                 padding: '0.75rem 1.25rem',

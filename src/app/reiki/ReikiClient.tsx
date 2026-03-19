@@ -784,7 +784,7 @@ export default function ReikiClient() {
       <section
         style={{
           padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)',
-          background: `linear-gradient(160deg, oklch(55% 0.10 65 / 0.18), oklch(93% 0.04 50))`,
+          background: `linear-gradient(160deg, oklch(55% 0.10 65 / 0.18), var(--color-cream))`,
           borderTop: '1px solid var(--color-border)',
         }}
       >

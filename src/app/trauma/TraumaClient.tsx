@@ -1508,7 +1508,7 @@ export default function TraumaClient() {
       <section
         style={{
           padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(35% 0.08 55 / 0.18), oklch(93% 0.03 40))',
+          background: 'linear-gradient(160deg, oklch(35% 0.08 55 / 0.18), var(--color-cream))',
           borderTop: '1px solid var(--color-border)',
         }}
       >

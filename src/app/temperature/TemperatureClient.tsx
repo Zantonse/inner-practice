@@ -1350,7 +1350,7 @@ export default function TemperatureClient() {
       <section
         style={{
           padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)',
-          background: `linear-gradient(160deg, oklch(40% 0.10 220 / 0.18), oklch(93% 0.03 205))`,
+          background: `linear-gradient(160deg, oklch(40% 0.10 220 / 0.18), var(--color-cream))`,
           borderTop: '1px solid var(--color-border)',
         }}
       >

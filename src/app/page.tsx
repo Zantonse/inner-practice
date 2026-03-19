@@ -26,7 +26,7 @@ const pillars: {
       { href: '/manifest', label: 'Manifest' },
     ],
     gradFrom: 'oklch(75% 0.12 295)',
-    gradTo: 'oklch(93% 0.03 60)',
+    gradTo: 'oklch(80% 0.03 60)',
     overlayColor: 'rgba(89,46,107,0.6)',
     accentColor: 'var(--color-amber-light)',
     image: '/images/hero-meditation.webp',

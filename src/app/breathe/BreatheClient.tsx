@@ -610,7 +610,7 @@ export default function BreatheClient() {
       <section
         style={{
           padding: 'clamp(4rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(3rem, 6vw, 5rem)',
-          background: `linear-gradient(160deg, oklch(60% 0.10 196 / 0.35), oklch(93% 0.04 185))`,
+          background: `linear-gradient(160deg, oklch(60% 0.10 196 / 0.35), var(--color-cream))`,
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -1444,7 +1444,7 @@ export default function BreatheClient() {
         id="connect"
         style={{
           padding: 'clamp(5rem, 8vw, 8rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6.5rem)',
-          background: `linear-gradient(160deg, oklch(60% 0.10 196 / 0.12), oklch(97% 0.01 60))`,
+          background: `linear-gradient(160deg, oklch(60% 0.10 196 / 0.12), var(--color-cream))`,
           borderTop: '1px solid var(--color-border)',
         }}
       >
@@ -1756,7 +1756,7 @@ export default function BreatheClient() {
       <section
         style={{
           padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)',
-          background: `linear-gradient(160deg, oklch(60% 0.10 196 / 0.18), oklch(93% 0.04 185))`,
+          background: `linear-gradient(160deg, oklch(60% 0.10 196 / 0.18), var(--color-cream))`,
           borderTop: '1px solid var(--color-border)',
         }}
       >

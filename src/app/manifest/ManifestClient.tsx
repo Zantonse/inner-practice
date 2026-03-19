@@ -423,7 +423,7 @@ export default function ManifestClient() {
       {/* Hero */}
       <section style={{
         padding: 'clamp(4rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(3rem, 6vw, 5rem)',
-        background: `linear-gradient(160deg, oklch(65% 0.12 75 / 0.35), oklch(93% 0.04 60))`,
+        background: `linear-gradient(160deg, oklch(65% 0.12 75 / 0.35), var(--color-cream))`,
         position: 'relative',
         overflow: 'hidden',
       }}>

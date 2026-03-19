@@ -1760,7 +1760,7 @@ export default function PsychedelicsClient() {
       <section
         style={{
           padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)',
-          background: `linear-gradient(160deg, oklch(25% 0.15 300 / 0.12), oklch(93% 0.03 290))`,
+          background: `linear-gradient(160deg, oklch(25% 0.15 300 / 0.12), var(--color-cream))`,
           borderTop: '1px solid var(--color-border)',
         }}
       >

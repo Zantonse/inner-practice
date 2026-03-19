@@ -1607,7 +1607,7 @@ export default function ChakrasClient() {
       <section
         style={{
           padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)',
-          background: `linear-gradient(160deg, oklch(30% 0.12 300 / 0.18), oklch(93% 0.03 300))`,
+          background: `linear-gradient(160deg, oklch(30% 0.12 300 / 0.18), var(--color-cream))`,
           borderTop: '1px solid var(--color-border)',
         }}
       >

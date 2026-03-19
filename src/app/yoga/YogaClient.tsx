@@ -456,7 +456,7 @@ export default function YogaClient() {
       </section>
 
       {/* CLOSING */}
-      <section style={{ padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)', background: 'linear-gradient(160deg, oklch(55% 0.16 310 / 0.18), oklch(93% 0.04 290))', borderTop: '1px solid var(--color-border)' }}>
+      <section style={{ padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(4.5rem, 8vw, 7rem)', background: 'linear-gradient(160deg, oklch(55% 0.16 310 / 0.18), var(--color-cream))', borderTop: '1px solid var(--color-border)' }}>
         <div style={{ maxWidth: '820px' }}>
           <ScrollReveal>
             <blockquote style={{ margin: 0, padding: 0 }}>
