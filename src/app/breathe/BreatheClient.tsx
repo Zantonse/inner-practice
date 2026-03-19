@@ -375,6 +375,22 @@ const calmingBalancing: TechniqueData[] = [
     ],
   },
   {
+    id: 'bhramari',
+    name: 'Bhramari (Humming Bee Breath)',
+    tradition: 'Hatha Yoga / Pranayama',
+    duration: '5–10 minutes',
+    level: 'Beginner',
+    description: 'The humming breath — named for the bhramari (Indian black bee). The extended humming exhale stimulates the vagus nerve via laryngeal vibration, and the self-generated sound creates a powerful internal auditory anchor. The key discovery: humming increases nasal nitric oxide production by 15-fold compared to quiet exhalation (Weitzberg & Lundberg, 2002, AJRCCM). NO is a potent vasodilator, bronchodilator, and antimicrobial — meaning humming directly improves sinus ventilation and respiratory health.',
+    steps: [
+      'Sit comfortably with a tall spine. Close your eyes.',
+      'Inhale deeply through your nose.',
+      'As you exhale, close your lips and make a steady humming sound — like a bee. Keep the jaw relaxed and teeth slightly apart.',
+      'Feel the vibration in your face, sinuses, and skull. Direct awareness to the resonance.',
+      'Let each exhale be long and slow — the hum naturally extends the exhale phase.',
+      'Complete 7–10 rounds. After the final round, sit in silence and notice the internal resonance.',
+    ],
+  },
+  {
     id: 'coherent',
     name: 'Coherent Breathing (5.5 bpm)',
     tradition: 'Stephen Elliott / Science-based',
@@ -426,6 +442,23 @@ const energizing: TechniqueData[] = [
       'Begin slowly (1 cycle per second) and build to 2–3 per second.',
       'For your first sessions, practice for 1–3 minutes only. Build gradually to 11 minutes over weeks.',
       'End by taking a deep inhale, holding briefly, then exhaling slowly.',
+    ],
+  },
+  {
+    id: 'breath-hold-walks',
+    name: 'Breath Hold Walking',
+    tradition: 'Patrick McKeown / Oxygen Advantage',
+    duration: '10–20 minutes',
+    level: 'Intermediate',
+    description: 'A Buteyko-derived exercise popularized by Patrick McKeown. Walking with held breath after a normal exhale builds CO2 tolerance in a functional, dynamic context — training the chemoreceptors to tolerate higher CO2 without panic. Regular practice increases BOLT score, reduces exercise-induced breathlessness, and improves nasal breathing during physical activity. The key insight: the "air hunger" you feel is CO2 rising, not oxygen dropping — your O2 saturation stays above 95% throughout.',
+    steps: [
+      'Walk at a comfortable pace, breathing only through your nose.',
+      'After 2–3 minutes of easy nasal walking, take a normal breath in and a normal breath out.',
+      'After the exhale, pinch your nose and continue walking with no air.',
+      'Walk 10–30 paces (or until you feel a moderate air hunger — not distress).',
+      'Release your nose and resume calm nasal breathing. Recover for 1–2 minutes.',
+      'Repeat 6–8 times per session.',
+      'Track your paces over weeks — your hold distance will increase as CO2 tolerance improves.',
     ],
   },
   {
@@ -515,6 +548,40 @@ const deepPractice: TechniqueData[] = [
       'Notice the difference in your mental clarity and physical calm after the practice.',
     ],
   },
+  {
+    id: 'reverse-abdominal',
+    name: 'Reverse Abdominal Breathing',
+    tradition: 'Taoist Qigong / Martial Arts',
+    duration: '10–20 minutes',
+    level: 'Advanced',
+    description: 'The opposite of standard diaphragmatic breathing: on the inhale, the abdomen draws inward and upward; on the exhale, it relaxes outward. This is the default breathing pattern in Taoist internal martial arts (Tai Chi, Ba Gua, Xing Yi) because it creates internal abdominal pressure that stabilizes the spine and generates whole-body power (fa jin). In qigong theory, it directs qi inward to the dantian on inhale and circulates it outward on exhale. The technique also strengthens the transverse abdominis and deep core stabilizers.',
+    steps: [
+      'Stand in Wuji posture (feet shoulder-width, knees slightly bent, spine long) or sit upright.',
+      'Place one hand on your lower abdomen to feel the movement.',
+      'Inhale through the nose: gently draw the lower abdomen IN and UP. The chest may expand slightly but the primary movement is abdominal contraction.',
+      'Exhale through the nose: relax the abdomen and let it expand outward naturally.',
+      'This is the reverse of diaphragmatic breathing. It may feel unnatural at first — start with 3–5 minutes.',
+      'Maintain pelvic floor engagement (light mula bandha) throughout.',
+      'Practice slowly. Speed and force come only after months of gentle practice.',
+    ],
+  },
+  {
+    id: 'mouth-taping',
+    name: 'Mouth Taping for Sleep',
+    tradition: 'Buteyko / Patrick McKeown',
+    duration: 'All night (6–8 hours)',
+    level: 'Intermediate',
+    description: 'Applying gentle surgical tape over the lips during sleep to enforce nasal breathing throughout the night. Mouth breathing during sleep causes dry mouth (increasing cavity risk by 3x), snoring, sleep apnea episodes, and chronic low-grade hyperventilation that fragments sleep architecture. Mouth taping is a simple behavioral intervention from the Buteyko tradition. Studies show nasal breathing during sleep improves oxygen saturation, reduces snoring, and increases deep sleep phases. Start only after establishing comfortable nasal breathing while awake.',
+    steps: [
+      'Ensure you can breathe comfortably through your nose while awake with mouth closed for 5+ minutes.',
+      'Use micropore surgical tape (3M) or purpose-made mouth tape strips. Never use duct tape or strong adhesive.',
+      'Apply a single horizontal strip across the lips before bed. Some practitioners prefer a small vertical strip.',
+      'If you feel any panic or claustrophobia, remove the tape. Start with short daytime sessions to acclimate.',
+      'Side sleepers: ensure the tape does not press against the pillow uncomfortably.',
+      'Contraindicated if you have active nasal congestion, a deviated septum that blocks airflow, or severe sleep apnea requiring CPAP.',
+      'Track your sleep quality and morning mouth dryness over 2 weeks to assess benefit.',
+    ],
+  },
 ];
 
 // ── Wellness Cards Data ────────────────────────────────────────
@@ -567,6 +634,69 @@ const wellnessCards = [
     techniques: ['Coherent Breathing', 'Diaphragmatic Breathing', 'Ujjayi'],
     accent: 'var(--color-amber-light)',
   },
+  {
+    condition: 'Focus & Flow States',
+    icon: '🎯',
+    evidence: 'Zelano et al., 2016 — Nasal rhythm entrains cognition; Huberman Lab',
+    body: 'Nasal inhalation synchronizes neural oscillations in the olfactory cortex, hippocampus, and amygdala (Zelano et al., 2016, Journal of Neuroscience). A 2:1 inhale-to-exhale ratio (e.g., 6 seconds in, 3 seconds out) increases sympathetic tone just enough to sharpen attention without triggering anxiety. Huberman recommends nasal breathing during focused work — the rhythmic nasal airflow literally entrains the brain toward coherent processing.',
+    techniques: ['Box Breathing', 'Coherent Breathing', 'Ujjayi'],
+    accent: TEAL_MID,
+  },
+  {
+    condition: 'Sinus & Dental Health',
+    icon: '🦷',
+    evidence: 'Weitzberg & Lundberg 2002; Buteyko oral health literature',
+    body: 'Mouth breathing dries the oral cavity, drops saliva pH below the enamel-safe threshold, and increases cavity risk by up to 3x. Chronic mouth breathing during childhood alters craniofacial development — narrowing the palate and crowding teeth. Nasal breathing maintains saliva flow, and humming increases nasal NO by 15x (Weitzberg & Lundberg, 2002), clearing the sinuses and reducing infection risk. Mouth taping at night is the simplest intervention.',
+    techniques: ['Bhramari (Humming Bee Breath)', 'Buteyko Method', 'Mouth Taping for Sleep'],
+    accent: 'var(--color-violet-mid)',
+  },
+];
+
+// ── Daily Protocols Data ─────────────────────────────────────
+type ProtocolTier = 'Beginner' | 'Intermediate' | 'Advanced';
+type TimeOfDay = 'Morning' | 'Midday' | 'Evening' | 'Night';
+
+interface ProtocolBlock {
+  time: TimeOfDay;
+  practice: string;
+  duration: string;
+  why: string;
+}
+
+interface DailyProtocol {
+  tier: ProtocolTier;
+  totalTime: string;
+  blocks: ProtocolBlock[];
+}
+
+const dailyProtocols: DailyProtocol[] = [
+  {
+    tier: 'Beginner',
+    totalTime: '~10 min/day',
+    blocks: [
+      { time: 'Morning', practice: 'Physiological Sighs (3x) + Diaphragmatic Breathing', duration: '5 min', why: 'Activates the vagal brake after sleep and establishes nasal breathing for the day' },
+      { time: 'Evening', practice: '4-7-8 Breathing (4 cycles)', duration: '5 min', why: 'Extended exhale and retention produce a sedative effect that accumulates with nightly practice' },
+    ],
+  },
+  {
+    tier: 'Intermediate',
+    totalTime: '~25 min/day',
+    blocks: [
+      { time: 'Morning', practice: 'Wim Hof Method or Kapalabhati', duration: '10 min', why: 'Controlled sympathetic activation builds stress resilience and clears respiratory tract' },
+      { time: 'Midday', practice: 'Coherent Breathing (5.5 bpm)', duration: '5 min', why: 'Resets cardiac coherence and HRV at the midday autonomic low point' },
+      { time: 'Evening', practice: 'Nadi Shodhana + 4-7-8', duration: '10 min', why: 'Alternate nostril breathing balances hemispheres; 4-7-8 transitions to sleep' },
+    ],
+  },
+  {
+    tier: 'Advanced',
+    totalTime: '~45+ min/day',
+    blocks: [
+      { time: 'Morning', practice: 'Wim Hof (3–4 rounds) + Cold Exposure', duration: '15 min', why: 'Adrenaline priming before cold — Hof protocol for immune modulation and mental clarity' },
+      { time: 'Midday', practice: 'Coherent Breathing or Buteyko Reduced Breathing', duration: '10 min', why: 'CO2 tolerance training (Buteyko) or cardiac coherence maintenance (Coherent)' },
+      { time: 'Evening', practice: 'Tummo or Nadi Shodhana', duration: '15 min', why: 'Deep practice window — inner fire visualization or nervous system balancing' },
+      { time: 'Night', practice: 'Mouth Taping', duration: 'All night', why: 'Enforces nasal breathing during sleep, preventing the 4820% snoring increase of mouth breathing' },
+    ],
+  },
 ];
 
 // ── Video Data ─────────────────────────────────────────────────
@@ -595,6 +725,7 @@ const videoCategories: VideoCategory[] = ['Quick Resets', 'Morning Activation', 
 export default function BreatheClient() {
   const [openTechnique, setOpenTechnique] = useState<string | null>('physio-sigh');
   const [activeVideoCategory, setActiveVideoCategory] = useState<VideoCategory>('Quick Resets');
+  const [activeProtocolTier, setActiveProtocolTier] = useState<ProtocolTier>('Beginner');
 
   const toggleTechnique = (id: string) => {
     setOpenTechnique(prev => (prev === id ? null : id));
@@ -689,10 +820,13 @@ export default function BreatheClient() {
           {/* Anchor nav */}
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
             {[
+              { label: 'Nose vs. Mouth', href: '#nasal' },
+              { label: 'CO₂ & BOLT', href: '#co2' },
               { label: 'Science', href: '#science' },
               { label: 'Techniques', href: '#techniques' },
               { label: 'Wellness', href: '#wellness' },
               { label: 'Practice', href: '#practice' },
+              { label: 'Protocols', href: '#protocols' },
               { label: 'Connect', href: '#connect' },
             ].map(({ label, href }) => (
               <a
@@ -826,6 +960,169 @@ export default function BreatheClient() {
       </section>
 
       <SectionDivider />
+
+      {/* ══════════════════════════════════════════════════════
+          NASAL BREATHING VS. MOUTH BREATHING
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="nasal"
+        style={{
+          padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(3rem, 5vw, 4.5rem)',
+          background: `color-mix(in srgb, var(--color-cream) 92%, ${TEAL_LIGHT})`,
+        }}
+      >
+        <div style={{ maxWidth: '1100px' }}>
+          <ScrollReveal>
+            <p
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.6875rem',
+                fontWeight: 500,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--color-text-muted)',
+                margin: '0 0 1.25rem',
+              }}
+            >
+              The Gateway
+            </p>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-h2)',
+                fontWeight: 400,
+                color: 'var(--color-text)',
+                margin: '0 0 0.5rem',
+                lineHeight: 1.2,
+              }}
+            >
+              Nasal Breathing vs. Mouth Breathing
+            </h2>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--text-body-lg)',
+                fontStyle: 'italic',
+                color: TEAL_DEEP,
+                margin: '0 0 2.5rem',
+                maxWidth: '48ch',
+                lineHeight: 1.6,
+              }}
+            >
+              The gateway you&rsquo;re bypassing
+            </p>
+          </ScrollReveal>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 440px), 1fr))',
+              gap: 'clamp(2.5rem, 5vw, 5rem)',
+              alignItems: 'start',
+            }}
+          >
+            <ScrollReveal>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.3rem',
+                  fontWeight: 600,
+                  color: 'var(--color-text)',
+                  margin: '0 0 1.25rem',
+                  fontStyle: 'normal',
+                }}
+              >
+                The Nitric Oxide Advantage
+              </h3>
+              <p style={{ lineHeight: 1.85, marginBottom: '1.25rem' }}>
+                The paranasal sinuses continuously produce <strong>nitric oxide (NO)</strong> at concentrations
+                of 10–20 ppm (Lundberg, 1995). When you breathe through your nose, this NO is carried
+                into the lungs where it acts as a potent <strong>vasodilator</strong> (opening blood vessels),{' '}
+                <strong>bronchodilator</strong> (opening airways), and <strong>antimicrobial agent</strong> (killing
+                bacteria and viruses on contact).
+              </p>
+              <p style={{ lineHeight: 1.85, marginBottom: '1.25rem' }}>
+                Mouth breathing bypasses the sinuses entirely — you get none of this. The nasal turbinates
+                also <strong>warm incoming air to body temperature</strong>, <strong>humidify it to 95–100%
+                relative humidity</strong>, and <strong>filter particles larger than 10 μm</strong> before
+                they reach the lungs. The nasal resistance itself slows breathing rate, naturally promoting
+                deeper, more efficient breaths.
+              </p>
+              <p style={{ lineHeight: 1.85 }}>
+                This is why every serious breathwork tradition — pranayama, Buteyko, qigong — insists on
+                nasal breathing as the non-negotiable foundation.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.3rem',
+                  fontWeight: 600,
+                  color: 'var(--color-text)',
+                  margin: '0 0 1.25rem',
+                  fontStyle: 'normal',
+                }}
+              >
+                The Evidence
+              </h3>
+              <p style={{ lineHeight: 1.85, marginBottom: '1.25rem' }}>
+                James Nestor&rsquo;s self-experiment — plugging his nostrils for 10 days under observation
+                at Stanford — produced a <strong>4,820% increase in snoring</strong>, 25 sleep apnea events
+                per night, and blood pressure rising to 142 mmHg. Reverting to nasal breathing dropped BP
+                to 124 mmHg within days. <em>This was an n=1 journalist self-experiment, not a controlled
+                RCT</em> — but it vividly illustrates the physiological cost.
+              </p>
+              <p style={{ lineHeight: 1.85, marginBottom: '1.25rem' }}>
+                More rigorous evidence comes from a <strong>2024 systematic review</strong> (PMC10858538) comparing
+                nasal vs. mouth breathing during exercise, which found nasal breathing improved oxygen
+                efficiency and reduced perceived exertion across multiple studies.
+              </p>
+              <p style={{ lineHeight: 1.85 }}>
+                Chronic mouth breathing during childhood alters craniofacial development — narrowing the
+                palate, crowding teeth, and contributing to sleep-disordered breathing that can persist
+                into adulthood. The dental and orthodontic literature now considers habitual mouth breathing
+                a developmental concern.
+              </p>
+            </ScrollReveal>
+          </div>
+
+          {/* Humming callout */}
+          <ScrollReveal>
+            <div
+              style={{
+                marginTop: '3rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.875rem',
+                padding: '1rem 1.25rem',
+                background: `color-mix(in srgb, ${TEAL_LIGHT} 25%, var(--color-cream))`,
+                borderLeft: `3px solid ${TEAL_MID}`,
+                borderRadius: '0 2px 2px 0',
+              }}
+            >
+              <span style={{ fontSize: '1.5rem' }}>🐝</span>
+              <p
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.125rem',
+                  fontStyle: 'italic',
+                  fontWeight: 400,
+                  color: TEAL_DEEP,
+                  margin: 0,
+                  lineHeight: 1.4,
+                }}
+              >
+                Humming increases nasal nitric oxide by 15x compared to quiet exhalation (Weitzberg &amp; Lundberg, 2002, AJRCCM).
+                Try Bhramari pranayama to unlock this effect.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <SectionDivider flip />
 
       {/* ══════════════════════════════════════════════════════
           THE SCIENCE
@@ -995,6 +1292,279 @@ export default function BreatheClient() {
       <SectionDivider flip />
 
       {/* ══════════════════════════════════════════════════════
+          CO2 TOLERANCE & THE BOHR EFFECT
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="co2"
+        style={{
+          padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
+          background: 'var(--color-cream)',
+        }}
+      >
+        <div style={{ maxWidth: '1100px' }}>
+          <ScrollReveal>
+            <p
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.6875rem',
+                fontWeight: 500,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--color-text-muted)',
+                margin: '0 0 1rem',
+              }}
+            >
+              CO₂ Tolerance
+            </p>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-h2)',
+                fontWeight: 400,
+                color: 'var(--color-text)',
+                margin: '0 0 0.5rem',
+              }}
+            >
+              The Hidden Bottleneck
+            </h2>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--text-body-lg)',
+                fontStyle: 'italic',
+                color: TEAL_DEEP,
+                margin: '0 0 3rem',
+                maxWidth: '52ch',
+                lineHeight: 1.6,
+              }}
+            >
+              Why more breathing doesn&rsquo;t mean more oxygen
+            </p>
+          </ScrollReveal>
+
+          {/* Bohr Effect visual callout */}
+          <ScrollReveal>
+            <div
+              style={{
+                padding: '2rem 2.25rem',
+                background: `color-mix(in srgb, ${TEAL_PALE} 50%, var(--color-cream))`,
+                border: `1px solid ${TEAL_MID}44`,
+                borderRadius: '2px',
+                marginBottom: '3rem',
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.6875rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: TEAL_MID,
+                  margin: '0 0 1rem',
+                }}
+              >
+                The Bohr Effect — Counter-Intuitive
+              </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '1rem',
+                  color: 'var(--color-text)',
+                  margin: '0 0 1.25rem',
+                  lineHeight: 1.85,
+                  maxWidth: '65ch',
+                }}
+              >
+                CO₂ dissolves in blood → forms carbonic acid → releases H⁺ ions → hemoglobin changes shape →
+                releases O₂ to tissues. <strong>More CO₂ = more oxygen delivery.</strong> This is the opposite
+                of what most people assume.
+              </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.9375rem',
+                  color: 'var(--color-text-muted)',
+                  margin: 0,
+                  lineHeight: 1.85,
+                  maxWidth: '65ch',
+                }}
+              >
+                When you chronically over-breathe (even mildly), you blow off too much CO₂. Hemoglobin
+                grips oxygen tightly and won&rsquo;t release it to cells — even though your blood oxygen
+                saturation reads a perfect 98%. You are oxygen-saturated but oxygen-starved.
+                This is why you can feel breathless despite having plenty of air.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '1.5rem',
+              marginBottom: '3rem',
+            }}
+          >
+            {/* BOLT Score Card */}
+            <ScrollReveal>
+              <div
+                className="card"
+                style={{
+                  padding: '2rem 1.75rem',
+                  borderRadius: '2px',
+                  borderTop: `3px solid ${TEAL_MID}`,
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.6875rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-text-muted)',
+                    margin: '0 0 0.5rem',
+                  }}
+                >
+                  Your CO₂ Metric
+                </p>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '1.3rem',
+                    fontWeight: 600,
+                    color: 'var(--color-text)',
+                    margin: '0 0 1rem',
+                    fontStyle: 'normal',
+                  }}
+                >
+                  The BOLT Score
+                </h3>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.75 }}>
+                  <strong>Body Oxygen Level Test</strong> — the McKeown protocol for measuring CO₂ tolerance.
+                  After a normal exhale, pinch your nose and count seconds until the <em>first definite urge</em> to breathe.
+                  Not how long you can hold — how long until the urge arrives.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {[
+                    { score: '< 10 sec', label: 'Poor — chronic overbreathing likely', color: 'var(--color-amber-deep)' },
+                    { score: '10–20 sec', label: 'Below average — room for significant improvement', color: 'var(--color-amber-light)' },
+                    { score: '20–30 sec', label: 'Good — functional breathing', color: TEAL_MID },
+                    { score: '30–40 sec', label: 'Very good — strong CO₂ tolerance', color: TEAL_MID },
+                    { score: '40+ sec', label: 'Excellent — elite respiratory fitness', color: TEAL_DEEP },
+                  ].map(item => (
+                    <div key={item.score} style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
+                      <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', fontWeight: 600, color: item.color, minWidth: '5.5rem' }}>{item.score}</span>
+                      <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--color-text-muted)' }}>{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Overbreathing Cycle Card */}
+            <ScrollReveal>
+              <div
+                className="card"
+                style={{
+                  padding: '2rem 1.75rem',
+                  borderRadius: '2px',
+                  borderTop: '3px solid var(--color-amber-light)',
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.6875rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-text-muted)',
+                    margin: '0 0 0.5rem',
+                  }}
+                >
+                  The Vicious Cycle
+                </p>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '1.3rem',
+                    fontWeight: 600,
+                    color: 'var(--color-text)',
+                    margin: '0 0 1rem',
+                    fontStyle: 'normal',
+                  }}
+                >
+                  Chronic Overbreathing
+                </h3>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1.25rem', lineHeight: 1.75 }}>
+                  Most people breathe 2–3x more air than necessary without realizing it.
+                  This creates a self-reinforcing loop:
+                </p>
+                <ol
+                  style={{
+                    margin: '0 0 1.25rem',
+                    padding: '0 0 0 1.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.5rem',
+                  }}
+                >
+                  {[
+                    'Mild hyperventilation → exhales too much CO₂',
+                    'Low CO₂ → vasoconstriction (blood vessels narrow) → reduced blood flow to brain',
+                    'Reduced brain blood flow → anxiety, lightheadedness, brain fog',
+                    'Anxiety → faster breathing → more CO₂ loss',
+                    'Chemoreceptors recalibrate to lower CO₂ baseline → the "new normal" feels necessary',
+                  ].map((step, i) => (
+                    <li
+                      key={i}
+                      style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--color-text-muted)', lineHeight: 1.65 }}
+                    >
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.75, fontWeight: 500 }}>
+                  Breaking the cycle: Buteyko reduced breathing, breath-hold walks, and coherent breathing
+                  all gradually raise CO₂ tolerance and reset the chemoreceptors.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Stat cards */}
+          <ScrollReveal group>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '1.5rem',
+              }}
+            >
+              <StatCard
+                source="McKeown, The Oxygen Advantage — BOLT studies"
+                stat="BOLT score correlates with VO₂ max, anxiety, and sleep quality"
+                detail="Patrick McKeown's research shows BOLT scores below 20 seconds are associated with exercise-induced breathlessness, poor sleep, and elevated anxiety. Each 5-second improvement in BOLT score corresponds to measurable gains in exercise tolerance and reductions in subjective anxiety."
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
+              />
+              <StatCard
+                source="Buteyko clinical observations; CO₂ rebreathing studies"
+                stat="Raising CO₂ tolerance reduces panic and anxiety symptoms"
+                detail="Chronic hyperventilation is a hallmark of panic disorder — patients over-breathe at rest, maintaining CO₂ levels 2–5 mmHg below normal. Breathing retraining that raises end-tidal CO₂ by even a few mmHg produces clinically significant anxiety reduction. The chemoreceptors recalibrate within 2–4 weeks of consistent practice."
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
+              />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* ══════════════════════════════════════════════════════
           TECHNIQUES
       ══════════════════════════════════════════════════════ */}
       <section
@@ -1028,7 +1598,7 @@ export default function BreatheClient() {
                 margin: '0 0 0.75rem',
               }}
             >
-              14 Techniques
+              18 Techniques
             </h2>
             <p
               style={{
@@ -1438,6 +2008,186 @@ export default function BreatheClient() {
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
+          DAILY PROTOCOLS
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="protocols"
+        style={{
+          padding: 'clamp(4.5rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
+          background: `color-mix(in srgb, var(--color-cream) 92%, ${TEAL_LIGHT})`,
+          borderTop: '1px solid var(--color-border)',
+        }}
+      >
+        <div style={{ maxWidth: '1100px' }}>
+          <ScrollReveal>
+            <p
+              style={{
+                fontFamily: 'var(--font-ui)',
+                fontSize: '0.6875rem',
+                fontWeight: 500,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--color-text-muted)',
+                margin: '0 0 1rem',
+              }}
+            >
+              Programming
+            </p>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-h2)',
+                fontWeight: 400,
+                color: 'var(--color-text)',
+                margin: '0 0 0.75rem',
+              }}
+            >
+              Daily Protocols
+            </h2>
+            <p
+              style={{
+                color: 'var(--color-text-muted)',
+                marginBottom: '2rem',
+                maxWidth: '52ch',
+                fontSize: 'var(--text-body-lg)',
+                lineHeight: 1.75,
+              }}
+            >
+              Three tiers of daily breathwork programming — choose your commitment level and build from there.
+              Each protocol maps techniques to optimal times of day.
+            </p>
+          </ScrollReveal>
+
+          {/* Tier tabs */}
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.75rem',
+              flexWrap: 'wrap',
+              marginBottom: '2.5rem',
+            }}
+          >
+            {dailyProtocols.map(p => (
+              <button
+                key={p.tier}
+                onClick={() => setActiveProtocolTier(p.tier)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.5rem 1.5rem',
+                  borderRadius: '9999px',
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  cursor: 'pointer',
+                  border: `1px solid ${activeProtocolTier === p.tier ? TEAL_MID : 'var(--color-border)'}`,
+                  background: activeProtocolTier === p.tier ? TEAL_MID : 'transparent',
+                  color: activeProtocolTier === p.tier ? '#F5EAE1' : 'var(--color-text-muted)',
+                  transition: 'background-color 300ms ease, color 300ms ease, border-color 300ms ease',
+                }}
+              >
+                {p.tier}
+                <span
+                  style={{
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.6875rem',
+                    opacity: 0.8,
+                  }}
+                >
+                  ({p.totalTime})
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* Protocol blocks */}
+          {dailyProtocols
+            .filter(p => p.tier === activeProtocolTier)
+            .map(protocol => (
+              <div
+                key={protocol.tier}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1rem',
+                }}
+              >
+                {protocol.blocks.map((block, i) => {
+                  const timeColors: Record<TimeOfDay, string> = {
+                    Morning: 'var(--color-amber-light)',
+                    Midday: TEAL_MID,
+                    Evening: 'var(--color-violet-mid)',
+                    Night: 'var(--color-text-muted)',
+                  };
+                  return (
+                    <div
+                      key={i}
+                      className="card"
+                      style={{
+                        padding: '1.5rem 1.75rem',
+                        borderRadius: '2px',
+                        borderLeft: `3px solid ${timeColors[block.time]}`,
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+                        <span
+                          style={{
+                            fontFamily: 'var(--font-ui)',
+                            fontSize: '0.6875rem',
+                            fontWeight: 500,
+                            letterSpacing: '0.1em',
+                            textTransform: 'uppercase',
+                            color: timeColors[block.time],
+                          }}
+                        >
+                          {block.time}
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: 'var(--font-ui)',
+                            fontSize: '0.6875rem',
+                            color: 'var(--color-text-muted)',
+                          }}
+                        >
+                          {block.duration}
+                        </span>
+                      </div>
+                      <p
+                        style={{
+                          fontFamily: 'var(--font-display)',
+                          fontSize: '1.125rem',
+                          fontWeight: 600,
+                          color: 'var(--color-text)',
+                          margin: '0 0 0.5rem',
+                          fontStyle: 'normal',
+                        }}
+                      >
+                        {block.practice}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: 'var(--font-body)',
+                          fontSize: '0.8125rem',
+                          fontStyle: 'italic',
+                          color: 'var(--color-text-muted)',
+                          margin: 0,
+                          lineHeight: 1.65,
+                        }}
+                      >
+                        {block.why}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+        </div>
+      </section>
+
+      <SectionDivider flip />
+
+      {/* ══════════════════════════════════════════════════════
           THE THREAD THAT CONNECTS
       ══════════════════════════════════════════════════════ */}
       <section
@@ -1529,6 +2279,38 @@ export default function BreatheClient() {
                 accent: TEAL_MID,
                 link: '/fascia',
                 linkLabel: 'The Fascia Connection',
+              },
+              {
+                title: 'Breath + Cold Exposure',
+                subtitle: 'Wim Hof synergy — adrenaline before ice',
+                body: 'The Wim Hof protocol pairs hyperventilation breathwork with cold exposure for a reason: the respiratory alkalosis and adrenaline spike from 3–4 rounds of breathing primes the nervous system to handle cold without panic. Tummo practitioners generate measurable core heat through breath alone. The breath is the dial that controls your response to thermal stress.',
+                accent: TEAL_MID,
+                link: '/temperature',
+                linkLabel: 'Explore Temperature',
+              },
+              {
+                title: 'Breath + Sound Healing',
+                subtitle: 'Humming, chanting, and the vagal bridge',
+                body: 'Humming is simultaneously an extended exhale (parasympathetic activation), a vagal stimulator (laryngeal vibration), and a NO generator (15x increase). Om chanting, Bhramari pranayama, and singing bowl resonance all exploit this overlap. The exhalation phase of any vocal practice — chanting, toning, singing — is breathwork in disguise.',
+                accent: 'var(--color-violet-mid)',
+                link: '/sound-healing',
+                linkLabel: 'Explore Sound Healing',
+              },
+              {
+                title: 'Breath + Psychedelics',
+                subtitle: 'From LSD to Holotropic — Grof\'s transition',
+                body: 'When LSD became illegal in 1968, psychiatrist Stanislav Grof discovered that sustained hyperventilation could produce non-ordinary states of consciousness remarkably similar to psychedelic experiences. Holotropic Breathwork and psychedelics share key neurological signatures: suppression of the Default Mode Network, altered CO₂/pH balance, and dissolution of ordinary ego boundaries. The breath is the endogenous psychedelic.',
+                accent: 'var(--color-amber-light)',
+                link: '/psychedelics',
+                linkLabel: 'Explore Psychedelics',
+              },
+              {
+                title: 'Breath + Qigong',
+                subtitle: 'Reverse breathing, Six Healing Sounds, embryonic breath',
+                body: 'In Taoist practice, breath is qi — they are literally the same word. Reverse abdominal breathing powers the internal martial arts. The Six Healing Sounds pair specific exhale sounds with organ meridians. Embryonic breathing (Taixi) — breathing so subtly it becomes imperceptible — is the advanced Taoist equivalent of yogic kevala kumbhaka. Breath is not separate from qigong; it is qigong.',
+                accent: TEAL_MID,
+                link: '/qigong',
+                linkLabel: 'Explore Qigong',
               },
             ].map(item => (
               <ScrollReveal key={item.title}>
@@ -1740,6 +2522,106 @@ export default function BreatheClient() {
                   }}
                 >
                   Manifest
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/temperature"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.875rem 1.5rem',
+                    background: 'transparent',
+                    color: TEAL_DEEP,
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.8125rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    borderRadius: '2px',
+                    border: `1px solid ${TEAL_MID}`,
+                    transition: 'background-color 300ms ease, border-color 300ms ease',
+                  }}
+                >
+                  Temperature
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/sound-healing"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.875rem 1.5rem',
+                    background: 'transparent',
+                    color: 'var(--color-violet-deep)',
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.8125rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    borderRadius: '2px',
+                    border: '1px solid var(--color-violet-mid)',
+                    transition: 'background-color 300ms ease, border-color 300ms ease',
+                  }}
+                >
+                  Sound Healing
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/psychedelics"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.875rem 1.5rem',
+                    background: 'transparent',
+                    color: 'var(--color-amber-deep)',
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.8125rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    borderRadius: '2px',
+                    border: '1px solid var(--color-amber-light)',
+                    transition: 'background-color 300ms ease, border-color 300ms ease',
+                  }}
+                >
+                  Psychedelics
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/qigong"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.875rem 1.5rem',
+                    background: 'transparent',
+                    color: TEAL_DEEP,
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.8125rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    borderRadius: '2px',
+                    border: `1px solid ${TEAL_MID}`,
+                    transition: 'background-color 300ms ease, border-color 300ms ease',
+                  }}
+                >
+                  Qigong
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
