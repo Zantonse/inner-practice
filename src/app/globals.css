@@ -530,6 +530,10 @@ button:focus-visible {
   color: var(--color-violet-deep) !important;
 }
 
+.nav-links a.nav-active::after {
+  transform: scaleX(1);
+}
+
 /* --- Nav Links (mobile scroll) ----------------------------- */
 .nav-links {
   display: flex;
