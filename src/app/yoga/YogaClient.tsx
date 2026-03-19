@@ -40,7 +40,7 @@ function StyleCard({ style, isOpen, onToggle }: { style: YogaStyleData; isOpen: 
     <div style={{ background: 'var(--color-surface-raised)', border: `1px solid ${isOpen ? VIOLET_DEEP : 'var(--color-border)'}`, borderRadius: '2px', overflow: 'hidden', transition: 'border-color 300ms ease', marginBottom: '0.875rem' }}>
       <button onClick={onToggle} style={{ width: '100%', padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
         <div style={{ flex: 1, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.75rem' }}>
-          <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: isOpen ? VIOLET_DEEP : 'var(--color-text)', margin: 0, fontStyle: 'normal', transition: 'color 300ms ease' }}>{style.name}</h4>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: isOpen ? VIOLET_DEEP : 'var(--color-text)', margin: 0, fontStyle: 'normal', transition: 'color 300ms ease' }}>{style.name}</h3>
           <span style={{ display: 'inline-block', padding: '0.2rem 0.65rem', borderRadius: '9999px', background: ic.bg, fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: ic.text, letterSpacing: '0.05em' }}>{style.intensity}</span>
           <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', fontStyle: 'italic', color: 'var(--color-text-muted)' }}>{style.tradition}</span>
         </div>
@@ -344,7 +344,7 @@ export default function YogaClient() {
           ].map(pose => (
             <ScrollReveal key={pose.name}>
               <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.5rem' }}>
-                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.0625rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.125rem', fontStyle: 'normal' }}>{pose.name}</h4>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.0625rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.125rem', fontStyle: 'normal' }}>{pose.name}</h3>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.8125rem', fontStyle: 'italic', color: 'var(--color-text-muted)', margin: '0 0 0.5rem' }}>{pose.sanskrit}</p>
                 <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>{pose.target}</p>
                 <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', lineHeight: 1.7, margin: 0 }}>{pose.cue}</p>
@@ -432,17 +432,17 @@ export default function YogaClient() {
         <ScrollReveal group>
           <div style={{ maxWidth: '1100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
             <div style={{ background: 'var(--color-surface-raised)', borderTop: '3px solid #3D8A5A', borderRadius: '2px', padding: '2rem 1.75rem' }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Direct Down-Regulation</h4>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Direct Down-Regulation</h3>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>Slow breathing and physical support stimulate baroreceptors and the ventral vagal complex.</p>
               <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: '#3D8A5A' }}>Restorative &middot; Yin &middot; Hatha &middot; Yoga Nidra</p>
             </div>
             <div style={{ background: 'var(--color-surface-raised)', borderTop: `3px solid ${AMBER_DEEP}`, borderRadius: '2px', padding: '2rem 1.75rem' }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Autonomic Flexibility</h4>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Autonomic Flexibility</h3>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>Sympathetic activation → parasympathetic rebound. Trains stress recovery.</p>
               <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: AMBER_DEEP }}>Ashtanga &middot; Vinyasa &middot; Power &middot; Hot</p>
             </div>
             <div style={{ background: 'var(--color-surface-raised)', borderTop: `3px solid ${VIOLET_DEEP}`, borderRadius: '2px', padding: '2rem 1.75rem' }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Direct Vagal Stimulation</h4>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Direct Vagal Stimulation</h3>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>Breathwork and chanting stimulate laryngeal and auricular vagal branches.</p>
               <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: VIOLET_DEEP }}>Kundalini</p>
             </div>

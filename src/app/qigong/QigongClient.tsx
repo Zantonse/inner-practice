@@ -1398,7 +1398,7 @@ export default function QigongClient() {
                     borderTop: `3px solid ${item.color}`,
                   }}
                 >
-                  <h4
+                  <h3
                     style={{
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.0625rem',
@@ -1409,7 +1409,7 @@ export default function QigongClient() {
                     }}
                   >
                     {item.condition}
-                  </h4>
+                  </h3>
                   <p
                     style={{
                       fontFamily: 'var(--font-ui)',

@@ -306,7 +306,7 @@ function EyeExerciseCard({
           textAlign: 'left',
         }}
       >
-        <h4
+        <h3
           style={{
             fontFamily: 'var(--font-display)',
             fontSize: '1.125rem',
@@ -318,7 +318,7 @@ function EyeExerciseCard({
           }}
         >
           {title}
-        </h4>
+        </h3>
         <div
           style={{
             flexShrink: 0,
@@ -389,7 +389,7 @@ function StateCard({
       >
         {subtitle}
       </p>
-      <h4
+      <h3
         style={{
           fontFamily: 'var(--font-display)',
           fontSize: '1.375rem',
@@ -400,7 +400,7 @@ function StateCard({
         }}
       >
         {title}
-      </h4>
+      </h3>
       <p
         style={{
           fontFamily: 'var(--font-body)',
@@ -1631,7 +1631,7 @@ export default function NervousSystemClient() {
                   padding: '1.5rem',
                 }}
               >
-                <h4
+                <h3
                   style={{
                     fontFamily: 'var(--font-display)',
                     fontSize: '1.125rem',
@@ -1642,7 +1642,7 @@ export default function NervousSystemClient() {
                   }}
                 >
                   High HRV
-                </h4>
+                </h3>
                 <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>
                   Indicates a flexible, resilient nervous system with strong vagal tone. Associated with better emotional regulation, faster recovery, and lower inflammation.
                 </p>
@@ -1655,7 +1655,7 @@ export default function NervousSystemClient() {
                   padding: '1.5rem',
                 }}
               >
-                <h4
+                <h3
                   style={{
                     fontFamily: 'var(--font-display)',
                     fontSize: '1.125rem',
@@ -1666,7 +1666,7 @@ export default function NervousSystemClient() {
                   }}
                 >
                   Low HRV
-                </h4>
+                </h3>
                 <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>
                   Indicates sympathetic dominance and chronic stress. Correlated with anxiety, cardiovascular risk, and reduced capacity for emotional regulation.
                 </p>
@@ -1787,7 +1787,7 @@ export default function NervousSystemClient() {
               >
                 Meditation
               </p>
-              <h4
+              <h3
                 style={{
                   fontFamily: 'var(--font-display)',
                   fontSize: '1.25rem',
@@ -1798,7 +1798,7 @@ export default function NervousSystemClient() {
                 }}
               >
                 Top-Down Vagal Activation
-              </h4>
+              </h3>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1.25rem', lineHeight: 1.7 }}>
                 The prefrontal cortex sends inhibitory signals to the amygdala via the vagus nerve. 8 weeks of meditation measurably increases baseline HRV and vagal tone.
               </p>
@@ -1848,7 +1848,7 @@ export default function NervousSystemClient() {
               >
                 Yoga
               </p>
-              <h4
+              <h3
                 style={{
                   fontFamily: 'var(--font-display)',
                   fontSize: '1.25rem',
@@ -1859,7 +1859,7 @@ export default function NervousSystemClient() {
                 }}
               >
                 Baroreceptor & Breath Synergy
-              </h4>
+              </h3>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1.25rem', lineHeight: 1.7 }}>
                 Inversions alter baroreceptor pressure, triggering reflexive vagal outflow. Kundalini breathwork adds respiratory vagal stimulation. The combination is more potent than either alone.
               </p>
@@ -1909,7 +1909,7 @@ export default function NervousSystemClient() {
               >
                 Fascia
               </p>
-              <h4
+              <h3
                 style={{
                   fontFamily: 'var(--font-display)',
                   fontSize: '1.25rem',
@@ -1920,7 +1920,7 @@ export default function NervousSystemClient() {
                 }}
               >
                 250 Million Nerve Endings
-              </h4>
+              </h3>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1.25rem', lineHeight: 1.7 }}>
                 Fascia is the body&apos;s largest sensory organ. Releasing cervical and diaphragmatic fascia mechanically frees vagal signaling pathways compressed by chronic tension and trauma.
               </p>
@@ -1970,7 +1970,7 @@ export default function NervousSystemClient() {
               >
                 Breathwork
               </p>
-              <h4
+              <h3
                 style={{
                   fontFamily: 'var(--font-display)',
                   fontSize: '1.25rem',
@@ -1981,7 +1981,7 @@ export default function NervousSystemClient() {
                 }}
               >
                 The Voluntary Gateway
-              </h4>
+              </h3>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1.25rem', lineHeight: 1.7 }}>
                 Breathing is the only autonomic function you can consciously override. Every exhale is a direct vagal brake application. Every breath pattern is a conversation with your nervous system.
               </p>

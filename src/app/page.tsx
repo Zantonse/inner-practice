@@ -158,14 +158,19 @@ export default function HomePage() {
                 background: `linear-gradient(160deg, ${pillar.gradFrom}, ${pillar.gradTo})`,
                 minHeight: '44dvh',
               }}
+              tabIndex={0}
               onMouseEnter={() => setHovered(pillar.key)}
               onMouseLeave={() => setHovered(null)}
+              onFocus={() => setHovered(pillar.key)}
+              onBlur={() => setHovered(null)}
+              role="group"
+              aria-label={`${pillar.title} — ${pillar.tagline}`}
             >
               {/* Background image */}
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
                 <Image
                   src={pillar.image}
-                  alt={pillar.title}
+                  alt={`${pillar.title} pillar — ${pillar.tagline}`}
                   fill
                   priority={pillar.key === 'mind'}
                   sizes="33vw"
@@ -284,14 +289,19 @@ export default function HomePage() {
                 background: `linear-gradient(160deg, ${pillar.gradFrom}, ${pillar.gradTo})`,
                 minHeight: '34dvh',
               }}
+              tabIndex={0}
               onMouseEnter={() => setHovered(pillar.key)}
               onMouseLeave={() => setHovered(null)}
+              onFocus={() => setHovered(pillar.key)}
+              onBlur={() => setHovered(null)}
+              role="group"
+              aria-label={`${pillar.title} — ${pillar.tagline}`}
             >
               {/* Background image */}
               <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
                 <Image
                   src={pillar.image}
-                  alt={pillar.title}
+                  alt={`${pillar.title} pillar — ${pillar.tagline}`}
                   fill
                   sizes="33vw"
                   style={{

@@ -1751,7 +1751,7 @@ export default function SleepClient() {
                     padding: '1.5rem',
                   }}
                 >
-                  <h4
+                  <h3
                     style={{
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.0625rem',
@@ -1762,7 +1762,7 @@ export default function SleepClient() {
                     }}
                   >
                     {item.factor}
-                  </h4>
+                  </h3>
                   <p
                     style={{
                       fontFamily: 'var(--font-ui)',
