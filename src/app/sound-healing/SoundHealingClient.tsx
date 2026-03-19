@@ -4,20 +4,12 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
+import StatCard from '@/components/StatCard';
 
 const AMBER_DEEP = '#6B5010';
 const AMBER_MID = '#D4A843';
 const AMBER_LIGHT = '#F0D68A';
 
-function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
-  return (
-    <div style={{ borderLeft: `3px solid ${AMBER_MID}`, padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: AMBER_DEEP, margin: '0 0 0.75rem' }}>{url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}</p>
-      <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>{stat}</p>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>{detail}</p>
-    </div>
-  );
-}
 
 export default function SoundHealingClient() {
   return (
@@ -75,9 +67,9 @@ export default function SoundHealingClient() {
             </ScrollReveal>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
-            <ScrollReveal><StatCard source="Kalyani et al., 2011" stat="Om chanting deactivates the amygdala" detail="fMRI showed Om chanting produced limbic deactivation matching direct vagus nerve stimulation. The active mechanism: laryngeal vibration, not semantic content." url="https://pubmed.ncbi.nlm.nih.gov/21654967/" /></ScrollReveal>
-            <ScrollReveal><StatCard source="Weitzberg & Lundberg, 2002" stat="Humming: 15x nasal nitric oxide" detail="Nasal humming increased nitric oxide production 15-fold vs quiet breathing. NO is a vasodilator, airway cleanser, and antimicrobial agent." url="https://pubmed.ncbi.nlm.nih.gov/12119224/" /></ScrollReveal>
-            <ScrollReveal><StatCard source="Goldsby et al., 2017" stat="Singing bowls reduce tension and fatigue" detail="62 adults: singing bowl meditation significantly reduced anxiety, depression, anger, and fatigue vs silent rest. Moderate to large effect sizes." url="https://pubmed.ncbi.nlm.nih.gov/28695748/" /></ScrollReveal>
+            <ScrollReveal><StatCard source="Kalyani et al., 2011" stat="Om chanting deactivates the amygdala" detail="fMRI showed Om chanting produced limbic deactivation matching direct vagus nerve stimulation. The active mechanism: laryngeal vibration, not semantic content." url="https://pubmed.ncbi.nlm.nih.gov/21654967/" accentColor={AMBER_MID} accentTextColor={AMBER_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="Weitzberg & Lundberg, 2002" stat="Humming: 15x nasal nitric oxide" detail="Nasal humming increased nitric oxide production 15-fold vs quiet breathing. NO is a vasodilator, airway cleanser, and antimicrobial agent." url="https://pubmed.ncbi.nlm.nih.gov/12119224/" accentColor={AMBER_MID} accentTextColor={AMBER_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="Goldsby et al., 2017" stat="Singing bowls reduce tension and fatigue" detail="62 adults: singing bowl meditation significantly reduced anxiety, depression, anger, and fatigue vs silent rest. Moderate to large effect sizes." url="https://pubmed.ncbi.nlm.nih.gov/28695748/" accentColor={AMBER_MID} accentTextColor={AMBER_DEEP} /></ScrollReveal>
           </div>
         </div>
       </section>

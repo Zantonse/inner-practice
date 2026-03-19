@@ -5,83 +5,12 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Accent tokens (fasting / warm gold) ────────────────────────
 const GOLD_DEEP = '#7A6B3C';
 const GOLD_MID  = '#B8A874';
 const GOLD_PALE = '#F0EBDB';
-
-// ── Stat Card ──────────────────────────────────────────────────
-function StatCard({
-  source,
-  stat,
-  detail,
-  url,
-}: {
-  source: string;
-  stat: string;
-  detail: string;
-  url?: string;
-}) {
-  return (
-    <div
-      style={{
-        borderLeft: `3px solid ${GOLD_MID}`,
-        padding: '1.5rem 1.75rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: GOLD_DEEP,
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}
-          >
-            {source}
-          </a>
-        ) : (
-          source
-        )}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
 
 // ── Fasting Type Card ──────────────────────────────────────────
 function FastingTypeCard({
@@ -750,18 +679,24 @@ export default function FastingClient() {
                 stat="2016 Nobel Prize"
                 detail="Yoshinori Ohsumi awarded the Nobel Prize in Physiology or Medicine for discovering the mechanisms of autophagy — the cellular self-eating process that fasting triggers and that is impaired in aging, cancer, and neurodegeneration."
                 url="https://www.nobelprize.org/prizes/medicine/2016/ohsumi/facts/"
+                accentColor={GOLD_MID}
+                accentTextColor={GOLD_DEEP}
               />
               <StatCard
                 source="Alirezaei et al., 2010; Hartman et al."
                 stat="12–16 hrs"
                 detail="Autophagy induction begins at 12–16 hours of fasting in most metabolically healthy individuals. The precise threshold varies with metabolic flexibility — regular fasters may induce autophagy earlier."
                 url="https://pubmed.ncbi.nlm.nih.gov/20534972/"
+                accentColor={GOLD_MID}
+                accentTextColor={GOLD_DEEP}
               />
               <StatCard
                 source="Mattson et al., Nat Rev Neurosci, 2018"
                 stat="50–400% BDNF increase"
                 detail="Brain-derived neurotrophic factor rises 50–400% during fasting, depending on duration and individual. BDNF supports neurogenesis, synaptic plasticity, and is the primary mechanism behind fasting-associated cognitive clarity."
                 url="https://pubmed.ncbi.nlm.nih.gov/29321682/"
+                accentColor={GOLD_MID}
+                accentTextColor={GOLD_DEEP}
               />
             </div>
           </ScrollReveal>

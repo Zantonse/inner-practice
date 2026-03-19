@@ -5,83 +5,12 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Accent tokens (tai chi / warm earth) ───────────────────────
 const EARTH_DEEP = '#5A4E3C';
 const EARTH_MID  = '#A89880';
 const EARTH_PALE = '#EDE8DF';
-
-// ── Stat Card ──────────────────────────────────────────────────
-function StatCard({
-  source,
-  stat,
-  detail,
-  url,
-}: {
-  source: string;
-  stat: string;
-  detail: string;
-  url?: string;
-}) {
-  return (
-    <div
-      style={{
-        borderLeft: `3px solid ${EARTH_MID}`,
-        padding: '1.5rem 1.75rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: EARTH_DEEP,
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}
-          >
-            {source}
-          </a>
-        ) : (
-          source
-        )}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
 
 // ── Style Card (five tai chi families) ─────────────────────────
 function StyleCard({
@@ -659,18 +588,24 @@ export default function TaiChiClient() {
                 stat="58% fewer falls"
                 detail="The largest RCT of tai chi for falls prevention. 670 community-dwelling adults at high fall risk randomized to tai chi vs stretch-and-strength. Tai chi reduced falls by 58% over 24 weeks — the largest effect size ever recorded for a falls intervention."
                 url="https://pubmed.ncbi.nlm.nih.gov/30882847/"
+                accentColor={EARTH_MID}
+                accentTextColor={EARTH_DEEP}
               />
               <StatCard
                 source="Lam et al., Annals of Internal Medicine, 2019"
                 stat="Slows MCI&rarr;dementia"
                 detail="3-year RCT in adults with Mild Cognitive Impairment. Tai chi significantly slowed conversion from MCI to dementia compared to cognitive training and aerobic exercise. The only intervention to show this profile over 36 months."
                 url="https://pubmed.ncbi.nlm.nih.gov/30778162/"
+                accentColor={EARTH_MID}
+                accentTextColor={EARTH_DEEP}
               />
               <StatCard
                 source="Wang et al., BMJ, 2011"
                 stat="As effective as PT"
                 detail="High-quality RCT in knee osteoarthritis showing tai chi matched physical therapy for pain reduction and functional improvement. No serious adverse events. Sustained at 52-week follow-up."
                 url="https://pubmed.ncbi.nlm.nih.gov/21908496/"
+                accentColor={EARTH_MID}
+                accentTextColor={EARTH_DEEP}
               />
             </div>
           </ScrollReveal>

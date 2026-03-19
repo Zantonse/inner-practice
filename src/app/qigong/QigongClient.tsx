@@ -5,83 +5,12 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Accent tokens (qigong / jade green) ─────────────────────
 const JADE_DEEP = '#1D5038';
 const JADE_MID  = '#A8D5BA';
 const JADE_PALE = '#E6F4EC';
-
-// ── Stat Card ──────────────────────────────────────────────────
-function StatCard({
-  source,
-  stat,
-  detail,
-  url,
-}: {
-  source: string;
-  stat: string;
-  detail: string;
-  url?: string;
-}) {
-  return (
-    <div
-      style={{
-        borderLeft: `3px solid ${JADE_MID}`,
-        padding: '1.5rem 1.75rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: JADE_DEEP,
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}
-          >
-            {source}
-          </a>
-        ) : (
-          source
-        )}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
 
 // ── Form Card (qigong forms section) ──────────────────────────
 function FormCard({
@@ -462,16 +391,22 @@ export default function QigongClient() {
                 source="Mawangdui Silk Scroll"
                 stat="168 BCE"
                 detail="The Mawangdui Daoyin Tu — oldest illustrated exercise manual in existence. Excavated in 1973 from a Han dynasty tomb in Hunan Province, China."
+                accentColor={JADE_MID}
+                accentTextColor={JADE_DEEP}
               />
               <StatCard
                 source="Chinese Health Qigong Association"
                 stat="69+"
                 detail="Countries practicing standardized health qigong forms developed and disseminated by the CHQA since its establishment in 2000."
+                accentColor={JADE_MID}
+                accentTextColor={JADE_DEEP}
               />
               <StatCard
                 source="Every form"
                 stat="3"
                 detail="Every qigong form, without exception, combines movement (xing), breath (xi), and intention (yi). The triad is the defining structure of the practice."
+                accentColor={JADE_MID}
+                accentTextColor={JADE_DEEP}
               />
             </div>
           </ScrollReveal>
@@ -650,16 +585,22 @@ export default function QigongClient() {
                 stat="43%"
                 detail="Reduction in fall risk in older adults practicing qigong regularly, across a meta-analysis of 22 randomized controlled trials. Balance and proprioception are among the strongest documented effects."
                 url="https://pubmed.ncbi.nlm.nih.gov/29330499/"
+                accentColor={JADE_MID}
+                accentTextColor={JADE_DEEP}
               />
               <StatCard
                 source="Wei et al., 2013 — MRI study"
                 stat="Thicker cortex"
                 detail="Long-term qigong practitioners show thicker right anterior insula and left primary somatosensory cortex — the interoceptive and body-map regions — compared to matched controls."
+                accentColor={JADE_MID}
+                accentTextColor={JADE_DEEP}
               />
               <StatCard
                 source="Schleip, 2012 — Fascia research"
                 stat="2&ndash;3&times;"
                 detail="Greater fascial hydration and fluid exchange with slow sustained loading versus static stretching. The sponge-squeeze mechanism of qigong movement outperforms passive stretch for connective tissue remodeling."
+                accentColor={JADE_MID}
+                accentTextColor={JADE_DEEP}
               />
             </div>
           </ScrollReveal>
@@ -1322,16 +1263,22 @@ export default function QigongClient() {
                 stat="d = 0.45"
                 detail="Effect size for HF-HRV improvement across qigong and tai chi RCTs — a moderate, clinically significant increase in vagal tone. Among the most robust autonomic effects of any mind-body practice."
                 url="https://pubmed.ncbi.nlm.nih.gov/32354619/"
+                accentColor={JADE_MID}
+                accentTextColor={JADE_DEEP}
               />
               <StatCard
                 source="Wang et al., 2014 — RCT"
                 stat="-23%"
                 detail="Reduction in salivary cortisol after 8 weeks of regular qigong practice (3 sessions/week, 60 min). Cortisol normalization was sustained at 12-week follow-up."
+                accentColor={JADE_MID}
+                accentTextColor={JADE_DEEP}
               />
               <StatCard
                 source="Lee et al., 2007 — meta-analysis"
                 stat="-12.1/-8.5"
                 detail="Average reduction in systolic/diastolic blood pressure (mmHg) across qigong hypertension trials. Effect is comparable to first-line antihypertensive medications for mild-moderate hypertension."
+                accentColor={JADE_MID}
+                accentTextColor={JADE_DEEP}
               />
             </div>
           </ScrollReveal>

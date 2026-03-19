@@ -5,83 +5,12 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Accent tokens (sleep / circadian teal) ─────────────────────
 const TEAL_DEEP = '#1B4D5C';
 const TEAL_MID  = '#A3C4CC';
 const TEAL_PALE = '#E8F2F4';
-
-// ── Stat Card ──────────────────────────────────────────────────
-function StatCard({
-  source,
-  stat,
-  detail,
-  url,
-}: {
-  source: string;
-  stat: string;
-  detail: string;
-  url?: string;
-}) {
-  return (
-    <div
-      style={{
-        borderLeft: `3px solid ${TEAL_MID}`,
-        padding: '1.5rem 1.75rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: TEAL_DEEP,
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}
-          >
-            {source}
-          </a>
-        ) : (
-          source
-        )}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
 
 // ── Timing Card (24-hour practice table) ──────────────────────
 function TimingCard({
@@ -644,17 +573,23 @@ export default function SleepClient() {
                 stat="60%"
                 detail="Brain cells shrink by 60% during sleep, expanding the interstitial space to allow glymphatic clearance of metabolic waste — including beta-amyloid and tau."
                 url="https://pubmed.ncbi.nlm.nih.gov/24136970/"
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
               />
               <StatCard
                 source="Nedergaard Lab, 2013"
                 stat="2&times; faster"
                 detail="Glymphatic clearance rate during sleep vs waking. The system is essentially inactive while awake — making sleep the only window for deep brain detoxification."
                 url="https://pubmed.ncbi.nlm.nih.gov/24136970/"
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
               />
               <StatCard
                 source="Takahashi et al., 1968"
                 stat="Majority"
                 detail="The majority of daily growth hormone is secreted during slow-wave sleep (Takahashi et al., 1968). Physical recovery, tissue repair, immune consolidation — all gated behind SWS."
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
               />
             </div>
           </ScrollReveal>
@@ -1424,6 +1359,8 @@ export default function SleepClient() {
                 stat="65% dopamine release"
                 detail="First PET neuroimaging study of Yoga Nidra. Found 65% increase in endogenous dopamine in the ventral striatum during practice — comparable to the dopamine effects of sleep itself."
                 url="https://pubmed.ncbi.nlm.nih.gov/10555870/"
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1431,6 +1368,8 @@ export default function SleepClient() {
                 source="Kumar et al., 2008"
                 stat="Theta dominance confirmed"
                 detail="EEG study documenting progressive theta wave dominance during Yoga Nidra stages 3–5. Theta power correlated with depth of relaxation and inversely with sympathetic measures."
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1438,6 +1377,8 @@ export default function SleepClient() {
                 source="Miller (iRest) — multiple RCTs"
                 stat="PTSD symptom reduction"
                 detail="Integrative Restoration (iRest) — a clinical Yoga Nidra adaptation — showed significant reduction in PTSD symptoms, depression, and insomnia in military veteran populations across several trials."
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
               />
             </ScrollReveal>
           </div>

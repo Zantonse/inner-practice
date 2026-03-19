@@ -5,83 +5,13 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Accent tokens (trauma / deep amber) ─────────────────────
 const AMBER_DEEP = '#6B4528';
 const AMBER_MID  = '#C4956A';
 const AMBER_PALE = '#F5E6D8';
 
-// ── Stat Card ──────────────────────────────────────────────────
-function StatCard({
-  source,
-  stat,
-  detail,
-  url,
-}: {
-  source: string;
-  stat: string;
-  detail: string;
-  url?: string;
-}) {
-  return (
-    <div
-      style={{
-        borderLeft: `3px solid ${AMBER_MID}`,
-        padding: '1.5rem 1.75rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: AMBER_DEEP,
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}
-          >
-            {source}
-          </a>
-        ) : (
-          source
-        )}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
 
 // ── Video tab data ─────────────────────────────────────────────
 type VideoTab = 'trauma-yoga' | 'somatic' | 'grounding';
@@ -354,17 +284,23 @@ export default function TraumaClient() {
                 stat="FKBP5"
                 detail="Holocaust survivor offspring showed altered methylation at this cortisol-regulating gene — a molecular signature of inherited stress response dysregulation without direct trauma exposure."
                 url="https://pubmed.ncbi.nlm.nih.gov/26442889/"
+                accentColor={AMBER_MID}
+                accentTextColor={AMBER_DEEP}
               />
               <StatCard
                 source="Heijmans et al., 2008"
                 stat="60 years"
                 detail="Dutch Hunger Winter study: famine-exposed individuals showed altered IGF2 methylation six decades later, demonstrating the extraordinary persistence of epigenetic marks set by early adversity."
                 url="https://pubmed.ncbi.nlm.nih.gov/18971336/"
+                accentColor={AMBER_MID}
+                accentTextColor={AMBER_DEEP}
               />
               <StatCard
                 source="Meaney cross-fostering"
                 stat="Reversible"
                 detail="Epigenetic marks normalized when nurturing environment changed. High-licking rat mothers produced pups with lower stress reactivity regardless of genetic origin — trauma is not destiny."
+                accentColor={AMBER_MID}
+                accentTextColor={AMBER_DEEP}
               />
             </div>
           </ScrollReveal>

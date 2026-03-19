@@ -5,83 +5,12 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Accent tokens (temperature / ice blue) ─────────────────────
 const ICE_DEEP = '#1F5A7A';
 const ICE_MID  = '#7BB8D4';
 const ICE_PALE = '#DFF0F7';
-
-// ── Stat Card ──────────────────────────────────────────────────
-function StatCard({
-  source,
-  stat,
-  detail,
-  url,
-}: {
-  source: string;
-  stat: string;
-  detail: string;
-  url?: string;
-}) {
-  return (
-    <div
-      style={{
-        borderLeft: `3px solid ${ICE_MID}`,
-        padding: '1.5rem 1.75rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: ICE_DEEP,
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}
-          >
-            {source}
-          </a>
-        ) : (
-          source
-        )}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
 
 // ── Protocol Card ──────────────────────────────────────────────
 function ProtocolCard({
@@ -400,18 +329,24 @@ export default function TemperatureClient() {
                 stat="250%"
                 detail="Dopamine increase sustained for up to 2 hours following cold water immersion. The effect is long-lasting compared to the sharp but brief dopamine spikes from food, social media, or other rewards."
                 url="https://pubmed.ncbi.nlm.nih.gov/10751106/"
+                accentColor={ICE_MID}
+                accentTextColor={ICE_DEEP}
               />
               <StatCard
                 source="Buijze et al., 2016 (n=3018)"
                 stat="29%"
                 detail="Reduction in self-reported sick days in participants who ended their morning shower with 30, 60, or 90 seconds of cold water — a Dutch RCT across over 3,000 participants."
                 url="https://pubmed.ncbi.nlm.nih.gov/27631616/"
+                accentColor={ICE_MID}
+                accentTextColor={ICE_DEEP}
               />
               <StatCard
                 source="&Scaron;r&aacute;mek et al., 2000"
                 stat="2+ hrs"
                 detail="Duration of dopamine elevation after cold immersion. The sustained nature of this effect — unlike the sharp peak-and-crash of most dopaminergic inputs — is part of what makes cold exposure uniquely beneficial for mood."
                 url="https://pubmed.ncbi.nlm.nih.gov/10751106/"
+                accentColor={ICE_MID}
+                accentTextColor={ICE_DEEP}
               />
             </div>
           </ScrollReveal>
@@ -585,17 +520,23 @@ export default function TemperatureClient() {
                 stat="40%"
                 detail="Lower all-cause mortality in men using sauna 4–7 times per week versus once per week. The Kuopio Ischemic Heart Disease study followed 2,315 Finnish men for 20 years."
                 url="https://pubmed.ncbi.nlm.nih.gov/25705824/"
+                accentColor={ICE_MID}
+                accentTextColor={ICE_DEEP}
               />
               <StatCard
                 source="Laukkanen et al., 2017"
                 stat="65%"
                 detail="Lower risk of Alzheimer's disease and dementia in the highest sauna-frequency group. The association held after controlling for cardiovascular risk factors, physical activity, and socioeconomic status."
                 url="https://pubmed.ncbi.nlm.nih.gov/27932366/"
+                accentColor={ICE_MID}
+                accentTextColor={ICE_DEEP}
               />
               <StatCard
                 source="Laukkanen Kuopio Cohort"
                 stat="20 years"
                 detail="Follow-up duration of the landmark Finnish sauna cohort study — one of the longest-running prospective investigations of lifestyle and mortality in existence."
+                accentColor={ICE_MID}
+                accentTextColor={ICE_DEEP}
               />
             </div>
           </ScrollReveal>

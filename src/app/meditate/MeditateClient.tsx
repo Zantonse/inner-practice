@@ -7,6 +7,7 @@ import VideoFacade from '@/components/VideoFacade';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
+import StatCard from '@/components/StatCard';
 
 // ── Video Data ───────────────────────────────────────────────
 type VideoEntry = {
@@ -104,53 +105,6 @@ function MeditationTypeIcon({ src, fallback, name }: { src: string; fallback: st
       }}
     >
       {fallback}
-    </div>
-  );
-}
-
-// ── Stat Card ───────────────────────────────────────────────
-function StatCard({ source, stat, detail }: { source: string; stat: string; detail: string }) {
-  return (
-    <div
-      className="stat-card"
-      style={{ borderRadius: '2px' }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: 'var(--color-amber-deep)',
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {source}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
     </div>
   );
 }
@@ -374,16 +328,22 @@ export default function MeditateClient() {
                 source="Harvard Medical School"
                 stat="8 weeks physically changes brain structure"
                 detail="Regular meditation increases gray matter density in the hippocampus and prefrontal cortex — regions linked to learning, memory, and self-awareness."
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
               <StatCard
                 source="EEG Research — Cahn &amp; Polich, 2006"
                 stat="10 minutes alters brain waves on your first session"
                 detail="Even brief meditation sessions produce measurable increases in alpha and theta wave activity, associated with relaxed alertness (Cahn &amp; Polich, Psychological Bulletin, 2006)."
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
               <StatCard
                 source="Johns Hopkins University"
                 stat="Moderate evidence for anxiety and depression"
                 detail="A meta-analysis of 47 clinical trials found mindfulness meditation programs had moderate evidence for improving anxiety, depression, and pain — with effect sizes in a similar range to those reported for antidepressants in some analyses, though the original study did not make this direct comparison."
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
             </div>
           </ScrollReveal>

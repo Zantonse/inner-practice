@@ -5,83 +5,12 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Accent tokens (psychedelics / deep violet) ──────────────────
 const VIOLET_DEEP = '#5C3D7A';
 const VIOLET_MID  = '#9B7DBF';
 const VIOLET_PALE = '#EDE3F7';
-
-// ── Stat Card ──────────────────────────────────────────────────
-function StatCard({
-  source,
-  stat,
-  detail,
-  url,
-}: {
-  source: string;
-  stat: string;
-  detail: string;
-  url?: string;
-}) {
-  return (
-    <div
-      style={{
-        borderLeft: `3px solid ${VIOLET_MID}`,
-        padding: '1.5rem 1.75rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: VIOLET_DEEP,
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}
-          >
-            {source}
-          </a>
-        ) : (
-          source
-        )}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
 
 // ── Molecule Card ──────────────────────────────────────────────
 function MoleculeCard({
@@ -718,18 +647,24 @@ export default function PsychedelicsClient() {
                 stat="DMN"
                 detail="Suppressed during psychedelic states. The default mode network — responsible for self-referential thought and the ego — shows decreased blood flow and connectivity under psilocybin. The correlation between DMN suppression and therapeutic outcome is robust across studies."
                 url="https://pubmed.ncbi.nlm.nih.gov/22308440/"
+                accentColor={VIOLET_MID}
+                accentTextColor={VIOLET_DEEP}
               />
               <StatCard
                 source="Shao et al., Neuron, 2021"
                 stat="24 hrs"
                 detail="New dendritic spines form within 24 hours of a single psilocybin dose. A 10% increase in spine density was observed in the prefrontal cortex of mice — the region most affected by stress-induced synaptic loss."
                 url="https://pubmed.ncbi.nlm.nih.gov/34228959/"
+                accentColor={VIOLET_MID}
+                accentTextColor={VIOLET_DEEP}
               />
               <StatCard
                 source="Shao et al., Neuron, 2021"
                 stat="1+ month"
                 detail="Structural changes to dendritic spines persist for at least one month after a single session. This extended plasticity window is the mechanism behind the integration period — the brain remains unusually malleable for weeks post-session."
                 url="https://pubmed.ncbi.nlm.nih.gov/34228959/"
+                accentColor={VIOLET_MID}
+                accentTextColor={VIOLET_DEEP}
               />
             </div>
           </ScrollReveal>
@@ -821,6 +756,8 @@ export default function PsychedelicsClient() {
                 stat="71%"
                 detail="Response rate for treatment-resistant depression after two doses of psilocybin-assisted therapy. 54% achieved remission. Effects maintained at 12-month follow-up. This is the largest effect size ever recorded for a depression treatment in a controlled trial."
                 url="https://pubmed.ncbi.nlm.nih.gov/33263722/"
+                accentColor={VIOLET_MID}
+                accentTextColor={VIOLET_DEEP}
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -829,6 +766,8 @@ export default function PsychedelicsClient() {
                 stat="Psilocybin ≥ Escitalopram"
                 detail="Head-to-head RCT comparing psilocybin to the leading SSRI (escitalopram) for major depression. Psilocybin showed faster onset, higher remission rates, and superior patient-reported well-being at 6 weeks. First direct comparison to standard-of-care antidepressant."
                 url="https://pubmed.ncbi.nlm.nih.gov/33852780/"
+                accentColor={VIOLET_MID}
+                accentTextColor={VIOLET_DEEP}
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -893,6 +832,8 @@ export default function PsychedelicsClient() {
                 stat="67%"
                 detail="PTSD remission rate with MDMA-assisted therapy in Phase 3 trial. The placebo group achieved 32% remission. Participants had chronic, treatment-resistant PTSD averaging 14 years duration. 3 MDMA sessions plus ongoing therapy produced these results."
                 url="https://pubmed.ncbi.nlm.nih.gov/34650228/"
+                accentColor={VIOLET_MID}
+                accentTextColor={VIOLET_DEEP}
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -956,6 +897,8 @@ export default function PsychedelicsClient() {
                 stat="80%"
                 detail="Reduction in depression and anxiety in cancer patients facing end-of-life. 80% of participants rated psilocybin-assisted therapy as the most meaningful experience of their lives. Effects persisted at 6-month follow-up."
                 url="https://pubmed.ncbi.nlm.nih.gov/27909165/"
+                accentColor={VIOLET_MID}
+                accentTextColor={VIOLET_DEEP}
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -964,6 +907,8 @@ export default function PsychedelicsClient() {
                 stat="80%"
                 detail="Smoking cessation at 6-month follow-up in a pilot study of psilocybin-assisted therapy — compared to 35% for the best existing pharmacological treatments. The mystical experience quality correlated with successful abstinence."
                 url="https://pubmed.ncbi.nlm.nih.gov/25213996/"
+                accentColor={VIOLET_MID}
+                accentTextColor={VIOLET_DEEP}
               />
             </ScrollReveal>
             <ScrollReveal>

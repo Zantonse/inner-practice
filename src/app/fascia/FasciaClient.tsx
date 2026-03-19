@@ -6,50 +6,7 @@ import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
-
-// ── Stat Card ─────────────────────────────────────────────────
-function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
-  return (
-    <div className="stat-card" style={{ borderRadius: '2px' }}>
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: 'var(--color-amber-deep)',
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
+import StatCard from '@/components/StatCard';
 
 // ── Tool Card ─────────────────────────────────────────────────
 function ToolCard({
@@ -635,18 +592,24 @@ export default function FasciaClient() {
                 stat="Millions of sensory nerve endings — one of the body's richest sensory organs"
                 detail="Fascia (Schleip, 2003) provides the biological hardware for interoception: the felt sense of the body's interior that underlies all body-scan and somatic meditation."
                 url="https://pubmed.ncbi.nlm.nih.gov/22440512/"
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
               <StatCard
                 source="Langevin, Harvard — 2002"
                 stat="80% of acupuncture points map to fascial planes"
                 detail="A landmark Harvard study found that 80% of acupuncture points and 50% of meridian pathways correspond directly to connective tissue planes — suggesting the body's ancient energy maps are anatomically real."
                 url="https://pubmed.ncbi.nlm.nih.gov/11893556/"
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
               <StatCard
                 source="NIH Microdialysis Research"
                 stat="pH below 5.0 at active trigger points"
                 detail="Active fascial trigger points create a biochemical environment as acidic as vinegar — activating the same pain receptors triggered by capsaicin (chili peppers). This is the fascia's hidden pain generator."
                 url="https://pubmed.ncbi.nlm.nih.gov/18439759/"
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
             </div>
           </ScrollReveal>
@@ -1311,6 +1274,8 @@ export default function FasciaClient() {
                 stat="Fibroblasts remodel in minutes"
                 detail="Tensile mechanical load triggers cytoskeletal reorganization, MMP-mediated collagen turnover, and new collagen synthesis in connective tissue fibroblasts."
                 url="https://pubmed.ncbi.nlm.nih.gov/16645126/"
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1319,6 +1284,8 @@ export default function FasciaClient() {
                 stat="Cupping outperformed laser therapy"
                 detail="RCT showed dry cupping produced greater improvements in pressure pain threshold and cervical range of motion for upper trapezius trigger points vs. low-level laser."
                 url="https://pubmed.ncbi.nlm.nih.gov/29706756/"
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1327,6 +1294,8 @@ export default function FasciaClient() {
                 stat="Multi-pathway mechanism confirmed"
                 detail="Comprehensive review synthesized cupping's circulatory, neurological, immunological, and fascial mechanisms. The most cited modern mechanism paper."
                 url="https://pubmed.ncbi.nlm.nih.gov/30671385/"
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
             </ScrollReveal>
           </div>
@@ -1601,6 +1570,8 @@ export default function FasciaClient() {
                 stat="Muscle barely shortens during walking"
                 detail="The Achilles tendon, not the calf muscle, does most of the work during locomotion — storing and returning ~35% of each stride's energy through elastic recoil."
                 url="https://pubmed.ncbi.nlm.nih.gov/12068110/"
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1609,6 +1580,8 @@ export default function FasciaClient() {
                 stat="Fascial fitness: 4-principle framework"
                 detail="Published training guidelines for fascia: elastic recoil, preparatory counter-movement, proprioceptive refinement, and fascial stretching. Foundational paper for the field."
                 url="https://pubmed.ncbi.nlm.nih.gov/23294691/"
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1616,6 +1589,8 @@ export default function FasciaClient() {
                 source="Fascia Research Congress"
                 stat="6–24 month remodeling timeline"
                 detail="Collagen crimp architecture adapts slowly. Consistent oscillatory training produces measurable elasticity improvements, but structural fascial change requires months, not weeks."
+                accentColor="var(--color-amber-light)"
+                accentTextColor="var(--color-amber-deep)"
               />
             </ScrollReveal>
           </div>

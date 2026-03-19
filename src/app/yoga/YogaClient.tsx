@@ -7,23 +7,13 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Accent tokens ──────────────────────────────────────────────
 const VIOLET_DEEP = '#592E6B';
 const VIOLET_MID  = '#D7C2EE';
 const AMBER_DEEP  = '#C07A35';
 const AMBER_LIGHT = '#E4AD75';
-
-// ── StatCard ───────────────────────────────────────────────────
-function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
-  return (
-    <div style={{ borderLeft: `3px solid ${VIOLET_MID}`, padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.75rem' }}>{url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}</p>
-      <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>{stat}</p>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>{detail}</p>
-    </div>
-  );
-}
 
 // ── Style Card (expandable) ────────────────────────────────────
 interface YogaStyleData {
@@ -128,10 +118,10 @@ export default function YogaClient() {
       <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw)', background: 'var(--color-cream)' }}>
         <ScrollReveal group>
           <div style={{ maxWidth: '1100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
-            <StatCard source="UCLA RCTs, 2017–2024" stat="Kirtan Kriya prevents gray matter atrophy" detail="12-min daily Kundalini practice preserves hippocampal connectivity in adults at risk for Alzheimer's." url="https://pubmed.ncbi.nlm.nih.gov/28626952/" />
-            <StatCard source="Kjaer et al., 2002 (PET)" stat="Yoga Nidra increases striatal dopamine 65%" detail="The only practice producing delta brainwaves while maintaining conscious awareness." url="https://pubmed.ncbi.nlm.nih.gov/11958969/" />
-            <StatCard source="Simon et al., 2021 (JAMA Psychiatry)" stat="Kundalini Yoga is evidence-based for GAD" detail="RCT of 226 adults: clinically meaningful alternative to CBT for generalized anxiety." url="https://pubmed.ncbi.nlm.nih.gov/34319365/" />
-            <StatCard source="Harvard/MGH RCT, 2023" stat="Hot Yoga: 44% full depression remission" detail="Heat-stress hormesis produces antidepressant effects via HSP70 — even at 1 session/week." url="https://pubmed.ncbi.nlm.nih.gov/37851399/" />
+            <StatCard source="UCLA RCTs, 2017–2024" stat="Kirtan Kriya prevents gray matter atrophy" detail="12-min daily Kundalini practice preserves hippocampal connectivity in adults at risk for Alzheimer's." url="https://pubmed.ncbi.nlm.nih.gov/28626952/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
+            <StatCard source="Kjaer et al., 2002 (PET)" stat="Yoga Nidra increases striatal dopamine 65%" detail="The only practice producing delta brainwaves while maintaining conscious awareness." url="https://pubmed.ncbi.nlm.nih.gov/11958969/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
+            <StatCard source="Simon et al., 2021 (JAMA Psychiatry)" stat="Kundalini Yoga is evidence-based for GAD" detail="RCT of 226 adults: clinically meaningful alternative to CBT for generalized anxiety." url="https://pubmed.ncbi.nlm.nih.gov/34319365/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
+            <StatCard source="Harvard/MGH RCT, 2023" stat="Hot Yoga: 44% full depression remission" detail="Heat-stress hormesis produces antidepressant effects via HSP70 — even at 1 session/week." url="https://pubmed.ncbi.nlm.nih.gov/37851399/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
           </div>
         </ScrollReveal>
       </section>
@@ -417,13 +407,13 @@ export default function YogaClient() {
         {/* Research Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem', marginTop: '2.5rem', maxWidth: '1100px' }}>
           <ScrollReveal>
-            <StatCard source="Reiman et al., 2016" stat="Hip rotation predicts back pain" detail="Reduced hip internal rotation ROM is significantly associated with non-specific low back pain. The most under-addressed hip movement in yoga." url="https://pubmed.ncbi.nlm.nih.gov/27117726/" />
+            <StatCard source="Reiman et al., 2016" stat="Hip rotation predicts back pain" detail="Reduced hip internal rotation ROM is significantly associated with non-specific low back pain. The most under-addressed hip movement in yoga." url="https://pubmed.ncbi.nlm.nih.gov/27117726/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
           </ScrollReveal>
           <ScrollReveal>
-            <StatCard source="Grilley, Yin Yoga (2002)" stat="40-degree skeletal variation" detail="Dissection work showed up to 40-degree variation in femoral neck angle between individuals. Pigeon depth is partly bony architecture, not effort." />
+            <StatCard source="Grilley, Yin Yoga (2002)" stat="40-degree skeletal variation" detail="Dissection work showed up to 40-degree variation in femoral neck angle between individuals. Pigeon depth is partly bony architecture, not effort." accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
           </ScrollReveal>
           <ScrollReveal>
-            <StatCard source="van der Kolk, 2014" stat="Yoga reduces treatment-resistant PTSD" detail="Yoga emphasizing interoceptive awareness reliably reduced PTSD scores in populations where conventional therapy had failed. Mechanism: restored vagal tone." url="https://pubmed.ncbi.nlm.nih.gov/25004196/" />
+            <StatCard source="van der Kolk, 2014" stat="Yoga reduces treatment-resistant PTSD" detail="Yoga emphasizing interoceptive awareness reliably reduced PTSD scores in populations where conventional therapy had failed. Mechanism: restored vagal tone." url="https://pubmed.ncbi.nlm.nih.gov/25004196/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
           </ScrollReveal>
         </div>
       </section>

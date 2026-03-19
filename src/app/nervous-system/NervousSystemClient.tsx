@@ -6,63 +6,13 @@ import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Rose accent tokens (Nervous System) ────────────────────────
 const ROSE_DEEP  = '#8B3A62';
 const ROSE_MID   = '#985575';
 const ROSE_LIGHT = '#E8B4CF';
 const ROSE_PALE  = '#F5E0EC';
-
-// ── StatCard ───────────────────────────────────────────────────
-function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
-  return (
-    <div
-      style={{
-        borderLeft: `3px solid ${ROSE_MID}`,
-        padding: '1.5rem 1.75rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: ROSE_DEEP,
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
 
 // ── Technique Accordion ────────────────────────────────────────
 interface TechniqueData {
@@ -945,24 +895,32 @@ export default function NervousSystemClient() {
               stat="80% of vagal fibers are afferent"
               detail="The vagus is primarily a listening system — body-to-brain signals explain why somatic practices alter mental states."
               url="https://pmc.ncbi.nlm.nih.gov/articles/PMC9131189/"
+              accentColor={ROSE_MID}
+              accentTextColor={ROSE_DEEP}
             />
             <StatCard
               source="Kalyani et al., 2011 (fMRI)"
               stat="OM chanting — limbic deactivation pattern similar to VNS studies"
               detail="Limbic deactivation from chanting was similar in pattern to effects observed in vagus nerve stimulation studies — though the Kalyani study compared OM to a silent control, not directly to VNS — driven by auricular vibration."
               url="https://pubmed.ncbi.nlm.nih.gov/21146224/"
+              accentColor={ROSE_MID}
+              accentTextColor={ROSE_DEEP}
             />
             <StatCard
               source="Dr. Kevin Tracey — Cholinergic Pathway"
               stat="Vagal tone plays a significant role in regulating inflammation"
               detail="Low vagal tone correlates with chronic inflammation (Tracey, 2002), though the relationship in humans remains an active area of research. Building tone supports anti-inflammatory signaling pathways."
               url="https://pubmed.ncbi.nlm.nih.gov/15922555/"
+              accentColor={ROSE_MID}
+              accentTextColor={ROSE_DEEP}
             />
             <StatCard
               source="Kox et al., 2014 (PNAS)"
               stat="Wim Hof subjects suppressed TNF-α by ~50%"
               detail="Through breathing alone, trained subjects voluntarily controlled their immune response to endotoxin injection."
               url="https://pubmed.ncbi.nlm.nih.gov/24799686/"
+              accentColor={ROSE_MID}
+              accentTextColor={ROSE_DEEP}
             />
           </div>
         </ScrollReveal>

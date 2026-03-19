@@ -5,83 +5,12 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Accent tokens (nature / forest sage) ───────────────────────
 const SAGE_DEEP = '#2D5038';
 const SAGE_MID  = '#8AAF7E';
 const SAGE_PALE = '#E2EDDF';
-
-// ── Stat Card ──────────────────────────────────────────────────
-function StatCard({
-  source,
-  stat,
-  detail,
-  url,
-}: {
-  source: string;
-  stat: string;
-  detail: string;
-  url?: string;
-}) {
-  return (
-    <div
-      style={{
-        borderLeft: `3px solid ${SAGE_MID}`,
-        padding: '1.5rem 1.75rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: SAGE_DEEP,
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}
-          >
-            {source}
-          </a>
-        ) : (
-          source
-        )}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
 
 // ── Video tab data ─────────────────────────────────────────────
 type VideoTab = 'forest-bathing' | 'grounding' | 'nature-meditation';
@@ -359,18 +288,24 @@ export default function NatureClient() {
                 stat="12.4%"
                 detail="Cortisol reduction in forest environments versus urban environments across 280 participants. Forest walks also showed lower pulse rate, blood pressure, and sympathetic nerve activity."
                 url="https://pubmed.ncbi.nlm.nih.gov/19568835/"
+                accentColor={SAGE_MID}
+                accentTextColor={SAGE_DEEP}
               />
               <StatCard
                 source="Shanahan et al., 2016"
                 stat="120 min"
                 detail="Minimum weekly nature dose associated with significantly better self-reported health and wellbeing. Effect plateaued above 300 minutes. Below 120 minutes, benefits were inconsistent."
                 url="https://pubmed.ncbi.nlm.nih.gov/26844522/"
+                accentColor={SAGE_MID}
+                accentTextColor={SAGE_DEEP}
               />
               <StatCard
                 source="Li et al., 2008"
                 stat="50%"
                 detail="Increase in Natural Killer (NK) cell activity after a 3-day forest bathing trip, with effects lasting 30 days. NK cells are the immune system's primary defense against viruses and tumor cells."
                 url="https://pubmed.ncbi.nlm.nih.gov/18434040/"
+                accentColor={SAGE_MID}
+                accentTextColor={SAGE_DEEP}
               />
             </div>
           </ScrollReveal>

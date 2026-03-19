@@ -5,63 +5,13 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
+import StatCard from '@/components/StatCard';
 
 // ── Teal accent tokens ─────────────────────────────────────────
 const TEAL_DEEP    = '#2E7070';
 const TEAL_MID     = '#2E7575';
 const TEAL_LIGHT   = '#A8DADA';
 const TEAL_PALE    = '#E0F4F4';
-
-// ── Stat Card ─────────────────────────────────────────────────
-function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
-  return (
-    <div
-      style={{
-        borderLeft: `3px solid ${TEAL_MID}`,
-        padding: '1.5rem 1.75rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
-      <p
-        style={{
-          fontFamily: 'var(--font-ui)',
-          fontSize: '0.6875rem',
-          fontWeight: 500,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: TEAL_DEEP,
-          margin: '0 0 0.75rem',
-        }}
-      >
-        {url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-          fontWeight: 600,
-          color: 'var(--color-text)',
-          margin: '0 0 0.5rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {stat}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '0.875rem',
-          color: 'var(--color-text-muted)',
-          margin: 0,
-          lineHeight: 1.6,
-        }}
-      >
-        {detail}
-      </p>
-    </div>
-  );
-}
 
 // ── Technique Accordion Item ──────────────────────────────────
 interface TechniqueData {
@@ -928,18 +878,24 @@ export default function BreatheClient() {
                 source="Nestor, Breath (2020) — self-experiment with Dr. Nayak, Stanford"
                 stat="4,820% increase in snoring after 10 days mouth breathing"
                 detail="An informal journalist self-experiment (not a controlled RCT) plugging nostrils for 10 days produced 4,820% more snoring, 25 sleep apnea events per night, and blood pressure rising to 142 mmHg. Reverting to nasal breathing dropped BP to 124 mmHg and raised HRV by 150% (in the informal self-experiment reported in Nestor's Breath, 2020) within days. Based on an informal journalist self-experiment, not a controlled RCT."
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
               />
               <StatCard
                 source="Nestor / Elliott — multiple studies"
                 stat="5.5 breaths/min — the universal optimal rate"
                 detail="This frequency appears in the rosary prayer, Om mantra, the S.A.T. Nam mantra, and qigong. It synchronizes the cardiovascular Mayer wave with breathing, maximizing HRV and cardiac coherence. Not a coincidence — it is the architecture of calm."
                 url="https://pmc.ncbi.nlm.nih.gov/articles/PMC5709795/"
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
               />
               <StatCard
                 source="Stanford RCT — Balban / Huberman, 2023"
                 stat="Cyclic sighing outperformed meditation for stress reduction"
                 detail="A 2023 randomized controlled trial compared cyclic sighing, box breathing, cyclic hyperventilation, and mindfulness meditation. Cyclic sighing showed the greatest improvements in daily positive affect and the largest reductions in resting respiratory rate."
                 url="https://pubmed.ncbi.nlm.nih.gov/36630953/"
+                accentColor={TEAL_MID}
+                accentTextColor={TEAL_DEEP}
               />
             </div>
           </ScrollReveal>

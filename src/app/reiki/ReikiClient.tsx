@@ -5,24 +5,13 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
+import StatCard from '@/components/StatCard';
 
 // ── Accent tokens (warm gold / sacred amber) ──────────────────
 const GOLD_DEEP = '#6B5010';
 const GOLD_MID = '#D4A843';
 const GOLD_LIGHT = '#F0D68A';
 
-// ── Stat Card ─────────────────────────────────────────────────
-function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
-  return (
-    <div style={{ borderLeft: `3px solid ${GOLD_MID}`, padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD_DEEP, margin: '0 0 0.75rem' }}>
-        {url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}
-      </p>
-      <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>{stat}</p>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>{detail}</p>
-    </div>
-  );
-}
 
 // ── Hand Position Card ────────────────────────────────────────
 function HandPosition({ number, name, placement, addresses }: { number: number; name: string; placement: string; addresses: string }) {
@@ -429,9 +418,9 @@ export default function ReikiClient() {
 
           {/* Research Cards */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
-            <ScrollReveal><StatCard source="McManus, 2017" stat="13 RCTs reviewed" detail="Reiki showed positive trends for anxiety and pain reduction, though the review noted significant methodological limitations across studies." url="https://pubmed.ncbi.nlm.nih.gov/28874060/" /></ScrollReveal>
-            <ScrollReveal><StatCard source="Baldwin et al., 2006" stat="Animal models eliminate placebo" detail="Noise-stressed rats receiving Reiki showed reduced microvascular damage. Because rats don't believe in Reiki, these effects cannot be attributed to expectation." url="https://pubmed.ncbi.nlm.nih.gov/16646732/" /></ScrollReveal>
-            <ScrollReveal><StatCard source="Joyce & Herbison, 2015" stat="Cochrane: insufficient evidence" detail="The gold-standard Cochrane Review found only 3 qualifying RCTs. Conclusion: insufficient to say whether Reiki is effective. Evidence quality: Very Low." url="https://pubmed.ncbi.nlm.nih.gov/25629820/" /></ScrollReveal>
+            <ScrollReveal><StatCard source="McManus, 2017" stat="13 RCTs reviewed" detail="Reiki showed positive trends for anxiety and pain reduction, though the review noted significant methodological limitations across studies." url="https://pubmed.ncbi.nlm.nih.gov/28874060/" accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="Baldwin et al., 2006" stat="Animal models eliminate placebo" detail="Noise-stressed rats receiving Reiki showed reduced microvascular damage. Because rats don't believe in Reiki, these effects cannot be attributed to expectation." url="https://pubmed.ncbi.nlm.nih.gov/16646732/" accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="Joyce & Herbison, 2015" stat="Cochrane: insufficient evidence" detail="The gold-standard Cochrane Review found only 3 qualifying RCTs. Conclusion: insufficient to say whether Reiki is effective. Evidence quality: Very Low." url="https://pubmed.ncbi.nlm.nih.gov/25629820/" accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
           </div>
         </div>
       </section>
@@ -782,9 +771,9 @@ export default function ReikiClient() {
 
           {/* Research Cards */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
-            <ScrollReveal><StatCard source="Díaz-Rodríguez et al., 2011" stat="HRV increases with Reiki" detail="RCT in nursing staff found significant parasympathetic upregulation (HF-HRV) compared to sham and rest. The best positive biomarker finding." url="https://pubmed.ncbi.nlm.nih.gov/21568717/" /></ScrollReveal>
-            <ScrollReveal><StatCard source="Jain & Mills, 2010" stat="66 biofield therapy trials" detail="Systematic review: moderate evidence for pain reduction. Positive effects clustered in studies with poor blinding. Rigorous sham-controlled trials showed smaller effects." url="https://pubmed.ncbi.nlm.nih.gov/20563676/" /></ScrollReveal>
-            <ScrollReveal><StatCard source="Porges, 2011" stat="Co-regulation is the mechanism" detail="Polyvagal Theory explains how therapeutic presence and safe touch produce physiological change through neuroception of safety — no energy transfer required." /></ScrollReveal>
+            <ScrollReveal><StatCard source="Díaz-Rodríguez et al., 2011" stat="HRV increases with Reiki" detail="RCT in nursing staff found significant parasympathetic upregulation (HF-HRV) compared to sham and rest. The best positive biomarker finding." url="https://pubmed.ncbi.nlm.nih.gov/21568717/" accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="Jain & Mills, 2010" stat="66 biofield therapy trials" detail="Systematic review: moderate evidence for pain reduction. Positive effects clustered in studies with poor blinding. Rigorous sham-controlled trials showed smaller effects." url="https://pubmed.ncbi.nlm.nih.gov/20563676/" accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="Porges, 2011" stat="Co-regulation is the mechanism" detail="Polyvagal Theory explains how therapeutic presence and safe touch produce physiological change through neuroception of safety — no energy transfer required." accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
           </div>
         </div>
       </section>

@@ -4,20 +4,12 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
+import StatCard from '@/components/StatCard';
 
 const INDIGO_DEEP = '#2D3A6A';
 const INDIGO_MID = '#6B7DB8';
 const TEAL_ACCENT = '#5BA8A0';
 
-function StatCard({ source, stat, detail, url }: { source: string; stat: string; detail: string; url?: string }) {
-  return (
-    <div style={{ borderLeft: `3px solid ${INDIGO_MID}`, padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: INDIGO_DEEP, margin: '0 0 0.75rem' }}>{url ? <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{source}</a> : source}</p>
-      <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>{stat}</p>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>{detail}</p>
-    </div>
-  );
-}
 
 export default function SomaticsClient() {
   return (
@@ -191,9 +183,9 @@ export default function SomaticsClient() {
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 3rem' }}>Evidence Landscape</h2>
           </ScrollReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
-            <ScrollReveal><StatCard source="Brom et al., 2017" stat="SE: 44% clinically significant improvement" detail="RCT, n=63, PTSD. Somatic Experiencing showed significant symptom reduction. Published in Frontiers in Psychology." url="https://pubmed.ncbi.nlm.nih.gov/28515705/" /></ScrollReveal>
-            <ScrollReveal><StatCard source="Little et al., 2008" stat="Alexander: 86% pain-free days" detail="BMJ RCT, n=579. 24 Alexander lessons produced the largest long-term back pain reduction of any intervention tested \u2014 including massage and exercise." url="https://pubmed.ncbi.nlm.nih.gov/18713809/" /></ScrollReveal>
-            <ScrollReveal><StatCard source="van der Kolk, 2014" stat="The Body Keeps the Score" detail="Established that trauma is stored as body patterns, not just narrative memory. Cognitive insight alone doesn\u2019t change chronic sympathetic activation." url="https://pubmed.ncbi.nlm.nih.gov/25004196/" /></ScrollReveal>
+            <ScrollReveal><StatCard source="Brom et al., 2017" stat="SE: 44% clinically significant improvement" detail="RCT, n=63, PTSD. Somatic Experiencing showed significant symptom reduction. Published in Frontiers in Psychology." url="https://pubmed.ncbi.nlm.nih.gov/28515705/" accentColor={INDIGO_MID} accentTextColor={INDIGO_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="Little et al., 2008" stat="Alexander: 86% pain-free days" detail="BMJ RCT, n=579. 24 Alexander lessons produced the largest long-term back pain reduction of any intervention tested \u2014 including massage and exercise." url="https://pubmed.ncbi.nlm.nih.gov/18713809/" accentColor={INDIGO_MID} accentTextColor={INDIGO_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="van der Kolk, 2014" stat="The Body Keeps the Score" detail="Established that trauma is stored as body patterns, not just narrative memory. Cognitive insight alone doesn\u2019t change chronic sympathetic activation." url="https://pubmed.ncbi.nlm.nih.gov/25004196/" accentColor={INDIGO_MID} accentTextColor={INDIGO_DEEP} /></ScrollReveal>
           </div>
           <ScrollReveal>
             <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, maxWidth: '56ch' }}>
