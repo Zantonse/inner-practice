@@ -10,7 +10,6 @@ import type { Modality } from './types';
 // ── Duration options for Freeform Timer ───────────────────────
 const FREEFORM_DURATIONS = [5, 10, 15, 20, 30, 45, 60];
 const VIOLET_DEEP = '#592E6B';
-const VIOLET_PALE = '#EDE9FE';
 
 // ── Types ──────────────────────────────────────────────────────
 interface ExercisesTabProps {
@@ -36,6 +35,7 @@ function FreeformTimerCard({ preSelectedMinutes }: { preSelectedMinutes?: number
   const timer = useTimer();
 
   // If a pre-selected duration comes in from outside, apply it and auto-expand
+  /* eslint-disable react-hooks/set-state-in-effect -- syncing external prop to derived internal state */
   useEffect(() => {
     if (preSelectedMinutes != null) {
       setSelectedMinutes(preSelectedMinutes);
@@ -43,6 +43,7 @@ function FreeformTimerCard({ preSelectedMinutes }: { preSelectedMinutes?: number
       setIsExpanded(true);
     }
   }, [preSelectedMinutes]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const handleStart = () => {
     const mins = selectedMinutes ?? parseInt(customMin);
@@ -474,11 +475,13 @@ export default function ExercisesTab({
   const cardRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   // Sync external expandedExerciseId prop into internal state
+  /* eslint-disable react-hooks/set-state-in-effect -- syncing external prop to derived internal state */
   useEffect(() => {
     if (expandedExerciseId != null) {
       setExpandedId(expandedExerciseId);
     }
   }, [expandedExerciseId]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   // Scroll to expanded card when expandedId changes
   useEffect(() => {

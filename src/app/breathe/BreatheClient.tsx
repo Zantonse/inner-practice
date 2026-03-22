@@ -916,11 +916,12 @@ export default function BreatheClient() {
                 deeply into the diaphragm, you activate calm. Every breath is a vote.
               </p>
               <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-                <img
+                <Image
                   src="/images/illustrations/breathwork-diaphragm.jpg"
                   alt="Diaphragm mechanics — inhale with diaphragm descending and lungs expanding versus exhale with diaphragm rising"
+                  width={1200}
+                  height={630}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
-                  loading="lazy"
                 />
               </div>
               <p style={{ lineHeight: 1.85, marginBottom: '1.25rem' }}>
@@ -1278,11 +1279,12 @@ export default function BreatheClient() {
 
           <ScrollReveal>
             <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-              <img
+              <Image
                 src="/images/illustrations/breathwork-vagal-brake.jpg"
                 alt="The vagal brake concept — extended exhale activates the vagus nerve to slow heart rate"
+                width={1200}
+                height={630}
                 style={{ width: '100%', height: 'auto', display: 'block' }}
-                loading="lazy"
               />
             </div>
           </ScrollReveal>

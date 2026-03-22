@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -59,11 +58,7 @@ const selfReikiPositions = [
 ];
 
 // ── Tabs ──────────────────────────────────────────────────────
-type TabKey = 'history' | 'science' | 'practice' | 'connection';
-
 export default function ReikiClient() {
-  const [activeTab, setActiveTab] = useState<TabKey>('history');
-
   return (
     <div style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)', lineHeight: 1.8, color: 'var(--color-text)' }}>
 

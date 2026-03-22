@@ -90,7 +90,7 @@ const meditationTypes = [
 ];
 
 // ── Icon fallback component ─────────────────────────────────
-function MeditationTypeIcon({ src, fallback, name }: { src: string; fallback: string; name: string }) {
+function MeditationTypeIcon({ fallback }: { src: string; fallback: string; name: string }) {
   return (
     <div
       style={{
@@ -391,7 +391,7 @@ export default function MeditateClient() {
                 lineHeight: 1.75,
               }}
             >
-              There is no single "right" meditation. Different practices serve different needs.
+              There is no single &ldquo;right&rdquo; meditation. Different practices serve different needs.
               Explore what resonates with you.
             </p>
           </ScrollReveal>
@@ -404,7 +404,7 @@ export default function MeditateClient() {
               gap: '1.25rem',
             }}
           >
-            {meditationTypes.map((type, i) => (
+            {meditationTypes.map((type) => (
               <div
                 key={type.name}
                 id={type.id}

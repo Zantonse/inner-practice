@@ -972,11 +972,12 @@ export default function NervousSystemClient() {
             </p>
 
             <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-              <img
+              <Image
                 src="/images/illustrations/nervous-system-vagus-nerve.jpg"
                 alt="The vagus nerve pathway from brainstem through throat, heart, lungs, diaphragm, and gut"
+                width={1200}
+                height={675}
                 style={{ width: '100%', height: 'auto', display: 'block' }}
-                loading="lazy"
               />
             </div>
 
@@ -1143,11 +1144,12 @@ export default function NervousSystemClient() {
 
         <ScrollReveal>
           <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-            <img
+            <Image
               src="/images/illustrations/nervous-system-polyvagal-ladder.jpg"
               alt="The polyvagal ladder — ventral vagal safe state, sympathetic fight-or-flight, and dorsal vagal shutdown"
+              width={1200}
+              height={675}
               style={{ width: '100%', height: 'auto', display: 'block' }}
-              loading="lazy"
             />
           </div>
         </ScrollReveal>
@@ -1674,11 +1676,12 @@ export default function NervousSystemClient() {
             </div>
 
             <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-              <img
+              <Image
                 src="/images/illustrations/nervous-system-hrv.jpg"
                 alt="Heart rate variability comparison — high HRV healthy and responsive versus low HRV stressed and rigid"
+                width={1200}
+                height={675}
                 style={{ width: '100%', height: 'auto', display: 'block' }}
-                loading="lazy"
               />
             </div>
 

@@ -1260,7 +1260,7 @@ export default function ReflexologyClient() {
 
           {/* Session Phase Cards */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '3rem' }}>
-            {sessionPhases.map((p, i) => (
+            {sessionPhases.map((p) => (
               <ScrollReveal key={p.num}>
                 <div
                   style={{
@@ -1462,7 +1462,7 @@ export default function ReflexologyClient() {
             </p>
           </ScrollReveal>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '3rem' }}>
-            {trainingSteps.map((s, i) => (
+            {trainingSteps.map((s) => (
               <ScrollReveal key={s.step}>
                 <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
                   <div

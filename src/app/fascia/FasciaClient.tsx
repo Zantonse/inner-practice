@@ -501,11 +501,12 @@ export default function FasciaClient() {
 
             <ScrollReveal>
               <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-                <img
+                <Image
                   src="/images/illustrations/fascia-web-network.jpg"
                   alt="Illustration of the fascial web connecting muscles, organs, and nerves throughout the body"
+                  width={1200}
+                  height={675}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
-                  loading="lazy"
                 />
               </div>
             </ScrollReveal>
@@ -593,11 +594,12 @@ export default function FasciaClient() {
 
           <ScrollReveal>
             <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-              <img
+              <Image
                 src="/images/illustrations/fascia-thixotropic-gel.jpg"
                 alt="Comparison of dehydrated rigid fascia versus hydrated fluid fascia — the thixotropic gel concept"
+                width={1200}
+                height={675}
                 style={{ width: '100%', height: 'auto', display: 'block' }}
-                loading="lazy"
               />
             </div>
           </ScrollReveal>
@@ -693,7 +695,7 @@ export default function FasciaClient() {
                   }}
                 >
                   When fascial layers that should glide freely begin sticking together, they form adhesions.
-                  These restrict range of motion and create the "pulling" sensation of tightness. Adhesions
+                  These restrict range of motion and create the &ldquo;pulling&rdquo; sensation of tightness. Adhesions
                   can compress capillaries, creating localized areas of metabolic waste accumulation — the
                   &ldquo;energy crisis&rdquo; at the heart of trigger points.
                 </p>
@@ -872,11 +874,12 @@ export default function FasciaClient() {
 
             <ScrollReveal>
               <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-                <img
+                <Image
                   src="/images/illustrations/fascia-myofascial-release.jpg"
                   alt="Cross-section showing myofascial release technique — pressure applied to fascial adhesion layers"
+                  width={1200}
+                  height={675}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
-                  loading="lazy"
                 />
               </div>
             </ScrollReveal>
@@ -1897,11 +1900,12 @@ export default function FasciaClient() {
 
           <ScrollReveal>
             <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-              <img
+              <Image
                 src="/images/illustrations/fascia-anatomy-trains.jpg"
                 alt="Tom Myers anatomy trains — superficial back line and lateral line running through the body"
+                width={1200}
+                height={675}
                 style={{ width: '100%', height: 'auto', display: 'block' }}
-                loading="lazy"
               />
             </div>
           </ScrollReveal>

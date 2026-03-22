@@ -512,11 +512,12 @@ export default function QigongClient() {
 
             <ScrollReveal>
               <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-                <img
+                <Image
                   src="/images/illustrations/qigong-meridian-flow.jpg"
                   alt="The flow of qi through meridian lines along the body"
+                  width={1200}
+                  height={800}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
-                  loading="lazy"
                 />
               </div>
             </ScrollReveal>
@@ -688,11 +689,12 @@ export default function QigongClient() {
 
             <ScrollReveal>
               <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-                <img
+                <Image
                   src="/images/illustrations/qigong-ba-duan-jin.jpg"
                   alt="Ba Duan Jin Eight Brocades — all eight qigong positions illustrated"
+                  width={1200}
+                  height={800}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
-                  loading="lazy"
                 />
               </div>
             </ScrollReveal>

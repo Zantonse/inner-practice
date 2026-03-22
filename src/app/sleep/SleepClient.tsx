@@ -543,11 +543,12 @@ export default function SleepClient() {
 
             <ScrollReveal>
               <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-                <img
+                <Image
                   src="/images/illustrations/sleep-architecture.jpg"
                   alt="Sleep architecture diagram showing four 90-minute cycles with more deep sleep early and more REM late"
+                  width={1200}
+                  height={800}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
-                  loading="lazy"
                 />
               </div>
             </ScrollReveal>
@@ -642,11 +643,12 @@ export default function SleepClient() {
 
           <ScrollReveal>
             <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
-              <img
+              <Image
                 src="/images/illustrations/sleep-glymphatic.jpg"
                 alt="The glymphatic system — brain cells shrink 60 percent during sleep creating channels for cerebrospinal fluid to flush waste"
+                width={1200}
+                height={800}
                 style={{ width: '100%', height: 'auto', display: 'block' }}
-                loading="lazy"
               />
             </div>
           </ScrollReveal>

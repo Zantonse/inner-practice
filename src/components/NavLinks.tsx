@@ -121,13 +121,14 @@ export default function NavLinks() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
-
   // Close everything on route change
+  /* eslint-disable react-hooks/set-state-in-effect -- legitimate sync with external router state */
   useEffect(() => {
     setOpenGroup(null);
     setMobileOpen(false);
     setMobileAccordion(null);
   }, [pathname]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   // Close desktop dropdown on click outside
   useEffect(() => {

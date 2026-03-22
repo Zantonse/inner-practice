@@ -3,17 +3,19 @@
 import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  // null = not yet hydrated (SSR placeholder); false/true = light/dark
+  const [isDark, setIsDark] = useState<boolean | null>(null);
 
+  /* eslint-disable react-hooks/set-state-in-effect -- reading from localStorage (external system) on mount */
   useEffect(() => {
-    setMounted(true);
     const saved = localStorage.getItem('ip-theme');
-    if (saved === 'dark') {
-      setIsDark(true);
+    const dark = saved === 'dark';
+    setIsDark(dark);
+    if (dark) {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
   }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const toggle = () => {
     const next = !isDark;
@@ -26,7 +28,7 @@ export default function ThemeToggle() {
     }
   };
 
-  if (!mounted) {
+  if (isDark === null) {
     return (
       <button
         aria-label="Toggle theme"
