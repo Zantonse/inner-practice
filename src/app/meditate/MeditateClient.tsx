@@ -137,30 +137,29 @@ export default function MeditateClient() {
       {/* Hero */}
       <section
         style={{
-          padding: 'clamp(4rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(3rem, 6vw, 5rem)',
-          background: 'linear-gradient(160deg, oklch(75% 0.12 295 / 0.4), var(--color-cream))',
           position: 'relative',
+          minHeight: '85dvh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
+          background: 'linear-gradient(160deg, oklch(30% 0.12 295), oklch(40% 0.10 280))',
           overflow: 'hidden',
         }}
       >
-        {/* Breathing decorative element */}
-        <div
-          className="breathe"
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            right: '-8vw',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            width: 'clamp(200px, 35vw, 400px)',
-            height: 'clamp(200px, 35vw, 400px)',
-            borderRadius: '9999px',
-            background: 'radial-gradient(circle, oklch(75% 0.12 295 / 0.3) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }}
+        {/* Hero image */}
+        <Image
+          src="/images/hero-meditation.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.35 }}
         />
+        {/* Gradient overlay */}
+        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)' }} />
 
-        <div style={{ maxWidth: '1100px', position: 'relative' }}>
+        <div style={{ maxWidth: '680px', position: 'relative', zIndex: 2 }}>
           <p
             style={{
               fontFamily: 'var(--font-ui)',
@@ -168,7 +167,7 @@ export default function MeditateClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: 'var(--color-violet-deep)',
+              color: 'rgba(245,234,225,0.7)',
               margin: '0 0 1.25rem',
             }}
           >
@@ -179,7 +178,7 @@ export default function MeditateClient() {
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-hero)',
               fontWeight: 700,
-              color: 'var(--color-text)',
+              color: '#F5EAE1',
               lineHeight: 1.05,
               margin: '0 0 1.5rem',
               maxWidth: '14ch',
@@ -191,7 +190,7 @@ export default function MeditateClient() {
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(1rem, 1.6vw, 1.125rem)',
-              color: 'var(--color-text-muted)',
+              color: 'rgba(245,234,225,0.85)',
               margin: 0,
               maxWidth: '52ch',
               lineHeight: 1.85,

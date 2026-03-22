@@ -23,7 +23,7 @@ function ToolCard({
   bestFor: string;
 }) {
   return (
-    <div className="card" style={{ padding: '1.75rem', borderRadius: '2px' }}>
+    <div className="card">
       <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{emoji}</div>
       <p
         style={{
@@ -334,30 +334,29 @@ export default function FasciaClient() {
       ══════════════════════════════════════════════════════ */}
       <section
         style={{
-          padding: 'clamp(4rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(3rem, 6vw, 5rem)',
-          background: 'linear-gradient(160deg, oklch(65% 0.09 35 / 0.45), var(--color-cream))',
           position: 'relative',
+          minHeight: '85dvh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
+          background: 'linear-gradient(160deg, oklch(30% 0.09 35), oklch(40% 0.07 25))',
           overflow: 'hidden',
         }}
       >
-        {/* Decorative breathing web orb */}
-        <div
-          className="breathe"
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            right: '-6vw',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            width: 'clamp(220px, 38vw, 440px)',
-            height: 'clamp(220px, 38vw, 440px)',
-            borderRadius: '9999px',
-            background: 'radial-gradient(circle, oklch(72% 0.1 35 / 0.25) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }}
+        {/* Hero image */}
+        <Image
+          src="/images/hero-fascia.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.35 }}
         />
+        {/* Gradient overlay */}
+        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)' }} />
 
-        <div style={{ maxWidth: '1100px', position: 'relative' }}>
+        <div style={{ maxWidth: '680px', position: 'relative', zIndex: 2 }}>
           <p
             style={{
               fontFamily: 'var(--font-ui)',
@@ -365,7 +364,7 @@ export default function FasciaClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: 'var(--color-amber-deep)',
+              color: 'rgba(245,234,225,0.7)',
               margin: '0 0 1.25rem',
             }}
           >
@@ -376,7 +375,7 @@ export default function FasciaClient() {
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-hero)',
               fontWeight: 700,
-              color: 'var(--color-text)',
+              color: '#F5EAE1',
               lineHeight: 1.05,
               margin: '0 0 1.25rem',
               maxWidth: '12ch',
@@ -388,7 +387,7 @@ export default function FasciaClient() {
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(1rem, 1.6vw, 1.125rem)',
-              color: 'var(--color-text-muted)',
+              color: 'rgba(245,234,225,0.85)',
               margin: '0 0 2.5rem',
               maxWidth: '50ch',
               lineHeight: 1.85,
@@ -397,28 +396,6 @@ export default function FasciaClient() {
             Your body&apos;s hidden communication network. Millions of sensory nerve endings. The physical
             substrate of emotion, the mirror of your meridians, and the forgotten foundation of every yoga pose you&apos;ve ever held.
           </p>
-
-          {/* Hero image */}
-          <div
-            style={{
-              position: 'relative',
-              width: 'clamp(200px, 40vw, 420px)',
-              aspectRatio: '4/3',
-              borderRadius: '2px',
-              overflow: 'hidden',
-              border: '1px solid var(--color-border)',
-              display: 'none',
-            }}
-          >
-            <Image
-              src="/images/hero-fascia.webp"
-              alt="Abstract watercolor illustration of fascia web tissue"
-              fill
-              priority
-              sizes="100vw"
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
 
           {/* Anchor nav */}
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
@@ -432,7 +409,7 @@ export default function FasciaClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: 'var(--color-amber-deep)',
+                  color: 'var(--color-amber-light)',
                   textDecoration: 'none',
                   borderBottom: '1px solid color-mix(in srgb, var(--color-amber-light) 60%, transparent)',
                   paddingBottom: '2px',

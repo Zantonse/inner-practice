@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
@@ -77,25 +78,21 @@ export default function ReikiClient() {
           flexDirection: 'column',
           justifyContent: 'flex-end',
           padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(55% 0.10 65), oklch(78% 0.08 50))',
+          background: 'linear-gradient(160deg, oklch(30% 0.10 65), oklch(40% 0.08 50))',
           overflow: 'hidden',
         }}
       >
-        {/* Animated orb */}
-        <div
-          className="breathe"
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            right: '-6vw',
-            top: '15%',
-            width: 'clamp(300px, 45vw, 600px)',
-            height: 'clamp(300px, 45vw, 600px)',
-            borderRadius: '9999px',
-            background: `radial-gradient(circle, ${GOLD_LIGHT}30 0%, transparent 70%)`,
-            filter: 'blur(40px)',
-          }}
+        {/* Hero image */}
+        <Image
+          src="/images/hero-reiki.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.35 }}
         />
+        {/* Gradient overlay */}
+        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)' }} />
 
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
           <p
@@ -105,7 +102,7 @@ export default function ReikiClient() {
               fontWeight: 500,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: GOLD_DEEP,
+              color: 'rgba(245,234,225,0.7)',
               margin: '0 0 1.25rem',
             }}
           >
@@ -116,7 +113,7 @@ export default function ReikiClient() {
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-hero)',
               fontWeight: 700,
-              color: 'var(--color-text)',
+              color: '#F5EAE1',
               lineHeight: 1.05,
               margin: '0 0 1.5rem',
               maxWidth: '14ch',
@@ -127,7 +124,7 @@ export default function ReikiClient() {
           <p
             style={{
               fontSize: 'var(--text-body-lg)',
-              color: 'var(--color-text-muted)',
+              color: 'rgba(245,234,225,0.85)',
               margin: '0 0 2.5rem',
               maxWidth: '48ch',
               lineHeight: 1.75,
@@ -150,7 +147,7 @@ export default function ReikiClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: GOLD_DEEP,
+                  color: GOLD_MID,
                   textDecoration: 'none',
                   borderBottom: `1px solid ${GOLD_MID}`,
                   paddingBottom: '0.25rem',

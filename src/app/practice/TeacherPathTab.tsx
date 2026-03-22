@@ -613,9 +613,7 @@ export default function TeacherPathTab() {
                   <div
                     className="card"
                     style={{
-                      borderTop: `3px solid ${meta.deep}`,
-                      padding: '1.5rem 1.75rem',
-                      borderRadius: 4,
+                      borderLeft: `3px solid ${meta.deep}`,
                     }}
                   >
                     <p

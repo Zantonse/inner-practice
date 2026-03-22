@@ -165,7 +165,7 @@ export const EXERCISES: Exercise[] = [
     level: 'intermediate',
     duration: '~15 min',
     description: 'Power breathing, breath retention, and recovery. Builds autonomic resilience.',
-    learnMorePath: '/breathe#wim-hof',
+    learnMorePath: '/wim-hof',
     phases: [
       { label: 'Power Breathing', duration: 90 },
       { label: 'Breath Hold', duration: 90 },

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
@@ -17,7 +18,15 @@ export default function SomaticsClient() {
 
       {/* HERO */}
       <section style={{ position: 'relative', minHeight: '85dvh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)', background: 'linear-gradient(160deg, oklch(38% 0.08 255), oklch(60% 0.06 240))', overflow: 'hidden' }}>
-        <div className="breathe" aria-hidden="true" style={{ position: 'absolute', right: '-6vw', top: '15%', width: 'clamp(300px, 45vw, 600px)', height: 'clamp(300px, 45vw, 600px)', borderRadius: '9999px', background: `radial-gradient(circle, ${TEAL_ACCENT}25 0%, transparent 70%)`, filter: 'blur(40px)' }} />
+        {/* Hero image */}
+        <Image
+          src="/images/hero-somatics.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.35 }}
+        />
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
           <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: TEAL_ACCENT, margin: '0 0 1.25rem' }}>The Body Completes What the Mind Cannot</p>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-hero)', fontWeight: 700, color: '#E8EAF0', lineHeight: 1.05, margin: '0 0 1.5rem', maxWidth: '14ch' }}>Somatics</h1>

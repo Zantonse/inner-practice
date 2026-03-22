@@ -71,7 +71,7 @@ function FreeformTimerCard({ preSelectedMinutes }: { preSelectedMinutes?: number
   return (
     <div
       className="card"
-      style={{ borderTop: `3px solid ${VIOLET_DEEP}`, marginBottom: '0.5rem' }}
+      style={{ marginBottom: '0.5rem' }}
     >
       {/* Header */}
       <div

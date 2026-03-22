@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
@@ -422,25 +423,28 @@ export default function ManifestClient() {
     <>
       {/* Hero */}
       <section style={{
-        padding: 'clamp(4rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(3rem, 6vw, 5rem)',
-        background: `linear-gradient(160deg, oklch(65% 0.12 75 / 0.35), var(--color-cream))`,
         position: 'relative',
+        minHeight: '85dvh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
+        background: `linear-gradient(160deg, oklch(30% 0.12 75), oklch(40% 0.10 60))`,
         overflow: 'hidden',
       }}>
-        {/* Decorative radial orb */}
-        <div aria-hidden="true" style={{
-          position: 'absolute',
-          right: '-6vw',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          width: 'clamp(220px, 38vw, 440px)',
-          height: 'clamp(220px, 38vw, 440px)',
-          borderRadius: '9999px',
-          background: `radial-gradient(circle, ${GOLD_MID}30 0%, transparent 70%)`,
-          pointerEvents: 'none',
-        }} />
+        {/* Hero image */}
+        <Image
+          src="/images/hero-manifest.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.35 }}
+        />
+        {/* Gradient overlay */}
+        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)' }} />
 
-        <div style={{ maxWidth: '1100px', position: 'relative' }}>
+        <div style={{ maxWidth: '680px', position: 'relative', zIndex: 2 }}>
           {/* Eyebrow */}
           <p style={{
             fontFamily: 'var(--font-ui)',
@@ -448,7 +452,7 @@ export default function ManifestClient() {
             fontWeight: 500,
             letterSpacing: '0.15em',
             textTransform: 'uppercase',
-            color: GOLD_DEEP,
+            color: 'rgba(245,234,225,0.7)',
             margin: '0 0 1.25rem',
           }}>The path of intention</p>
 
@@ -457,7 +461,7 @@ export default function ManifestClient() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(2.5rem, 7vw, 5.5rem)',
             fontWeight: 600,
-            color: 'var(--color-text)',
+            color: '#F5EAE1',
             margin: '0 0 1.25rem',
             lineHeight: 1.05,
             letterSpacing: '-0.02em',
@@ -468,7 +472,7 @@ export default function ManifestClient() {
             fontFamily: 'var(--font-display)',
             fontStyle: 'italic',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.625rem)',
-            color: GOLD_DEEP,
+            color: 'rgba(245,234,225,0.9)',
             margin: '0 0 1.5rem',
             lineHeight: 1.4,
           }}>What the science of intention, the wisdom of ancient practice, and your nervous system have in common.</p>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
@@ -188,20 +189,14 @@ export default function TaiChiClient() {
           overflow: 'hidden',
         }}
       >
-        {/* Animated orb */}
-        <div
-          className="breathe"
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            right: '-6vw',
-            top: '15%',
-            width: 'clamp(300px, 45vw, 600px)',
-            height: 'clamp(300px, 45vw, 600px)',
-            borderRadius: '9999px',
-            background: `radial-gradient(circle, ${EARTH_PALE}30 0%, transparent 70%)`,
-            filter: 'blur(40px)',
-          }}
+        {/* Hero image */}
+        <Image
+          src="/images/hero-taichi.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.35 }}
         />
 
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>

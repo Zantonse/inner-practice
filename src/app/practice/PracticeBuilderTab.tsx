@@ -547,6 +547,65 @@ const TEMPLATES: RoutineTemplate[] = [
       ],
     },
   },
+  {
+    id: 'wim-hof',
+    name: 'Wim Hof Method',
+    icon: '🧊',
+    description: 'Three pillars — breathwork, cold exposure, and commitment. Progressive protocol.',
+    tiers: {
+      quick: [
+        {
+          time: 'morning', label: 'Morning — Breathe',
+          practices: [
+            { id: 'wh-q-1', title: 'WHM Breathing (3 Rounds)', duration: 15, description: '30–40 deep power breaths per round: full inhale through the nose (belly then chest), passive exhale. After the last exhale, hold with empty lungs as long as comfortable. Recovery breath: inhale fully, hold 15 seconds, release. Repeat for 3 rounds. Always lying down or seated — never standing.', why: 'Breathe: the core of the method. Cyclic hyperventilation shifts blood pH and triggers a 2–3x epinephrine surge. Each subsequent round produces longer retention times as blood chemistry shifts.', timerPreset: 'breath-wimhof', pageLink: '/wim-hof' },
+          ],
+        },
+      ],
+      standard: [
+        {
+          time: 'morning', label: 'Morning — Breathe',
+          practices: [
+            { id: 'wh-s-1', title: 'WHM Breathing (3 Rounds)', duration: 15, description: '30–40 power breaths, empty-lung retention, 15-second recovery breath — 3 full rounds. Sit or lie down. Tingling and lightheadedness are normal. Track your retention times to see adaptation.', why: 'Breathe: the breathing rounds produce controlled respiratory alkalosis and intermittent hypoxia. This is the physiological trigger for the method\'s anti-inflammatory and mood effects.', timerPreset: 'breath-wimhof', pageLink: '/wim-hof' },
+          ],
+        },
+        {
+          time: 'midday', label: 'Midday — Cold',
+          practices: [
+            { id: 'wh-s-2', title: 'Cold Shower', duration: 3, description: 'End your shower with cold water. Start at 30 seconds and build to 2–3 minutes over weeks. Focus on slow, controlled exhales through the cold shock response. Do not hyperventilate — the goal is composure under stress.', why: 'Cold: cold water triggers a 200–300% norepinephrine increase. The Soberg protocol says 11 minutes of cold per week spread across sessions is the minimum effective dose. End on cold — the rewarming process is where metabolic benefit occurs.', pageLink: '/wim-hof' },
+          ],
+        },
+        {
+          time: 'evening', label: 'Evening — Recover',
+          practices: [
+            { id: 'wh-s-3', title: 'Coherent Breathing', duration: 10, description: 'Five and a half seconds in, five and a half seconds out. After an activating morning of WHM breathing and cold exposure, coherent breathing returns the nervous system to ventral vagal safety. This is the parasympathetic counterbalance.', why: 'Recover: WHM breathing is activating, not calming. Evening coherence restores autonomic balance and supports the deep sleep that consolidates the day\'s adaptations.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
+          ],
+        },
+      ],
+      deep: [
+        {
+          time: 'morning', label: 'Morning — Breathe & Cold',
+          practices: [
+            { id: 'wh-d-1', title: 'WHM Breathing (4 Rounds)', duration: 20, description: '40 power breaths per round with more forceful exhales. 4 full rounds. Track retention times — experienced practitioners reach 2–3+ minutes on later rounds. Always lying down. Never practice in or near water.', why: 'Breathe: the extended 4-round protocol produces stronger catecholamine release and longer retention adaptation. Each round should feel incrementally deeper.', timerPreset: 'breath-wimhof', pageLink: '/wim-hof' },
+            { id: 'wh-d-2', title: 'Cold Shower or Ice Bath', duration: 5, description: 'Cold shower for 3–5 minutes, or ice bath at 50°F (10°C) for 2–3 minutes. Do 2–3 breathing rounds before entering. Breathe slowly and deliberately through the shock. Never do ice baths alone — always have someone present. Exit immediately if shivering becomes uncontrollable.', why: 'Cold: combining breathing rounds with immediate cold entry amplifies the adrenergic response. The breathing pre-loads the system with alkalosis, making the cold more tolerable and the hormonal response more potent.', pageLink: '/wim-hof' },
+          ],
+        },
+        {
+          time: 'midday', label: 'Midday — Commit',
+          practices: [
+            { id: 'wh-d-3', title: 'Focused Meditation', duration: 10, description: 'Sit and observe the body after the morning\'s activation. Notice residual energy, warmth, tingling. The commitment pillar is about sustained daily practice and tolerating discomfort — this seated practice builds that capacity.', why: 'Commit: the third pillar is the most underrated. Most people have the physical capacity for the method but abandon it before adaptation occurs. Meditation builds the mental endurance that sustains the practice.', timerPreset: 'med-breath', pageLink: '/meditate' },
+            { id: 'wh-d-4', title: 'Fascia Release', duration: 10, description: 'Foam roller on thoracic spine and hip flexors. The cold exposure and breath-holding create a temporary state of muscular tension — fascia work releases it and improves the range of motion benefits from the cold.', why: 'Resource: cold exposure creates vasoconstriction followed by rebound vasodilation. Fascia work during the rebound phase enhances circulation to connective tissue.', pageLink: '/fascia' },
+          ],
+        },
+        {
+          time: 'evening', label: 'Evening — Recover & Integrate',
+          practices: [
+            { id: 'wh-d-5', title: 'Coherent Breathing', duration: 11, description: 'Extended coherence session. Five and a half seconds in, five and a half seconds out. After a full WHM day, the evening coherence is essential — it signals the nervous system that the challenge is complete and restoration can begin.', why: 'Recover: the WHM protocol is a deliberate hormetic stressor. Like exercise, the benefit comes from the recovery period, not the stress itself. Coherent breathing optimizes that recovery window.', timerPreset: 'breath-coherent', pageLink: '/breathe' },
+            { id: 'wh-d-6', title: 'Yoga Nidra', duration: 20, description: 'Full Yoga Nidra session. The deep rest that follows a WHM day consolidates the physiological adaptations — cold tolerance, breath-hold capacity, and autonomic flexibility all improve during rest, not during the practice itself.', why: 'Integrate: Nidra after a full WHM day creates the deepest recovery state. The body has been deliberately stressed across multiple systems; Nidra lets them all integrate simultaneously.', pageLink: '/yoga' },
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 const TIER_LABELS: Record<DurationTier, string> = {

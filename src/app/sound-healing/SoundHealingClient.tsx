@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
@@ -16,18 +17,28 @@ export default function SoundHealingClient() {
     <div style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)', lineHeight: 1.8, color: 'var(--color-text)' }}>
 
       {/* HERO */}
-      <section style={{ position: 'relative', minHeight: '85dvh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)', background: 'linear-gradient(160deg, oklch(50% 0.08 55), oklch(75% 0.06 45))', overflow: 'hidden' }}>
-        <div className="breathe" aria-hidden="true" style={{ position: 'absolute', right: '-6vw', top: '15%', width: 'clamp(300px, 45vw, 600px)', height: 'clamp(300px, 45vw, 600px)', borderRadius: '9999px', background: `radial-gradient(circle, ${AMBER_LIGHT}30 0%, transparent 70%)`, filter: 'blur(40px)' }} />
+      <section style={{ position: 'relative', minHeight: '85dvh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)', background: 'linear-gradient(160deg, oklch(25% 0.08 55), oklch(40% 0.06 45))', overflow: 'hidden' }}>
+        {/* Hero image */}
+        <Image
+          src="/images/hero-sound-healing.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.35 }}
+        />
+        {/* Gradient overlay */}
+        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)' }} />
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: AMBER_DEEP, margin: '0 0 1.25rem' }}>Vibration as Medicine</p>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-hero)', fontWeight: 700, color: 'var(--color-text)', lineHeight: 1.05, margin: '0 0 1.5rem', maxWidth: '14ch' }}>Sound Healing</h1>
-          <p style={{ fontSize: 'var(--text-body-lg)', color: 'var(--color-text-muted)', margin: '0 0 2.5rem', maxWidth: '48ch', lineHeight: 1.75 }}>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(245,234,225,0.7)', margin: '0 0 1.25rem' }}>Vibration as Medicine</p>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-hero)', fontWeight: 700, color: '#F5EAE1', lineHeight: 1.05, margin: '0 0 1.5rem', maxWidth: '14ch' }}>Sound Healing</h1>
+          <p style={{ fontSize: 'var(--text-body-lg)', color: 'rgba(245,234,225,0.85)', margin: '0 0 2.5rem', maxWidth: '48ch', lineHeight: 1.75 }}>
             From singing bowls to the science of humming &mdash; how vibration activates the vagus nerve,
             entrains brainwaves, and shifts the nervous system from threat to safety.
           </p>
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
             {['Science', 'Instruments', 'Practice', 'Evidence'].map(label => (
-              <a key={label} href={`#${label.toLowerCase()}`} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: AMBER_DEEP, textDecoration: 'none', borderBottom: `1px solid ${AMBER_MID}`, paddingBottom: '0.25rem' }}>{label}</a>
+              <a key={label} href={`#${label.toLowerCase()}`} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: AMBER_MID, textDecoration: 'none', borderBottom: `1px solid ${AMBER_MID}`, paddingBottom: '0.25rem' }}>{label}</a>
             ))}
           </div>
         </div>

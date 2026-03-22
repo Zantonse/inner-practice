@@ -386,8 +386,8 @@ export default function ExerciseCard({ exercise, isExpanded, onToggle }: Exercis
       className="card"
       style={
         isExpanded
-          ? { transform: 'none', borderTop: `3px solid ${accentColor}` }
-          : { borderTop: `3px solid ${accentColor}` }
+          ? { transform: 'none', borderLeft: `3px solid ${accentColor}` }
+          : { borderLeft: `3px solid ${accentColor}` }
       }
     >
       {/* ── Card Header (always visible) ─────────────────── */}

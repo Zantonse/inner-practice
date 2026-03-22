@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import ExercisesTab from './ExercisesTab';
 import PracticeBuilderTab from './PracticeBuilderTab';
 import TeacherPathTab from './TeacherPathTab';
@@ -23,32 +24,91 @@ export default function PracticeClient() {
       {/* ── Hero ──────────────────────────────────────────────── */}
       <section
         style={{
-          padding: 'clamp(5rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(2rem, 4vw, 3rem)',
-          background: 'linear-gradient(160deg, oklch(60% 0.14 300 / 0.15), var(--color-cream))',
-          textAlign: 'center',
+          position: 'relative',
+          minHeight: '60dvh',
+          display: 'flex',
+          alignItems: 'flex-end',
+          overflow: 'hidden',
         }}
       >
-        <h1
+        {/* Background image */}
+        <Image
+          src="/images/practice-hero.webp"
+          alt=""
+          fill
+          priority
+          style={{ objectFit: 'cover', opacity: 0.35 }}
+        />
+
+        {/* Gradient overlay */}
+        <div
+          aria-hidden="true"
           style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
-            fontWeight: 700,
-            color: 'var(--color-text)',
-            margin: '0 0 0.75rem',
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)',
+          }}
+        />
+
+        {/* Text block */}
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            padding: 'clamp(2rem, 5vw, 4rem) max(1.5rem, 8vw)',
+            maxWidth: '720px',
           }}
         >
-          Practice
-        </h1>
-        <p
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: 'clamp(0.875rem, 1.2vw, 1rem)',
-            color: 'var(--color-text-muted)',
-            margin: 0,
-          }}
-        >
-          Set your intention. Begin your practice.
-        </p>
+          <p
+            style={{
+              fontFamily: 'var(--font-ui)',
+              fontSize: '0.75rem',
+              fontWeight: 500,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              color: 'var(--color-amber-light)',
+              margin: '0 0 0.75rem',
+            }}
+          >
+            Your Daily Ritual
+          </p>
+          <h1
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2.75rem, 7vw, 5.5rem)',
+              fontWeight: 700,
+              color: '#F5EAE1',
+              margin: '0 0 0.75rem',
+              lineHeight: 1.05,
+            }}
+          >
+            Practice
+          </h1>
+          <p
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
+              fontStyle: 'italic',
+              color: '#F5EAE1',
+              margin: '0 0 0.75rem',
+              opacity: 0.9,
+            }}
+          >
+            Set your intention. Begin your practice.
+          </p>
+          <p
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 'clamp(0.8125rem, 1.2vw, 0.9375rem)',
+              color: '#F5EAE1',
+              margin: 0,
+              opacity: 0.7,
+              lineHeight: 1.7,
+            }}
+          >
+            Guided exercises, daily routine templates, and a structured path for those ready to teach.
+          </p>
+        </div>
       </section>
 
       {/* ── Main Content ──────────────────────────────────────── */}
