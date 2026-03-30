@@ -145,10 +145,10 @@ const molecules: Array<{
     name: 'MDMA',
     mechanism: 'Serotonin/dopamine/norepinephrine release + oxytocin surge',
     duration: '3–5 hours',
-    clinicalStatus: 'FDA Breakthrough Therapy (PTSD)',
+    clinicalStatus: 'FDA Breakthrough Therapy designation; NDA rejected Aug 2024',
     evidenceLevel: 'Strong',
     description:
-      'Distinct from classical psychedelics — MDMA does not suppress the DMN but instead floods the brain with serotonin, dopamine, and oxytocin while reducing amygdala reactivity. Creates a state of psychological safety ideal for trauma processing. Phase 3 trials show 67% PTSD remission with 3 assisted sessions.',
+      'Distinct from classical psychedelics — MDMA does not suppress the DMN but instead floods the brain with serotonin, dopamine, and oxytocin while reducing amygdala reactivity. Creates a state of psychological safety ideal for trauma processing. Phase 3 trials (Mitchell et al., 2021) reported 67% PTSD remission with 3 assisted sessions; however, the FDA declined approval in August 2024, citing methodological concerns including functional unblinding, insufficient diversity, and inadequate safety monitoring of cardiac and abuse-potential risks.',
   },
   {
     name: 'LSD',
@@ -295,7 +295,7 @@ export default function PsychedelicsClient() {
               lineHeight: 1.75,
             }}
           >
-            Psilocybin produces a 71% depression response rate. MDMA achieves 67% PTSD remission.
+            Psilocybin produces a 71% depression response rate (Davis et al., 2021). MDMA-assisted therapy reported 67% PTSD remission in Phase 3 trials, though the FDA declined approval in 2024 citing methodological concerns.
             The mechanism: these molecules temporarily suppress the brain&rsquo;s ego network and trigger
             a surge of neuroplasticity that makes every other practice on this site more effective.
           </p>
@@ -825,7 +825,7 @@ export default function PsychedelicsClient() {
               <StatCard
                 source="Mitchell et al., Nature Medicine, 2021"
                 stat="67%"
-                detail="PTSD remission rate with MDMA-assisted therapy in Phase 3 trial. The placebo group achieved 32% remission. Participants had chronic, treatment-resistant PTSD averaging 14 years duration. 3 MDMA sessions plus ongoing therapy produced these results."
+                detail="PTSD remission rate with MDMA-assisted therapy in Phase 3 trial. The placebo group achieved 32% remission. Participants had chronic, treatment-resistant PTSD averaging 14 years duration. Note: the FDA declined approval in August 2024, citing concerns about functional unblinding (participants could tell if they received MDMA), limited participant diversity, and inadequate safety data on cardiac and abuse-potential risks. Further trials are being planned."
                 url="https://pubmed.ncbi.nlm.nih.gov/34650228/"
                 accentColor={VIOLET_MID}
                 accentTextColor={VIOLET_DEEP}
@@ -1806,7 +1806,7 @@ export default function PsychedelicsClient() {
               {
                 href: '/trauma',
                 label: 'Trauma',
-                desc: 'MDMA creates the ventral vagal safety window for trauma reprocessing. The most evidence-based trauma treatment in trials.',
+                desc: 'MDMA creates the ventral vagal safety window for trauma reprocessing. A well-supported-by-evidence trauma treatment currently in trials.',
               },
               {
                 href: '/chakras',

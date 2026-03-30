@@ -775,7 +775,7 @@ export default function ChakrasClient() {
               {
                 chakra: 'Solar Plexus',
                 color: '#F9A825',
-                science: 'Enteric nervous system (the gut-brain), celiac plexus, sympathetic mobilization. The gut contains more neurons than the spinal cord. Gut feelings are anatomically real.',
+                science: 'Enteric nervous system (the gut-brain), celiac plexus, sympathetic mobilization. The gut contains approximately 500 million neurons \u2014 a remarkably complex neural network that operates semi-independently from the brain. Gut feelings are anatomically real.',
               },
               {
                 chakra: 'Heart',

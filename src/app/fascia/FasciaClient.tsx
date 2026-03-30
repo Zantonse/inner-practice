@@ -231,7 +231,7 @@ const toolkitItems = [
     id: 'mfr',
     name: 'John Barnes MFR',
     tagline: 'Myofascial Release',
-    body: 'The John F. Barnes method is the gold standard of hands-on fascial work. It relies on one critical factor: time. Gentle, sustained pressure must be held for 90–120 seconds minimum before fascial tissue begins to "creep" — its slow, viscoelastic yielding. Most massage is too fast to reach the fascia; MFR waits for it. Therapists apply gentle, cross-hand compression or stretching into the tissue barrier, then hold without movement until release is felt.',
+    body: 'The John F. Barnes method is a widely recognized approach to hands-on fascial work. It relies on one critical factor: time. Gentle, sustained pressure must be held for 90–120 seconds minimum before fascial tissue begins to "creep" — its slow, viscoelastic yielding. Most massage is too fast to reach the fascia; MFR waits for it. Therapists apply gentle, cross-hand compression or stretching into the tissue barrier, then hold without movement until release is felt.',
     tip: 'Self-applied MFR: place a tennis ball on the floor, position a tight area on top of it, and simply wait with sustained, gentle pressure for 90 seconds minimum. Do not roll back and forth.',
   },
   {
@@ -262,7 +262,7 @@ const toolkitItems = [
     name: 'Fascial Fitness',
     tagline: 'The Catapult Mechanism',
     body: 'Dr. Robert Schleip\'s research reveals that healthy fascia acts like a spring, not just a container. When you load it eccentrically (lengthen under tension) and release, it "catapults" energy — this is how kangaroos hop and Achilles tendons run. Training this elasticity requires bouncy, oscillatory movements: rebounding, skipping, small-amplitude jumps. Sedentary posture destroys this spring quality over years. Fascial fitness restores it.',
-    tip: 'Two minutes of gentle bouncing or rebounding first thing in the morning rehydrates your fascial system, activates the spring mechanism, and is arguably the single most efficient investment in long-term tissue health.',
+    tip: 'Two minutes of gentle bouncing or rebounding first thing in the morning rehydrates your fascial system, activates the spring mechanism, and is a highly efficient investment in long-term tissue health.',
   },
   {
     number: 6,
@@ -284,8 +284,8 @@ const toolkitItems = [
 const secrets = [
   {
     number: 1,
-    title: 'Fascia stores emotional trauma as physical restriction',
-    body: 'Chronic sympathetic nervous system activation (fight-or-flight) triggers TGF-β1, a pro-fibrotic cytokine that converts normal fibroblasts into contractile myofibroblasts. Stress doesn\'t just feel like tension — it biochemically manufactures physical restriction. Somatic release is a real, measurable fascial event.',
+    title: 'Fascia may hold emotional trauma as physical restriction',
+    body: 'Chronic sympathetic nervous system activation (fight-or-flight) triggers TGF-β1, a pro-fibrotic cytokine that converts normal fibroblasts into contractile myofibroblasts. Stress doesn\'t just feel like tension — it biochemically manufactures physical restriction. Somatic release is a real, measurable fascial event. (The broader claim that fascia specifically "stores" emotional memory is a hypothesis in somatic therapy — the TGF-β1 pathway is established; direct encoding of psychological trauma in fascial tissue is not yet empirically validated.)',
   },
   {
     number: 2,
@@ -773,8 +773,7 @@ export default function FasciaClient() {
                   }}
                 >
                   The psoas major connects the lumbar spine to the femur — the body&apos;s primary &ldquo;fear muscle,&rdquo;
-                  contracting instantly to curl us into a fetal position under threat. Richly innervated by the
-                  sympathetic nervous system, chronic stress leaves the psoas in perpetual low-grade contraction.
+                  contracting instantly to curl us into a fetal position under threat. Innervated by the lumbar plexus (L1&ndash;L3), the psoas sits adjacent to the sympathetic chain &mdash; and chronic stress can leave it in perpetual low-grade contraction through indirect neural pathways.
                   This is why deep hip openers trigger unexpected emotional releases: you are literally
                   unwinding stored fear from the body.
                 </p>
@@ -1473,7 +1472,7 @@ export default function FasciaClient() {
               {
                 num: '04',
                 title: 'Fascial Stretching',
-                desc: 'Long holds (90\u2013120s minimum), multi-planar, yielding. Hydrates the ground substance through thixotropic wringing. Yin yoga is the gold standard.',
+                desc: 'Long holds (90\u2013120s minimum), multi-planar, yielding. Hydrates the ground substance through thixotropic wringing. Yin yoga is a well-established approach.',
               },
             ].map((p) => (
               <ScrollReveal key={p.num}>
@@ -1502,7 +1501,7 @@ export default function FasciaClient() {
             </h3>
             <p style={{ lineHeight: 1.85, marginBottom: '1.5rem', maxWidth: '56ch' }}>
               During sleep, mechanical pumping ceases and hyaluronic acid superaggregates &mdash; your fascial
-              matrix becomes temporarily viscous. The first morning movement is the highest-leverage
+              matrix becomes temporarily viscous. The first morning movement is a high-impact
               hydration practice of the day.
             </p>
             <div className="timeline" style={{ paddingLeft: '2.5rem', marginBottom: '2.5rem' }}>
@@ -1826,13 +1825,13 @@ export default function FasciaClient() {
               {
                 title: 'Piezoelectricity: The Physical Energy Body',
                 subtitle: 'Collagen & Bioelectricity',
-                body: 'Collagen is piezoelectric — it generates electrical charges when mechanically compressed or stretched. Every yoga pose, every gua sha stroke, every moment of deep breathing generates measurable bioelectricity in the fascial matrix. This electrical field transmits at extraordinary speed, acting as a body-wide communication network that closely resembles the yogic concept of the subtle energy body (prana vayu).',
+                body: 'Collagen is piezoelectric — it generates electrical charges when mechanically compressed or stretched (demonstrated in dry bone collagen in vitro by Fukada & Yasuda, 1957; direct measurement in living soft-tissue fascia remains an active research area). Every yoga pose, every gua sha stroke, every moment of deep breathing is proposed to generate bioelectricity in the fascial matrix — a compelling hypothesis, though the claim that this forms a body-wide communication network resembling the yogic subtle body (prana vayu) is an interpretive extrapolation, not an established finding.',
                 accent: 'var(--color-linen)',
               },
               {
                 title: 'Kundalini and the Nadis',
                 subtitle: 'Sushumna & Dura Mater',
-                body: 'The central channel of kundalini yoga — the Sushumna nadi — corresponds anatomically to the dura mater: the continuous fascial tube that protects the spinal cord from sacrum to skull. The 72,000 nadis of yogic anatomy closely mirror Tom Myers\' fascial lines. The physical sensations of kundalini awakening (heat, vibration, spontaneous kriyas) align with piezoelectric fascial discharge and the unwinding of stored autonomic trauma.',
+                body: 'The central channel of kundalini yoga — the Sushumna nadi — is sometimes mapped onto the dura mater, the continuous fascial tube protecting the spinal cord from sacrum to skull. This is an interpretive overlay, not an established anatomical equivalence. Similarly, the proposal that the 72,000 nadis closely mirror Tom Myers\' fascial lines is a suggestive structural analogy. The physical sensations of kundalini awakening (heat, vibration, spontaneous kriyas) have been speculatively linked to piezoelectric fascial discharge and autonomic unwinding — plausible as a model, but not yet empirically mapped.',
                 accent: 'var(--color-violet-mid)',
               },
               {

@@ -269,7 +269,7 @@ export default function TemperatureClient() {
               </h2>
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 <strong>Hormesis</strong> is the principle that controlled, sublethal stress produces adaptive
-                resilience. Cold water immersion is one of the most potent hormetic stressors available &mdash;
+                resilience. Cold water immersion is one of the most well-documented hormetic stressors available &mdash;
                 it triggers a coordinated cascade of neuroendocrine responses that are measurably different
                 from any other intervention in terms of catecholamine release.
               </p>

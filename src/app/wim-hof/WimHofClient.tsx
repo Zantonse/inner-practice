@@ -213,7 +213,7 @@ export default function WimHofClient() {
                 },
                 {
                   title: 'Cold Exposure',
-                  body: 'Progressive, deliberate cold stress \u2014 from cold showers to ice baths. Activates brown adipose tissue, releases norepinephrine (200\u2013300% increase), and builds cold tolerance over weeks. The cold pillar is separate from the breathing pillar; both are required for full method effects.',
+                  body: 'Progressive, deliberate cold stress \u2014 from cold showers to ice baths. Activates brown adipose tissue, releases norepinephrine (studies show 200\u2013300% increases with prolonged cold immersion at 14\u00b0C; shorter exposures produce smaller but significant elevations), and builds cold tolerance over weeks. The cold pillar is separate from the breathing pillar; both are required for full method effects.',
                 },
                 {
                   title: 'Commitment (Mindset)',
@@ -261,7 +261,7 @@ export default function WimHofClient() {
               <StatCard
                 source="Kox et al., PNAS (2014)"
                 stat="194% increase in IL-10"
-                detail="First controlled demonstration that trained individuals can voluntarily suppress the innate immune response via breathing and cold exposure."
+                detail="In an endotoxemia (LPS injection) model, trained WHM practitioners showed voluntary immune modulation vs. untrained controls. Note: the 194% IL-10 increase occurred under experimental endotoxin challenge, not during normal daily practice. Generalizability to everyday immune function is not established."
                 url="https://pubmed.ncbi.nlm.nih.gov/24799686/"
                 accentColor={FROST_MID}
                 accentTextColor={FROST_DEEP}
@@ -453,19 +453,19 @@ export default function WimHofClient() {
             {[
               {
                 title: 'Respiratory Alkalosis',
-                body: 'Blood pH rises to ~7.75 (normal: 7.35\u20137.45). CO2 drops, bicarbonate buffers shift. This is temporary and self-resolving. The alkalotic state changes how oxygen binds to hemoglobin and sensitizes certain neural pathways.',
+                body: 'Blood pH can rise to 7.5\u20137.75 (normal: 7.35\u20137.45), varying significantly between individuals. CO2 drops, bicarbonate buffers shift. This is temporary and self-resolving. The alkalotic state changes how oxygen binds to hemoglobin and sensitizes certain neural pathways.',
               },
               {
                 title: 'Intermittent Hypoxia',
-                body: 'SpO2 drops to ~50% during retention (normal: 95\u2013100%). This triggers HIF-1\u03b1 expression and EPO production \u2014 the same pathway altitude training uses to enhance oxygen-carrying capacity.',
+                body: 'SpO2 can drop to 50\u201380% during retention (normal: 95\u2013100%), with wide individual variation. Drops below 60% are extreme and occur in highly trained practitioners. This intermittent hypoxia may trigger HIF-1\u03b1 expression \u2014 a pathway also activated by altitude training.',
               },
               {
                 title: 'Epinephrine Surge',
                 body: '2\u20133x baseline epinephrine within minutes. Kox et al. (2014) showed trained WHM practitioners produced epinephrine levels comparable to first-time bungee jumpers \u2014 but in a controlled, voluntary context.',
               },
               {
-                title: 'Cortisol Stays Normal',
-                body: 'Unlike acute stress, WHM breathing does NOT elevate cortisol significantly. This dissociation between epinephrine (high) and cortisol (normal) is unusual and scientifically notable \u2014 most stressors raise both in tandem.',
+                title: 'Cortisol Response Is Complex',
+                body: 'WHM breathing produces a pronounced epinephrine surge (2\u20133\u00d7 baseline) but a more modest cortisol elevation. Kox et al. (2014) found cortisol was elevated in trained practitioners during the endotoxemia protocol, though the epinephrine response was more dramatic. The cortisol response appears to be acute and transient rather than chronic \u2014 distinct from the sustained cortisol elevation seen in chronic stress. More research is needed on long-term cortisol patterns in regular WHM practitioners.',
               },
             ].map((card, i) => (
               <ScrollReveal key={i}>
@@ -523,8 +523,8 @@ export default function WimHofClient() {
                 body: 'During the empty-lung retention, perform push-ups until you must breathe. The low-CO2 state suppresses the urge to breathe, allowing surprising reps \u2014 often 20\u201340% more than normal. This is the WHM\u2019s signature demonstration exercise and illustrates the dissociation between oxygen availability and the breathing urge. The urge to breathe is primarily CO2-driven, not oxygen-driven.',
               },
               {
-                title: 'Cold Shower Breath-Hold',
-                body: 'Perform 2\u20133 breathing rounds seated safely, then enter the cold shower during the retention phase. The combination amplifies the adrenergic response significantly. The cold shock and the breath-hold both independently trigger sympathoadrenal activation; combined, the effect is synergistic. CRITICAL: Never practice breath-holds submerged or near water deep enough to drown.',
+                title: 'Cold Shower with Priming Breath',
+                body: 'Perform 2\u20133 breathing rounds seated safely, then stand up and enter the cold shower while breathing normally. The prior hyperventilation creates a primed state that amplifies the cold shock response. Focus on slow, controlled exhales under the cold water to maintain vagal engagement. Never perform breath-holds while standing in the shower \u2014 the combination of cold shock and breath retention while standing creates a fainting and fall risk.',
               },
               {
                 title: 'Brown Fat Activation Breathing',
@@ -710,8 +710,8 @@ export default function WimHofClient() {
               },
               {
                 phase: 'Weeks 6\u20137',
-                title: 'Breath-Hold in Cold',
-                body: 'Combine retention holds with cold exposure. Perform breathing rounds before entering cold, then enter during a retention phase. This is an advanced technique \u2014 build gradually and never practice submerged.',
+                title: 'Primed Cold Exposure',
+                body: 'Combine breathing rounds with cold exposure. Perform 2\u20133 rounds of breathing seated safely, then enter the cold shower or bath while breathing normally. The prior breathwork creates a primed adrenergic state that deepens the cold adaptation response. Never hold your breath while standing in cold water \u2014 always breathe continuously. Build gradually.',
               },
               {
                 phase: 'Week 8',
@@ -931,9 +931,9 @@ export default function WimHofClient() {
             <div style={{ marginBottom: '3.5rem' }}>
               {[
                 'Cyclic hyperventilation \u2192 respiratory alkalosis (pH \u2191) + hypocapnia (CO\u2082 \u2193)',
-                '\u2192 intermittent hypoxia during retention (SpO\u2082 ~50%)',
+                '\u2192 intermittent hypoxia during retention (SpO\u2082 50\u201380%, varies by individual)',
                 '\u2192 sympathoadrenal activation: epinephrine \u2191 2\u20133\u00d7, norepinephrine \u2191 200\u2013300%',
-                '\u2192 immune modulation: anti-inflammatory IL-10 \u2191 194%, pro-inflammatory TNF-\u03b1 \u2193, IL-6 \u2193',
+                '\u2192 immune modulation (under LPS challenge): anti-inflammatory IL-10 \u2191 194%, pro-inflammatory TNF-\u03b1 \u2193, IL-6 \u2193',
                 '\u2192 cold exposure \u2192 brown adipose tissue activation + peripheral vasoconstriction',
                 '\u2192 cumulative adaptation: improved autonomic flexibility, cold tolerance, subjective well-being',
               ].map((step, i) => (
@@ -1028,10 +1028,10 @@ export default function WimHofClient() {
                 badge: 'Well-Established',
                 badgeBg: '#E6F4EA',
                 badgeColor: '#1B7A3D',
-                body: 'Anti-inflammatory cytokine IL-10 increases 194% while pro-inflammatory cytokines decrease significantly. The mechanism is primarily epinephrine-mediated suppression of inflammatory pathways through adrenergic receptors on immune cells.',
+                body: 'Under experimental endotoxin (LPS) challenge, anti-inflammatory IL-10 increased 194% while pro-inflammatory cytokines decreased significantly (Kox et al., 2014). This was demonstrated under controlled laboratory conditions; the degree of immune modulation during everyday practice has not been established.',
               },
               {
-                title: 'PAG Activation',
+                title: 'PAG Activation (n=1 case study)',
                 badge: 'Preliminary',
                 badgeBg: '#FFF3E0',
                 badgeColor: '#E65100',
@@ -1822,6 +1822,9 @@ export default function WimHofClient() {
               </table>
             </div>
           </ScrollReveal>
+          <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginTop: '1rem', fontStyle: 'italic' }}>
+            Disclosure: Inner Practice has no commercial relationship with Innerfire B.V. These courses are listed for informational purposes. The science and techniques described on this page can be learned through free resources, published research, and Wim Hof&rsquo;s book (2020).
+          </p>
 
           {/* Instructor Certification */}
           <ScrollReveal>

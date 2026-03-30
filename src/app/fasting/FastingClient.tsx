@@ -150,7 +150,7 @@ const videoData: Record<VideoTab, Array<{ videoId: string; title: string; descri
     {
       videoId: '1xCN5o0glHg',
       title: 'The Misunderstood Science of Intermittent Fasting',
-      description: 'The Nobel Prize lecture from Yoshinori Ohsumi explaining the discovery of autophagy, how cells self-digest damaged components, and why fasting is its most potent trigger. The foundational science behind every fasting protocol.',
+      description: 'The Nobel Prize lecture from Yoshinori Ohsumi explaining the discovery of autophagy, how cells self-digest damaged components, and why fasting is a highly effective trigger for the process. The foundational science behind every fasting protocol.',
     },
     {
       videoId: 'AKzfb3d3Ztg',
@@ -219,7 +219,7 @@ const fastingTypes: Array<{
     window: '24–72 hr fast',
     difficulty: 'Advanced',
     mechanism:
-      'Beyond 24 hours, autophagy reaches maximal activation, growth hormone spikes dramatically (up to 5x), and the body fully transitions to fat-derived ketone metabolism. Should be undertaken with medical guidance. Not appropriate for beginners — build to this after 3–6 months of daily TRE.',
+      'Beyond 24 hours, autophagy reaches maximal activation, growth hormone may increase significantly (Ho et al., 1988 reported up to 5-fold pulsatile peaks during extended fasting, though this varies considerably by individual and fasting duration), and the body fully transitions to fat-derived ketone metabolism. Should be undertaken with medical guidance. Not appropriate for beginners — build to this after 3–6 months of daily TRE.',
   },
 ];
 
@@ -332,7 +332,7 @@ export default function FastingClient() {
             }}
           >
             When you stop eating, your cells start cleaning. Autophagy &mdash; the Nobel Prize-winning
-            discovery &mdash; is your body&rsquo;s recycling system, and fasting is its most potent trigger.
+            discovery &mdash; is your body&rsquo;s recycling system, and fasting is a well-established trigger for the process.
             Every contemplative tradition on Earth independently discovered this.
           </p>
 
@@ -579,7 +579,7 @@ export default function FastingClient() {
             >
               In 2016, Yoshinori Ohsumi was awarded the Nobel Prize in Physiology or Medicine for
               elucidating the mechanisms of autophagy &mdash; the process by which cells break down
-              and recycle their own damaged components. Fasting is its most potent known trigger.
+              and recycle their own damaged components. Fasting is its most well-documented known trigger.
             </p>
           </ScrollReveal>
 

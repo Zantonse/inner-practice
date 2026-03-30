@@ -3,6 +3,8 @@ import { Cormorant_Garamond, Raleway, DM_Sans } from 'next/font/google';
 import './globals.css';
 import ProgressBar from '@/components/ProgressBar';
 import NavLinks from '@/components/NavLinks';
+import BackToTop from '@/components/BackToTop';
+import MedicalDisclaimer from '@/components/MedicalDisclaimer';
 import Link from 'next/link';
 
 const cormorant = Cormorant_Garamond({
@@ -97,6 +99,7 @@ export default function RootLayout({
         <main id="main-content">
           {children}
         </main>
+        <BackToTop />
 
         <footer
           style={{
@@ -154,7 +157,19 @@ export default function RootLayout({
               Practice with intention. Move with awareness.
             </p>
           </div>
+
+          <div style={{ borderTop: '1px solid oklch(50% 0 0 / 0.15)', marginTop: '1.5rem', paddingTop: '1rem' }}>
+            <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', lineHeight: 1.6, maxWidth: '700px', margin: '0 auto', textAlign: 'center' }}>
+              <strong>About our evidence review:</strong> Wellness and mind-body research is a young field.
+              Many studies cited on this site have small sample sizes, lack blinding, or have not been
+              independently replicated. We distinguish strong evidence from preliminary findings where
+              possible, but readers should treat all claims as starting points for their own research,
+              not as medical conclusions. Traditional and contemplative frameworks are presented alongside
+              scientific evidence and should not be conflated with it.
+            </p>
+          </div>
         </footer>
+        <MedicalDisclaimer />
       </body>
     </html>
   );

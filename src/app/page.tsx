@@ -550,7 +550,7 @@ export default function HomePage() {
                 Movement, Breath, Stillness
               </h4>
               <p style={{ fontSize: '0.9375rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>
-                Six core modalities — each a different doorway into the same nervous system. <strong>Meditation</strong> trains attention and awareness. <strong>Breathwork</strong> is the only voluntary control over the autonomic nervous system. <strong>Yoga</strong> combines posture, breath, and intention. <strong>Qigong</strong> adds slow flowing movement that hydrates fascia. <strong>Fascia</strong> work releases the tissue where the body stores tension. <strong>Somatics</strong> completes what the mind cannot.
+                Six core modalities — each a different doorway into the same nervous system. <strong>Meditation</strong> trains attention and awareness. <strong>Breathwork</strong> is the most direct voluntary influence on the autonomic nervous system. <strong>Yoga</strong> combines posture, breath, and intention. <strong>Qigong</strong> adds slow flowing movement that hydrates fascia. <strong>Fascia</strong> work releases the tissue where the body stores tension. <strong>Somatics</strong> completes what the mind cannot.
               </p>
             </div>
 

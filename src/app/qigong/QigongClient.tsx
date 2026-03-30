@@ -460,8 +460,8 @@ export default function QigongClient() {
               }}
             >
               Qigong&rsquo;s characteristic slowness is not aesthetic. It targets specific mechanoreceptors,
-              optimizes fascial hydration, and stimulates piezoelectric signaling that ordinary exercise
-              &mdash; by being too fast &mdash; completely bypasses.
+              optimizes fascial hydration, and may stimulate piezoelectric signaling that ordinary exercise
+              &mdash; by being too fast &mdash; completely bypasses. (Piezoelectricity in collagen is well-established in vitro; its functional role in living soft-tissue fascia during movement is biologically plausible but not yet directly confirmed in vivo.)
             </p>
           </ScrollReveal>
 
@@ -495,11 +495,13 @@ export default function QigongClient() {
                 in fresh interstitial fluid on release.
               </p>
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
-                Fascia contains <strong>piezoelectric</strong> properties, first documented by Fukada and Yasuda in
-                1957: mechanical stress on collagen fibers generates electrical signals that stimulate tenocyte and
-                fibroblast activity. Slow, sustained loading generates stronger and more sustained piezoelectric
-                current than rapid loading &mdash; which is precisely why qigong&rsquo;s pace outperforms conventional
-                exercise for fascial remodeling.
+                Collagen exhibits <strong>piezoelectric</strong> properties, first documented by Fukada and Yasuda in
+                1957 in dried bone: mechanical stress on collagen fibers generates electrical signals that stimulate tenocyte and
+                fibroblast activity. This effect has been well-characterized in vitro; its magnitude and functional significance
+                in living, hydrated soft-tissue fascia during movement is a plausible and actively studied hypothesis rather than
+                a confirmed mechanism. The inference that slow, sustained loading generates stronger piezoelectric
+                current &mdash; and that this is why qigong outperforms conventional exercise for fascial remodeling &mdash;
+                is a reasonable extrapolation from the available evidence, not yet directly demonstrated in human tissue.
               </p>
               <p style={{ lineHeight: 1.85, margin: 0 }}>
                 Helene Langevin&rsquo;s 2006 research demonstrated a compelling anatomical correspondence between
@@ -1273,7 +1275,7 @@ export default function QigongClient() {
               <StatCard
                 source="Lee et al., 2007 — meta-analysis"
                 stat="-12.1/-8.5"
-                detail="Average reduction in systolic/diastolic blood pressure (mmHg) across qigong hypertension trials. Effect is comparable to first-line antihypertensive medications for mild-moderate hypertension."
+                detail="Average reduction in systolic/diastolic blood pressure (mmHg) across qigong hypertension trials (Lee et al., 2007). The authors noted significant heterogeneity and risk of bias across included studies. No head-to-head trials against antihypertensive medications have been conducted."
                 accentColor={JADE_MID}
                 accentTextColor={JADE_DEEP}
               />
@@ -1359,7 +1361,7 @@ export default function QigongClient() {
               {
                 condition: 'Hypertension',
                 effect: '-12.1 / -8.5 mmHg',
-                detail: 'Lee et al. (2007) meta-analysis of hypertension trials. Systolic and diastolic reductions comparable to pharmacological first-line treatment in mild-moderate hypertension. Effect dependent on regular practice (3+x/week).',
+                detail: 'Lee et al. (2007) meta-analysis of hypertension trials. The authors noted significant heterogeneity and risk of bias in the included studies; direct comparison to pharmacological treatment has not been tested in head-to-head trials. Effect dependent on regular practice (3+x/week).',
                 color: '#E4AD75',
                 textColor: '#8B5E2A',
               },

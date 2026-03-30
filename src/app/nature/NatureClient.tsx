@@ -247,8 +247,7 @@ export default function NatureClient() {
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 Richard Taylor&rsquo;s research (2005) demonstrated that the fractal dimension of natural
                 patterns &mdash; coastlines, tree branches, fern fronds &mdash; falls in a range of 1.3&ndash;1.5
-                that produces a measurable <strong>60% stress reduction</strong> in observers compared to
-                non-fractal urban environments. Our visual cortex is literally tuned to these patterns.
+                that produces measurable <strong>stress reduction</strong> in observers compared to non-fractal urban environments (Taylor, 2006). Our visual cortex appears tuned to these patterns.
               </p>
               <div
                 style={{
@@ -287,10 +286,10 @@ export default function NatureClient() {
                 accentTextColor={SAGE_DEEP}
               />
               <StatCard
-                source="Shanahan et al., 2016"
+                source="White et al., 2019 — Scientific Reports"
                 stat="120 min"
                 detail="Minimum weekly nature dose associated with significantly better self-reported health and wellbeing. Effect plateaued above 300 minutes. Below 120 minutes, benefits were inconsistent."
-                url="https://pubmed.ncbi.nlm.nih.gov/26844522/"
+                url="https://pubmed.ncbi.nlm.nih.gov/31197192/"
                 accentColor={SAGE_MID}
                 accentTextColor={SAGE_DEEP}
               />
@@ -906,7 +905,7 @@ export default function NatureClient() {
               {
                 href: '/sleep',
                 label: 'Sleep',
-                connection: 'Morning outdoor light is the single highest-leverage circadian intervention for sleep quality. It anchors the master clock, amplifies the cortisol awakening response, and sets the melatonin timer 14 hours later. Nature and sleep are mechanistically inseparable.',
+                connection: 'Morning outdoor light is a particularly effective circadian intervention for sleep quality. It anchors the master clock, amplifies the cortisol awakening response, and sets the melatonin timer 14 hours later. Nature and sleep are mechanistically inseparable.',
               },
               {
                 href: '/fascia',
@@ -1044,7 +1043,7 @@ export default function NatureClient() {
               {
                 step: '5',
                 title: 'Minimum dose: 120 minutes per week',
-                desc: 'Shanahan et al. (2016) identified 120 minutes as the threshold below which benefits become inconsistent. This does not have to be in a single session — two 60-minute sessions or three 40-minute sessions achieve the same outcome.',
+                desc: 'White et al. (2019) identified 120 minutes as the threshold below which benefits become inconsistent. This does not have to be in a single session — two 60-minute sessions or three 40-minute sessions achieve the same outcome.',
               },
               {
                 step: '6',

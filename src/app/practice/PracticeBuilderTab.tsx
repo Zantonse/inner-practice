@@ -189,7 +189,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'evening', label: 'Evening — Receive',
           practices: [
-            { id: 'wr-q-2', title: 'Yoga Nidra', duration: 10, description: 'Lie down. Guided body scan and rotation of consciousness. Let the week dissolve layer by layer.', why: 'Receive: 10 minutes of Nidra is equivalent to 1 hour of sleep in nervous system restoration.', pageLink: '/yoga' },
+            { id: 'wr-q-2', title: 'Yoga Nidra', duration: 10, description: 'Lie down. Guided body scan and rotation of consciousness. Let the week dissolve layer by layer.', why: 'Receive: Yoga Nidra promotes deep parasympathetic rest and is widely used for nervous system recovery, though it is not a substitute for actual sleep.', pageLink: '/yoga' },
           ],
         },
       ],
@@ -283,7 +283,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'morning', label: 'Morning — Regulate',
           practices: [
-            { id: 'hs-d-1', title: 'Physiological Sighs', duration: 5, description: 'Double inhale, extended exhale. Do not rush. Let the exhale be audible. Stay with it for the full 5 minutes.', why: 'Regulate: the most potent acute intervention. Begin here regardless of what follows.', timerPreset: 'breath-sigh', pageLink: '/breathe' },
+            { id: 'hs-d-1', title: 'Physiological Sighs', duration: 5, description: 'Double inhale, extended exhale. Do not rush. Let the exhale be audible. Stay with it for the full 5 minutes.', why: 'Regulate: a highly effective acute intervention. Begin here regardless of what follows.', timerPreset: 'breath-sigh', pageLink: '/breathe' },
             { id: 'hs-d-2', title: 'Box Breathing', duration: 10, description: 'Transition from sighs to box breathing. Extended 10-minute session. Allow the box pattern to become effortless.', why: 'Regulate: 10 minutes of box breathing measurably reduces cortisol and stabilizes the stress response.', timerPreset: 'breath-box', pageLink: '/breathe' },
             { id: 'hs-d-3', title: 'Grounding Meditation', duration: 10, description: 'Feel the weight of your body. Name 5 things you can see, 4 you can touch, 3 you can hear. Then sit and observe the body from inside.', why: 'Regulate: sensory grounding interrupts the threat-narrative loop and returns attention to present-moment safety.', timerPreset: 'med-breath', pageLink: '/meditate' },
           ],
@@ -298,7 +298,7 @@ const TEMPLATES: RoutineTemplate[] = [
           time: 'evening', label: 'Evening — Receive',
           practices: [
             { id: 'hs-d-5', title: 'Yin Hold', duration: 15, description: 'Supported child\'s pose or reclined butterfly for 5-7 minutes each. Use bolsters or pillows. Do not stretch — simply rest inside the shape.', why: 'Receive: yin poses held for 5+ minutes activate the parasympathetic response through mechanoreceptor stimulation in the fascia.', timerPreset: 'yoga-posehold', pageLink: '/yoga' },
-            { id: 'hs-d-6', title: 'Yoga Nidra', duration: 20, description: 'Full Nidra session. After a high-stress day, a 20-minute Nidra is the most potent single recovery tool available. Let it do the work.', why: 'Receive: Nidra after yin produces a compounding effect — the body is already open; the Nidra deepens into that openness.', pageLink: '/yoga' },
+            { id: 'hs-d-6', title: 'Yoga Nidra', duration: 20, description: 'Full Nidra session. After a high-stress day, a 20-minute Nidra is a highly effective recovery tool. Let it do the work.', why: 'Receive: Nidra after yin produces a compounding effect — the body is already open; the Nidra deepens into that openness.', pageLink: '/yoga' },
           ],
         },
       ],
@@ -476,7 +476,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'midday', label: 'Midday — Resource',
           practices: [
-            { id: 'at-d-3', title: 'Post-Training Fascia Protocol', duration: 15, description: 'Full-body foam rolling and targeted soft tissue work. Prioritize the training areas but include hips, thoracic spine, and feet. 2-minute holds.', why: 'Resource: comprehensive post-training fascia work is one of the highest-leverage recovery interventions available.', pageLink: '/fascia' },
+            { id: 'at-d-3', title: 'Post-Training Fascia Protocol', duration: 15, description: 'Full-body foam rolling and targeted soft tissue work. Prioritize the training areas but include hips, thoracic spine, and feet. 2-minute holds.', why: 'Resource: comprehensive post-training fascia work is one of the high-impact recovery interventions available.', pageLink: '/fascia' },
           ],
         },
         {
@@ -540,7 +540,7 @@ const TEMPLATES: RoutineTemplate[] = [
         {
           time: 'evening', label: 'Evening — Receive',
           practices: [
-            { id: 'le-d-4', title: 'Yoga Nidra', duration: 30, description: 'The longest Nidra format. Be completely horizontal. Let everything go. This is the primary medicine for depletion.', why: 'Receive: 30 minutes of Nidra is the most potent non-sleep recovery intervention available. On a low energy day, this is the entire practice.', pageLink: '/yoga' },
+            { id: 'le-d-4', title: 'Yoga Nidra', duration: 30, description: 'The longest Nidra format. Be completely horizontal. Let everything go. This is the primary medicine for depletion.', why: 'Receive: 30 minutes of Nidra is a highly effective non-sleep recovery intervention. On a low energy day, this is the entire practice.', pageLink: '/yoga' },
             { id: 'le-d-5', title: '4-7-8 Breathing', duration: 10, description: 'After Nidra, 4-7-8 breathing to complete the transition into rest: inhale 4, hold 7, exhale 8. Repeat for 10 minutes. Let sleep approach.', why: 'Receive: 4-7-8 after Nidra creates the deepest possible preparation for sleep — the body is already open and the breath invitation simply completes it.', timerPreset: 'breath-478', pageLink: '/breathe' },
           ],
         },

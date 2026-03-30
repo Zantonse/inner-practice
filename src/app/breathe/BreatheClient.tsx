@@ -397,7 +397,7 @@ const calmingBalancing: TechniqueData[] = [
     tradition: 'Stephen Elliott / Science-based',
     duration: '10–20 minutes',
     level: 'Beginner',
-    description: 'The most evidence-backed technique for maximizing Heart Rate Variability (HRV). 5.5 breaths per minute (5.5 seconds in, 5.5 seconds out) synchronizes breathing with the cardiovascular Mayer wave and respiratory sinus arrhythmia. Research on the rosary prayer confirmed this rate (Bernardi et al., 2001, BMJ). Similar patterns have been observed in other traditions — including the Om mantra and the S.A.T. Nam mantra — though the precise rates vary across practitioners. In clinical trials, it significantly reduces blood pressure and anxiety.',
+    description: 'A well-supported-by-evidence technique for maximizing Heart Rate Variability (HRV). 5.5 breaths per minute (5.5 seconds in, 5.5 seconds out) synchronizes breathing with the cardiovascular Mayer wave and respiratory sinus arrhythmia. Research on the rosary prayer confirmed this rate (Bernardi et al., 2001, BMJ). Similar patterns have been observed in other traditions — including the Om mantra and the S.A.T. Nam mantra — though the precise rates vary across practitioners. In clinical trials, it significantly reduces blood pressure and anxiety.',
     steps: [
       'Find a comfortable seated or lying position.',
       'Begin to breathe in and out through your nose only.',
@@ -631,7 +631,7 @@ const wellnessCards = [
     condition: 'Blood Pressure',
     icon: '❤️',
     evidence: 'Elliott coherence research; Inspiratory muscle training studies',
-    body: 'Coherent breathing (5.5 bpm) significantly reduces both systolic and diastolic blood pressure in clinical trials. Inspiratory muscle strength training — five minutes daily — reduces systolic blood pressure by up to 9 mmHg, comparable to first-line hypertension medication.',
+    body: 'Coherent breathing (5.5 bpm) significantly reduces both systolic and diastolic blood pressure in clinical trials. Inspiratory muscle strength training (IMST) — five minutes daily — reduces systolic blood pressure by up to 9 mmHg (Craighead et al., 2021, JAHA). While this reduction is clinically meaningful, IMST has not been directly compared to antihypertensive medication in head-to-head trials.',
     techniques: ['Coherent Breathing', 'Diaphragmatic Breathing', 'Ujjayi'],
     accent: 'var(--color-amber-light)',
   },
@@ -695,7 +695,7 @@ const dailyProtocols: DailyProtocol[] = [
       { time: 'Morning', practice: 'Wim Hof (3–4 rounds) + Cold Exposure', duration: '15 min', why: 'Adrenaline priming before cold — Hof protocol for immune modulation and mental clarity' },
       { time: 'Midday', practice: 'Coherent Breathing or Buteyko Reduced Breathing', duration: '10 min', why: 'CO2 tolerance training (Buteyko) or cardiac coherence maintenance (Coherent)' },
       { time: 'Evening', practice: 'Tummo or Nadi Shodhana', duration: '15 min', why: 'Deep practice window — inner fire visualization or nervous system balancing' },
-      { time: 'Night', practice: 'Mouth Taping', duration: 'All night', why: 'Enforces nasal breathing during sleep, preventing the 4820% snoring increase of mouth breathing' },
+      { time: 'Night', practice: 'Mouth Taping', duration: 'All night', why: 'Enforces nasal breathing during sleep — Nestor\'s self-experiment (2020, n=1) found dramatic increases in snoring and apnea events during 10 days of forced mouth breathing' },
     ],
   },
 ];
@@ -952,7 +952,7 @@ export default function BreatheClient() {
                     lineHeight: 1.4,
                   }}
                 >
-                  5.5 breaths per minute — the optimal rate confirmed in the rosary prayer (Bernardi et al., 2001, BMJ) and observed across contemplative traditions, now studied by cardiology research.
+                  5–6 breaths per minute — the resonance frequency range (approximately 0.1 Hz) at which breathing synchronizes with the cardiovascular Mayer wave. Bernardi et al. (2001, BMJ) found the rosary prayer produces ~6 bpm; coherence breathing protocols typically target 5.5 bpm. Both fall within the same resonance range, not a single exact frequency.
                 </p>
               </div>
             </ScrollReveal>
@@ -1174,15 +1174,15 @@ export default function BreatheClient() {
             >
               <StatCard
                 source="Nestor, Breath (2020) — self-experiment with Dr. Nayak, Stanford"
-                stat="4,820% increase in snoring after 10 days mouth breathing"
-                detail="An informal journalist self-experiment (not a controlled RCT) plugging nostrils for 10 days produced 4,820% more snoring, 25 sleep apnea events per night, and blood pressure rising to 142 mmHg. Reverting to nasal breathing dropped BP to 124 mmHg and raised HRV by 150% (in the informal self-experiment reported in Nestor's Breath, 2020) within days. Based on an informal journalist self-experiment, not a controlled RCT."
+                stat="Dramatic snoring increase after 10 days mouth breathing"
+                detail="James Nestor\'s n=1 self-experiment at Stanford (Breath, 2020) — plugging nostrils for 10 days produced dramatically increased snoring, 25 sleep apnea events per night, and blood pressure rising to 142 mmHg. Reverting to nasal breathing dropped BP to 124 mmHg within days. Important: this was an informal single-subject journalist experiment, not a controlled clinical trial. The specific percentages are from this single self-report."
                 accentColor={TEAL_MID}
                 accentTextColor={TEAL_DEEP}
               />
               <StatCard
                 source="Nestor / Elliott — multiple studies"
-                stat="5.5 breaths/min — the universal optimal rate"
-                detail="This frequency appears in the rosary prayer, Om mantra, the S.A.T. Nam mantra, and qigong. It synchronizes the cardiovascular Mayer wave with breathing, maximizing HRV and cardiac coherence. Not a coincidence — it is the architecture of calm."
+                stat="5–6 breaths/min — the resonance frequency range"
+                detail="The resonance frequency range (~0.1 Hz, or 5–7 breaths/min) appears across contemplative traditions: the rosary prayer produces ~6 bpm (Bernardi et al., 2001, BMJ), Om mantra, and qigong. Coherence protocols typically target 5.5 bpm. All fall within the same range that synchronizes breathing with the cardiovascular Mayer wave, maximizing HRV — there is no single exact frequency."
                 url="https://pmc.ncbi.nlm.nih.gov/articles/PMC5709795/"
                 accentColor={TEAL_MID}
                 accentTextColor={TEAL_DEEP}
@@ -2277,7 +2277,7 @@ export default function BreatheClient() {
               {
                 title: 'The Prana–Nadi–Fascia Triangle',
                 subtitle: 'Ancient anatomy, modern tissue',
-                body: 'The Ida and Pingala nadis of yogic anatomy — the left and right energy channels — correspond to the alternate nostril breathing cycle and to the opposing lobes of the autonomic nervous system. The central Sushumna nadi corresponds anatomically to the dura mater: the fascial sheath protecting the spinal cord from sacrum to skull. Pranayama does not work on a metaphorical energy body — it works on fascia, fluid dynamics, and vagal tone.',
+                body: 'The Ida and Pingala nadis of yogic anatomy — the left and right energy channels — correspond to the alternate nostril breathing cycle and to the opposing lobes of the autonomic nervous system. The central Sushumna nadi is sometimes mapped onto the dura mater — the fascial sheath protecting the spinal cord from sacrum to skull — though this is an interpretive overlay, not an established anatomical equivalence. Pranayama does not work on a metaphorical energy body — it works on fascia, fluid dynamics, and vagal tone.',
                 accent: TEAL_MID,
                 link: '/fascia',
                 linkLabel: 'The Fascia Connection',

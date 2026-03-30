@@ -905,6 +905,18 @@ export default function ReflexologyClient() {
             </p>
           </ScrollReveal>
 
+          {/* Anatomical caveat */}
+          <ScrollReveal>
+            <div style={{ marginBottom: '2rem', padding: '0.875rem 1.25rem', background: 'color-mix(in srgb, var(--color-border) 30%, var(--color-surface-raised))', borderLeft: `3px solid ${TERRA_MID}`, borderRadius: '0 2px 2px 0' }}>
+              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>
+                <strong>Note:</strong> No anatomical structure has been identified that corresponds to reflexology zone maps.
+                The mechanisms listed below are proposed explanations, not established science. Zone maps are a traditional
+                clinical framework used to organize practice; their organ-correspondence claims have not been validated by
+                controlled anatomical or physiological research.
+              </p>
+            </div>
+          </ScrollReveal>
+
           {/* Zone Cards */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.25rem', marginBottom: '3rem' }}>
             {zoneCards.map((z, i) => (

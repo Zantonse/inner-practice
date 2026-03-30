@@ -100,7 +100,7 @@ const lineageSection: ManifestSectionData = {
     {
       id: 'heart-brain-coherence',
       title: 'Heart-Brain Coherence',
-      body: "HeartMath Institute's 30 years of research show that sustained positive emotion — gratitude, appreciation, care — produces a smooth, high-amplitude sine-wave HRV pattern called coherence. In this state, afferent signals from heart to brain shift function: increased cognitive clarity, self-regulatory capacity, and emotional stability. A 2025 RCT found coherence training increased hippocampal brain volume after 4-5 weeks. The traditional instruction to 'feel as if your intention is already real' has a legitimate physiological mechanism through cardiac coherence.",
+      body: "HeartMath Institute's 30 years of research show that sustained positive emotion — gratitude, appreciation, care — produces a smooth, high-amplitude sine-wave HRV pattern called coherence. In this state, afferent signals from heart to brain shift function: increased cognitive clarity, self-regulatory capacity, and emotional stability. A 2025 RCT found coherence training increased hippocampal brain volume after 4-5 weeks. The traditional instruction to 'feel as if your intention is already real' has a plausible physiological mechanism through cardiac coherence. (Important caveat: 'heart-brain coherence' as described here is HeartMath Institute's proprietary framework — useful and well-documented within their research program, but distinct from the narrower concept of cardiac coherence in independent peer-reviewed HRV literature.)",
     },
     {
       id: 'neville-sats',
@@ -115,12 +115,7 @@ const lineageSection: ManifestSectionData = {
       detail: 'The prefrontal cortex — seat of critical evaluation — showed reduced activity during Yoga Nidra, creating a window for intention-planting with less evaluative resistance.',
       url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9315270/',
     },
-    {
-      source: 'Elbers & McCraty 2025 (USC RCT)',
-      stat: 'Coherence training increased hippocampal volume',
-      detail: 'After 4-5 weeks of high-amplitude coherent HRV training, participants showed increased hippocampal brain volume and enhanced cognition-related neuroimaging signals.',
-      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12722655/',
-    },
+
     {
       source: 'Kozhevnikov et al. 2009 (Max Planck)',
       stat: 'Deity visualization enhanced visuospatial processing',

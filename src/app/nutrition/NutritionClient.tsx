@@ -151,7 +151,7 @@ const videoData: Record<VideoTab, Array<{ videoId: string; title: string; descri
       videoId: 'SZSRgyl7pyQ',
       title: 'Dr. Science of Gut Sense',
       description:
-        'An overview of the emerging psychobiotic research: how gut bacteria produce neurotransmitters, modulate inflammation, and directly influence mood and cognition via the vagus nerve. Covers Lactobacillus rhamnosus, fermented foods, and the Bravo 2011 fMRI study.',
+        'An overview of the emerging psychobiotic research: how gut bacteria produce neurotransmitters, modulate inflammation, and directly influence mood and cognition via the vagus nerve. Covers Lactobacillus rhamnosus, fermented foods, and the landmark mouse study (Bravo et al., 2011, PNAS) and Tillisch et al. (2013) human fMRI study.',
     },
   ],
   'gut-health': [
@@ -338,7 +338,7 @@ export default function NutritionClient() {
               </h2>
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 The <strong>enteric nervous system (ENS)</strong> lining your gastrointestinal tract
-                contains approximately 500 million neurons &mdash; more than your spinal cord. It
+                contains approximately 500 million neurons &mdash; an extensive neural network sometimes called the &ldquo;second brain.&rdquo; It
                 operates largely independently, coordinating digestion, immune response, and
                 neurotransmitter production without waiting for instructions from the brain.
               </p>
@@ -415,7 +415,7 @@ export default function NutritionClient() {
               <StatCard
                 source="Furness, 2012"
                 stat="500M"
-                detail="Neurons in the enteric nervous system — more than the spinal cord. The gut can sense, integrate, and respond to stimuli completely independently of the central nervous system."
+                detail="Neurons in the enteric nervous system \u2014 an extensive neural network sometimes called the \u201csecond brain.\u201d The ENS can coordinate digestion, immune response, and neurotransmitter production semi-independently."
                 url="https://pubmed.ncbi.nlm.nih.gov/22268002/"
                 accentColor={OLIVE_MID}
                 accentTextColor={OLIVE_DEEP}
@@ -541,7 +541,7 @@ export default function NutritionClient() {
               <p style={{ lineHeight: 1.85, marginBottom: '0.875rem' }}>
                 <strong>Omega-3 (EPA):</strong> Meta-analysis (Sublette et al., 2011) showed EPA
                 supplementation yields a standardized effect size of d=0.53 in depression &mdash;
-                comparable to first-line antidepressants. DHA appears less active. 1&ndash;2g
+                in the range observed for some antidepressants, though head-to-head comparisons are limited. DHA appears less active. 1&ndash;2g
                 EPA/day from fish oil or algae.
               </p>
               <p style={{ lineHeight: 1.85, marginBottom: '0.875rem' }}>

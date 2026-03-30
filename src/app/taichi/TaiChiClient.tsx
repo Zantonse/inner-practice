@@ -285,6 +285,19 @@ export default function TaiChiClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
 
+          {/* Cloud Hands illustration */}
+          <ScrollReveal>
+            <div style={{ position: 'relative', width: '100%', maxWidth: '520px', aspectRatio: '1', margin: '0 auto 3rem', borderRadius: '2px', overflow: 'hidden' }}>
+              <Image
+                src="/images/taichi-forms.webp"
+                alt="Watercolor illustration of a tai chi practitioner performing Cloud Hands in a bamboo grove at dawn, warm earth tones"
+                fill
+                sizes="(max-width: 520px) 100vw, 520px"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+          </ScrollReveal>
+
           {/* Two-column intro */}
           <div
             style={{
@@ -787,7 +800,7 @@ export default function TaiChiClient() {
               {
                 domain: 'Cardiovascular',
                 color: EARTH_MID,
-                summary: 'Meta-analyses show tai chi reduces systolic blood pressure by 10–17 mmHg, equivalent to first-line antihypertensive medication. Effect is mediated by autonomic rebalancing and improved arterial compliance.',
+                summary: 'Meta-analyses suggest tai chi may reduce systolic blood pressure by 5–12 mmHg in some populations. While promising, these reductions have not been directly compared to antihypertensive medication in head-to-head trials. Effect may be mediated by autonomic rebalancing and improved arterial compliance.',
               },
               {
                 domain: 'Heart Failure',
@@ -797,7 +810,7 @@ export default function TaiChiClient() {
               {
                 domain: 'Mental Health',
                 color: EARTH_MID,
-                summary: 'Multiple RCTs document significant reductions in anxiety and depression scores, with effect sizes comparable to SSRI medication for mild-to-moderate presentations. Mechanism includes HRV elevation and mindful movement.',
+                summary: 'Multiple RCTs document significant reductions in anxiety and depression scores for mild-to-moderate presentations. Effect sizes vary across studies; no head-to-head trials against SSRIs have been conducted. Mechanism may include HRV elevation and mindful movement.',
               },
               {
                 domain: 'PTSD (Irwin 2014)',
@@ -893,6 +906,19 @@ export default function TaiChiClient() {
             </p>
           </ScrollReveal>
 
+          {/* Fascial tensegrity illustration */}
+          <ScrollReveal>
+            <div style={{ position: 'relative', width: '100%', maxWidth: '480px', aspectRatio: '1', margin: '0 auto 3rem', borderRadius: '2px', overflow: 'hidden' }}>
+              <Image
+                src="/images/taichi-fascia.webp"
+                alt="Anatomical illustration of fascial tensegrity during tai chi weight transfer, showing continuous myofascial networks as golden threads in earth-tone watercolor"
+                fill
+                sizes="(max-width: 480px) 100vw, 480px"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+          </ScrollReveal>
+
           <div
             style={{
               display: 'grid',
@@ -924,7 +950,7 @@ export default function TaiChiClient() {
               <p style={{ lineHeight: 1.85, margin: 0 }}>
                 The slow, continuous weight-shifting through the full range of motion provides a uniquely
                 gentle but comprehensive fascial hydration and loading protocol. Unlike static stretching,
-                the movement-load creates piezoelectric fascial stimulation. Unlike high-load exercise, the
+                the movement-load may create piezoelectric fascial stimulation (a biologically plausible mechanism based on collagen&rsquo;s known piezoelectric properties, though direct in-vivo confirmation in soft tissue is still forthcoming). Unlike high-load exercise, the
                 slow pace prevents micro-tearing in inflamed or sensitized tissue.
               </p>
             </ScrollReveal>
@@ -1582,6 +1608,21 @@ export default function TaiChiClient() {
         </p>
         <div style={{ flex: 1, height: '1px', background: 'rgba(168,152,128,0.3)' }} />
       </div>
+
+      {/* Practice space photo */}
+      <section style={{ padding: '0 max(1.5rem, 8vw) 0', background: 'var(--color-cream)' }}>
+        <ScrollReveal>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '800px', aspectRatio: '1', margin: '0 auto', borderRadius: '2px', overflow: 'hidden' }}>
+            <Image
+              src="/images/taichi-space.webp"
+              alt="Overhead view of a circular stone courtyard surrounded by moss, ferns, and a zen garden with tea set, bathed in golden sunrise mist"
+              fill
+              sizes="(max-width: 800px) 100vw, 800px"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+        </ScrollReveal>
+      </section>
 
       {/* Practice / Video section */}
       <section

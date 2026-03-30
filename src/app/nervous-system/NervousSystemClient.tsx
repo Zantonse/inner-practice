@@ -444,7 +444,7 @@ const respiratoryTechniques: TechniqueData[] = [
     tradition: 'Pranayama / Clinical',
     duration: '5–10 min',
     level: 'Beginner',
-    description: 'Breathing at 5–6 breaths per minute maximizes respiratory sinus arrhythmia (RSA) — the natural rhythm where heart rate rises on inhale and drops on exhale. This is the single most accessible way to increase vagal tone.',
+    description: 'Breathing at 5–6 breaths per minute maximizes respiratory sinus arrhythmia (RSA) — the natural rhythm where heart rate rises on inhale and drops on exhale. This is one of the most accessible ways to increase vagal tone.',
     steps: [
       'Find a comfortable seated or reclined position.',
       'Inhale slowly through the nose for 4 counts, expanding the belly.',
@@ -602,7 +602,7 @@ const thermalTechniques: TechniqueData[] = [
       'Use slow, sustained pressure — hold for 90+ seconds per spot.',
       'Target the diaphragm and psoas next.',
       'Combine with deep breathing for amplified effect.',
-      'Notice emotional releases as normal — fascia stores tension.',
+      'Notice emotional releases as normal — fascia holds accumulated muscular tension (the precise mechanism of emotional "storage" in connective tissue is still debated).',
     ],
   },
   {
@@ -994,7 +994,7 @@ export default function NervousSystemClient() {
               The 80% Afferent Reality
             </h3>
             <p style={{ margin: '0 0 1.5rem' }}>
-              Here is the single most important fact about the vagus: <strong>80% of its fibers are afferent</strong> — meaning they carry signals <em>from the body to the brain</em>, not the other way around. The vagus is primarily a listening system. This is why bottom-up somatic practices (breath, movement, fascia work) can fundamentally alter top-down brain states like anxiety, depression, and rumination.
+              Here is a critically important fact about the vagus: <strong>80% of its fibers are afferent</strong> — meaning they carry signals <em>from the body to the brain</em>, not the other way around. The vagus is primarily a listening system. This is why bottom-up somatic practices (breath, movement, fascia work) can fundamentally alter top-down brain states like anxiety, depression, and rumination.
             </p>
 
             <h3
@@ -1352,7 +1352,7 @@ export default function NervousSystemClient() {
               Cold, Breath & Commitment
             </h2>
             <p style={{ margin: '0 0 1.5rem' }}>
-              The Wim Hof Method (WHM) combines three pillars to build extreme autonomic resilience. It is arguably the most potent vagus nerve training protocol available — backed by peer-reviewed research from Radboud University.
+              The Wim Hof Method (WHM) combines three pillars to build extreme autonomic resilience. It is a highly effective vagus nerve training protocol — backed by peer-reviewed research from Radboud University.
             </p>
           </div>
         </ScrollReveal>
@@ -1698,7 +1698,7 @@ export default function NervousSystemClient() {
               Tools for Tracking
             </h3>
             <p style={{ margin: '0 0 1.5rem' }}>
-              Modern wearables — <strong>Oura Ring</strong>, <strong>Whoop</strong>, and <strong>Apple Watch</strong> — all track RMSSD, the gold-standard time-domain measure of HRV. For deeper training, dedicated HRV biofeedback apps like <strong>HeartMath</strong> guide you to breathe at your exact resonant frequency (~0.1 Hz, or about 6 breaths per minute) to maximize vagal efficiency.
+              Modern wearables — <strong>Oura Ring</strong>, <strong>Whoop</strong>, and <strong>Apple Watch</strong> — all track RMSSD, the gold-standard time-domain measure of HRV. For deeper training, dedicated HRV biofeedback apps like <strong>HeartMath</strong> guide you to breathe at your exact resonant frequency (~0.1 Hz, or about 6 breaths per minute) to maximize vagal efficiency. (Note: HeartMath&rsquo;s proprietary &ldquo;coherence&rdquo; framework and its specific claims are distinct from the broader concept of cardiac coherence in peer-reviewed HRV literature.)
             </p>
 
             <h3
@@ -1714,7 +1714,7 @@ export default function NervousSystemClient() {
               Resonance Frequency Breathing
             </h3>
             <p style={{ margin: 0 }}>
-              Every person has an individual resonance frequency — typically falls between approximately 4.5 and 7 breaths per minute, though individual variation exists — where HRV is maximized. At this rate, respiratory sinus arrhythmia, heart rate oscillations, and blood pressure waves all synchronize. Breathing at your resonance frequency is the single most efficient way to train vagal tone, and it is the mechanism underlying the rosary, Sanskrit chanting, and the physiological sigh.
+              Every person has an individual resonance frequency — typically falls between approximately 4.5 and 7 breaths per minute, though individual variation exists — where HRV is maximized. At this rate, respiratory sinus arrhythmia, heart rate oscillations, and blood pressure waves all synchronize. Breathing at your resonance frequency is a highly efficient way to train vagal tone, and it is the mechanism underlying the rosary, Sanskrit chanting, and the physiological sigh.
             </p>
           </div>
         </ScrollReveal>

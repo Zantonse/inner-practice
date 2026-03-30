@@ -363,6 +363,12 @@ export default function ReikiClient() {
                 The relaxation response (Benson, 1975) is reliably triggered: decreased heart rate, respiratory
                 rate, cortisol, and increased peripheral vasodilation.
               </p>
+              <p style={{ lineHeight: 1.85, marginBottom: '1rem', padding: '0.75rem 1rem', background: 'color-mix(in srgb, var(--color-border) 30%, var(--color-surface-raised))', borderLeft: `3px solid ${GOLD_MID}`, fontSize: '0.875rem' }}>
+                <strong>Evidence quality note:</strong> Many of these RCTs have high risk of bias due to small samples,
+                inadequate blinding (sham Reiki delivered by untrained practitioners), and reliance on self-reported outcomes.
+                Systematic reviews consistently rate the overall evidence as low to very low quality. Positive findings
+                should be interpreted as preliminary signals, not established efficacy.
+              </p>
               <p style={{ lineHeight: 1.85, margin: 0 }}>
                 <strong>Baldwin&rsquo;s rat studies</strong> at the University of Arizona are methodologically significant:
                 Reiki-treated animals showed reduced microvascular damage and lower heart rates. Animal models
@@ -735,7 +741,7 @@ export default function ReikiClient() {
               { practice: 'Meditation', link: '/meditate', desc: 'Gassho meditation trains the same single-pointed attention as dharana. Self-Reiki provides a physical anchor for practitioners who find abstract meditation difficult.' },
               { practice: 'Breathwork', link: '/breathe', desc: 'Joshin Kokyu Ho (Reiki breath meditation) overlaps with coherent breathing at 5.5\u20136 breaths/min. Sessions naturally synchronize with slow diaphragmatic rhythm.' },
               { practice: 'Yoga', link: '/yoga', desc: 'Savasana is the canonical posture for receiving Reiki. The Anjali mudra shared between yoga and Gassho marks a common contemplative lineage working with prana/ki.' },
-              { practice: 'Fascia', link: '/fascia', desc: 'Fascia\u2019s piezoelectric properties mean gentle sustained touch creates microcurrents along fascial planes \u2014 potentially one physical substrate for \u201cenergy flow\u201d descriptions.' },
+              { practice: 'Fascia', link: '/fascia', desc: 'Collagen\u2019s piezoelectric properties (established in vitro; functional role in living soft tissue is still being studied) suggest gentle sustained touch may create microcurrents along fascial planes \u2014 a hypothetical physical substrate for \u201cenergy flow\u201d descriptions, not a confirmed mechanism.' },
               { practice: 'Nervous System', link: '/nervous-system', desc: 'Polyvagal co-regulation is the core mechanism. The practitioner\u2019s ventral vagal state, broadcast through touch and presence, invites the recipient\u2019s system to safety.' },
             ].map(c => (
               <ScrollReveal key={c.practice}>

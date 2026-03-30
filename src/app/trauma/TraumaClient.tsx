@@ -215,7 +215,7 @@ export default function TraumaClient() {
                 experiences chronic stress does not develop a different genome &mdash; but they may
                 develop a profoundly different epigenome, switching certain genes on or off in ways
                 that affect stress reactivity, immune function, and neurotransmitter sensitivity.
-                These marks can be passed to the next generation through the germline.
+                Some of these marks may be passed to the next generation through the germline — though transgenerational epigenetic inheritance in humans is a preliminary and contested field: human replication studies are limited, many animal findings have not translated directly, and the mechanisms of germline epigenetic transmission remain actively debated.
               </p>
             </ScrollReveal>
 
@@ -615,8 +615,7 @@ export default function TraumaClient() {
                 The <strong>psoas muscle</strong> holds a unique position in trauma physiology. As
                 the primary muscle that draws the torso toward the legs in the fetal position, it is
                 the body&rsquo;s primary fear response muscle. It connects the lumbar spine to the
-                femur, passes through the hip joint, and is directly innervated by the same nerve
-                roots that activate the &ldquo;freeze&rdquo; response.
+                femur, passes through the hip joint, and is innervated by the lumbar plexus (L1&ndash;L3) and sits close to the sympathetic chain, which may explain its involvement in stress-related tension patterns.
               </p>
               <p style={{ lineHeight: 1.85, margin: 0 }}>
                 The hip-emotion connection is recognized across traditions: yogic hip openers
@@ -1631,7 +1630,7 @@ export default function TraumaClient() {
               {
                 href: '/psychedelics',
                 label: 'Psychedelics',
-                desc: 'MDMA-assisted therapy creates the ventral vagal safety window for trauma reprocessing — the most evidence-based trauma treatment currently in trials.',
+                desc: 'MDMA-assisted therapy creates the ventral vagal safety window for trauma reprocessing — a well-supported-by-evidence trauma treatment currently in trials.',
               },
             ].map(link => (
               <ScrollReveal key={link.href}>

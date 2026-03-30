@@ -258,7 +258,7 @@ const techniques: Array<{
     timing: 'Evening',
     evidence: 'Strong',
     description:
-      'Resonance frequency breathing at exactly 5.5 breaths/min maximizes HRV via baroreflex resonance. Two randomized trials show sustained improvement in overnight HRV with 20 minutes of daily practice. The most evidence-backed breath technique for sleep quality.',
+      'Resonance frequency breathing at exactly 5.5 breaths/min maximizes HRV via baroreflex resonance. Two randomized trials show sustained improvement in overnight HRV with 20 minutes of daily practice. A well-supported-by-evidence breath technique for sleep quality.',
   },
   {
     name: 'Cyclic Sighing',
@@ -1880,7 +1880,7 @@ export default function SleepClient() {
               {
                 step: '1',
                 title: 'Dim the lights (90 min before bed)',
-                desc: 'Switch to amber or warm lighting below eye level. Ceiling lights and overhead fixtures send sky-light signals to ipRGCs. Candles, salt lamps, and floor lamps are ideal. This single change is the highest-leverage action in the protocol.',
+                desc: 'Switch to amber or warm lighting below eye level. Ceiling lights and overhead fixtures send sky-light signals to ipRGCs. Candles, salt lamps, and floor lamps are ideal. This single change is a high-impact action in the protocol.',
               },
               {
                 step: '2',
