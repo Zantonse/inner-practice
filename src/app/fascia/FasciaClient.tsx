@@ -247,7 +247,7 @@ const toolkitItems = [
     id: 'foam-rolling',
     name: 'Foam Rolling',
     tagline: 'Self-Myofascial Release',
-    body: 'Science confirms foam rolling improves short-term range of motion, reduces muscle soreness (DOMS), and may decrease perception of pain. The mechanism is debated: it likely works through neurological feedback (reducing muscle guarding) as much as through direct structural tissue change. An evidence-based protocol: roll slowly (1 inch per second), pause on tender spots for 20–30 seconds, and work the tissue proximal to the pain point rather than directly on it.',
+    body: 'Meta-analysis of 21 studies (Wiewelhove et al., 2019): foam rolling produces small but real ROM improvement (+4%, g=0.34) and DOMS reduction (+6%, g=0.47), with negligible effects on strength or jump performance. The mechanism is primarily neurological — Ruffini endings and interstitial receptors in fascia respond to sustained pressure by triggering parasympathetic downregulation and global muscle tone reduction (Schleip, 2003). A secondary mechanism: transient hyaluronan dispersal in the ECM, improving fascial layer sliding (Stecco model). Katsumata et al. found MFR effects persisted 4 days post-session — longer than a purely neurological effect, suggesting genuine ECM-level change. Protocol: roll slowly (1 inch/second), pause on tender spots for 20–30 seconds, work proximal to the pain point.',
     tip: 'Roll the IT band\'s origin at the TFL (tensor fascia latae) — the hip — rather than the band itself. The band is too dense to meaningfully compress; the hip is where you create change.',
   },
   {
@@ -261,15 +261,15 @@ const toolkitItems = [
     number: 5,
     name: 'Fascial Fitness',
     tagline: 'The Catapult Mechanism',
-    body: 'Dr. Robert Schleip\'s research reveals that healthy fascia acts like a spring, not just a container. When you load it eccentrically (lengthen under tension) and release, it "catapults" energy — this is how kangaroos hop and Achilles tendons run. Training this elasticity requires bouncy, oscillatory movements: rebounding, skipping, small-amplitude jumps. Sedentary posture destroys this spring quality over years. Fascial fitness restores it.',
-    tip: 'Two minutes of gentle bouncing or rebounding first thing in the morning rehydrates your fascial system, activates the spring mechanism, and is a highly efficient investment in long-term tissue health.',
+    body: 'Dr. Robert Schleip\'s fascial fitness framework reveals that healthy fascia acts like a spring, not just a container. During elastic movements (hopping, running), muscle fibers contract nearly isometrically while fascial and tendinous elements lengthen and shorten like a "yoyo spring" (Kawakami et al., 2001, ultrasound studies). This "catapult mechanism" — first studied in kangaroos (Kram & Dawson, 1998) — provides 35–60% of propulsive force per running stride. Fouré et al. (2010, J Appl Physiol) showed 14 weeks of plyometric training reduced Achilles tendon hysteresis by 35% — the tissue became qualitatively more spring-like without changing size. Schleip\'s four dimensions: (1) Elastic Rebound — bouncing, skipping, hopping where fascia does the spring work; (2) Preparatory Counter-Movement — briefly pre-tension in the opposite direction before each movement (the bow-and-arrow principle); (3) Dynamic Stretching along whole myofascial chains; (4) Proprioceptive Refinement through novel loading and micro-movements. The "Ninja Principle": quiet, soft landings indicate high fascial elastic efficiency — loud landings mean muscular compensation. Critical: slow resistance training does NOT improve elastic storage capacity (Kubo et al., 2003). Oscillatory loading is specifically required. Training frequency: 1–2× per week is sufficient — collagen cells need 48–72 hours recovery between sessions.',
+    tip: 'Exercises: Wall Bounces (soft, full-body, minimal noise), The Flying Sword (TLF pre-tension then elastic release), Big Cat Stretch (opposing elongation + rotations). Plyometrics complement fascial bouncing — they train the same tendinous spring but at mid-range positions. Schleip\'s bouncing adds end-range loading that plyometrics miss. Best approach: combine both.',
   },
   {
     number: 6,
     name: 'Nutrition',
     tagline: 'Nutrition for the Web',
-    body: 'Fascia is living collagen. It requires specific nutritional inputs: Vitamin C is the essential cofactor for collagen cross-linking — without it, newly synthesized collagen is structurally weak. Glycine and proline (abundant in bone broth) are the primary amino acid building blocks. Hyaluronic acid production depends on adequate water intake — dehydration literally stiffens the fascial glide surface. The two greatest dietary enemies of fascia are refined sugar (which creates AGEs — Advanced Glycation End-products that permanently cross-link and stiffen collagen) and chronically elevated cortisol, which actively degrades collagen.',
-    tip: 'The simplest protocol: 500ml of water within 30 minutes of waking, a collagen or bone broth supplement with vitamin C, and elimination of refined sugar. These three changes alone produce measurable tissue quality improvements within 3–6 months.',
+    body: 'The highest-evidence nutritional protocol for connective tissue: the Shaw/Baar method. Shaw et al. (AJCN, 2017) demonstrated that 10–15g hydrolyzed collagen peptides + 48mg vitamin C consumed 30–60 minutes before exercise significantly elevated collagen synthesis markers (P1NP). Baar\'s 2024 UC Davis RCT confirmed this directly. Standard whey or casein proteins do NOT increase collagen synthesis — they lack glycine and proline, the dominant amino acids in collagen. Vitamin C is a required cofactor for prolyl hydroxylase (the enzyme that stabilizes collagen\'s triple helix). Often-overlooked minerals: copper activates lysyl oxidase (collagen tensile strength); zinc regulates matrix metalloproteinases (ECM remodeling); manganese activates proteoglycan synthesis. Omega-3s (1–3g EPA+DHA/day) produce specialized pro-resolving mediators that resolve fascial inflammation. Fascia\'s greatest enemies: refined sugar (creates AGEs — irreversible collagen cross-links) and smoking (depletes ascorbate + introduces ROS that degrade collagen directly). A 2025 paradigm-shifting finding: collagen type VI, not type I, is the dominant collagen in human fasciae (Fede & Stecco, IJMS, 2025).',
+    tip: 'The Shaw/Baar protocol: 10–15g hydrolyzed collagen + 500mg vitamin C, 30–60 min BEFORE exercise (not after — timing matters). Plus daily: 15–25mg zinc, 1–2mg copper, 2.5–5mg manganese, and 2–3L water. People who eat bone broth or connective tissue cuts regularly need less supplementation.',
   },
   {
     number: 7,
@@ -300,7 +300,7 @@ const secrets = [
   {
     number: 4,
     title: 'Fascia remodels slowly — 6 to 24 months',
-    body: 'The cells that lay down new collagen (fibroblasts) take months to restructure fascial architecture. You will not feel significant structural change from one session. But you will feel it after six months of consistent practice. This is why practitioners who quit after four weeks never discover what their body was capable of becoming.',
+    body: 'Approximately 50% of collagen fibrils are replaced per year (Neuberger & Slack, 1953). Targeted fascial training produces architectural changes within 6–24 months. But there\'s a paradox (Magnusson et al., 2010): in the first 1–2 days post-exercise, collagen degradation actually exceeds synthesis. Synthesis overtakes degradation only after 48–72 hours. This is why training fascia more than 1–2× per week is counterproductive — you need the recovery window for net positive collagen accumulation. Cell stimulation peaks at 5–10 minutes of loading; cells require at least 6 hours before responding again. The most common mistake: applying muscle-training frequency logic to connective tissue.',
   },
   {
     number: 5,
@@ -590,6 +590,27 @@ export default function FasciaClient() {
                 accentTextColor="var(--color-amber-deep)"
               />
             </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <StatCard
+              source="Fouré, Nordez & Cornu — J Appl Physiol, 2010"
+              stat="−35% tendon hysteresis"
+              detail="14 weeks of plyometric training (~6,800 jumps) reduced Achilles tendon energy dissipation by 35% with no change in tendon size — the tissue became qualitatively more spring-like. This is the clearest quantified demonstration that fascial tissue can be trained for elasticity."
+              url="https://pubmed.ncbi.nlm.nih.gov/20576845/"
+              accentColor="var(--color-amber-light)"
+              accentTextColor="var(--color-amber-deep)"
+            />
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <StatCard
+              source="Fede, Stecco et al. — Int J Mol Sci, 2025"
+              stat="Collagen VI is the dominant fascial collagen"
+              detail="Paradigm-shifting finding: collagen type VI — not types I or III as textbooks stated — is the most abundant collagen in both superficial and deep fasciae, present at nearly double the concentration of other types. Type VI forms microfibrillar networks bridging fibers, nerves, blood vessels, and cells. Aging doubles type I collagen in intramuscular tissue, reducing adaptability."
+              accentColor="var(--color-amber-light)"
+              accentTextColor="var(--color-amber-deep)"
+            />
           </ScrollReveal>
 
           <ScrollReveal>
