@@ -1,16 +1,15 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import StatCard from '@/components/StatCard';
 import StickyNav from '@/components/StickyNav';
-
-// ── Accent tokens (deep indigo / midnight blue) ────────────────
-const FLOAT_DEEP = '#1B2E4A';
-const FLOAT_MID = '#4A7FB5';
-const FLOAT_LIGHT = '#C5D9ED';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
 
 // ── History Timeline Data ──────────────────────────────────────
 const historyTimeline = [
@@ -211,7 +210,7 @@ const morePages = [
 function RatingBadge({ type, label }: { type: string; label: string }) {
   const styles: Record<string, { background: string; color: string }> = {
     moderate: { background: 'rgba(45,106,79,0.1)', color: '#2D6A4F' },
-    emerging: { background: 'rgba(27,46,74,0.08)', color: FLOAT_DEEP },
+    emerging: { background: 'rgba(27,46,74,0.08)', color: 'var(--color-float-deep)' },
     insufficient: { background: 'rgba(120,120,120,0.1)', color: '#666' },
     null: { background: 'rgba(120,120,120,0.1)', color: '#666' },
   };
@@ -242,7 +241,7 @@ function EvidenceLevelBadge({ level }: { level: string }) {
   let color = '#2D6A4F';
   if (level === 'Mechanistically Grounded') {
     bg = 'rgba(74,127,181,0.12)';
-    color = FLOAT_DEEP;
+    color = 'var(--color-float-deep)';
   } else if (level === 'Experiential/Theoretical' || level === 'Emerging') {
     bg = 'rgba(120,120,120,0.1)';
     color = '#666';
@@ -313,7 +312,7 @@ const thStyle: React.CSSProperties = {
   fontWeight: 600,
   letterSpacing: '0.08em',
   textTransform: 'uppercase',
-  color: FLOAT_DEEP,
+  color: 'var(--color-float-deep)',
   padding: '0.75rem 1rem',
   textAlign: 'left',
 };
@@ -333,11 +332,12 @@ export default function FloatClient() {
         fontSize: 'var(--text-body)',
         lineHeight: 1.8,
         color: 'var(--color-text)',
-      }}
+        '--page-accent': 'var(--color-float-deep)',
+      } as React.CSSProperties}
     >
 
       <StickyNav
-        accentColor={FLOAT_DEEP}
+        accentColor={'var(--color-float-deep)'}
         sections={[
           { id: 'history', label: 'History' },
           { id: 'science', label: 'Science' },
@@ -436,9 +436,9 @@ export default function FloatClient() {
                   fontWeight: 500,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: FLOAT_MID,
+                  color: 'var(--color-float-mid)',
                   textDecoration: 'none',
-                  borderBottom: `1px solid ${FLOAT_MID}`,
+                  borderBottom: `1px solid 'var(--color-float-mid)'`,
                   paddingBottom: '0.25rem',
                 }}
               >
@@ -455,7 +455,7 @@ export default function FloatClient() {
       <section
         style={{
           padding: 'clamp(3.5rem, 7vw, 6rem) max(1.5rem, 8vw)',
-          background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${FLOAT_LIGHT} 8%, var(--color-cream)) 100%)`,
+          background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, 'var(--color-float-light)' 8%, var(--color-cream)) 100%)`,
           textAlign: 'center',
         }}
       >
@@ -596,7 +596,7 @@ export default function FloatClient() {
                   style={{
                     background: 'var(--color-surface-raised)',
                     border: '1px solid var(--color-border)',
-                    borderTop: `3px solid ${FLOAT_MID}`,
+                    borderTop: `3px solid 'var(--color-float-mid)'`,
                     borderRadius: '2px',
                     padding: '1.25rem',
                   }}
@@ -606,7 +606,7 @@ export default function FloatClient() {
                       fontFamily: 'var(--font-ui)',
                       fontSize: '0.75rem',
                       fontWeight: 700,
-                      color: FLOAT_DEEP,
+                      color: 'var(--color-float-deep)',
                       margin: '0 0 0.5rem',
                       letterSpacing: '0.06em',
                     }}
@@ -632,7 +632,7 @@ export default function FloatClient() {
         id="science"
         style={{
           ...sectionPadding,
-          background: `color-mix(in srgb, var(--color-cream) 92%, ${FLOAT_LIGHT})`,
+          background: `color-mix(in srgb, var(--color-cream) 92%, 'var(--color-float-light)')`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
@@ -653,7 +653,7 @@ export default function FloatClient() {
             <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem', marginBottom: '3.5rem' }}>
               <table style={{ width: '100%', minWidth: '500px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${FLOAT_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid 'var(--color-float-mid)'` }}>
                     <th style={thStyle}>Sensory Channel</th>
                     <th style={thStyle}>What Is Eliminated</th>
                   </tr>
@@ -710,8 +710,8 @@ export default function FloatClient() {
               <div
                 style={{
                   background: 'rgba(74,127,181,0.08)',
-                  border: `1px solid ${FLOAT_LIGHT}`,
-                  borderLeft: `3px solid ${FLOAT_MID}`,
+                  border: `1px solid 'var(--color-float-light)'`,
+                  borderLeft: `3px solid 'var(--color-float-mid)'`,
                   borderRadius: '2px',
                   padding: '1rem',
                   fontSize: '0.875rem',
@@ -719,7 +719,7 @@ export default function FloatClient() {
                   lineHeight: 1.7,
                 }}
               >
-                <strong style={{ color: FLOAT_DEEP }}>The Three-Float Rule:</strong> habituation
+                <strong style={{ color: 'var(--color-float-deep)' }}>The Three-Float Rule:</strong> habituation
                 to the environment allows progressively faster theta access. What beginners reach
                 in 40&ndash;50 minutes, experienced floaters access in 10&ndash;15.
               </div>
@@ -743,7 +743,7 @@ export default function FloatClient() {
               <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', marginTop: '0.5rem' }}>
                 <table style={{ width: '100%', minWidth: '360px', borderCollapse: 'collapse', fontSize: '0.8125rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: `2px solid ${FLOAT_MID}` }}>
+                    <tr style={{ borderBottom: `2px solid 'var(--color-float-mid)'` }}>
                       <th style={{ ...thStyle, padding: '0.5rem 0.75rem' }}>Modality</th>
                       <th style={{ ...thStyle, padding: '0.5rem 0.75rem' }}>DMN Route</th>
                     </tr>
@@ -881,8 +881,8 @@ export default function FloatClient() {
                 source="Feinstein et al., 2018 — PLOS ONE"
                 stat="Anxiety: Cohen's d > 2.0"
                 detail="A single 60-minute float produced an unusually large anxiety reduction in 50 clinically anxious adults. The most severely anxious showed the largest gains. Study design: open-label, within-subjects (no blinded control arm); the effect size magnitude should be interpreted with this limitation in mind."
-                accentColor={FLOAT_MID}
-                accentTextColor={FLOAT_DEEP}
+                accentColor={'var(--color-float-mid)'}
+                accentTextColor={'var(--color-float-deep)'}
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -890,8 +890,8 @@ export default function FloatClient() {
                 source="Terhune et al., 2021 — Human Brain Mapping"
                 stat="DMN decoupling, not suppression"
                 detail="The first fMRI study found floating reduces connectivity between body-mapping and self-model circuits — a novel mechanism called 'taking the body off the mind.'"
-                accentColor={FLOAT_MID}
-                accentTextColor={FLOAT_DEEP}
+                accentColor={'var(--color-float-mid)'}
+                accentTextColor={'var(--color-float-deep)'}
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -899,8 +899,8 @@ export default function FloatClient() {
                 source="Lashgari et al., 2025 — BMC Comp Med Ther"
                 stat="63 studies, 1,838 participants"
                 detail="The first comprehensive PRISMA systematic review of flotation-REST. Pooled meta-analysis not yet feasible due to inconsistent outcome measures across studies."
-                accentColor={FLOAT_MID}
-                accentTextColor={FLOAT_DEEP}
+                accentColor={'var(--color-float-mid)'}
+                accentTextColor={'var(--color-float-deep)'}
               />
             </ScrollReveal>
           </div>
@@ -1002,7 +1002,7 @@ export default function FloatClient() {
             <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem', marginBottom: '3.5rem' }}>
               <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${FLOAT_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid 'var(--color-float-mid)'` }}>
                     <th style={thStyle}>Condition</th>
                     <th style={thStyle}>Rating</th>
                     <th style={thStyle}>Key Source</th>
@@ -1038,8 +1038,8 @@ export default function FloatClient() {
                 source="Loose et al., 2021 — JAMA Network Open"
                 stat="n=99: No advantage over placebo"
                 detail="The only properly blinded RCT found floating and an indistinguishable placebo produced equivalent chronic pain outcomes at all follow-up points. The acute relief is real; the specific mechanism remains unproven."
-                accentColor={FLOAT_MID}
-                accentTextColor={FLOAT_DEEP}
+                accentColor={'var(--color-float-mid)'}
+                accentTextColor={'var(--color-float-deep)'}
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1047,8 +1047,8 @@ export default function FloatClient() {
                 source="Garland et al., 2024 — PLOS ONE"
                 stat="n=75: Zero serious adverse events"
                 detail="The safety and feasibility RCT confirmed 85–89% adherence across conditions with no serious adverse events — establishing the infrastructure for the larger efficacy trials the field needs."
-                accentColor={FLOAT_MID}
-                accentTextColor={FLOAT_DEEP}
+                accentColor={'var(--color-float-mid)'}
+                accentTextColor={'var(--color-float-deep)'}
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1056,8 +1056,8 @@ export default function FloatClient() {
                 source="Van Dierendonck & Nijenhuis, 2005"
                 stat="Flotation outperforms meditation for stress"
                 detail="The meta-analysis found flotation REST produced greater stress reduction than standard meditation, biofeedback, and progressive muscle relaxation in pooled analysis."
-                accentColor={FLOAT_MID}
-                accentTextColor={FLOAT_DEEP}
+                accentColor={'var(--color-float-mid)'}
+                accentTextColor={'var(--color-float-deep)'}
               />
             </ScrollReveal>
           </div>
@@ -1073,7 +1073,7 @@ export default function FloatClient() {
         id="experience"
         style={{
           ...sectionPadding,
-          background: `color-mix(in srgb, var(--color-cream) 92%, ${FLOAT_LIGHT})`,
+          background: `color-mix(in srgb, var(--color-cream) 92%, 'var(--color-float-light)')`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
@@ -1137,7 +1137,7 @@ export default function FloatClient() {
                         fontFamily: 'var(--font-ui)',
                         fontSize: '0.6875rem',
                         fontWeight: 700,
-                        color: FLOAT_MID,
+                        color: 'var(--color-float-mid)',
                         letterSpacing: '0.06em',
                         margin: '0 0 0.25rem',
                         textTransform: 'uppercase',
@@ -1162,7 +1162,7 @@ export default function FloatClient() {
                     style={{
                       background: 'var(--color-surface-raised)',
                       border: '1px solid var(--color-border)',
-                      borderLeft: `3px solid ${FLOAT_MID}`,
+                      borderLeft: `3px solid 'var(--color-float-mid)'`,
                       borderRadius: '2px',
                       padding: '1.25rem',
                     }}
@@ -1173,7 +1173,7 @@ export default function FloatClient() {
                     <p
                       style={{
                         fontSize: '0.8125rem',
-                        color: FLOAT_DEEP,
+                        color: 'var(--color-float-deep)',
                         fontFamily: 'var(--font-ui)',
                         fontStyle: 'italic',
                         margin: 0,
@@ -1192,8 +1192,8 @@ export default function FloatClient() {
             <div
               style={{
                 background: 'rgba(74,127,181,0.07)',
-                border: `1px solid ${FLOAT_LIGHT}`,
-                borderLeft: `4px solid ${FLOAT_MID}`,
+                border: `1px solid 'var(--color-float-light)'`,
+                borderLeft: `4px solid 'var(--color-float-mid)'`,
                 borderRadius: '2px',
                 padding: '1.75rem 2rem',
                 marginBottom: '3.5rem',
@@ -1206,7 +1206,7 @@ export default function FloatClient() {
                   fontWeight: 700,
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  color: FLOAT_MID,
+                  color: 'var(--color-float-mid)',
                   margin: '0 0 0.75rem',
                 }}
               >
@@ -1254,7 +1254,7 @@ export default function FloatClient() {
                       fontWeight: 700,
                       letterSpacing: '0.12em',
                       textTransform: 'uppercase',
-                      color: FLOAT_DEEP,
+                      color: 'var(--color-float-deep)',
                       margin: '0 0 0.25rem',
                     }}
                   >
@@ -1265,7 +1265,7 @@ export default function FloatClient() {
                       fontFamily: 'var(--font-display)',
                       fontSize: '1rem',
                       fontWeight: 600,
-                      color: FLOAT_MID,
+                      color: 'var(--color-float-mid)',
                       margin: '0 0 0.75rem',
                       fontStyle: 'normal',
                     }}
@@ -1299,7 +1299,7 @@ export default function FloatClient() {
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: FLOAT_DEEP,
+                    color: 'var(--color-float-deep)',
                     margin: '0 0 0.875rem',
                   }}
                 >
@@ -1325,7 +1325,7 @@ export default function FloatClient() {
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: FLOAT_DEEP,
+                    color: 'var(--color-float-deep)',
                     margin: '0 0 0.875rem',
                   }}
                 >
@@ -1469,7 +1469,7 @@ export default function FloatClient() {
             <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem', marginBottom: '3.5rem' }}>
               <table style={{ width: '100%', minWidth: '480px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${FLOAT_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid 'var(--color-float-mid)'` }}>
                     <th style={thStyle}>Parameter</th>
                     <th style={thStyle}>Specification</th>
                   </tr>
@@ -1523,7 +1523,7 @@ export default function FloatClient() {
                       fontWeight: 700,
                       letterSpacing: '0.12em',
                       textTransform: 'uppercase',
-                      color: FLOAT_DEEP,
+                      color: 'var(--color-float-deep)',
                       margin: '0 0 0.25rem',
                     }}
                   >
@@ -1546,7 +1546,7 @@ export default function FloatClient() {
                       fontFamily: 'var(--font-ui)',
                       fontSize: '0.875rem',
                       fontWeight: 600,
-                      color: FLOAT_MID,
+                      color: 'var(--color-float-mid)',
                       margin: '0 0 0.875rem',
                     }}
                   >
@@ -1566,7 +1566,7 @@ export default function FloatClient() {
             <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem', marginBottom: '3rem' }}>
               <table style={{ width: '100%', minWidth: '480px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${FLOAT_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid 'var(--color-float-mid)'` }}>
                     <th style={thStyle}>Model</th>
                     <th style={thStyle}>Price</th>
                     <th style={thStyle}>Notes</th>
@@ -1576,7 +1576,7 @@ export default function FloatClient() {
                   {commercialTanks.map((tank, i) => (
                     <tr key={i} style={{ borderBottom: '1px solid var(--color-border)' }}>
                       <td style={{ ...tdStyle, fontWeight: 500, color: 'var(--color-text)', whiteSpace: 'nowrap' }}>{tank.name}</td>
-                      <td style={{ ...tdStyle, color: FLOAT_DEEP, fontWeight: 600 }}>{tank.price}</td>
+                      <td style={{ ...tdStyle, color: 'var(--color-float-deep)', fontWeight: 600 }}>{tank.price}</td>
                       <td style={tdStyle}>{tank.notes}</td>
                     </tr>
                   ))}
@@ -1593,8 +1593,8 @@ export default function FloatClient() {
             <div
               style={{
                 background: 'rgba(74,127,181,0.06)',
-                border: `1px solid ${FLOAT_LIGHT}`,
-                borderLeft: `4px solid ${FLOAT_MID}`,
+                border: `1px solid 'var(--color-float-light)'`,
+                borderLeft: `4px solid 'var(--color-float-mid)'`,
                 borderRadius: '2px',
                 padding: '1.75rem 2rem',
                 marginBottom: '1.5rem',
@@ -1607,7 +1607,7 @@ export default function FloatClient() {
                   fontWeight: 700,
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  color: FLOAT_MID,
+                  color: 'var(--color-float-mid)',
                   margin: '0 0 0.875rem',
                 }}
               >
@@ -1634,7 +1634,7 @@ export default function FloatClient() {
                         fontWeight: 600,
                         letterSpacing: '0.08em',
                         textTransform: 'uppercase',
-                        color: FLOAT_DEEP,
+                        color: 'var(--color-float-deep)',
                         margin: '0 0 0.375rem',
                       }}
                     >
@@ -1658,7 +1658,7 @@ export default function FloatClient() {
                 fontStyle: 'italic',
                 lineHeight: 1.7,
                 padding: '1rem 1.5rem',
-                borderLeft: `2px solid ${FLOAT_LIGHT}`,
+                borderLeft: `2px solid 'var(--color-float-light)'`,
                 margin: 0,
               }}
             >
@@ -1678,7 +1678,7 @@ export default function FloatClient() {
         id="integration"
         style={{
           ...sectionPadding,
-          background: `color-mix(in srgb, var(--color-cream) 92%, ${FLOAT_LIGHT})`,
+          background: `color-mix(in srgb, var(--color-cream) 92%, 'var(--color-float-light)')`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
@@ -1699,7 +1699,7 @@ export default function FloatClient() {
             <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem', marginBottom: '3.5rem' }}>
               <table style={{ width: '100%', minWidth: '640px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${FLOAT_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid 'var(--color-float-mid)'` }}>
                     <th style={thStyle}>Practice</th>
                     <th style={thStyle}>Synergy</th>
                     <th style={thStyle}>Evidence Level</th>
@@ -1751,7 +1751,7 @@ export default function FloatClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: FLOAT_DEEP,
+                        color: 'var(--color-float-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -1782,7 +1782,7 @@ export default function FloatClient() {
                   style={{
                     background: 'var(--color-surface-raised)',
                     border: '1px solid var(--color-border)',
-                    borderTop: `3px solid ${FLOAT_MID}`,
+                    borderTop: `3px solid 'var(--color-float-mid)'`,
                     borderRadius: '2px',
                     padding: '1.5rem',
                   }}
@@ -1794,7 +1794,7 @@ export default function FloatClient() {
                       fontWeight: 700,
                       letterSpacing: '0.12em',
                       textTransform: 'uppercase',
-                      color: FLOAT_DEEP,
+                      color: 'var(--color-float-deep)',
                       margin: '0 0 0.875rem',
                     }}
                   >
@@ -1867,10 +1867,10 @@ export default function FloatClient() {
                     fontWeight: 500,
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
-                    color: FLOAT_DEEP,
+                    color: 'var(--color-float-deep)',
                     textDecoration: 'none',
                     padding: '0.5rem 1rem',
-                    border: `1px solid ${FLOAT_MID}`,
+                    border: `1px solid 'var(--color-float-mid)'`,
                     borderRadius: '2px',
                     transition: 'background 200ms ease',
                   }}

@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import ExercisesTab from './ExercisesTab';
 import PracticeBuilderTab from './PracticeBuilderTab';
 import TeacherPathTab from './TeacherPathTab';
+import PageHero from '@/components/PageHero';
+import StickyNav from '@/components/StickyNav';
 
 type ActiveTab = 'exercises' | 'routines' | 'teacher';
 
@@ -20,99 +21,43 @@ export default function PracticeClient() {
   }
 
   return (
-    <>
+    <div style={{ '--page-accent': 'var(--color-amber-deep)' } as React.CSSProperties}>
+      <StickyNav
+        accentColor="var(--color-amber-deep)"
+        sections={[
+          { id: 'exercises', label: 'Do It' },
+          { id: 'routines', label: 'Routines' },
+          { id: 'teacher', label: 'Teacher Path' },
+        ]}
+      />
+
       {/* ── Hero ──────────────────────────────────────────────── */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '60dvh',
-          display: 'flex',
-          alignItems: 'flex-end',
-          overflow: 'hidden',
-        }}
+      <PageHero
+        imageSrc="/images/practice-hero.webp"
+        backgroundGradient="linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)"
+        eyebrow="Your Daily Ritual"
+        headline="Practice"
+        subtitle="Guided exercises, daily routine templates, and a structured path for those ready to teach."
+        accentColor="var(--color-amber-light)"
+        minHeight="60dvh"
       >
-        {/* Background image */}
-        <Image
-          src="/images/practice-hero.webp"
-          alt=""
-          fill
-          priority
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        {/* Gradient overlay */}
-        <div
-          aria-hidden="true"
+        <p
           style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)',
-          }}
-        />
-
-        {/* Text block */}
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 1,
-            padding: 'clamp(2rem, 5vw, 4rem) max(1.5rem, 8vw)',
-            maxWidth: '720px',
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
+            fontStyle: 'italic',
+            color: '#F5EAE1',
+            margin: '0 0 0.75rem',
+            opacity: 0.9,
           }}
         >
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.75rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'var(--color-amber-light)',
-              margin: '0 0 0.75rem',
-            }}
-          >
-            Your Daily Ritual
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2.75rem, 7vw, 5.5rem)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              margin: '0 0 0.75rem',
-              lineHeight: 1.05,
-            }}
-          >
-            Practice
-          </h1>
-          <p
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
-              fontStyle: 'italic',
-              color: '#F5EAE1',
-              margin: '0 0 0.75rem',
-              opacity: 0.9,
-            }}
-          >
-            Set your intention. Begin your practice.
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'clamp(0.8125rem, 1.2vw, 0.9375rem)',
-              color: '#F5EAE1',
-              margin: 0,
-              opacity: 0.7,
-              lineHeight: 1.7,
-            }}
-          >
-            Guided exercises, daily routine templates, and a structured path for those ready to teach.
-          </p>
-        </div>
-      </section>
+          Set your intention. Begin your practice.
+        </p>
+      </PageHero>
 
       {/* ── Main Content ──────────────────────────────────────── */}
       <section
+        id="exercises"
         style={{
           padding: 'clamp(2rem, 4vw, 3rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
           background: 'var(--color-cream)',
@@ -130,18 +75,21 @@ export default function PracticeClient() {
             }}
           >
             <button
+              id="exercises"
               className={activeTab === 'exercises' ? 'pill-tab active' : 'pill-tab'}
               onClick={() => setActiveTab('exercises')}
             >
               Do It
             </button>
             <button
+              id="routines"
               className={activeTab === 'routines' ? 'pill-tab active' : 'pill-tab'}
               onClick={() => setActiveTab('routines')}
             >
               Daily Routines
             </button>
             <button
+              id="teacher"
               className={activeTab === 'teacher' ? 'pill-tab active' : 'pill-tab'}
               onClick={() => setActiveTab('teacher')}
             >
@@ -170,6 +118,6 @@ export default function PracticeClient() {
 
         </div>
       </section>
-    </>
+    </div>
   );
 }

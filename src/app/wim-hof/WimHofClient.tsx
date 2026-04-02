@@ -1,130 +1,76 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (arctic steel blue) ──────────────────────────
-const FROST_DEEP  = '#1B3A4B';  // deep steel blue
-const FROST_MID   = '#4A90A4';  // arctic mid-tone
-const FROST_LIGHT = '#A3D4E0';  // pale frost
-const FROST_PALE  = '#E3F2F6';  // near-white ice
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
+import Accordion, { type AccordionItem } from '@/components/Accordion';
+import StickyNav from '@/components/StickyNav';
 
 export default function WimHofClient() {
-  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+  const accordionItems: AccordionItem[] = [
+    {
+      id: 'power-breathing',
+      header: <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600, color: 'var(--color-text)', margin: 0, fontStyle: 'normal' }}>Power Breathing</h4>,
+      body: <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.8, margin: 0 }}>Increase to 50–60 breaths with more forceful exhales. Add breath holds at the top of inhale between rounds. The increased ventilation deepens the alkalotic state and can produce more pronounced body sensation and longer retentions. For experienced practitioners only — the stronger hyperventilation increases fainting risk if practiced while standing.</p>,
+    },
+    {
+      id: 'pushup-challenge',
+      header: <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600, color: 'var(--color-text)', margin: 0, fontStyle: 'normal' }}>Push-Up Challenge</h4>,
+      body: <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.8, margin: 0 }}>During the empty-lung retention, perform push-ups until you must breathe. The low-CO2 state suppresses the urge to breathe, allowing surprising reps — often 20–40% more than normal. This is the WHM’s signature demonstration exercise and illustrates the dissociation between oxygen availability and the breathing urge. The urge to breathe is primarily CO2-driven, not oxygen-driven.</p>,
+    },
+    {
+      id: 'cold-shower-priming',
+      header: <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600, color: 'var(--color-text)', margin: 0, fontStyle: 'normal' }}>Cold Shower with Priming Breath</h4>,
+      body: <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.8, margin: 0 }}>Perform 2–3 breathing rounds seated safely, then stand up and enter the cold shower while breathing normally. The prior hyperventilation creates a primed state that amplifies the cold shock response. Focus on slow, controlled exhales under the cold water to maintain vagal engagement. Never perform breath-holds while standing in the shower — the combination of cold shock and breath retention while standing creates a fainting and fall risk.</p>,
+    },
+    {
+      id: 'brown-fat-breathing',
+      header: <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600, color: 'var(--color-text)', margin: 0, fontStyle: 'normal' }}>Brown Fat Activation Breathing</h4>,
+      body: <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.8, margin: 0 }}>Focus breathing into the intercostal muscles and upper back area — consciously expanding the ribcage laterally and posteriorly rather than lifting the shoulders. Some evidence suggests this may preferentially activate brown adipose tissue in the supraclavicular region, where BAT density is highest in adults. The mechanism is speculative but the technique is low-risk and complementary to cold exposure.</p>,
+    },
+  ];
 
   return (
-    <div
-      style={{
-        fontFamily: 'var(--font-body)',
-        fontSize: 'var(--text-body)',
-        lineHeight: 1.8,
-        color: 'var(--color-text)',
-      }}
-    >
+    <div style={{ '--page-accent': 'var(--color-frost-deep)', fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)', lineHeight: 1.8, color: 'var(--color-text)' } as React.CSSProperties}>
+      <StickyNav
+        accentColor="var(--color-frost-deep)"
+        sections={[
+          { id: 'pillars', label: 'Pillars' },
+          { id: 'breathing', label: 'Breathing' },
+          { id: 'cold', label: 'Cold' },
+          { id: 'science', label: 'Science' },
+          { id: 'evidence', label: 'Evidence' },
+          { id: 'safety', label: 'Safety' },
+          { id: 'training', label: 'Training' },
+          { id: 'connect', label: 'Connect' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           1. HERO
       ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(40% 0.06 220), oklch(72% 0.05 210))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-wim-hof.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(227,242,246,0.75)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            The Wim Hof Method
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#EEF7FA',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            The Iceman&apos;s Three Pillars
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(227,242,246,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            Breathe. Brave the cold. Commit. &mdash; Voluntary control of the autonomic nervous
-            system, validated by science.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#pillars',  label: 'Pillars'   },
-              { href: '#breathing',label: 'Breathing' },
-              { href: '#cold',     label: 'Cold'      },
-              { href: '#science',  label: 'Science'   },
-              { href: '#evidence', label: 'Evidence'  },
-              { href: '#safety',   label: 'Safety'    },
-              { href: '#training', label: 'Training'  },
-              { href: '#connect',  label: 'Connect'   },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: FROST_LIGHT,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(163,212,224,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-wim-hof.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(40% 0.06 220), oklch(72% 0.05 210))"
+        eyebrow="The Wim Hof Method"
+        headline="The Iceman's Three Pillars"
+        subtitle="Breathe. Brave the cold. Commit. — Voluntary control of the autonomic nervous system, validated by science."
+        accentColor="var(--color-frost-light)"
+        anchorLinks={[
+          { label: 'Pillars', href: '#pillars' },
+          { label: 'Breathing', href: '#breathing' },
+          { label: 'Cold', href: '#cold' },
+          { label: 'Science', href: '#science' },
+          { label: 'Evidence', href: '#evidence' },
+          { label: 'Safety', href: '#safety' },
+          { label: 'Training', href: '#training' },
+          { label: 'Connect', href: '#connect' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. WHAT IS THE WIM HOF METHOD
@@ -148,30 +94,7 @@ export default function WimHofClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1rem',
-                }}
-              >
-                Origins &amp; Philosophy
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.5rem',
-                }}
-              >
-                What Is the Wim Hof Method?
-              </h2>
+              <SectionIntro label="Origins &amp; Philosophy" title="What Is the Wim Hof Method?" accentColor="var(--color-frost-mid)" />
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 Wim Hof (born April 20, 1959, Sittard, Netherlands) discovered cold immersion at 17
                 when he plunged into the Beatrixpark canal in Amsterdam. He felt an immediate, profound
@@ -223,7 +146,7 @@ export default function WimHofClient() {
                 <div
                   key={i}
                   style={{
-                    borderLeft: `3px solid ${FROST_MID}`,
+                    borderLeft: '3px solid var(--color-frost-mid)',
                     paddingLeft: '1.25rem',
                     marginBottom: '1.5rem',
                   }}
@@ -235,7 +158,7 @@ export default function WimHofClient() {
                       fontWeight: 600,
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: FROST_DEEP,
+                      color: 'var(--color-frost-deep)',
                       margin: '0 0 0.375rem',
                     }}
                   >
@@ -263,30 +186,30 @@ export default function WimHofClient() {
                 stat="194% increase in IL-10"
                 detail="In an endotoxemia (LPS injection) model, trained WHM practitioners showed voluntary immune modulation vs. untrained controls. Note: the 194% IL-10 increase occurred under experimental endotoxin challenge, not during normal daily practice. Generalizability to everyday immune function is not established."
                 url="https://pubmed.ncbi.nlm.nih.gov/24799686/"
-                accentColor={FROST_MID}
-                accentTextColor={FROST_DEEP}
+                accentColor="var(--color-frost-mid)"
+                accentTextColor="var(--color-frost-deep)"
               />
               <StatCard
                 source="Buijze et al., PLOS ONE (2016)"
                 stat="29% fewer sick days"
                 detail="Largest cold-exposure RCT to date (n=3,018). Participants ending showers with 30\u201390 seconds of cold water reported significantly fewer sick days."
                 url="https://pubmed.ncbi.nlm.nih.gov/27631616/"
-                accentColor={FROST_MID}
-                accentTextColor={FROST_DEEP}
+                accentColor="var(--color-frost-mid)"
+                accentTextColor="var(--color-frost-deep)"
               />
               <StatCard
                 source="Guinness World Records"
                 stat="18 world records"
                 detail="Including longest ice bath (1 hr 52 min), barefoot half-marathon on ice and snow, and Everest climb in shorts to 7,400m."
-                accentColor={FROST_MID}
-                accentTextColor={FROST_DEEP}
+                accentColor="var(--color-frost-mid)"
+                accentTextColor="var(--color-frost-deep)"
               />
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-frost-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           3. BREATHING PROTOCOL
@@ -295,35 +218,12 @@ export default function WimHofClient() {
         id="breathing"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${FROST_PALE})`,
+          background: 'color-mix(in srgb, var(--color-cream) 90%, var(--color-frost-pale))',
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Pillar One &mdash; Controlled Hyperventilation
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 1.25rem',
-              }}
-            >
-              The Breathing Protocol
-            </h2>
+            <SectionIntro label="Pillar One — Controlled Hyperventilation" title="The Breathing Protocol" accentColor="var(--color-frost-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -344,8 +244,8 @@ export default function WimHofClient() {
           <ScrollReveal>
             <div
               style={{
-                borderLeft: `4px solid ${FROST_MID}`,
-                background: FROST_PALE,
+                borderLeft: '4px solid var(--color-frost-mid)',
+                background: 'var(--color-frost-pale)',
                 borderRadius: '0 4px 4px 0',
                 padding: '2rem 2rem 2rem 1.75rem',
                 marginBottom: '3rem',
@@ -358,7 +258,7 @@ export default function WimHofClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: FROST_DEEP,
+                  color: 'var(--color-frost-deep)',
                   margin: '0 0 1.5rem',
                 }}
               >
@@ -401,7 +301,7 @@ export default function WimHofClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: FROST_DEEP,
+                        color: 'var(--color-frost-deep)',
                         margin: '0 0 0.25rem',
                       }}
                     >
@@ -473,7 +373,7 @@ export default function WimHofClient() {
                   style={{
                     background: 'var(--color-surface-raised)',
                     border: '1px solid var(--color-border)',
-                    borderTop: `3px solid ${FROST_MID}`,
+                    borderTop: '3px solid var(--color-frost-mid)',
                     borderRadius: '2px',
                     padding: '1.5rem',
                   }}
@@ -513,65 +413,11 @@ export default function WimHofClient() {
             </h3>
           </ScrollReveal>
           <div style={{ marginBottom: '2.5rem' }}>
-            {[
-              {
-                title: 'Power Breathing',
-                body: 'Increase to 50\u201360 breaths with more forceful exhales. Add breath holds at the top of inhale between rounds. The increased ventilation deepens the alkalotic state and can produce more pronounced body sensation and longer retentions. For experienced practitioners only \u2014 the stronger hyperventilation increases fainting risk if practiced while standing.',
-              },
-              {
-                title: 'Push-Up Challenge',
-                body: 'During the empty-lung retention, perform push-ups until you must breathe. The low-CO2 state suppresses the urge to breathe, allowing surprising reps \u2014 often 20\u201340% more than normal. This is the WHM\u2019s signature demonstration exercise and illustrates the dissociation between oxygen availability and the breathing urge. The urge to breathe is primarily CO2-driven, not oxygen-driven.',
-              },
-              {
-                title: 'Cold Shower with Priming Breath',
-                body: 'Perform 2\u20133 breathing rounds seated safely, then stand up and enter the cold shower while breathing normally. The prior hyperventilation creates a primed state that amplifies the cold shock response. Focus on slow, controlled exhales under the cold water to maintain vagal engagement. Never perform breath-holds while standing in the shower \u2014 the combination of cold shock and breath retention while standing creates a fainting and fall risk.',
-              },
-              {
-                title: 'Brown Fat Activation Breathing',
-                body: 'Focus breathing into the intercostal muscles and upper back area \u2014 consciously expanding the ribcage laterally and posteriorly rather than lifting the shoulders. Some evidence suggests this may preferentially activate brown adipose tissue in the supraclavicular region, where BAT density is highest in adults. The mechanism is speculative but the technique is low-risk and complementary to cold exposure.',
-              },
-            ].map((item, i) => (
-              <ScrollReveal key={i}>
-                <div
-                  style={{
-                    borderBottom: '1px solid var(--color-border)',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <div
-                    onClick={() => setOpenAccordion(openAccordion === i ? null : i)}
-                    style={{
-                      cursor: 'pointer',
-                      padding: '1rem 0',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      gap: '1rem',
-                    }}
-                  >
-                    <h4
-                      style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: '1rem',
-                        fontWeight: 600,
-                        color: 'var(--color-text)',
-                        margin: 0,
-                        fontStyle: 'normal',
-                      }}
-                    >
-                      {item.title} {openAccordion === i ? '▾' : '▸'}
-                    </h4>
-                  </div>
-                  {openAccordion === i && (
-                    <div style={{ paddingBottom: '1.25rem' }}>
-                      <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.8, margin: 0 }}>
-                        {item.body}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </ScrollReveal>
-            ))}
+            <Accordion
+              items={accordionItems}
+              accentColor="var(--color-frost-mid)"
+              variant="minimal"
+            />
           </div>
 
           {/* Safety callout */}
@@ -616,7 +462,7 @@ export default function WimHofClient() {
         </div>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-frost-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           4. COLD EXPOSURE PROTOCOL
@@ -630,30 +476,7 @@ export default function WimHofClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Pillar Two &mdash; Progressive Cold Adaptation
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 1.25rem',
-              }}
-            >
-              Cold Exposure Protocol
-            </h2>
+            <SectionIntro label="Pillar Two — Progressive Cold Adaptation" title="Cold Exposure Protocol" accentColor="var(--color-frost-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -729,7 +552,7 @@ export default function WimHofClient() {
                   style={{
                     background: 'var(--color-surface-raised)',
                     border: '1px solid var(--color-border)',
-                    borderLeft: `4px solid ${FROST_MID}`,
+                    borderLeft: '4px solid var(--color-frost-mid)',
                     borderRadius: '0 2px 2px 0',
                     padding: '1.5rem',
                   }}
@@ -741,7 +564,7 @@ export default function WimHofClient() {
                       fontWeight: 600,
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: FROST_MID,
+                      color: 'var(--color-frost-mid)',
                       margin: '0 0 0.25rem',
                     }}
                   >
@@ -770,8 +593,8 @@ export default function WimHofClient() {
           <ScrollReveal>
             <div
               style={{
-                borderLeft: `3px solid ${FROST_MID}`,
-                background: FROST_PALE,
+                borderLeft: '3px solid var(--color-frost-mid)',
+                background: 'var(--color-frost-pale)',
                 borderRadius: '0 2px 2px 0',
                 padding: '1.5rem',
                 marginBottom: '1.5rem',
@@ -784,7 +607,7 @@ export default function WimHofClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: FROST_DEEP,
+                  color: 'var(--color-frost-deep)',
                   margin: '0 0 1rem',
                 }}
               >
@@ -811,7 +634,7 @@ export default function WimHofClient() {
                         fontWeight: 600,
                         letterSpacing: '0.08em',
                         textTransform: 'uppercase',
-                        color: FROST_DEEP,
+                        color: 'var(--color-frost-deep)',
                         margin: '0 0 0.2rem',
                       }}
                     >
@@ -830,8 +653,8 @@ export default function WimHofClient() {
           <ScrollReveal>
             <div
               style={{
-                borderLeft: `3px solid ${FROST_MID}`,
-                background: FROST_PALE,
+                borderLeft: '3px solid var(--color-frost-mid)',
+                background: 'var(--color-frost-pale)',
                 borderRadius: '0 2px 2px 0',
                 padding: '1.5rem',
               }}
@@ -843,7 +666,7 @@ export default function WimHofClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: FROST_DEEP,
+                  color: 'var(--color-frost-deep)',
                   margin: '0 0 0.625rem',
                 }}
               >
@@ -861,7 +684,7 @@ export default function WimHofClient() {
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-frost-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           5. THE SCIENCE
@@ -870,35 +693,12 @@ export default function WimHofClient() {
         id="science"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${FROST_PALE})`,
+          background: 'color-mix(in srgb, var(--color-cream) 90%, var(--color-frost-pale))',
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Mechanisms &amp; Pathways
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 1.25rem',
-              }}
-            >
-              The Science
-            </h2>
+            <SectionIntro label="Mechanisms &amp; Pathways" title="The Science" accentColor="var(--color-frost-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -960,7 +760,7 @@ export default function WimHofClient() {
                         width: '10px',
                         height: '10px',
                         borderRadius: '50%',
-                        background: FROST_MID,
+                        background: 'var(--color-frost-mid)',
                         flexShrink: 0,
                         marginTop: '0.35rem',
                       }}
@@ -970,7 +770,7 @@ export default function WimHofClient() {
                         style={{
                           width: '2px',
                           flex: 1,
-                          background: `${FROST_MID}60`,
+                          background: 'var(--color-frost-mid)60',
                           minHeight: '1.5rem',
                         }}
                       />
@@ -1110,8 +910,8 @@ export default function WimHofClient() {
           <ScrollReveal>
             <div
               style={{
-                borderLeft: `3px solid ${FROST_MID}`,
-                background: FROST_PALE,
+                borderLeft: '3px solid var(--color-frost-mid)',
+                background: 'var(--color-frost-pale)',
                 borderRadius: '0 2px 2px 0',
                 padding: '1.5rem',
               }}
@@ -1123,7 +923,7 @@ export default function WimHofClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: FROST_DEEP,
+                  color: 'var(--color-frost-deep)',
                   margin: '0 0 0.625rem',
                 }}
               >
@@ -1143,7 +943,7 @@ export default function WimHofClient() {
         </div>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-frost-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           6. THE EVIDENCE
@@ -1157,30 +957,7 @@ export default function WimHofClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Clinical Research
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 1.25rem',
-              }}
-            >
-              The Evidence
-            </h2>
+            <SectionIntro label="Clinical Research" title="The Evidence" accentColor="var(--color-frost-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -1211,24 +988,24 @@ export default function WimHofClient() {
                 stat="n=24 (12 trained, 12 control)"
                 detail="Gold-standard endotoxemia challenge. Trained group showed voluntary immune suppression via breathing. First proof that the autonomic nervous system and innate immune response can be voluntarily influenced."
                 url="https://pubmed.ncbi.nlm.nih.gov/24799686/"
-                accentColor={FROST_MID}
-                accentTextColor={FROST_DEEP}
+                accentColor="var(--color-frost-mid)"
+                accentTextColor="var(--color-frost-deep)"
               />
               <StatCard
                 source="Buijze et al., PLOS ONE (2016)"
                 stat="n=3,018"
                 detail="Largest cold-exposure RCT. 30/60/90 seconds of cold shower ending. All cold groups showed 29% fewer sick days vs. control. Duration didn\u2019t matter \u2014 the cold stimulus itself was the active ingredient."
                 url="https://pubmed.ncbi.nlm.nih.gov/27631616/"
-                accentColor={FROST_MID}
-                accentTextColor={FROST_DEEP}
+                accentColor="var(--color-frost-mid)"
+                accentTextColor="var(--color-frost-deep)"
               />
               <StatCard
                 source="Almahayni & Hammond (2024)"
                 stat="Systematic Review"
                 detail="Reviewed all published WHM studies. Concluded: consistent evidence for immune modulation and autonomic control, preliminary evidence for mood and pain, insufficient evidence for disease-specific claims."
                 url="https://pubmed.ncbi.nlm.nih.gov/38270553/"
-                accentColor={FROST_MID}
-                accentTextColor={FROST_DEEP}
+                accentColor="var(--color-frost-mid)"
+                accentTextColor="var(--color-frost-deep)"
               />
             </div>
           </ScrollReveal>
@@ -1250,7 +1027,7 @@ export default function WimHofClient() {
             <div style={{ overflowX: 'auto', marginBottom: '3.5rem' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8125rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${FROST_MID}` }}>
+                  <tr style={{ borderBottom: '2px solid var(--color-frost-mid)' }}>
                     {['Domain', 'Evidence Level', 'Key Finding'].map(h => (
                       <th
                         key={h}
@@ -1262,7 +1039,7 @@ export default function WimHofClient() {
                           fontWeight: 600,
                           letterSpacing: '0.08em',
                           textTransform: 'uppercase',
-                          color: FROST_DEEP,
+                          color: 'var(--color-frost-deep)',
                         }}
                       >
                         {h}
@@ -1403,7 +1180,7 @@ export default function WimHofClient() {
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-frost-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           7. SAFETY & CONTRAINDICATIONS
@@ -1412,7 +1189,7 @@ export default function WimHofClient() {
         id="safety"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${FROST_PALE})`,
+          background: 'color-mix(in srgb, var(--color-cream) 90%, var(--color-frost-pale))',
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
@@ -1459,30 +1236,7 @@ export default function WimHofClient() {
           </ScrollReveal>
 
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Risk Assessment
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 2.5rem',
-              }}
-            >
-              Safety &amp; Contraindications
-            </h2>
+            <SectionIntro label="Risk Assessment" title="Safety &amp; Contraindications" accentColor="var(--color-frost-mid)" />
           </ScrollReveal>
 
           {/* 3 Contraindication Tiers */}
@@ -1527,9 +1281,9 @@ export default function WimHofClient() {
               {
                 title: 'Relative Cautions',
                 subtitle: 'Proceed with awareness',
-                accentBorder: FROST_MID,
-                accentBg: FROST_PALE,
-                accentText: FROST_DEEP,
+                accentBorder: 'var(--color-frost-mid)',
+                accentBg: 'var(--color-frost-pale)',
+                accentText: 'var(--color-frost-deep)',
                 items: [
                   'Recent surgery',
                   'Asthma (controlled)',
@@ -1658,8 +1412,8 @@ export default function WimHofClient() {
           <ScrollReveal>
             <div
               style={{
-                borderLeft: `3px solid ${FROST_MID}`,
-                background: FROST_PALE,
+                borderLeft: '3px solid var(--color-frost-mid)',
+                background: 'var(--color-frost-pale)',
                 borderRadius: '0 2px 2px 0',
                 padding: '1.5rem',
               }}
@@ -1671,7 +1425,7 @@ export default function WimHofClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: FROST_DEEP,
+                  color: 'var(--color-frost-deep)',
                   margin: '0 0 1rem',
                 }}
               >
@@ -1703,7 +1457,7 @@ export default function WimHofClient() {
         </div>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-frost-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           8. TRAINING & COURSES
@@ -1717,30 +1471,7 @@ export default function WimHofClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Learning Paths
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 1.25rem',
-              }}
-            >
-              Training &amp; Courses
-            </h2>
+            <SectionIntro label="Learning Paths" title="Training &amp; Courses" accentColor="var(--color-frost-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -1773,7 +1504,7 @@ export default function WimHofClient() {
             <div style={{ overflowX: 'auto', marginBottom: '3rem' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8125rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${FROST_MID}` }}>
+                  <tr style={{ borderBottom: '2px solid var(--color-frost-mid)' }}>
                     {['Course', 'Format', 'Price', 'Best For'].map(h => (
                       <th
                         key={h}
@@ -1785,7 +1516,7 @@ export default function WimHofClient() {
                           fontWeight: 600,
                           letterSpacing: '0.08em',
                           textTransform: 'uppercase',
-                          color: FROST_DEEP,
+                          color: 'var(--color-frost-deep)',
                         }}
                       >
                         {h}
@@ -1830,8 +1561,8 @@ export default function WimHofClient() {
           <ScrollReveal>
             <div
               style={{
-                borderLeft: `3px solid ${FROST_MID}`,
-                background: FROST_PALE,
+                borderLeft: '3px solid var(--color-frost-mid)',
+                background: 'var(--color-frost-pale)',
                 borderRadius: '0 2px 2px 0',
                 padding: '1.5rem',
                 marginBottom: '3rem',
@@ -1844,7 +1575,7 @@ export default function WimHofClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: FROST_DEEP,
+                  color: 'var(--color-frost-deep)',
                   margin: '0 0 0.625rem',
                 }}
               >
@@ -1895,7 +1626,7 @@ export default function WimHofClient() {
                       width: '28px',
                       height: '28px',
                       borderRadius: '50%',
-                      background: FROST_MID,
+                      background: 'var(--color-frost-mid)',
                       color: '#ffffff',
                       display: 'flex',
                       alignItems: 'center',
@@ -1921,8 +1652,8 @@ export default function WimHofClient() {
           <ScrollReveal>
             <div
               style={{
-                borderLeft: `3px solid ${FROST_MID}`,
-                background: FROST_PALE,
+                borderLeft: '3px solid var(--color-frost-mid)',
+                background: 'var(--color-frost-pale)',
                 borderRadius: '0 2px 2px 0',
                 padding: '1.5rem',
               }}
@@ -1934,7 +1665,7 @@ export default function WimHofClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: FROST_DEEP,
+                  color: 'var(--color-frost-deep)',
                   margin: '0 0 0.625rem',
                 }}
               >
@@ -1952,7 +1683,7 @@ export default function WimHofClient() {
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-frost-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           9. CONNECTIONS
@@ -1961,35 +1692,12 @@ export default function WimHofClient() {
         id="connect"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${FROST_PALE})`,
+          background: 'color-mix(in srgb, var(--color-cream) 90%, var(--color-frost-pale))',
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Wider Web
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 2.5rem',
-              }}
-            >
-              Connections
-            </h2>
+            <SectionIntro label="The Wider Web" title="Connections" accentColor="var(--color-frost-mid)" />
           </ScrollReveal>
 
           {/* Comparison Table */}
@@ -2009,7 +1717,7 @@ export default function WimHofClient() {
             <div style={{ overflowX: 'auto', marginBottom: '3.5rem' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8125rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${FROST_MID}` }}>
+                  <tr style={{ borderBottom: '2px solid var(--color-frost-mid)' }}>
                     {['Aspect', 'Wim Hof Method', 'Tummo', 'Pranayama'].map(h => (
                       <th
                         key={h}
@@ -2021,7 +1729,7 @@ export default function WimHofClient() {
                           fontWeight: 600,
                           letterSpacing: '0.08em',
                           textTransform: 'uppercase',
-                          color: FROST_DEEP,
+                          color: 'var(--color-frost-deep)',
                         }}
                       >
                         {h}
@@ -2064,8 +1772,8 @@ export default function WimHofClient() {
           <ScrollReveal>
             <div
               style={{
-                borderLeft: `3px solid ${FROST_MID}`,
-                background: FROST_PALE,
+                borderLeft: '3px solid var(--color-frost-mid)',
+                background: 'var(--color-frost-pale)',
                 borderRadius: '0 2px 2px 0',
                 padding: '1.5rem',
                 marginBottom: '3.5rem',
@@ -2078,7 +1786,7 @@ export default function WimHofClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: FROST_DEEP,
+                  color: 'var(--color-frost-deep)',
                   margin: '0 0 0.625rem',
                 }}
               >
@@ -2152,7 +1860,7 @@ export default function WimHofClient() {
                     style={{
                       background: 'var(--color-surface-raised)',
                       border: '1px solid var(--color-border)',
-                      borderTop: `3px solid ${FROST_MID}`,
+                      borderTop: '3px solid var(--color-frost-mid)',
                       borderRadius: '2px',
                       padding: '1.5rem',
                       transition: 'border-color 300ms ease',
@@ -2165,7 +1873,7 @@ export default function WimHofClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: FROST_DEEP,
+                        color: 'var(--color-frost-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -2214,9 +1922,9 @@ export default function WimHofClient() {
                     fontWeight: 500,
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
-                    color: FROST_MID,
+                    color: 'var(--color-frost-mid)',
                     textDecoration: 'none',
-                    borderBottom: `1px solid ${FROST_MID}60`,
+                    borderBottom: '1px solid var(--color-frost-mid)60',
                     paddingBottom: '0.2rem',
                     transition: 'opacity 200ms ease',
                   }}
@@ -2235,7 +1943,7 @@ export default function WimHofClient() {
       <section
         style={{
           padding: 'clamp(5rem, 9vw, 8rem) max(1.5rem, 8vw)',
-          background: FROST_DEEP,
+          background: 'var(--color-frost-deep)',
           textAlign: 'center',
         }}
       >
@@ -2267,7 +1975,7 @@ export default function WimHofClient() {
                 fontWeight: 500,
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: FROST_LIGHT,
+                color: 'var(--color-frost-light)',
               }}
             >
               Wim Hof
@@ -2293,12 +2001,12 @@ export default function WimHofClient() {
                 fontSize: '0.875rem',
                 fontWeight: 500,
                 letterSpacing: '0.06em',
-                color: FROST_LIGHT,
+                color: 'var(--color-frost-light)',
                 textDecoration: 'none',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                borderBottom: `1px solid ${FROST_LIGHT}60`,
+                borderBottom: '1px solid var(--color-frost-light)60',
                 paddingBottom: '0.25rem',
                 transition: 'opacity 200ms ease',
               }}
@@ -2312,12 +2020,12 @@ export default function WimHofClient() {
                 fontSize: '0.875rem',
                 fontWeight: 500,
                 letterSpacing: '0.06em',
-                color: FROST_LIGHT,
+                color: 'var(--color-frost-light)',
                 textDecoration: 'none',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                borderBottom: `1px solid ${FROST_LIGHT}60`,
+                borderBottom: '1px solid var(--color-frost-light)60',
                 paddingBottom: '0.25rem',
                 transition: 'opacity 200ms ease',
               }}

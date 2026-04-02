@@ -1,17 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (nutrition / warm olive) ─────────────────────
-const OLIVE_DEEP = '#3D4D28';
-const OLIVE_MID  = '#8FA076';
-const OLIVE_PALE = '#E8EDDF';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import PillBadge from '@/components/PillBadge';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 // ── Adaptogen Card ─────────────────────────────────────────────
 function AdaptogenCard({
@@ -29,7 +28,7 @@ function AdaptogenCard({
     evidence === 'Strong'
       ? { bg: 'rgba(45,106,79,0.10)', text: '#2D6A4F' }
       : evidence === 'Moderate'
-      ? { bg: OLIVE_PALE, text: OLIVE_DEEP }
+      ? { bg: 'var(--color-olive-pale)', text: 'var(--color-olive-deep)' }
       : { bg: 'rgba(139,58,98,0.08)', text: '#8B3A62' };
 
   return (
@@ -54,21 +53,9 @@ function AdaptogenCard({
         {name}
       </h3>
       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
-        <span
-          style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: '0.625rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            padding: '0.2rem 0.6rem',
-            borderRadius: '9999px',
-            background: OLIVE_PALE,
-            color: OLIVE_DEEP,
-            border: `1px solid ${OLIVE_MID}`,
-          }}
-        >
+        <PillBadge accentColor="var(--color-olive-mid)" accentTextColor="var(--color-olive-deep)">
           {dose}
-        </span>
+        </PillBadge>
         <span
           style={{
             fontFamily: 'var(--font-ui)',
@@ -178,117 +165,51 @@ const videoData: Record<VideoTab, Array<{ videoId: string; title: string; descri
   ],
 };
 
+const stickyNavSections = [
+  { id: 'gut-brain', label: 'Gut-Brain' },
+  { id: 'anti-inflammatory', label: 'Anti-Inflammatory' },
+  { id: 'dysregulators', label: 'Dysregulators' },
+  { id: 'fasting', label: 'Fasting' },
+  { id: 'adaptogens', label: 'Adaptogens' },
+  { id: 'protocol', label: 'Protocol' },
+  { id: 'practice', label: 'Practice' },
+];
+
 export default function NutritionClient() {
   const [activeVideoTab, setActiveVideoTab] = useState<VideoTab>('mindful-eating');
 
   return (
     <div
       style={{
+        '--page-accent': 'var(--color-olive-deep)',
         fontFamily: 'var(--font-body)',
         fontSize: 'var(--text-body)',
         lineHeight: 1.8,
         color: 'var(--color-text)',
-      }}
+      } as React.CSSProperties}
     >
+      <StickyNav sections={stickyNavSections} accentColor="var(--color-olive-deep)" />
 
       {/* ══════════════════════════════════════════════════════
           1. HERO
       ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(35% 0.08 130), oklch(50% 0.10 115))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-nutrition.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            Feed Your Nervous System
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            Nutrition &amp; the Gut-Brain Axis
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            Your gut contains 500 million neurons, produces 95% of your serotonin, and communicates
-            directly with your brain via the vagus nerve. What you eat is nervous system medicine.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#gut-brain', label: 'Gut-Brain' },
-              { href: '#anti-inflammatory', label: 'Anti-Inflammatory' },
-              { href: '#dysregulators', label: 'Dysregulators' },
-              { href: '#fasting', label: 'Fasting' },
-              { href: '#adaptogens', label: 'Adaptogens' },
-              { href: '#protocol', label: 'Protocol' },
-              { href: '#practice', label: 'Practice' },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: OLIVE_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(143,160,118,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-nutrition.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(35% 0.08 130), oklch(50% 0.10 115))"
+        eyebrow="Feed Your Nervous System"
+        headline="Nutrition &amp; the Gut-Brain Axis"
+        subtitle="Your gut contains 500 million neurons, produces 95% of your serotonin, and communicates directly with your brain via the vagus nerve. What you eat is nervous system medicine."
+        accentColor="var(--color-olive-mid)"
+        anchorLinks={[
+          { href: '#gut-brain', label: 'Gut-Brain' },
+          { href: '#anti-inflammatory', label: 'Anti-Inflammatory' },
+          { href: '#dysregulators', label: 'Dysregulators' },
+          { href: '#fasting', label: 'Fasting' },
+          { href: '#adaptogens', label: 'Adaptogens' },
+          { href: '#protocol', label: 'Protocol' },
+          { href: '#practice', label: 'Practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. THE GUT-BRAIN AXIS
@@ -312,30 +233,10 @@ export default function NutritionClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1rem',
-                }}
-              >
-                Your Second Brain
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.5rem',
-                }}
-              >
-                The Gut-Brain Axis
-              </h2>
+              <SectionIntro
+                label="Your Second Brain"
+                title="The Gut-Brain Axis"
+              />
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 The <strong>enteric nervous system (ENS)</strong> lining your gastrointestinal tract
                 contains approximately 500 million neurons &mdash; an extensive neural network sometimes called the &ldquo;second brain.&rdquo; It
@@ -376,21 +277,13 @@ export default function NutritionClient() {
                 only when the vagus nerve was intact. Severing it abolished the effect, confirming
                 the gut-to-brain signaling pathway.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${OLIVE_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: OLIVE_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '1rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: OLIVE_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-olive-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-olive-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   The vagus nerve is the highway between your gut and your brain. Every fermented
                   food, every prebiotic gram, every anti-inflammatory meal sends signals up this
                   wire to your limbic system.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -409,23 +302,23 @@ export default function NutritionClient() {
                 stat="95%"
                 detail="Of the body's serotonin is produced in the gut by enterochromaffin cells under the influence of gut microbiota — not in the brain."
                 url="https://pubmed.ncbi.nlm.nih.gov/26126930/"
-                accentColor={OLIVE_MID}
-                accentTextColor={OLIVE_DEEP}
+                accentColor="var(--color-olive-mid)"
+                accentTextColor="var(--color-olive-deep)"
               />
               <StatCard
                 source="Furness, 2012"
                 stat="500M"
                 detail="Neurons in the enteric nervous system \u2014 an extensive neural network sometimes called the \u201csecond brain.\u201d The ENS can coordinate digestion, immune response, and neurotransmitter production semi-independently."
                 url="https://pubmed.ncbi.nlm.nih.gov/22268002/"
-                accentColor={OLIVE_MID}
-                accentTextColor={OLIVE_DEEP}
+                accentColor="var(--color-olive-mid)"
+                accentTextColor="var(--color-olive-deep)"
               />
               <StatCard
                 source="Powley & Baronowsky, 2005"
                 stat="80%"
                 detail="Of vagal nerve fibers run gut-to-brain (afferent), not brain-to-gut. Your gut is talking to your brain far more than your brain is directing your gut."
-                accentColor={OLIVE_MID}
-                accentTextColor={OLIVE_DEEP}
+                accentColor="var(--color-olive-mid)"
+                accentTextColor="var(--color-olive-deep)"
               />
             </div>
           </ScrollReveal>
@@ -435,7 +328,7 @@ export default function NutritionClient() {
       {/* ══════════════════════════════════════════════════════
           3. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-olive-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           4. ANTI-INFLAMMATORY NUTRITION
@@ -444,48 +337,19 @@ export default function NutritionClient() {
         id="anti-inflammatory"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${OLIVE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-olive-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Evidence
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Anti-Inflammatory Nutrition
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="The Evidence"
+              title="Anti-Inflammatory Nutrition"
             >
               Neuroinflammation is now understood as a key mechanism in depression, anxiety, and
               cognitive decline. The food you eat is the most direct lever you have on systemic
               inflammation &mdash; more accessible than medication and without side effects.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Research callouts */}
@@ -635,7 +499,7 @@ export default function NutritionClient() {
                   style={{
                     background: 'var(--color-surface-raised)',
                     border: '1px solid var(--color-border)',
-                    borderTop: `3px solid ${OLIVE_MID}`,
+                    borderTop: `3px solid var(--color-olive-mid)`,
                     borderRadius: '2px',
                     padding: '1.5rem',
                   }}
@@ -656,7 +520,7 @@ export default function NutritionClient() {
                     style={{
                       fontFamily: 'var(--font-ui)',
                       fontSize: '0.75rem',
-                      color: OLIVE_DEEP,
+                      color: 'var(--color-olive-deep)',
                       fontWeight: 600,
                       fontStyle: 'italic',
                       margin: '0 0 0.75rem',
@@ -677,7 +541,7 @@ export default function NutritionClient() {
       {/* ══════════════════════════════════════════════════════
           5. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-olive-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           6. FOODS THAT DYSREGULATE
@@ -691,43 +555,14 @@ export default function NutritionClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              What Disrupts the System
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Foods That Dysregulate
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="What Disrupts the System"
+              title="Foods That Dysregulate"
             >
               Reducing neuroinflammation is partly a subtraction problem. These patterns have strong
               evidence linking them to gut dysbiosis, HPA axis dysregulation, and increased
               depression and anxiety risk.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -807,7 +642,7 @@ export default function NutritionClient() {
       {/* ══════════════════════════════════════════════════════
           7. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-olive-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           8. FASTING & AUTOPHAGY
@@ -816,49 +651,20 @@ export default function NutritionClient() {
         id="fasting"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${OLIVE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-olive-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Cellular Renewal
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Fasting &amp; Autophagy
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="Cellular Renewal"
+              title="Fasting &amp; Autophagy"
             >
               When you stop eating, a cascade of cellular repair mechanisms activates. Yoshinori
               Ohsumi won the 2016 Nobel Prize in Physiology for mapping autophagy &mdash; the
               process by which cells dismantle and recycle damaged components. Fasting is, among
               other things, a nervous system maintenance protocol.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -933,22 +739,14 @@ export default function NutritionClient() {
                 and mood. Mattson et al. (2018) showed that intermittent fasting increases
                 hippocampal BDNF and improves cognitive resilience.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${OLIVE_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: OLIVE_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '0.5rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: OLIVE_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-olive-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-olive-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   Contemplative traditions &mdash; Ramadan, Yom Kippur, Lenten fasting, Buddhist
                   Uposatha, Vedic ekadashi &mdash; have embedded fasting into spiritual practice for
                   millennia. The intersection of neurological and contemplative effects is not
                   coincidental.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -996,7 +794,7 @@ export default function NutritionClient() {
                       fontWeight: 600,
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: OLIVE_DEEP,
+                      color: 'var(--color-olive-deep)',
                       margin: '0 0 0.25rem',
                     }}
                   >
@@ -1017,7 +815,7 @@ export default function NutritionClient() {
                     style={{
                       fontFamily: 'var(--font-ui)',
                       fontSize: '0.75rem',
-                      color: OLIVE_DEEP,
+                      color: 'var(--color-olive-deep)',
                       fontStyle: 'italic',
                       margin: '0 0 0.75rem',
                     }}
@@ -1037,7 +835,7 @@ export default function NutritionClient() {
       {/* ══════════════════════════════════════════════════════
           9. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-olive-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           10. ADAPTOGENS
@@ -1051,44 +849,15 @@ export default function NutritionClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Plant Intelligence
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Adaptogens
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="Plant Intelligence"
+              title="Adaptogens"
             >
               Adaptogens are a class of plants and fungi that help the organism adapt to stress
               by modulating the HPA axis, reducing allostatic load, and supporting homeostasis.
               The term was coined by Soviet pharmacologist Nikolai Lazarev in 1947. Evidence
               quality varies widely by compound.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1115,10 +884,10 @@ export default function NutritionClient() {
           <ScrollReveal>
             <div
               style={{
-                border: `1px solid ${OLIVE_MID}`,
-                borderLeft: `3px solid ${OLIVE_MID}`,
+                border: `1px solid var(--color-olive-mid)`,
+                borderLeft: `3px solid var(--color-olive-mid)`,
                 padding: '1.5rem 1.75rem',
-                background: OLIVE_PALE,
+                background: 'var(--color-olive-pale)',
                 borderRadius: '0 2px 2px 0',
               }}
             >
@@ -1129,7 +898,7 @@ export default function NutritionClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: OLIVE_DEEP,
+                  color: 'var(--color-olive-deep)',
                   margin: '0 0 0.75rem',
                 }}
               >
@@ -1161,7 +930,7 @@ export default function NutritionClient() {
       {/* ══════════════════════════════════════════════════════
           11. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-olive-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           12. THE 7-WEEK PROTOCOL
@@ -1170,48 +939,19 @@ export default function NutritionClient() {
         id="protocol"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${OLIVE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-olive-pale))`,
         }}
       >
         <div style={{ maxWidth: '860px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Path Forward
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The 7-Week Protocol
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '52ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="The Path Forward"
+              title="The 7-Week Protocol"
             >
               Microbiome research suggests meaningful compositional shifts take 4&ndash;8 weeks of
               consistent dietary change. This phased protocol builds systematically &mdash; each phase
               creates the conditions for the next to work.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div className="timeline" style={{ paddingLeft: '2.5rem' }}>
@@ -1240,7 +980,7 @@ export default function NutritionClient() {
               <div key={item.step} style={{ position: 'relative', marginBottom: '1.25rem' }}>
                 <div
                   className="timeline-node"
-                  style={{ background: OLIVE_DEEP }}
+                  style={{ background: 'var(--color-olive-deep)' }}
                 >
                   {item.step}
                 </div>
@@ -1279,7 +1019,7 @@ export default function NutritionClient() {
         id="practice"
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: OLIVE_DEEP,
+          background: 'var(--color-olive-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -1291,7 +1031,7 @@ export default function NutritionClient() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
             fontStyle: 'italic',
-            color: OLIVE_MID,
+            color: 'var(--color-olive-mid)',
             margin: 0,
             whiteSpace: 'nowrap',
           }}
@@ -1359,9 +1099,9 @@ export default function NutritionClient() {
                   textTransform: 'uppercase',
                   padding: '0.5rem 1.125rem',
                   borderRadius: '9999px',
-                  border: `1px solid ${activeVideoTab === tab.key ? OLIVE_DEEP : 'var(--color-border)'}`,
+                  border: `1px solid ${activeVideoTab === tab.key ? 'var(--color-olive-deep)' : 'var(--color-border)'}`,
                   background:
-                    activeVideoTab === tab.key ? OLIVE_DEEP : 'var(--color-surface-raised)',
+                    activeVideoTab === tab.key ? 'var(--color-olive-deep)' : 'var(--color-surface-raised)',
                   color: activeVideoTab === tab.key ? '#ffffff' : 'var(--color-text-muted)',
                   cursor: 'pointer',
                   transition: 'all 200ms ease',
@@ -1540,7 +1280,7 @@ export default function NutritionClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: OLIVE_DEEP,
+                        color: 'var(--color-olive-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -1566,7 +1306,7 @@ export default function NutritionClient() {
           <ScrollReveal>
             <blockquote
               style={{
-                borderLeft: `3px solid ${OLIVE_MID}`,
+                borderLeft: `3px solid var(--color-olive-mid)`,
                 paddingLeft: '1.5rem',
                 margin: 0,
               }}

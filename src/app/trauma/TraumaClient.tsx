@@ -1,17 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (trauma / deep amber) ─────────────────────
-const AMBER_DEEP = '#6B4528';
-const AMBER_MID  = '#C4956A';
-const AMBER_PALE = '#F5E6D8';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 
 // ── Video tab data ─────────────────────────────────────────────
@@ -41,120 +39,53 @@ const videoData: Record<VideoTab, Array<{ videoId: string; title: string; descri
   ],
 };
 
+const stickyNavSections = [
+  { id: 'science', label: 'Science' },
+  { id: 'autonomic', label: 'Autonomic' },
+  { id: 'body-map', label: 'Body Map' },
+  { id: 'practice-map', label: 'Practice Map' },
+  { id: 'healing', label: 'Healing' },
+  { id: 'safety', label: 'Safety' },
+  { id: 'protocol', label: 'Protocol' },
+  { id: 'practice', label: 'Practice' },
+];
+
 export default function TraumaClient() {
   const [activeVideoTab, setActiveVideoTab] = useState<VideoTab>('trauma-yoga');
 
   return (
     <div
       style={{
+        '--page-accent': 'var(--color-trauma-deep)',
         fontFamily: 'var(--font-body)',
         fontSize: 'var(--text-body)',
         lineHeight: 1.8,
         color: 'var(--color-text)',
-      }}
+      } as React.CSSProperties}
     >
+      <StickyNav sections={stickyNavSections} accentColor="var(--color-trauma-deep)" />
 
       {/* ══════════════════════════════════════════════════════
           1. HERO
       ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(35% 0.08 55), oklch(50% 0.10 40))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-trauma.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            THE INHERITED NERVOUS SYSTEM
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            Generational Trauma
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            Your grandmother&rsquo;s stress can alter how your genes express today. Generational trauma
-            is the inherited pattern operating across your epigenetics, autonomic nervous system,
-            fascia, and psyche &mdash; and every practice on this site addresses a different layer
-            of this inheritance.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#science', label: 'Science' },
-              { href: '#autonomic', label: 'Autonomic' },
-              { href: '#body-map', label: 'Body Map' },
-              { href: '#practice-map', label: 'Practice Map' },
-              { href: '#healing', label: 'Healing' },
-              { href: '#safety', label: 'Safety' },
-              { href: '#protocol', label: 'Protocol' },
-              { href: '#practice', label: 'Practice' },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: AMBER_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(196,149,106,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-trauma.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(35% 0.08 55), oklch(50% 0.10 40))"
+        eyebrow="THE INHERITED NERVOUS SYSTEM"
+        headline="Generational Trauma"
+        subtitle="Your grandmother's stress can alter how your genes express today. Generational trauma is the inherited pattern operating across your epigenetics, autonomic nervous system, fascia, and psyche — and every practice on this site addresses a different layer of this inheritance."
+        accentColor="var(--color-trauma-mid)"
+        anchorLinks={[
+          { href: '#science', label: 'Science' },
+          { href: '#autonomic', label: 'Autonomic' },
+          { href: '#body-map', label: 'Body Map' },
+          { href: '#practice-map', label: 'Practice Map' },
+          { href: '#healing', label: 'Healing' },
+          { href: '#safety', label: 'Safety' },
+          { href: '#protocol', label: 'Protocol' },
+          { href: '#practice', label: 'Practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. THE SCIENCE OF INHERITANCE
@@ -178,30 +109,10 @@ export default function TraumaClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1rem',
-                }}
-              >
-                THE MOLECULAR EVIDENCE
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.5rem',
-                }}
-              >
-                The Science of Inheritance
-              </h2>
+              <SectionIntro
+                label="THE MOLECULAR EVIDENCE"
+                title="The Science of Inheritance"
+              />
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 Epigenetics is the study of heritable changes in gene expression that do not involve
                 changes to the underlying DNA sequence. Two primary mechanisms drive these changes:
@@ -246,21 +157,13 @@ export default function TraumaClient() {
                 Critically, maternal cortisol crosses the placenta, meaning stress calibration can
                 begin in utero before the infant has experienced the world at all.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${AMBER_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: AMBER_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '1rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: AMBER_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-trauma-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-trauma-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   Epigenetic marks are not permanent sentences. Meaney&rsquo;s cross-fostering
                   experiments showed that nurturing environments can normalize methylation patterns
                   set by early adversity &mdash; trauma is not destiny.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -279,23 +182,23 @@ export default function TraumaClient() {
                 stat="FKBP5"
                 detail="Holocaust survivor offspring showed altered methylation at this cortisol-regulating gene — a molecular signature of inherited stress response dysregulation without direct trauma exposure."
                 url="https://pubmed.ncbi.nlm.nih.gov/26442889/"
-                accentColor={AMBER_MID}
-                accentTextColor={AMBER_DEEP}
+                accentColor="var(--color-trauma-mid)"
+                accentTextColor="var(--color-trauma-deep)"
               />
               <StatCard
                 source="Heijmans et al., 2008"
                 stat="60 years"
                 detail="Dutch Hunger Winter study: famine-exposed individuals showed altered IGF2 methylation six decades later, demonstrating the extraordinary persistence of epigenetic marks set by early adversity."
                 url="https://pubmed.ncbi.nlm.nih.gov/18971336/"
-                accentColor={AMBER_MID}
-                accentTextColor={AMBER_DEEP}
+                accentColor="var(--color-trauma-mid)"
+                accentTextColor="var(--color-trauma-deep)"
               />
               <StatCard
                 source="Meaney cross-fostering"
                 stat="Reversible"
                 detail="Epigenetic marks normalized when nurturing environment changed. High-licking rat mothers produced pups with lower stress reactivity regardless of genetic origin — trauma is not destiny."
-                accentColor={AMBER_MID}
-                accentTextColor={AMBER_DEEP}
+                accentColor="var(--color-trauma-mid)"
+                accentTextColor="var(--color-trauma-deep)"
               />
             </div>
           </ScrollReveal>
@@ -305,7 +208,7 @@ export default function TraumaClient() {
       {/* ══════════════════════════════════════════════════════
           3. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-trauma-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           4. THE AUTONOMIC INHERITANCE
@@ -314,48 +217,19 @@ export default function TraumaClient() {
         id="autonomic"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${AMBER_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-trauma-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              THE NERVOUS SYSTEM REMEMBERS
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Autonomic Inheritance
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="THE NERVOUS SYSTEM REMEMBERS"
+              title="The Autonomic Inheritance"
             >
               Generational trauma is not only molecular. It transmits through the nervous system
               itself &mdash; through co-regulation, attachment, and the polyvagal cascade that shapes
               how a child learns to perceive safety and threat before language exists.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -445,7 +319,7 @@ export default function TraumaClient() {
                     }}
                   >
                     <div>
-                      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: AMBER_DEEP, margin: '0 0 0.25rem' }}>
+                      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-trauma-deep)', margin: '0 0 0.25rem' }}>
                         {item.style}
                       </p>
                       <p style={{ fontSize: '0.8125rem', color: 'var(--color-text)', margin: 0, fontWeight: 500 }}>
@@ -460,14 +334,7 @@ export default function TraumaClient() {
                   </div>
                 ))}
               </div>
-              <div
-                style={{
-                  borderLeft: `3px solid ${AMBER_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: AMBER_PALE,
-                  borderRadius: '0 2px 2px 0',
-                }}
-              >
+              <InfoCard accentColor="var(--color-trauma-mid)">
                 <p
                   style={{
                     fontFamily: 'var(--font-ui)',
@@ -475,7 +342,7 @@ export default function TraumaClient() {
                     fontWeight: 600,
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
-                    color: AMBER_DEEP,
+                    color: 'var(--color-trauma-deep)',
                     margin: '0 0 0.375rem',
                   }}
                 >
@@ -487,7 +354,7 @@ export default function TraumaClient() {
                   the child&rsquo;s attachment style with 70&ndash;80% accuracy &mdash; a finding
                   that demonstrates how reliably unresolved parental attachment transmits.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
         </div>
@@ -496,7 +363,7 @@ export default function TraumaClient() {
       {/* ══════════════════════════════════════════════════════
           5. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-trauma-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           6. WHERE TRAUMA LIVES IN THE BODY
@@ -510,43 +377,14 @@ export default function TraumaClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              THE BODY KEEPS THE SCORE
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Where Trauma Lives
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="THE BODY KEEPS THE SCORE"
+              title="Where Trauma Lives"
             >
               Bessel van der Kolk&rsquo;s landmark research established that trauma is not simply a
               psychological event &mdash; it is a somatic reality. The body encodes survival experiences
               as physical patterns that persist long after the threat has passed.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -632,7 +470,7 @@ export default function TraumaClient() {
       {/* ══════════════════════════════════════════════════════
           7. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-trauma-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           8. PRACTICE CROSS-REFERENCE MAP — CENTERPIECE
@@ -641,48 +479,19 @@ export default function TraumaClient() {
         id="practice-map"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${AMBER_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-trauma-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              EVERY PRACTICE ADDRESSES A LAYER
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Practice Map
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="EVERY PRACTICE ADDRESSES A LAYER"
+              title="The Practice Map"
             >
               Generational trauma operates on multiple layers simultaneously &mdash; epigenetic,
               neurological, fascial, psychological, relational. Each practice on this site addresses
               a specific layer. No single modality heals the whole pattern; the full map does.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -719,7 +528,7 @@ export default function TraumaClient() {
                 modality: 'Fascia',
                 mechanism: 'Releasing the Physical Record',
                 desc: 'Myofascial release breaks up the body armor — the chronic holding patterns where emotional charge has solidified into tissue.',
-                color: AMBER_DEEP,
+                color: 'var(--color-trauma-deep)',
               },
               {
                 href: '/somatics',
@@ -829,7 +638,7 @@ export default function TraumaClient() {
       {/* ══════════════════════════════════════════════════════
           9. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-trauma-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           10. HEALING PROTOCOLS
@@ -843,43 +652,14 @@ export default function TraumaClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              PROFESSIONAL PATHWAYS
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Healing Protocols
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="PROFESSIONAL PATHWAYS"
+              title="Healing Protocols"
             >
               Self-practice addresses surface layers and builds capacity. Deeper generational
               healing often requires professional support. These are the evidence-based and
               culturally grounded modalities with the strongest track records.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -927,7 +707,7 @@ export default function TraumaClient() {
                   style={{
                     background: 'var(--color-surface-raised)',
                     border: '1px solid var(--color-border)',
-                    borderLeft: `3px solid ${AMBER_MID}`,
+                    borderLeft: `3px solid var(--color-trauma-mid)`,
                     borderRadius: '2px',
                     padding: '1.75rem',
                   }}
@@ -939,7 +719,7 @@ export default function TraumaClient() {
                       fontWeight: 600,
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: AMBER_DEEP,
+                      color: 'var(--color-trauma-deep)',
                       margin: '0 0 0.25rem',
                     }}
                   >
@@ -972,10 +752,10 @@ export default function TraumaClient() {
           <ScrollReveal>
             <div
               style={{
-                border: `1px solid ${AMBER_MID}`,
-                borderLeft: `3px solid ${AMBER_MID}`,
+                border: `1px solid var(--color-trauma-mid)`,
+                borderLeft: `3px solid var(--color-trauma-mid)`,
                 padding: '1.5rem 1.75rem',
-                background: AMBER_PALE,
+                background: 'var(--color-trauma-pale)',
                 borderRadius: '0 2px 2px 0',
               }}
             >
@@ -986,7 +766,7 @@ export default function TraumaClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: AMBER_DEEP,
+                  color: 'var(--color-trauma-deep)',
                   margin: '0 0 0.75rem',
                 }}
               >
@@ -1012,7 +792,7 @@ export default function TraumaClient() {
       {/* ══════════════════════════════════════════════════════
           11. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-trauma-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           12. SAFETY & INTEGRATION
@@ -1021,48 +801,19 @@ export default function TraumaClient() {
         id="safety"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${AMBER_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-trauma-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              HEALING WITH CARE
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Safety &amp; Integration
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="HEALING WITH CARE"
+              title="Safety &amp; Integration"
             >
               Trauma healing is not linear and is not without risk. The goal is healing
               within the <em>window of tolerance</em> &mdash; not overwhelming the system
               with more than it can integrate.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1149,8 +900,8 @@ export default function TraumaClient() {
           <ScrollReveal>
             <div
               style={{
-                border: `1px solid ${AMBER_MID}`,
-                borderLeft: `3px solid ${AMBER_MID}`,
+                border: `1px solid var(--color-trauma-mid)`,
+                borderLeft: `3px solid var(--color-trauma-mid)`,
                 padding: '1.5rem 1.75rem',
                 background: 'rgba(196,149,106,0.08)',
                 borderRadius: '0 2px 2px 0',
@@ -1163,7 +914,7 @@ export default function TraumaClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: AMBER_DEEP,
+                  color: 'var(--color-trauma-deep)',
                   margin: '0 0 0.75rem',
                 }}
               >
@@ -1216,43 +967,14 @@ export default function TraumaClient() {
       >
         <div style={{ maxWidth: '860px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              A SEQUENCED APPROACH
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Bottom-Up Protocol
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '52ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="A SEQUENCED APPROACH"
+              title="Bottom-Up Protocol"
             >
               Trauma healing follows a sequence. Safety must precede emotional processing;
               capacity must precede depth. This four-phase protocol maps the polyvagal
               and chakra systems onto a progressive healing arc.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div className="timeline" style={{ paddingLeft: '2.5rem' }}>
@@ -1289,7 +1011,7 @@ export default function TraumaClient() {
               <div key={item.phase} style={{ position: 'relative', marginBottom: '2rem' }}>
                 <div
                   className="timeline-node"
-                  style={{ background: AMBER_DEEP }}
+                  style={{ background: 'var(--color-trauma-deep)' }}
                 >
                   {item.phase}
                 </div>
@@ -1309,7 +1031,7 @@ export default function TraumaClient() {
                   style={{
                     fontFamily: 'var(--font-ui)',
                     fontSize: '0.75rem',
-                    color: AMBER_DEEP,
+                    color: 'var(--color-trauma-deep)',
                     fontStyle: 'italic',
                     margin: '0 0 0.5rem',
                   }}
@@ -1319,7 +1041,7 @@ export default function TraumaClient() {
                 <p
                   style={{
                     fontSize: '0.8125rem',
-                    color: AMBER_DEEP,
+                    color: 'var(--color-trauma-deep)',
                     fontWeight: 600,
                     lineHeight: 1.7,
                     margin: '0 0 0.375rem',
@@ -1351,7 +1073,7 @@ export default function TraumaClient() {
         id="practice"
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: AMBER_DEEP,
+          background: 'var(--color-trauma-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -1363,7 +1085,7 @@ export default function TraumaClient() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
             fontStyle: 'italic',
-            color: AMBER_MID,
+            color: 'var(--color-trauma-mid)',
             margin: 0,
             whiteSpace: 'nowrap',
           }}
@@ -1432,9 +1154,9 @@ export default function TraumaClient() {
                   textTransform: 'uppercase',
                   padding: '0.5rem 1.125rem',
                   borderRadius: '9999px',
-                  border: `1px solid ${activeVideoTab === tab.key ? AMBER_DEEP : 'var(--color-border)'}`,
+                  border: `1px solid ${activeVideoTab === tab.key ? 'var(--color-trauma-deep)' : 'var(--color-border)'}`,
                   background:
-                    activeVideoTab === tab.key ? AMBER_DEEP : 'var(--color-surface-raised)',
+                    activeVideoTab === tab.key ? 'var(--color-trauma-deep)' : 'var(--color-surface-raised)',
                   color: activeVideoTab === tab.key ? '#ffffff' : 'var(--color-text-muted)',
                   cursor: 'pointer',
                   transition: 'all 200ms ease',
@@ -1654,7 +1376,7 @@ export default function TraumaClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: AMBER_DEEP,
+                        color: 'var(--color-trauma-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -1680,7 +1402,7 @@ export default function TraumaClient() {
           <ScrollReveal>
             <blockquote
               style={{
-                borderLeft: `3px solid ${AMBER_MID}`,
+                borderLeft: `3px solid var(--color-trauma-mid)`,
                 paddingLeft: '1.5rem',
                 margin: 0,
               }}

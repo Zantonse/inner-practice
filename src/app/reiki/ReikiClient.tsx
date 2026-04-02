@@ -1,23 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (warm gold / sacred amber) ──────────────────
-const GOLD_DEEP = '#6B5010';
-const GOLD_MID = '#D4A843';
-const GOLD_LIGHT = '#F0D68A';
-
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import PillBadge from '@/components/PillBadge';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 // ── Hand Position Card ────────────────────────────────────────
 function HandPosition({ number, name, placement, addresses }: { number: number; name: string; placement: string; addresses: string }) {
   return (
     <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.5rem' }}>
-      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', color: GOLD_DEEP, margin: '0 0 0.5rem' }}>{String(number).padStart(2, '0')}</p>
+      <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', color: 'var(--color-reiki-deep)', margin: '0 0 0.5rem' }}>{String(number).padStart(2, '0')}</p>
       <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', fontStyle: 'normal' }}>{name}</h4>
       <p style={{ fontSize: '0.875rem', color: 'var(--color-text)', lineHeight: 1.7, margin: '0 0 0.5rem' }}>{placement}</p>
       <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', color: 'var(--color-text-muted)', margin: 0 }}>{addresses}</p>
@@ -57,104 +55,34 @@ const selfReikiPositions = [
   { num: 8, name: 'Feet (optional)', placement: 'Hands wrapped around or resting on the soles' },
 ];
 
-// ── Tabs ──────────────────────────────────────────────────────
+const reikiSections = [
+  { id: 'history', label: 'History' },
+  { id: 'science', label: 'Science' },
+  { id: 'practice', label: 'Practice' },
+  { id: 'learn', label: 'Learn' },
+  { id: 'connection', label: 'Connection' },
+];
+
 export default function ReikiClient() {
   return (
-    <div style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)', lineHeight: 1.8, color: 'var(--color-text)' }}>
+    <div style={{ '--page-accent': 'var(--color-reiki-deep)' } as React.CSSProperties}>
+      <StickyNav sections={reikiSections} accentColor="var(--color-reiki-deep)" />
 
-      {/* ══════════════════════════════════════════════════════
-          HERO
-      ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(30% 0.10 65), oklch(40% 0.08 50))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-reiki.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-        {/* Gradient overlay */}
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)' }} />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            The Healing Art of Presence
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '14ch',
-            }}
-          >
-            Reiki
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '48ch',
-              lineHeight: 1.75,
-            }}
-          >
-            A Japanese healing practice rooted in meditative presence and gentle touch.
-            From Mikao Usui&rsquo;s 1922 enlightenment on Mount Kurama to over 800 hospitals
-            worldwide &mdash; and the honest science of what it does and doesn&rsquo;t do.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {['History', 'Science', 'Practice', 'Learn', 'Connection'].map(label => (
-              <a
-                key={label}
-                href={`#${label.toLowerCase()}`}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: GOLD_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid ${GOLD_MID}`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-reiki.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(30% 0.10 65), oklch(40% 0.08 50))"
+        eyebrow="The Healing Art of Presence"
+        headline="Reiki"
+        subtitle="A Japanese healing practice rooted in meditative presence and gentle touch. From Mikao Usui\u2019s 1922 enlightenment on Mount Kurama to over 800 hospitals worldwide \u2014 and the honest science of what it does and doesn\u2019t do."
+        accentColor="var(--color-reiki-mid)"
+        anchorLinks={[
+          { label: 'History', href: '#history' },
+          { label: 'Science', href: '#science' },
+          { label: 'Practice', href: '#practice' },
+          { label: 'Learn', href: '#learn' },
+          { label: 'Connection', href: '#connection' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           THE GOKAI (Five Principles)
@@ -162,7 +90,7 @@ export default function ReikiClient() {
       <section
         style={{
           padding: 'clamp(3.5rem, 7vw, 6rem) max(1.5rem, 8vw)',
-          background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${GOLD_LIGHT} 8%, var(--color-cream)) 100%)`,
+          background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, var(--color-reiki-light) 8%, var(--color-cream)) 100%)`,
           textAlign: 'center',
         }}
       >
@@ -236,10 +164,7 @@ export default function ReikiClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>Origins</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1.5rem' }}>
-              From Mount Kurama to the World
-            </h2>
+            <SectionIntro label="Origins" title="From Mount Kurama to the World" />
           </ScrollReveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: 'clamp(2rem, 4vw, 4rem)', marginBottom: '3rem' }}>
@@ -290,7 +215,7 @@ export default function ReikiClient() {
             ].map(level => (
               <ScrollReveal key={level.num}>
                 <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', color: GOLD_DEEP, margin: '0 0 0.75rem' }}>{level.num}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', color: 'var(--color-reiki-deep)', margin: '0 0 0.75rem' }}>{level.num}</p>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>{level.title}</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{level.desc}</p>
                 </div>
@@ -312,20 +237,16 @@ export default function ReikiClient() {
         id="science"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 88%, ${GOLD_LIGHT})`,
+          background: `color-mix(in srgb, var(--color-cream) 88%, var(--color-reiki-light))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>Evidence</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 0.75rem' }}>
-              The Honest Science
-            </h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '56ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+            <SectionIntro label="Evidence" title="The Honest Science">
               Reiki has been studied in 30&ndash;40 RCTs and several systematic reviews. The evidence
               consistently shows relaxation and reduced anxiety. Whether this exceeds what any mindful
               touch practice provides remains an open question.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Evidence Quality Table */}
@@ -333,9 +254,9 @@ export default function ReikiClient() {
             <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem', marginBottom: '3rem' }}>
               <table style={{ width: '100%', minWidth: '480px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${GOLD_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid var(--color-reiki-mid)` }}>
                     {['Domain', 'Evidence Quality', 'Direction', 'Note'].map(h => (
-                      <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: GOLD_DEEP, padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
+                      <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-reiki-deep)', padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -363,13 +284,15 @@ export default function ReikiClient() {
                 The relaxation response (Benson, 1975) is reliably triggered: decreased heart rate, respiratory
                 rate, cortisol, and increased peripheral vasodilation.
               </p>
-              <p style={{ lineHeight: 1.85, marginBottom: '1rem', padding: '0.75rem 1rem', background: 'color-mix(in srgb, var(--color-border) 30%, var(--color-surface-raised))', borderLeft: `3px solid ${GOLD_MID}`, fontSize: '0.875rem' }}>
-                <strong>Evidence quality note:</strong> Many of these RCTs have high risk of bias due to small samples,
-                inadequate blinding (sham Reiki delivered by untrained practitioners), and reliance on self-reported outcomes.
-                Systematic reviews consistently rate the overall evidence as low to very low quality. Positive findings
-                should be interpreted as preliminary signals, not established efficacy.
-              </p>
-              <p style={{ lineHeight: 1.85, margin: 0 }}>
+              <InfoCard accentColor="var(--color-reiki-mid)">
+                <p style={{ fontSize: '0.875rem', lineHeight: 1.75, margin: 0 }}>
+                  <strong>Evidence quality note:</strong> Many of these RCTs have high risk of bias due to small samples,
+                  inadequate blinding (sham Reiki delivered by untrained practitioners), and reliance on self-reported outcomes.
+                  Systematic reviews consistently rate the overall evidence as low to very low quality. Positive findings
+                  should be interpreted as preliminary signals, not established efficacy.
+                </p>
+              </InfoCard>
+              <p style={{ lineHeight: 1.85, margin: '1rem 0 0' }}>
                 <strong>Baldwin&rsquo;s rat studies</strong> at the University of Arizona are methodologically significant:
                 Reiki-treated animals showed reduced microvascular damage and lower heart rates. Animal models
                 eliminate expectation as a confound &mdash; the strongest non-placebo evidence in the literature.
@@ -406,8 +329,12 @@ export default function ReikiClient() {
             ].map((m) => (
               <ScrollReveal key={m.title}>
                 <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: m.label === 'Established' ? '#2D6A4F' : m.label === 'Plausible' ? GOLD_DEEP : 'var(--color-text-muted)', margin: '0 0 0.75rem', padding: '0.15rem 0.5rem', display: 'inline-block', borderRadius: '9999px', background: m.label === 'Established' ? 'rgba(45,106,79,0.1)' : m.label === 'Plausible' ? `color-mix(in srgb, ${GOLD_LIGHT} 20%, var(--color-cream))` : 'var(--color-surface-raised)', border: '1px solid var(--color-border)' }}>{m.label}</p>
-                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>{m.title}</h4>
+                  <PillBadge
+                    accentColor={m.label === 'Established' ? '#2D6A4F' : m.label === 'Plausible' ? 'var(--color-reiki-deep)' : 'var(--color-text-muted)'}
+                  >
+                    {m.label}
+                  </PillBadge>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0.75rem 0', fontStyle: 'normal' }}>{m.title}</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{m.desc}</p>
                 </div>
               </ScrollReveal>
@@ -416,9 +343,9 @@ export default function ReikiClient() {
 
           {/* Research Cards */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
-            <ScrollReveal><StatCard source="McManus, 2017" stat="13 RCTs reviewed" detail="Reiki showed positive trends for anxiety and pain reduction, though the review noted significant methodological limitations across studies." url="https://pubmed.ncbi.nlm.nih.gov/28874060/" accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
-            <ScrollReveal><StatCard source="Baldwin et al., 2006" stat="Animal models eliminate placebo" detail="Noise-stressed rats receiving Reiki showed reduced microvascular damage. Because rats don't believe in Reiki, these effects cannot be attributed to expectation." url="https://pubmed.ncbi.nlm.nih.gov/16646732/" accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
-            <ScrollReveal><StatCard source="Joyce & Herbison, 2015" stat="Cochrane: insufficient evidence" detail="The gold-standard Cochrane Review found only 3 qualifying RCTs. Conclusion: insufficient to say whether Reiki is effective. Evidence quality: Very Low." url="https://pubmed.ncbi.nlm.nih.gov/25629820/" accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="McManus, 2017" stat="13 RCTs reviewed" detail="Reiki showed positive trends for anxiety and pain reduction, though the review noted significant methodological limitations across studies." url="https://pubmed.ncbi.nlm.nih.gov/28874060/" accentColor="var(--color-reiki-mid)" accentTextColor="var(--color-reiki-deep)" /></ScrollReveal>
+            <ScrollReveal><StatCard source="Baldwin et al., 2006" stat="Animal models eliminate placebo" detail="Noise-stressed rats receiving Reiki showed reduced microvascular damage. Because rats don't believe in Reiki, these effects cannot be attributed to expectation." url="https://pubmed.ncbi.nlm.nih.gov/16646732/" accentColor="var(--color-reiki-mid)" accentTextColor="var(--color-reiki-deep)" /></ScrollReveal>
+            <ScrollReveal><StatCard source="Joyce & Herbison, 2015" stat="Cochrane: insufficient evidence" detail="The gold-standard Cochrane Review found only 3 qualifying RCTs. Conclusion: insufficient to say whether Reiki is effective. Evidence quality: Very Low." url="https://pubmed.ncbi.nlm.nih.gov/25629820/" accentColor="var(--color-reiki-mid)" accentTextColor="var(--color-reiki-deep)" /></ScrollReveal>
           </div>
         </div>
       </section>
@@ -437,14 +364,10 @@ export default function ReikiClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>Hands-On</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 0.75rem' }}>
-              The 12 Hand Positions
-            </h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '56ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+            <SectionIntro label="Hands-On" title="The 12 Hand Positions">
               A traditional session lasts 60&ndash;90 minutes. The receiver lies fully clothed on a massage table.
               Each position is held 3&ndash;5 minutes, moving through head, torso, and back.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1rem', marginBottom: '3.5rem' }}>
@@ -480,7 +403,7 @@ export default function ReikiClient() {
           <div className="timeline" style={{ paddingLeft: '2.5rem', marginBottom: '2.5rem' }}>
             {selfReikiPositions.map((pos) => (
               <div key={pos.num} style={{ position: 'relative', marginBottom: '1rem' }}>
-                <div className="timeline-node" style={{ background: GOLD_DEEP }}>{pos.num}</div>
+                <div className="timeline-node" style={{ background: 'var(--color-reiki-deep)' }}>{pos.num}</div>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--color-text)', lineHeight: 1.75, margin: 0 }}>
                   <strong>{pos.name}</strong> &mdash; {pos.placement}
                 </p>
@@ -505,19 +428,15 @@ export default function ReikiClient() {
         id="learn"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 92%, ${GOLD_LIGHT})`,
+          background: `color-mix(in srgb, var(--color-cream) 92%, var(--color-reiki-light))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>The Learning Path</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 0.75rem' }}>
-              Learn Reiki
-            </h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '56ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+            <SectionIntro label="The Learning Path" title="Learn Reiki">
               A practical curriculum you can follow &mdash; from finding a teacher through daily practice
               to the Japanese techniques most Western schools never teach.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Finding a Teacher */}
@@ -558,7 +477,7 @@ export default function ReikiClient() {
 
           {/* Japanese Techniques */}
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD_DEEP, margin: '0 0 1.5rem' }}>Core Techniques</p>
+            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-reiki-deep)', margin: '0 0 1.5rem' }}>Core Techniques</p>
           </ScrollReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
             {[
@@ -571,7 +490,7 @@ export default function ReikiClient() {
             ].map(t => (
               <ScrollReveal key={t.jp}>
                 <div id={t.id} style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', color: GOLD_DEEP, margin: '0 0 0.25rem' }}>{t.kanji}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', color: 'var(--color-reiki-deep)', margin: '0 0 0.25rem' }}>{t.kanji}</p>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.25rem', fontStyle: 'normal' }}>{t.jp}</h4>
                   <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-text-muted)', fontStyle: 'italic', margin: '0 0 0.75rem' }}>{t.en}</p>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{t.desc}</p>
@@ -598,7 +517,7 @@ export default function ReikiClient() {
               { step: '5', text: 'Close \u2014 sweep hands crown to feet 3 times. Silent gratitude. Three breaths. (1 min)' },
             ].map(item => (
               <div key={item.step} style={{ position: 'relative', marginBottom: '1rem' }}>
-                <div className="timeline-node" style={{ background: GOLD_DEEP }}>{item.step}</div>
+                <div className="timeline-node" style={{ background: 'var(--color-reiki-deep)' }}>{item.step}</div>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--color-text)', lineHeight: 1.75, margin: 0 }}>{item.text}</p>
               </div>
             ))}
@@ -616,7 +535,7 @@ export default function ReikiClient() {
             ].map(p => (
               <ScrollReveal key={p.period}>
                 <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', color: GOLD_DEEP, margin: '0 0 0.5rem' }}>{p.period}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', color: 'var(--color-reiki-deep)', margin: '0 0 0.5rem' }}>{p.period}</p>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>{p.title}</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{p.desc}</p>
                 </div>
@@ -641,7 +560,7 @@ export default function ReikiClient() {
             ].map(s => (
               <ScrollReveal key={s.name}>
                 <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', color: GOLD_DEEP, margin: '0 0 0.25rem' }}>{s.kanji}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', color: 'var(--color-reiki-deep)', margin: '0 0 0.25rem' }}>{s.kanji}</p>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.25rem', fontStyle: 'normal' }}>{s.name}</h4>
                   <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-text-muted)', fontStyle: 'italic', margin: '0 0 0.75rem' }}>{s.meaning}</p>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{s.desc}</p>
@@ -663,7 +582,7 @@ export default function ReikiClient() {
             ].map(b => (
               <ScrollReveal key={b.title}>
                 <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.5rem' }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD_DEEP, margin: '0 0 0.5rem' }}>{b.author}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-reiki-deep)', margin: '0 0 0.5rem' }}>{b.author}</p>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', fontStyle: 'italic' }}>{b.title}</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{b.note}</p>
                 </div>
@@ -682,19 +601,15 @@ export default function ReikiClient() {
         id="connection"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 92%, ${GOLD_LIGHT})`,
+          background: `color-mix(in srgb, var(--color-cream) 92%, var(--color-reiki-light))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>The Bridge</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 0.75rem' }}>
-              Where Reiki Meets Every Other Practice
-            </h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '56ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+            <SectionIntro label="The Bridge" title="Where Reiki Meets Every Other Practice">
               Reiki is not separate from meditation, breathwork, yoga, or nervous system regulation &mdash;
               it is a relational delivery vehicle for all of them.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: 'clamp(2rem, 4vw, 4rem)', marginBottom: '3rem' }}>
@@ -747,7 +662,7 @@ export default function ReikiClient() {
               <ScrollReveal key={c.practice}>
                 <Link href={c.link} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
                   <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem', transition: 'border-color 300ms ease' }}>
-                    <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD_DEEP, margin: '0 0 0.75rem' }}>{c.practice}</p>
+                    <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-reiki-deep)', margin: '0 0 0.75rem' }}>{c.practice}</p>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{c.desc}</p>
                   </div>
                 </Link>
@@ -769,9 +684,9 @@ export default function ReikiClient() {
 
           {/* Research Cards */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
-            <ScrollReveal><StatCard source="Díaz-Rodríguez et al., 2011" stat="HRV increases with Reiki" detail="RCT in nursing staff found significant parasympathetic upregulation (HF-HRV) compared to sham and rest. The best positive biomarker finding." url="https://pubmed.ncbi.nlm.nih.gov/21568717/" accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
-            <ScrollReveal><StatCard source="Jain & Mills, 2010" stat="66 biofield therapy trials" detail="Systematic review: moderate evidence for pain reduction. Positive effects clustered in studies with poor blinding. Rigorous sham-controlled trials showed smaller effects." url="https://pubmed.ncbi.nlm.nih.gov/20563676/" accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
-            <ScrollReveal><StatCard source="Porges, 2011" stat="Co-regulation is the mechanism" detail="Polyvagal Theory explains how therapeutic presence and safe touch produce physiological change through neuroception of safety — no energy transfer required." accentColor={GOLD_MID} accentTextColor={GOLD_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="Díaz-Rodríguez et al., 2011" stat="HRV increases with Reiki" detail="RCT in nursing staff found significant parasympathetic upregulation (HF-HRV) compared to sham and rest. The best positive biomarker finding." url="https://pubmed.ncbi.nlm.nih.gov/21568717/" accentColor="var(--color-reiki-mid)" accentTextColor="var(--color-reiki-deep)" /></ScrollReveal>
+            <ScrollReveal><StatCard source="Jain & Mills, 2010" stat="66 biofield therapy trials" detail="Systematic review: moderate evidence for pain reduction. Positive effects clustered in studies with poor blinding. Rigorous sham-controlled trials showed smaller effects." url="https://pubmed.ncbi.nlm.nih.gov/20563676/" accentColor="var(--color-reiki-mid)" accentTextColor="var(--color-reiki-deep)" /></ScrollReveal>
+            <ScrollReveal><StatCard source="Porges, 2011" stat="Co-regulation is the mechanism" detail="Polyvagal Theory explains how therapeutic presence and safe touch produce physiological change through neuroception of safety — no energy transfer required." accentColor="var(--color-reiki-mid)" accentTextColor="var(--color-reiki-deep)" /></ScrollReveal>
           </div>
         </div>
       </section>
@@ -830,10 +745,10 @@ export default function ReikiClient() {
                     fontWeight: 500,
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
-                    color: GOLD_DEEP,
+                    color: 'var(--color-reiki-deep)',
                     textDecoration: 'none',
                     padding: '0.625rem 1.25rem',
-                    border: `1px solid ${GOLD_MID}`,
+                    border: `1px solid var(--color-reiki-mid)`,
                     borderRadius: '2px',
                     transition: 'background 200ms ease',
                   }}

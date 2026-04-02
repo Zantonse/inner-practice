@@ -1,58 +1,63 @@
 'use client';
 
-import Image from 'next/image';
+import React from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
 import StatCard from '@/components/StatCard';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import StickyNav from '@/components/StickyNav';
 
-const INDIGO_DEEP = '#2D3A6A';
-const INDIGO_MID = '#6B7DB8';
 const TEAL_ACCENT = '#5BA8A0';
 
+const stickyNavSections = [
+  { id: 'methods', label: 'Methods' },
+  { id: 'practices', label: 'Practices' },
+  { id: 'evidence', label: 'Evidence' },
+];
 
 export default function SomaticsClient() {
   return (
-    <div style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)', lineHeight: 1.8, color: 'var(--color-text)' }}>
+    <div
+      style={{
+        '--page-accent': 'var(--color-indigo-deep)',
+        fontFamily: 'var(--font-body)',
+        fontSize: 'var(--text-body)',
+        lineHeight: 1.8,
+        color: 'var(--color-text)',
+      } as React.CSSProperties}
+    >
+      <StickyNav sections={stickyNavSections} accentColor="var(--color-indigo-deep)" />
 
       {/* HERO */}
-      <section style={{ position: 'relative', minHeight: '85dvh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)', background: 'linear-gradient(160deg, oklch(38% 0.08 255), oklch(60% 0.06 240))', overflow: 'hidden' }}>
-        {/* Hero image */}
-        <Image
-          src="/images/hero-somatics.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: TEAL_ACCENT, margin: '0 0 1.25rem' }}>The Body Completes What the Mind Cannot</p>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-hero)', fontWeight: 700, color: '#E8EAF0', lineHeight: 1.05, margin: '0 0 1.5rem', maxWidth: '14ch' }}>Somatics</h1>
-          <p style={{ fontSize: 'var(--text-body-lg)', color: 'rgba(232,234,240,0.7)', margin: '0 0 2.5rem', maxWidth: '48ch', lineHeight: 1.75 }}>
-            Trauma lives in the body&rsquo;s patterns, not just in memory. Somatic practices meet the
-            nervous system where the trauma is stored &mdash; through tremor, movement, awareness, and discharge.
-          </p>
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {['Methods', 'Practices', 'Evidence'].map(label => (
-              <a key={label} href={`#${label.toLowerCase()}`} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: TEAL_ACCENT, textDecoration: 'none', borderBottom: `1px solid ${INDIGO_MID}`, paddingBottom: '0.25rem' }}>{label}</a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-somatics.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(38% 0.08 255), oklch(60% 0.06 240))"
+        eyebrow="The Body Completes What the Mind Cannot"
+        headline="Somatics"
+        subtitle="Trauma lives in the body's patterns, not just in memory. Somatic practices meet the nervous system where the trauma is stored — through tremor, movement, awareness, and discharge."
+        accentColor={TEAL_ACCENT}
+        anchorLinks={[
+          { href: '#methods', label: 'Methods' },
+          { href: '#practices', label: 'Practices' },
+          { href: '#evidence', label: 'Evidence' },
+        ]}
+      />
 
       {/* WHAT IS SOMATICS */}
       <section style={{ padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw)', background: 'var(--color-cream)' }}>
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>First-Person Body</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1.5rem' }}>What Somatics Means</h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem', maxWidth: '56ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+            <SectionIntro
+              label="First-Person Body"
+              title="What Somatics Means"
+            >
               <em>Soma</em> = the body as experienced from within. Thomas Hanna gave the term its healing meaning:
               not anatomy&rsquo;s third-person view, but the first-person felt sense of tightening, holding, breathing,
               and aliveness.
-            </p>
+            </SectionIntro>
             <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '56ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
               Bessel van der Kolk established that trauma is stored as body patterns &mdash; chronic sympathetic
               activation, a braced neck, a tightened diaphragm. Cognitive insight alone doesn&rsquo;t change
@@ -82,11 +87,13 @@ export default function SomaticsClient() {
       <VideoAccent src="/videos/somatics-loop.mp4" poster="/videos/somatics-poster.jpg" />
 
       {/* METHODS */}
-      <section id="methods" style={{ padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw)', background: `color-mix(in srgb, var(--color-cream) 92%, ${INDIGO_MID})` }}>
+      <section id="methods" style={{ padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw)', background: `color-mix(in srgb, var(--color-cream) 92%, var(--color-indigo-mid))` }}>
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>The Lineages</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 3rem' }}>Five Somatic Methods</h2>
+            <SectionIntro
+              label="The Lineages"
+              title="Five Somatic Methods"
+            />
           </ScrollReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
             {[
@@ -98,10 +105,10 @@ export default function SomaticsClient() {
             ].map(m => (
               <ScrollReveal key={m.name}>
                 <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem', display: 'flex', flexDirection: 'column', height: '100%' }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: INDIGO_DEEP, margin: '0 0 0.5rem' }}>{m.founder}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-indigo-deep)', margin: '0 0 0.5rem' }}>{m.founder}</p>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>{m.name}</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: '0 0 1rem', flex: 1 }}>{m.desc}</p>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', color: INDIGO_DEEP, margin: 0 }}>{m.evidence}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', color: 'var(--color-indigo-deep)', margin: 0 }}>{m.evidence}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -129,17 +136,18 @@ export default function SomaticsClient() {
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-indigo-mid)" />
 
       {/* PRACTICES */}
       <section id="practices" style={{ padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw)', background: 'var(--color-cream)' }}>
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>Self-Practices</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 0.75rem' }}>Practices You Can Do Today</h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '56ch', lineHeight: 1.75 }}>
+            <SectionIntro
+              label="Self-Practices"
+              title="Practices You Can Do Today"
+            >
               No practitioner needed. These self-administered practices are the entry point to somatic work.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
             {[
@@ -153,7 +161,7 @@ export default function SomaticsClient() {
                 <div id={p.id} style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.75rem' }}>
                     <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: 0, fontStyle: 'normal' }}>{p.name}</h4>
-                    <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, letterSpacing: '0.06em', color: INDIGO_DEEP }}>{p.time}</span>
+                    <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--color-indigo-deep)' }}>{p.time}</span>
                   </div>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text)', lineHeight: 1.75, margin: '0 0 0.75rem' }}>{p.steps}</p>
                   <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', fontStyle: 'italic', color: 'var(--color-text-muted)', margin: 0 }}>{p.note}</p>
@@ -182,19 +190,21 @@ export default function SomaticsClient() {
         </div>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-indigo-mid)" />
 
       {/* EVIDENCE */}
-      <section id="evidence" style={{ padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw)', background: `color-mix(in srgb, var(--color-cream) 92%, ${INDIGO_MID})` }}>
+      <section id="evidence" style={{ padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw)', background: `color-mix(in srgb, var(--color-cream) 92%, var(--color-indigo-mid))` }}>
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>The Research</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 3rem' }}>Evidence Landscape</h2>
+            <SectionIntro
+              label="The Research"
+              title="Evidence Landscape"
+            />
           </ScrollReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
-            <ScrollReveal><StatCard source="Brom et al., 2017" stat="SE: 44% clinically significant improvement" detail="RCT, n=63, PTSD. Somatic Experiencing showed significant symptom reduction. Published in Frontiers in Psychology." url="https://pubmed.ncbi.nlm.nih.gov/28515705/" accentColor={INDIGO_MID} accentTextColor={INDIGO_DEEP} /></ScrollReveal>
-            <ScrollReveal><StatCard source="Little et al., 2008" stat="Alexander: 86% pain-free days" detail="BMJ RCT, n=579. 24 Alexander lessons produced the largest long-term back pain reduction of any intervention tested \u2014 including massage and exercise." url="https://pubmed.ncbi.nlm.nih.gov/18713809/" accentColor={INDIGO_MID} accentTextColor={INDIGO_DEEP} /></ScrollReveal>
-            <ScrollReveal><StatCard source="van der Kolk, 2014" stat="The Body Keeps the Score" detail="Established that trauma is stored as body patterns, not just narrative memory. Cognitive insight alone doesn\u2019t change chronic sympathetic activation." url="https://pubmed.ncbi.nlm.nih.gov/25004196/" accentColor={INDIGO_MID} accentTextColor={INDIGO_DEEP} /></ScrollReveal>
+            <ScrollReveal><StatCard source="Brom et al., 2017" stat="SE: 44% clinically significant improvement" detail="RCT, n=63, PTSD. Somatic Experiencing showed significant symptom reduction. Published in Frontiers in Psychology." url="https://pubmed.ncbi.nlm.nih.gov/28515705/" accentColor="var(--color-indigo-mid)" accentTextColor="var(--color-indigo-deep)" /></ScrollReveal>
+            <ScrollReveal><StatCard source="Little et al., 2008" stat="Alexander: 86% pain-free days" detail="BMJ RCT, n=579. 24 Alexander lessons produced the largest long-term back pain reduction of any intervention tested \u2014 including massage and exercise." url="https://pubmed.ncbi.nlm.nih.gov/18713809/" accentColor="var(--color-indigo-mid)" accentTextColor="var(--color-indigo-deep)" /></ScrollReveal>
+            <ScrollReveal><StatCard source="van der Kolk, 2014" stat="The Body Keeps the Score" detail="Established that trauma is stored as body patterns, not just narrative memory. Cognitive insight alone doesn\u2019t change chronic sympathetic activation." url="https://pubmed.ncbi.nlm.nih.gov/25004196/" accentColor="var(--color-indigo-mid)" accentTextColor="var(--color-indigo-deep)" /></ScrollReveal>
           </div>
           <ScrollReveal>
             <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, maxWidth: '56ch' }}>
@@ -213,7 +223,7 @@ export default function SomaticsClient() {
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1.5rem' }}>Continue Exploring</h2>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               {[{ href: '/nervous-system', label: 'Nervous System' }, { href: '/fascia', label: 'Fascia' }, { href: '/reiki', label: 'Reiki' }, { href: '/yoga', label: 'Yoga' }, { href: '/meditate', label: 'Meditate' }, { href: '/breathe', label: 'Breathe' }, { href: '/sound-healing', label: 'Sound Healing' }, { href: '/manifest', label: 'Manifest' }, { href: '/practice', label: 'Practice' }, { href: '/sleep', label: 'Sleep' }, { href: '/qigong', label: 'Qigong' }, { href: '/chakras', label: 'Chakras' }, { href: '/trauma', label: 'Trauma' }, { href: '/nutrition', label: 'Nutrition' }, { href: '/temperature', label: 'Temperature' }, { href: '/nature', label: 'Nature' }, { href: '/taichi', label: 'Tai Chi' }, { href: '/fasting', label: 'Fasting' }, { href: '/psychedelics', label: 'Psychedelics' }].map(link => (
-                <Link key={link.href} href={link.href} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: INDIGO_DEEP, textDecoration: 'none', padding: '0.625rem 1.25rem', border: `1px solid ${INDIGO_MID}`, borderRadius: '2px' }}>{link.label}</Link>
+                <Link key={link.href} href={link.href} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-indigo-deep)', textDecoration: 'none', padding: '0.625rem 1.25rem', border: `1px solid var(--color-indigo-mid)`, borderRadius: '2px' }}>{link.label}</Link>
               ))}
             </div>
           </ScrollReveal>

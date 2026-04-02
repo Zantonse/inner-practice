@@ -8,6 +8,11 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
 import StatCard from '@/components/StatCard';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import PillBadge from '@/components/PillBadge';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 // ── Video Data ───────────────────────────────────────────────
 type VideoEntry = {
@@ -101,7 +106,7 @@ function MeditationTypeIcon({ fallback }: { src: string; fallback: string; name:
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: '1.75rem',
-        color: 'var(--color-violet-deep)',
+        color: 'var(--color-meditate-deep)',
       }}
     >
       {fallback}
@@ -129,82 +134,35 @@ export default function MeditateClient() {
   };
 
   return (
-    <>
+    <div style={{ '--page-accent': 'var(--color-meditate-deep)' } as React.CSSProperties}>
+      <StickyNav
+        accentColor="var(--color-meditate-deep)"
+        sections={[
+          { id: 'foundation', label: 'Foundation' },
+          { id: 'science', label: 'Science' },
+          { id: 'types', label: 'Types' },
+          { id: 'begin', label: 'Begin' },
+          { id: 'connection', label: 'Connection' },
+          { id: 'practice', label: 'Practice' },
+        ]}
+      />
+
       {/* ══════════════════════════════════════════════════════
           PART A: LEARN
       ══════════════════════════════════════════════════════ */}
 
-      {/* Hero */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(30% 0.12 295), oklch(40% 0.10 280))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-meditation.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-        {/* Gradient overlay */}
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)' }} />
-
-        <div style={{ maxWidth: '680px', position: 'relative', zIndex: 2 }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            The Art of Stillness
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '14ch',
-            }}
-          >
-            Learn to Meditate
-          </h1>
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'clamp(1rem, 1.6vw, 1.125rem)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: 0,
-              maxWidth: '52ch',
-              lineHeight: 1.85,
-            }}
-          >
-            Meditation is one of the oldest intrapsychic technologies humans have developed.
-            Thousands of years of wisdom, now supported by rigorous science. Here&apos;s everything
-            you need to begin.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-meditation.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(30% 0.12 295), oklch(40% 0.10 280))"
+        eyebrow="The Art of Stillness"
+        headline="Learn to Meditate"
+        subtitle="Meditation is one of the oldest intrapsychic technologies humans have developed. Thousands of years of wisdom, now supported by rigorous science. Here's everything you need to begin."
+        accentColor="var(--color-meditate-mid)"
+      />
 
       {/* What is Meditation */}
       <section
+        id="foundation"
         style={{
           padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(3rem, 5vw, 4.5rem)',
           background: 'var(--color-cream)',
@@ -220,31 +178,7 @@ export default function MeditateClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1.25rem',
-                }}
-              >
-                Foundation
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.75rem',
-                  lineHeight: 1.2,
-                }}
-              >
-                What is Meditation?
-              </h2>
+              <SectionIntro label="Foundation" title="What is Meditation?" />
               <p style={{ marginBottom: '1.25rem', lineHeight: 1.85 }}>
                 Meditation is an ancient intrapsychic technology — a method for training attention and awareness.
                 At its simplest, it&apos;s the practice of observing the activity of your own mind without being
@@ -282,37 +216,15 @@ export default function MeditateClient() {
 
       {/* The Science */}
       <section
+        id="science"
         style={{
           padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: 'color-mix(in srgb, var(--color-cream) 88%, var(--color-violet-mid))',
+          background: 'color-mix(in srgb, var(--color-cream) 88%, var(--color-meditate-mid))',
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Research
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 3rem',
-              }}
-            >
-              The Science
-            </h2>
+            <SectionIntro label="Research" title="The Science" />
           </ScrollReveal>
 
           <ScrollReveal group>
@@ -351,6 +263,7 @@ export default function MeditateClient() {
 
       {/* Types of Meditation */}
       <section
+        id="types"
         style={{
           padding: 'clamp(4.5rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
           background: 'var(--color-cream)',
@@ -358,42 +271,10 @@ export default function MeditateClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Explore
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Types of Meditation
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '54ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Explore" title="Types of Meditation">
               There is no single &ldquo;right&rdquo; meditation. Different practices serve different needs.
               Explore what resonates with you.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -438,31 +319,20 @@ export default function MeditateClient() {
                 >
                   {type.description}
                 </p>
-                <span
-                  style={{
-                    display: 'inline-block',
-                    padding: '0.3rem 0.75rem',
-                    borderRadius: '9999px',
-                    background: 'color-mix(in srgb, var(--color-violet-mid) 30%, var(--color-cream))',
-                    fontFamily: 'var(--font-ui)',
-                    fontSize: '0.6875rem',
-                    fontWeight: 500,
-                    letterSpacing: '0.05em',
-                    color: 'var(--color-violet-deep)',
-                  }}
-                >
+                <PillBadge accentColor="var(--color-meditate-mid)" accentTextColor="var(--color-meditate-deep)" size="md">
                   Best for: {type.bestFor}
-                </span>
+                </PillBadge>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-meditate-mid)" />
 
       {/* How to Begin */}
       <section
+        id="begin"
         style={{
           padding: 'clamp(5rem, 8vw, 8rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6.5rem)',
           background: 'color-mix(in srgb, var(--color-cream) 94%, var(--color-linen))',
@@ -470,30 +340,7 @@ export default function MeditateClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Getting Started
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 3.5rem',
-              }}
-            >
-              How to Begin
-            </h2>
+            <SectionIntro label="Getting Started" title="How to Begin" />
           </ScrollReveal>
 
           <div className="timeline">
@@ -616,8 +463,8 @@ export default function MeditateClient() {
                 <div
                   style={{
                     padding: '1.25rem 1.5rem',
-                    background: 'color-mix(in srgb, var(--color-violet-pale) 60%, var(--color-cream))',
-                    border: '1px solid var(--color-violet-mid)',
+                    background: 'color-mix(in srgb, var(--color-meditate-pale) 60%, var(--color-cream))',
+                    border: '1px solid var(--color-meditate-mid)',
                     borderRadius: '2px',
                     maxWidth: '52ch',
                   }}
@@ -629,7 +476,7 @@ export default function MeditateClient() {
                       fontWeight: 500,
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: 'var(--color-violet-deep)',
+                      color: 'var(--color-meditate-deep)',
                       margin: '0 0 0.625rem',
                     }}
                   >
@@ -682,16 +529,7 @@ export default function MeditateClient() {
                       solution: 'Meditate earlier in the day, or sit upright rather than lying down. Slightly open eyes directed at the floor can help maintain alertness.',
                     },
                   ].map(item => (
-                    <div
-                      key={item.problem}
-                      style={{
-                        padding: '1.25rem 1.5rem',
-                        background: 'var(--color-surface-raised)',
-                        border: '1px solid var(--color-border)',
-                        borderRadius: '2px',
-                        borderLeft: '3px solid var(--color-amber-light)',
-                      }}
-                    >
+                    <InfoCard key={item.problem}>
                       <p
                         style={{
                           fontFamily: 'var(--font-ui)',
@@ -714,7 +552,7 @@ export default function MeditateClient() {
                       >
                         {item.solution}
                       </p>
-                    </div>
+                    </InfoCard>
                   ))}
                 </div>
               </div>
@@ -754,6 +592,7 @@ export default function MeditateClient() {
 
       {/* The Connection to Yoga */}
       <section
+        id="connection"
         style={{
           padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5rem)',
           background: 'linear-gradient(160deg, oklch(65% 0.14 310 / 0.15), var(--color-cream))',
@@ -762,30 +601,7 @@ export default function MeditateClient() {
       >
         <div style={{ maxWidth: '800px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Connection
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 1.5rem',
-              }}
-            >
-              Meditation &amp; Yoga
-            </h2>
+            <SectionIntro label="The Connection" title="Meditation &amp; Yoga" />
             <p style={{ marginBottom: '1.25rem', lineHeight: 1.85, maxWidth: '58ch' }}>
               Yoga and meditation are not separate practices — they are two faces of the same path.
               Yoga, in its complete form, uses physical postures and breath to prepare the body and
@@ -804,7 +620,7 @@ export default function MeditateClient() {
                 alignItems: 'center',
                 gap: '0.625rem',
                 padding: '0.875rem 2rem',
-                background: 'var(--color-violet-deep)',
+                background: 'var(--color-meditate-deep)',
                 color: '#F5EAE1',
                 fontFamily: 'var(--font-ui)',
                 fontSize: '0.8125rem',
@@ -833,7 +649,7 @@ export default function MeditateClient() {
       <div
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: 'var(--color-violet-deep)',
+          background: 'var(--color-meditate-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -845,7 +661,7 @@ export default function MeditateClient() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
             fontStyle: 'italic',
-            color: 'var(--color-violet-mid)',
+            color: 'var(--color-meditate-mid)',
             margin: 0,
             whiteSpace: 'nowrap',
           }}
@@ -857,6 +673,7 @@ export default function MeditateClient() {
 
       {/* Practice Section */}
       <section
+        id="practice"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(5rem, 9vw, 8rem)',
           background: 'var(--color-cream)',
@@ -864,28 +681,9 @@ export default function MeditateClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Choose Your Practice
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '2.5rem',
-                maxWidth: '50ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Practice" title="Choose Your Practice">
               Select a duration. We&apos;ll guide you to the right session.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Duration pill tabs */}
@@ -954,7 +752,7 @@ export default function MeditateClient() {
                       fontFamily: 'var(--font-ui)',
                       fontSize: '0.8125rem',
                       fontWeight: 500,
-                      color: 'var(--color-violet-deep)',
+                      color: 'var(--color-meditate-deep)',
                       margin: 0,
                     }}
                   >
@@ -1003,9 +801,9 @@ export default function MeditateClient() {
                         gap: '1rem',
                         padding: '1rem 1.25rem',
                         background: isActive
-                          ? 'color-mix(in srgb, var(--color-violet-pale) 80%, var(--color-cream))'
+                          ? 'color-mix(in srgb, var(--color-meditate-pale) 80%, var(--color-cream))'
                           : 'var(--color-surface-raised)',
-                        border: `1px solid ${isActive ? 'var(--color-violet-mid)' : 'var(--color-border)'}`,
+                        border: `1px solid ${isActive ? 'var(--color-meditate-mid)' : 'var(--color-border)'}`,
                         borderRadius: '2px',
                         cursor: 'pointer',
                         textAlign: 'left',
@@ -1040,7 +838,7 @@ export default function MeditateClient() {
                             fontFamily: 'var(--font-body)',
                             fontSize: '0.875rem',
                             fontWeight: isActive ? 500 : 400,
-                            color: isActive ? 'var(--color-violet-deep)' : 'var(--color-text)',
+                            color: isActive ? 'var(--color-meditate-deep)' : 'var(--color-text)',
                             margin: '0 0 0.25rem',
                             lineHeight: 1.4,
                             overflow: 'hidden',
@@ -1075,7 +873,7 @@ export default function MeditateClient() {
       <section
         style={{
           padding: 'clamp(3rem, 5vw, 4rem) max(1.5rem, 8vw)',
-          background: 'color-mix(in srgb, var(--color-violet-mid) 10%, var(--color-cream))',
+          background: 'color-mix(in srgb, var(--color-meditate-mid) 10%, var(--color-cream))',
           borderTop: '1px solid var(--color-border)',
         }}
       >
@@ -1088,7 +886,7 @@ export default function MeditateClient() {
                 fontWeight: 500,
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                color: 'var(--color-violet-deep)',
+                color: 'var(--color-meditate-deep)',
                 margin: '0 0 1rem',
               }}
             >
@@ -1131,6 +929,6 @@ export default function MeditateClient() {
           </div>
         </ScrollReveal>
       </section>
-    </>
+    </div>
   );
 }

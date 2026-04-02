@@ -1,17 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (nature / forest sage) ───────────────────────
-const SAGE_DEEP = '#2D5038';
-const SAGE_MID  = '#8AAF7E';
-const SAGE_PALE = '#E2EDDF';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 // ── Video tab data ─────────────────────────────────────────────
 type VideoTab = 'forest-bathing' | 'grounding' | 'nature-meditation';
@@ -50,119 +48,40 @@ const videoData: Record<VideoTab, Array<{ videoId: string; title: string; descri
   ],
 };
 
+const natureSections = [
+  { id: 'science', label: 'Science' },
+  { id: 'shinrin-yoku', label: 'Shinrin-Yoku' },
+  { id: 'grounding', label: 'Grounding' },
+  { id: 'light', label: 'Light' },
+  { id: 'practice-map', label: 'Practice Map' },
+  { id: 'protocol', label: 'Protocol' },
+  { id: 'practice', label: 'Practice' },
+];
+
 export default function NatureClient() {
   const [activeVideoTab, setActiveVideoTab] = useState<VideoTab>('forest-bathing');
 
   return (
-    <div
-      style={{
-        fontFamily: 'var(--font-body)',
-        fontSize: 'var(--text-body)',
-        lineHeight: 1.8,
-        color: 'var(--color-text)',
-      }}
-    >
+    <div style={{ '--page-accent': 'var(--color-nature-deep)' } as React.CSSProperties}>
+      <StickyNav sections={natureSections} accentColor="var(--color-nature-deep)" />
 
-      {/* ══════════════════════════════════════════════════════
-          1. HERO
-      ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(35% 0.10 145), oklch(50% 0.12 130))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-nature.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            THE ORIGINAL MEDICINE
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            Nature &amp; Forest Bathing
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            For 99.9% of human history, we lived in nature. Your nervous system evolved for
-            forests, not offices. Trees release airborne chemicals that boost your immune system.
-            The ground beneath your feet carries electrons that reduce inflammation. 120 minutes
-            per week is all it takes.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#science', label: 'Science' },
-              { href: '#shinrin-yoku', label: 'Shinrin-Yoku' },
-              { href: '#grounding', label: 'Grounding' },
-              { href: '#light', label: 'Light' },
-              { href: '#practice-map', label: 'Practice Map' },
-              { href: '#protocol', label: 'Protocol' },
-              { href: '#practice', label: 'Practice' },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: SAGE_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(138,175,126,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-nature.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(35% 0.10 145), oklch(50% 0.12 130))"
+        eyebrow="THE ORIGINAL MEDICINE"
+        headline="Nature &amp; Forest Bathing"
+        subtitle="For 99.9% of human history, we lived in nature. Your nervous system evolved for forests, not offices. Trees release airborne chemicals that boost your immune system. The ground beneath your feet carries electrons that reduce inflammation. 120 minutes per week is all it takes."
+        accentColor="var(--color-nature-mid)"
+        anchorLinks={[
+          { label: 'Science', href: '#science' },
+          { label: 'Shinrin-Yoku', href: '#shinrin-yoku' },
+          { label: 'Grounding', href: '#grounding' },
+          { label: 'Light', href: '#light' },
+          { label: 'Practice Map', href: '#practice-map' },
+          { label: 'Protocol', href: '#protocol' },
+          { label: 'Practice', href: '#practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. THE SCIENCE OF NATURE
@@ -186,30 +105,7 @@ export default function NatureClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1rem',
-                }}
-              >
-                Why Nature Heals
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.5rem',
-                }}
-              >
-                The Science of Nature
-              </h2>
+              <SectionIntro label="Why Nature Heals" title="The Science of Nature" />
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 <strong>Attention Restoration Theory</strong> (Kaplan 1995) proposes that natural
                 environments restore directed attention by engaging involuntary attention &mdash; the
@@ -249,21 +145,13 @@ export default function NatureClient() {
                 patterns &mdash; coastlines, tree branches, fern fronds &mdash; falls in a range of 1.3&ndash;1.5
                 that produces measurable <strong>stress reduction</strong> in observers compared to non-fractal urban environments (Taylor, 2006). Our visual cortex appears tuned to these patterns.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${SAGE_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: SAGE_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '1rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: SAGE_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-nature-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-nature-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   Urban environments contain hard edges, right angles, and non-fractal geometry that
                   the nervous system processes as novel, demanding, and potentially threatening &mdash;
                   even when consciously perceived as normal.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -282,33 +170,30 @@ export default function NatureClient() {
                 stat="12.4%"
                 detail="Cortisol reduction in forest environments versus urban environments across 280 participants. Forest walks also showed lower pulse rate, blood pressure, and sympathetic nerve activity."
                 url="https://pubmed.ncbi.nlm.nih.gov/19568835/"
-                accentColor={SAGE_MID}
-                accentTextColor={SAGE_DEEP}
+                accentColor="var(--color-nature-mid)"
+                accentTextColor="var(--color-nature-deep)"
               />
               <StatCard
                 source="White et al., 2019 — Scientific Reports"
                 stat="120 min"
                 detail="Minimum weekly nature dose associated with significantly better self-reported health and wellbeing. Effect plateaued above 300 minutes. Below 120 minutes, benefits were inconsistent."
                 url="https://pubmed.ncbi.nlm.nih.gov/31197192/"
-                accentColor={SAGE_MID}
-                accentTextColor={SAGE_DEEP}
+                accentColor="var(--color-nature-mid)"
+                accentTextColor="var(--color-nature-deep)"
               />
               <StatCard
                 source="Li et al., 2008"
                 stat="50%"
                 detail="Increase in Natural Killer (NK) cell activity after a 3-day forest bathing trip, with effects lasting 30 days. NK cells are the immune system's primary defense against viruses and tumor cells."
                 url="https://pubmed.ncbi.nlm.nih.gov/18434040/"
-                accentColor={SAGE_MID}
-                accentTextColor={SAGE_DEEP}
+                accentColor="var(--color-nature-mid)"
+                accentTextColor="var(--color-nature-deep)"
               />
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          3. SECTION DIVIDER
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
@@ -318,49 +203,17 @@ export default function NatureClient() {
         id="shinrin-yoku"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${SAGE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-nature-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Forest Bathing
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Shinrin-Yoku
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Forest Bathing" title="Shinrin-Yoku">
               Literally &ldquo;forest bathing&rdquo; in Japanese, Shinrin-Yoku was formalized by the
               Japanese Forestry Agency in 1982 and became a cornerstone of preventive medicine.
               Dr. Qing Li at Nippon Medical School has produced the most rigorous research on its
               mechanisms and effects.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -433,15 +286,7 @@ export default function NatureClient() {
 
           {/* Phytoncide callout */}
           <ScrollReveal>
-            <div
-              style={{
-                borderLeft: `3px solid ${SAGE_MID}`,
-                padding: '1.5rem 1.75rem',
-                background: SAGE_PALE,
-                borderRadius: '0 2px 2px 0',
-                marginBottom: '3rem',
-              }}
-            >
+            <InfoCard accentColor="var(--color-nature-mid)">
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
@@ -449,7 +294,7 @@ export default function NatureClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: SAGE_DEEP,
+                  color: 'var(--color-nature-deep)',
                   margin: '0 0 0.75rem',
                 }}
               >
@@ -466,14 +311,11 @@ export default function NatureClient() {
                 after rainfall produce the highest airborne levels. This is why forest walks
                 &ldquo;feel&rdquo; most restorative in those conditions &mdash; not just perception.
               </p>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          5. SECTION DIVIDER (flip)
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider flip />
 
       {/* ══════════════════════════════════════════════════════
@@ -488,43 +330,11 @@ export default function NatureClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Earthing
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Grounding &amp; Earthing
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Earthing" title="Grounding &amp; Earthing">
               Direct skin contact with the earth &mdash; bare feet on soil, grass, sand, or rock &mdash;
               may transfer free electrons from the Earth&rsquo;s surface. The hypothesis is biophysically
               plausible; the evidence is real but limited.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -633,9 +443,6 @@ export default function NatureClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          7. SECTION DIVIDER
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
@@ -645,48 +452,16 @@ export default function NatureClient() {
         id="light"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${SAGE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-nature-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Solar Medicine
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Light &amp; the Circadian System
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Solar Medicine" title="Light &amp; the Circadian System">
               Indoor lighting peaks at 200&ndash;500 lux. Outdoor daylight starts at 1,000 lux on
               overcast days and reaches 100,000 lux in direct summer sun. Your circadian clock
               needs at least 1,000 lux to set correctly &mdash; indoor light cannot do this.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -721,7 +496,7 @@ export default function NatureClient() {
                 exposure. Five minutes of outdoor morning light resets the circadian phase, anchors
                 the Cortisol Awakening Response, and sets the timer for DLMO (melatonin onset)
                 14 hours later. This directly connects to the{' '}
-                <Link href="/sleep" style={{ color: SAGE_DEEP, textDecoration: 'underline', textUnderlineOffset: '2px' }}>
+                <Link href="/sleep" style={{ color: 'var(--color-nature-deep)', textDecoration: 'underline', textUnderlineOffset: '2px' }}>
                   sleep page
                 </Link>
                 &rsquo;s circadian content.
@@ -775,8 +550,8 @@ export default function NatureClient() {
                 {
                   label: 'Midday (10am–2pm)',
                   desc: 'Vitamin D synthesis window. 20 minutes of direct sun on skin. UV index must be above 3 for significant D3 production — check your local UV index.',
-                  color: SAGE_MID,
-                  textColor: SAGE_DEEP,
+                  color: 'var(--color-nature-mid)',
+                  textColor: 'var(--color-nature-deep)',
                 },
                 {
                   label: 'Evening (2 hrs before bed)',
@@ -819,9 +594,6 @@ export default function NatureClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          9. SECTION DIVIDER (flip)
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider flip />
 
       {/* ══════════════════════════════════════════════════════
@@ -836,42 +608,10 @@ export default function NatureClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Cross-Practice Map
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Nature &amp; Every Practice
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Cross-Practice Map" title="Nature &amp; Every Practice">
               Nature is not a separate practice &mdash; it is the original context for all of them.
               Every discipline on this site is amplified when performed outdoors.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -939,7 +679,7 @@ export default function NatureClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: SAGE_DEEP,
+                        color: 'var(--color-nature-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -963,9 +703,6 @@ export default function NatureClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          11. SECTION DIVIDER
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
@@ -975,47 +712,15 @@ export default function NatureClient() {
         id="protocol"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${SAGE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-nature-pale))`,
         }}
       >
         <div style={{ maxWidth: '860px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Qing Li Method
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Forest Bathing Protocol
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '52ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="The Qing Li Method" title="Forest Bathing Protocol">
               This is not a hike. The goal is immersion, not distance. Slow down until you find
               the pace at which you notice everything &mdash; then halve it again.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div className="timeline" style={{ paddingLeft: '2.5rem', marginBottom: '4rem' }}>
@@ -1054,7 +759,7 @@ export default function NatureClient() {
               <div key={item.step} style={{ position: 'relative', marginBottom: '1.25rem' }}>
                 <div
                   className="timeline-node"
-                  style={{ background: SAGE_DEEP }}
+                  style={{ background: 'var(--color-nature-deep)' }}
                 >
                   {item.step}
                 </div>
@@ -1086,14 +791,7 @@ export default function NatureClient() {
 
           {/* Grounding protocol alongside */}
           <ScrollReveal>
-            <div
-              style={{
-                borderLeft: `3px solid ${SAGE_MID}`,
-                padding: '1.5rem 1.75rem',
-                background: SAGE_PALE,
-                borderRadius: '0 2px 2px 0',
-              }}
-            >
+            <InfoCard accentColor="var(--color-nature-mid)">
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
@@ -1101,7 +799,7 @@ export default function NatureClient() {
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: SAGE_DEEP,
+                  color: 'var(--color-nature-deep)',
                   margin: '0 0 0.75rem',
                 }}
               >
@@ -1118,7 +816,7 @@ export default function NatureClient() {
                 cool morning air, bare feet on dew-covered grass, and tree canopy is the maximum-dose
                 nature protocol.
               </p>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
@@ -1130,7 +828,7 @@ export default function NatureClient() {
         id="practice"
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: SAGE_DEEP,
+          background: 'var(--color-nature-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -1142,7 +840,7 @@ export default function NatureClient() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
             fontStyle: 'italic',
-            color: '#E2EDDF',
+            color: 'var(--color-nature-pale)',
             margin: 0,
             whiteSpace: 'nowrap',
           }}
@@ -1210,9 +908,9 @@ export default function NatureClient() {
                   textTransform: 'uppercase',
                   padding: '0.5rem 1.125rem',
                   borderRadius: '9999px',
-                  border: `1px solid ${activeVideoTab === tab.key ? SAGE_DEEP : 'var(--color-border)'}`,
+                  border: `1px solid ${activeVideoTab === tab.key ? 'var(--color-nature-deep)' : 'var(--color-border)'}`,
                   background:
-                    activeVideoTab === tab.key ? SAGE_DEEP : 'var(--color-surface-raised)',
+                    activeVideoTab === tab.key ? 'var(--color-nature-deep)' : 'var(--color-surface-raised)',
                   color: activeVideoTab === tab.key ? '#ffffff' : 'var(--color-text-muted)',
                   cursor: 'pointer',
                   transition: 'all 200ms ease',
@@ -1390,7 +1088,7 @@ export default function NatureClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: SAGE_DEEP,
+                        color: 'var(--color-nature-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -1416,7 +1114,7 @@ export default function NatureClient() {
           <ScrollReveal>
             <blockquote
               style={{
-                borderLeft: `3px solid ${SAGE_MID}`,
+                borderLeft: `3px solid var(--color-nature-mid)`,
                 paddingLeft: '1.5rem',
                 margin: 0,
               }}

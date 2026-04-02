@@ -1,17 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (temperature / ice blue) ─────────────────────
-const ICE_DEEP = '#1F5A7A';
-const ICE_MID  = '#7BB8D4';
-const ICE_PALE = '#DFF0F7';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 // ── Protocol Card ──────────────────────────────────────────────
 function ProtocolCard({
@@ -41,7 +39,7 @@ function ProtocolCard({
           fontWeight: 600,
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
-          color: ICE_DEEP,
+          color: 'var(--color-ice-deep)',
           margin: '0 0 0.25rem',
         }}
       >
@@ -62,7 +60,7 @@ function ProtocolCard({
         style={{
           fontFamily: 'var(--font-ui)',
           fontSize: '0.75rem',
-          color: ICE_DEEP,
+          color: 'var(--color-ice-deep)',
           fontStyle: 'italic',
           margin: '0 0 0.75rem',
         }}
@@ -108,118 +106,51 @@ const videoData: Record<VideoTab, Array<{ videoId: string; title: string; descri
   ],
 };
 
+const stickyNavSections = [
+  { id: 'cold', label: 'Cold' },
+  { id: 'heat', label: 'Heat' },
+  { id: 'contrast', label: 'Contrast' },
+  { id: 'practice-map', label: 'Practice Map' },
+  { id: 'protocols', label: 'Protocols' },
+  { id: 'safety', label: 'Safety' },
+  { id: 'practice', label: 'Practice' },
+];
+
 export default function TemperatureClient() {
   const [activeVideoTab, setActiveVideoTab] = useState<VideoTab>('cold');
 
   return (
     <div
       style={{
+        '--page-accent': 'var(--color-ice-deep)',
         fontFamily: 'var(--font-body)',
         fontSize: 'var(--text-body)',
         lineHeight: 1.8,
         color: 'var(--color-text)',
-      }}
+      } as React.CSSProperties}
     >
+      <StickyNav sections={stickyNavSections} accentColor="var(--color-ice-deep)" />
 
       {/* ══════════════════════════════════════════════════════
           1. HERO
       ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(40% 0.10 220), oklch(55% 0.12 205))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-temperature.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            Train Your Autonomic Nervous System
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            Cold &amp; Heat Therapy
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            Controlled temperature stress builds resilience at the cellular level. Cold triggers a 250%
-            dopamine surge lasting hours. Sauna 4&ndash;7 times weekly reduces mortality by 40%. Contrast
-            therapy trains the autonomic flexibility that every other practice on this site develops.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#cold', label: 'Cold' },
-              { href: '#heat', label: 'Heat' },
-              { href: '#contrast', label: 'Contrast' },
-              { href: '#practice-map', label: 'Practice Map' },
-              { href: '#protocols', label: 'Protocols' },
-              { href: '#safety', label: 'Safety' },
-              { href: '#practice', label: 'Practice' },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: ICE_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(123,184,212,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-temperature.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(40% 0.10 220), oklch(55% 0.12 205))"
+        eyebrow="Train Your Autonomic Nervous System"
+        headline="Cold &amp; Heat Therapy"
+        subtitle="Controlled temperature stress builds resilience at the cellular level. Cold triggers a 250% dopamine surge lasting hours. Sauna 4–7 times weekly reduces mortality by 40%. Contrast therapy trains the autonomic flexibility that every other practice on this site develops."
+        accentColor="var(--color-ice-mid)"
+        anchorLinks={[
+          { href: '#cold', label: 'Cold' },
+          { href: '#heat', label: 'Heat' },
+          { href: '#contrast', label: 'Contrast' },
+          { href: '#practice-map', label: 'Practice Map' },
+          { href: '#protocols', label: 'Protocols' },
+          { href: '#safety', label: 'Safety' },
+          { href: '#practice', label: 'Practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. DELIBERATE COLD EXPOSURE
@@ -243,30 +174,10 @@ export default function TemperatureClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1rem',
-                }}
-              >
-                Hormesis &amp; the Cold Shock Cascade
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.5rem',
-                }}
-              >
-                Deliberate Cold Exposure
-              </h2>
+              <SectionIntro
+                label="Hormesis &amp; the Cold Shock Cascade"
+                title="Deliberate Cold Exposure"
+              />
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 <strong>Hormesis</strong> is the principle that controlled, sublethal stress produces adaptive
                 resilience. Cold water immersion is one of the most well-documented hormetic stressors available &mdash;
@@ -324,39 +235,31 @@ export default function TemperatureClient() {
                 stat="250%"
                 detail="Dopamine increase sustained for up to 2 hours following cold water immersion. The effect is long-lasting compared to the sharp but brief dopamine spikes from food, social media, or other rewards."
                 url="https://pubmed.ncbi.nlm.nih.gov/10751106/"
-                accentColor={ICE_MID}
-                accentTextColor={ICE_DEEP}
+                accentColor="var(--color-ice-mid)"
+                accentTextColor="var(--color-ice-deep)"
               />
               <StatCard
                 source="Buijze et al., 2016 (n=3018)"
                 stat="29%"
                 detail="Reduction in self-reported sick days in participants who ended their morning shower with 30, 60, or 90 seconds of cold water — a Dutch RCT across over 3,000 participants."
                 url="https://pubmed.ncbi.nlm.nih.gov/27631616/"
-                accentColor={ICE_MID}
-                accentTextColor={ICE_DEEP}
+                accentColor="var(--color-ice-mid)"
+                accentTextColor="var(--color-ice-deep)"
               />
               <StatCard
                 source="&Scaron;r&aacute;mek et al., 2000"
                 stat="2+ hrs"
                 detail="Duration of dopamine elevation after cold immersion. The sustained nature of this effect — unlike the sharp peak-and-crash of most dopaminergic inputs — is part of what makes cold exposure uniquely beneficial for mood."
                 url="https://pubmed.ncbi.nlm.nih.gov/10751106/"
-                accentColor={ICE_MID}
-                accentTextColor={ICE_DEEP}
+                accentColor="var(--color-ice-mid)"
+                accentTextColor="var(--color-ice-deep)"
               />
             </div>
           </ScrollReveal>
 
           {/* Norepinephrine detail */}
           <ScrollReveal>
-            <div
-              style={{
-                borderLeft: `3px solid ${ICE_MID}`,
-                padding: '1.25rem 1.5rem',
-                background: ICE_PALE,
-                borderRadius: '0 2px 2px 0',
-                marginBottom: '2rem',
-              }}
-            >
+            <InfoCard accentColor="var(--color-ice-mid)">
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
@@ -364,7 +267,7 @@ export default function TemperatureClient() {
                   fontWeight: 600,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  color: ICE_DEEP,
+                  color: 'var(--color-ice-deep)',
                   margin: '0 0 0.5rem',
                 }}
               >
@@ -376,7 +279,7 @@ export default function TemperatureClient() {
                 but cold exposure produces it endogenously, without the receptor downregulation that comes
                 from exogenous administration. This is the core case for deliberate cold as a mental health tool.
               </p>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
@@ -384,7 +287,7 @@ export default function TemperatureClient() {
       {/* ══════════════════════════════════════════════════════
           3. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-ice-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           4. HEAT THERAPY
@@ -393,48 +296,19 @@ export default function TemperatureClient() {
         id="heat"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${ICE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-ice-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Kuopio Evidence
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Heat Therapy
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="The Kuopio Evidence"
+              title="Heat Therapy"
             >
               The Kuopio Ischemic Heart Disease study &mdash; 20 years, 2,315 Finnish men &mdash; produced
               the most striking epidemiological findings in sauna research. Regular sauna use is not merely
               relaxing; it is cardiovascularly parallel to moderate aerobic exercise.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -515,23 +389,23 @@ export default function TemperatureClient() {
                 stat="40%"
                 detail="Lower all-cause mortality in men using sauna 4–7 times per week versus once per week. The Kuopio Ischemic Heart Disease study followed 2,315 Finnish men for 20 years."
                 url="https://pubmed.ncbi.nlm.nih.gov/25705824/"
-                accentColor={ICE_MID}
-                accentTextColor={ICE_DEEP}
+                accentColor="var(--color-ice-mid)"
+                accentTextColor="var(--color-ice-deep)"
               />
               <StatCard
                 source="Laukkanen et al., 2017"
                 stat="65%"
                 detail="Lower risk of Alzheimer's disease and dementia in the highest sauna-frequency group. The association held after controlling for cardiovascular risk factors, physical activity, and socioeconomic status."
                 url="https://pubmed.ncbi.nlm.nih.gov/27932366/"
-                accentColor={ICE_MID}
-                accentTextColor={ICE_DEEP}
+                accentColor="var(--color-ice-mid)"
+                accentTextColor="var(--color-ice-deep)"
               />
               <StatCard
                 source="Laukkanen Kuopio Cohort"
                 stat="20 years"
                 detail="Follow-up duration of the landmark Finnish sauna cohort study — one of the longest-running prospective investigations of lifestyle and mortality in existence."
-                accentColor={ICE_MID}
-                accentTextColor={ICE_DEEP}
+                accentColor="var(--color-ice-mid)"
+                accentTextColor="var(--color-ice-deep)"
               />
             </div>
           </ScrollReveal>
@@ -541,7 +415,7 @@ export default function TemperatureClient() {
       {/* ══════════════════════════════════════════════════════
           5. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-ice-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           6. CONTRAST THERAPY
@@ -555,43 +429,14 @@ export default function TemperatureClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Hot-Cold Cycling
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Contrast Therapy
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="Hot-Cold Cycling"
+              title="Contrast Therapy"
             >
               Alternating hot and cold exposure trains the autonomic nervous system to transition rapidly
               between sympathetic and parasympathetic states &mdash; the same flexibility developed by
               breathwork, HRV training, and meditation, but through a direct physical mechanism.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -659,14 +504,7 @@ export default function TemperatureClient() {
 
           {/* Protocol detail */}
           <ScrollReveal>
-            <div
-              style={{
-                borderLeft: `3px solid ${ICE_MID}`,
-                padding: '1.25rem 1.5rem',
-                background: ICE_PALE,
-                borderRadius: '0 2px 2px 0',
-              }}
-            >
+            <InfoCard accentColor="var(--color-ice-mid)">
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
@@ -674,7 +512,7 @@ export default function TemperatureClient() {
                   fontWeight: 600,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  color: ICE_DEEP,
+                  color: 'var(--color-ice-deep)',
                   margin: '0 0 0.5rem',
                 }}
               >
@@ -686,7 +524,7 @@ export default function TemperatureClient() {
                 the dopamine effect; end on heat for deeper relaxation and sleep preparation. Total time:
                 60&ndash;90 minutes.
               </p>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
@@ -694,7 +532,7 @@ export default function TemperatureClient() {
       {/* ══════════════════════════════════════════════════════
           7. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-ice-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           8. TEMPERATURE & EVERY PRACTICE
@@ -703,47 +541,18 @@ export default function TemperatureClient() {
         id="practice-map"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${ICE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-ice-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Where Temperature Fits
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Temperature &amp; Every Practice
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="Where Temperature Fits"
+              title="Temperature &amp; Every Practice"
             >
               Temperature stress does not exist in isolation. It amplifies and is amplified by every
               other modality on this site. Here is how each connection works.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -791,7 +600,7 @@ export default function TemperatureClient() {
                     style={{
                       background: 'var(--color-surface-raised)',
                       border: '1px solid var(--color-border)',
-                      borderTop: `3px solid ${ICE_MID}`,
+                      borderTop: `3px solid var(--color-ice-mid)`,
                       borderRadius: '2px',
                       padding: '1.5rem',
                       transition: 'border-color 300ms ease',
@@ -804,7 +613,7 @@ export default function TemperatureClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: ICE_DEEP,
+                        color: 'var(--color-ice-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -824,7 +633,7 @@ export default function TemperatureClient() {
       {/* ══════════════════════════════════════════════════════
           9. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-ice-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           10. PROTOCOLS
@@ -838,42 +647,13 @@ export default function TemperatureClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Step by Step
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Protocols
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="Step by Step"
+              title="Protocols"
             >
               Start at the beginner level and build tolerance over weeks, not days. The goal is
               consistent exposure, not extreme duration.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Cold protocols */}
@@ -986,8 +766,8 @@ export default function TemperatureClient() {
               {[
                 {
                   label: 'Morning Cold',
-                  color: ICE_MID,
-                  textColor: ICE_DEEP,
+                  color: 'var(--color-ice-mid)',
+                  textColor: 'var(--color-ice-deep)',
                   desc: 'Cold in the morning amplifies the cortisol awakening response and produces a dopamine surge that elevates mood and focus for 2+ hours. This is the optimal timing for cold exposure as a mood and productivity tool.',
                 },
                 {
@@ -1034,7 +814,7 @@ export default function TemperatureClient() {
       {/* ══════════════════════════════════════════════════════
           11. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-ice-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           12. SAFETY
@@ -1043,48 +823,19 @@ export default function TemperatureClient() {
         id="safety"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${ICE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-ice-pale))`,
         }}
       >
         <div style={{ maxWidth: '860px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Know Before You Start
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Safety &amp; Contraindications
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '2.5rem',
-                maxWidth: '52ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="Know Before You Start"
+              title="Safety &amp; Contraindications"
             >
               Temperature extremes place real demands on the cardiovascular and autonomic nervous systems.
               The following contraindications are not cautionary footnotes &mdash; they are clinical considerations
               that apply to a meaningful subset of the population.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Safety callout */}
@@ -1156,14 +907,7 @@ export default function TemperatureClient() {
 
           {/* General guidelines */}
           <ScrollReveal>
-            <div
-              style={{
-                borderLeft: `3px solid ${ICE_MID}`,
-                padding: '1.25rem 1.5rem',
-                background: ICE_PALE,
-                borderRadius: '0 2px 2px 0',
-              }}
-            >
+            <InfoCard accentColor="var(--color-ice-mid)">
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
@@ -1171,7 +915,7 @@ export default function TemperatureClient() {
                   fontWeight: 600,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  color: ICE_DEEP,
+                  color: 'var(--color-ice-deep)',
                   margin: '0 0 0.5rem',
                 }}
               >
@@ -1183,7 +927,7 @@ export default function TemperatureClient() {
                 significantly better adherence and fewer adverse events than those who begin with full
                 immersion. The beneficial stress is dose-dependent &mdash; more is not always better.
               </p>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
@@ -1195,7 +939,7 @@ export default function TemperatureClient() {
         id="practice"
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: ICE_DEEP,
+          background: 'var(--color-ice-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -1275,9 +1019,9 @@ export default function TemperatureClient() {
                   textTransform: 'uppercase',
                   padding: '0.5rem 1.125rem',
                   borderRadius: '9999px',
-                  border: `1px solid ${activeVideoTab === tab.key ? ICE_DEEP : 'var(--color-border)'}`,
+                  border: `1px solid ${activeVideoTab === tab.key ? 'var(--color-ice-deep)' : 'var(--color-border)'}`,
                   background:
-                    activeVideoTab === tab.key ? ICE_DEEP : 'var(--color-surface-raised)',
+                    activeVideoTab === tab.key ? 'var(--color-ice-deep)' : 'var(--color-surface-raised)',
                   color: activeVideoTab === tab.key ? '#ffffff' : 'var(--color-text-muted)',
                   cursor: 'pointer',
                   transition: 'all 200ms ease',
@@ -1456,7 +1200,7 @@ export default function TemperatureClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: ICE_DEEP,
+                        color: 'var(--color-ice-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -1482,7 +1226,7 @@ export default function TemperatureClient() {
           <ScrollReveal>
             <blockquote
               style={{
-                borderLeft: `3px solid ${ICE_MID}`,
+                borderLeft: `3px solid var(--color-ice-mid)`,
                 paddingLeft: '1.5rem',
                 margin: 0,
               }}

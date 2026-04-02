@@ -7,6 +7,10 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
 import StatCard from '@/components/StatCard';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 // ── Tool Card ─────────────────────────────────────────────────
 function ToolCard({
@@ -32,7 +36,7 @@ function ToolCard({
           fontWeight: 500,
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
-          color: 'var(--color-amber-deep)',
+          color: 'var(--color-fascia-deep)',
           margin: '0 0 0.375rem',
         }}
       >
@@ -66,11 +70,11 @@ function ToolCard({
           display: 'inline-block',
           padding: '0.3rem 0.75rem',
           borderRadius: '9999px',
-          background: 'color-mix(in srgb, var(--color-amber-light) 25%, var(--color-cream))',
+          background: 'color-mix(in srgb, var(--color-fascia-light) 25%, var(--color-cream))',
           fontFamily: 'var(--font-ui)',
           fontSize: '0.6875rem',
           fontWeight: 500,
-          color: 'var(--color-amber-deep)',
+          color: 'var(--color-fascia-deep)',
         }}
       >
         Best for: {bestFor}
@@ -105,7 +109,7 @@ function ToolkitItem({
       <div
         style={{
           background: 'var(--color-surface-raised)',
-          border: `1px solid ${isOpen ? 'var(--color-amber-light)' : 'var(--color-border)'}`,
+          border: `1px solid ${isOpen ? 'var(--color-fascia-light)' : 'var(--color-border)'}`,
           borderRadius: '2px',
           overflow: 'hidden',
           transition: 'border-color 300ms ease',
@@ -143,7 +147,7 @@ function ToolkitItem({
                 fontFamily: 'var(--font-display)',
                 fontSize: '1.4rem',
                 fontWeight: 600,
-                color: isOpen ? 'var(--color-amber-deep)' : 'var(--color-text)',
+                color: isOpen ? 'var(--color-fascia-deep)' : 'var(--color-text)',
                 margin: 0,
                 fontStyle: 'normal',
                 transition: 'color 300ms ease',
@@ -187,8 +191,8 @@ function ToolkitItem({
             <div
               style={{
                 padding: '1rem 1.25rem',
-                background: 'color-mix(in srgb, var(--color-amber-light) 15%, var(--color-cream))',
-                borderLeft: '3px solid var(--color-amber-light)',
+                background: 'color-mix(in srgb, var(--color-fascia-light) 15%, var(--color-cream))',
+                borderLeft: '3px solid var(--color-fascia-light)',
                 borderRadius: '0 2px 2px 0',
               }}
             >
@@ -199,7 +203,7 @@ function ToolkitItem({
                   fontWeight: 500,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'var(--color-amber-deep)',
+                  color: 'var(--color-fascia-deep)',
                   margin: '0 0 0.375rem',
                 }}
               >
@@ -328,100 +332,40 @@ export default function FasciaClient() {
   };
 
   return (
-    <>
+    <div style={{ '--page-accent': 'var(--color-fascia-deep)' } as React.CSSProperties}>
+      <StickyNav
+        accentColor="var(--color-fascia-deep)"
+        sections={[
+          { id: 'science', label: 'Science' },
+          { id: 'gua-sha', label: 'Gua Sha' },
+          { id: 'cupping', label: 'Cupping' },
+          { id: 'fascial-fitness', label: 'Fascial Fitness' },
+          { id: 'toolkit', label: 'Toolkit' },
+          { id: 'spirit', label: 'Spirit' },
+          { id: 'secrets', label: 'Secrets' },
+        ]}
+      />
+
       {/* ══════════════════════════════════════════════════════
           HERO
       ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(30% 0.09 35), oklch(40% 0.07 25))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-fascia.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-        {/* Gradient overlay */}
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.72) 0%, transparent 100%)' }} />
-
-        <div style={{ maxWidth: '680px', position: 'relative', zIndex: 2 }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            Connective Tissue &amp; Release
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.25rem',
-              maxWidth: '12ch',
-            }}
-          >
-            The Living Web
-          </h1>
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'clamp(1rem, 1.6vw, 1.125rem)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '50ch',
-              lineHeight: 1.85,
-            }}
-          >
-            Your body&apos;s hidden communication network. Millions of sensory nerve endings. The physical
-            substrate of emotion, the mirror of your meridians, and the forgotten foundation of every yoga pose you&apos;ve ever held.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {['Science', 'Gua Sha', 'Cupping', 'Fascial Fitness', 'Toolkit', 'Spirit', 'Secrets'].map(label => (
-              <a
-                key={label}
-                href={`#${label.toLowerCase().replace(' ', '-')}`}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-amber-light)',
-                  textDecoration: 'none',
-                  borderBottom: '1px solid color-mix(in srgb, var(--color-amber-light) 60%, transparent)',
-                  paddingBottom: '2px',
-                  transition: 'color 300ms ease, border-color 300ms ease',
-                }}
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-fascia.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(30% 0.09 35), oklch(40% 0.07 25))"
+        eyebrow="Connective Tissue &amp; Release"
+        headline="The Living Web"
+        subtitle="Your body's hidden communication network. Millions of sensory nerve endings. The physical substrate of emotion, the mirror of your meridians, and the forgotten foundation of every yoga pose you've ever held."
+        accentColor="var(--color-fascia-mid)"
+        anchorLinks={[
+          { label: 'Science', href: '#science' },
+          { label: 'Gua Sha', href: '#gua-sha' },
+          { label: 'Cupping', href: '#cupping' },
+          { label: 'Fascial Fitness', href: '#fascial-fitness' },
+          { label: 'Toolkit', href: '#toolkit' },
+          { label: 'Spirit', href: '#spirit' },
+          { label: 'Secrets', href: '#secrets' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           WHAT IS FASCIA
@@ -442,31 +386,7 @@ export default function FasciaClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1.25rem',
-                }}
-              >
-                Foundation
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.75rem',
-                  lineHeight: 1.2,
-                }}
-              >
-                What is Fascia?
-              </h2>
+              <SectionIntro label="Foundation" title="What is Fascia?" accentColor="var(--color-fascia-mid)" />
               <p style={{ marginBottom: '1.25rem', lineHeight: 1.85 }}>
                 For centuries, anatomists treated fascia as inert &ldquo;packing material&rdquo; — the white, fibrous
                 stuff to be cut away so they could study the &ldquo;real&rdquo; structures. Today, science recognizes
@@ -526,35 +446,12 @@ export default function FasciaClient() {
         id="science"
         style={{
           padding: 'clamp(4rem, 7vw, 6rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: 'color-mix(in srgb, var(--color-cream) 88%, var(--color-violet-mid))',
+          background: 'color-mix(in srgb, var(--color-cream) 88%, var(--color-fascia-light))',
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Research
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 3rem',
-              }}
-            >
-              The Science
-            </h2>
+            <SectionIntro label="Research" title="The Science" accentColor="var(--color-fascia-mid)" />
           </ScrollReveal>
 
           <ScrollReveal group>
@@ -570,24 +467,24 @@ export default function FasciaClient() {
                 stat="Millions of sensory nerve endings — one of the body's richest sensory organs"
                 detail="Fascia (Schleip, 2003) provides the biological hardware for interoception: the felt sense of the body's interior that underlies all body-scan and somatic meditation."
                 url="https://pubmed.ncbi.nlm.nih.gov/22440512/"
-                accentColor="var(--color-amber-light)"
-                accentTextColor="var(--color-amber-deep)"
+                accentColor="var(--color-fascia-light)"
+                accentTextColor="var(--color-fascia-deep)"
               />
               <StatCard
                 source="Langevin, Harvard — 2002"
                 stat="80% of acupuncture points map to fascial planes"
                 detail="A landmark Harvard study found that 80% of acupuncture points and 50% of meridian pathways correspond directly to connective tissue planes — suggesting the body's ancient energy maps are anatomically real."
                 url="https://pubmed.ncbi.nlm.nih.gov/11893556/"
-                accentColor="var(--color-amber-light)"
-                accentTextColor="var(--color-amber-deep)"
+                accentColor="var(--color-fascia-light)"
+                accentTextColor="var(--color-fascia-deep)"
               />
               <StatCard
                 source="NIH Microdialysis Research"
                 stat="pH below 5.0 at active trigger points"
                 detail="Active fascial trigger points create a biochemical environment as acidic as vinegar — activating the same pain receptors triggered by capsaicin (chili peppers). This is the fascia's hidden pain generator."
                 url="https://pubmed.ncbi.nlm.nih.gov/18439759/"
-                accentColor="var(--color-amber-light)"
-                accentTextColor="var(--color-amber-deep)"
+                accentColor="var(--color-fascia-light)"
+                accentTextColor="var(--color-fascia-deep)"
               />
             </div>
           </ScrollReveal>
@@ -598,8 +495,8 @@ export default function FasciaClient() {
               stat="−35% tendon hysteresis"
               detail="14 weeks of plyometric training (~6,800 jumps) reduced Achilles tendon energy dissipation by 35% with no change in tendon size — the tissue became qualitatively more spring-like. This is the clearest quantified demonstration that fascial tissue can be trained for elasticity."
               url="https://pubmed.ncbi.nlm.nih.gov/20576845/"
-              accentColor="var(--color-amber-light)"
-              accentTextColor="var(--color-amber-deep)"
+              accentColor="var(--color-fascia-light)"
+              accentTextColor="var(--color-fascia-deep)"
             />
           </ScrollReveal>
 
@@ -608,8 +505,8 @@ export default function FasciaClient() {
               source="Fede, Stecco et al. — Int J Mol Sci, 2025"
               stat="Collagen VI is the dominant fascial collagen"
               detail="Paradigm-shifting finding: collagen type VI — not types I or III as textbooks stated — is the most abundant collagen in both superficial and deep fasciae, present at nearly double the concentration of other types. Type VI forms microfibrillar networks bridging fibers, nerves, blood vessels, and cells. Aging doubles type I collagen in intramuscular tissue, reducing adaptability."
-              accentColor="var(--color-amber-light)"
-              accentTextColor="var(--color-amber-deep)"
+              accentColor="var(--color-fascia-light)"
+              accentTextColor="var(--color-fascia-deep)"
             />
           </ScrollReveal>
 
@@ -638,30 +535,7 @@ export default function FasciaClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Pathology
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              When Fascia Gets Stuck
-            </h2>
+            <SectionIntro label="Pathology" title="When Fascia Gets Stuck" accentColor="var(--color-fascia-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -730,7 +604,7 @@ export default function FasciaClient() {
                   background: 'var(--color-surface-raised)',
                   border: '1px solid var(--color-border)',
                   borderRadius: '2px',
-                  borderLeft: '3px solid var(--color-amber-light)',
+                  borderLeft: '3px solid var(--color-fascia-mid)',
                 }}
               >
                 <h3
@@ -804,7 +678,7 @@ export default function FasciaClient() {
         </div>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-fascia-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           GUA SHA
@@ -818,30 +692,7 @@ export default function FasciaClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Ancient Technique
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Gua Sha &amp; Scraping
-            </h2>
+            <SectionIntro label="Ancient Technique" title="Gua Sha &amp; Scraping" accentColor="var(--color-fascia-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -929,7 +780,7 @@ export default function FasciaClient() {
                     key={item.step}
                     style={{ position: 'relative', marginBottom: '1rem' }}
                   >
-                    <div className="timeline-node" style={{ background: 'var(--color-amber-deep)' }}>
+                    <div className="timeline-node" style={{ background: 'var(--color-fascia-deep)' }}>
                       {item.step}
                     </div>
                     <p
@@ -1018,7 +869,7 @@ export default function FasciaClient() {
                 background: 'color-mix(in srgb, var(--color-linen) 60%, var(--color-cream))',
                 border: '1px solid var(--color-taupe)',
                 borderRadius: '2px',
-                borderTop: '3px solid var(--color-amber-deep)',
+                borderTop: '3px solid var(--color-fascia-deep)',
                 maxWidth: '700px',
               }}
             >
@@ -1029,7 +880,7 @@ export default function FasciaClient() {
                   fontWeight: 500,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'var(--color-amber-deep)',
+                  color: 'var(--color-fascia-deep)',
                   margin: '0 0 0.75rem',
                 }}
               >
@@ -1082,30 +933,7 @@ export default function FasciaClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Decompression Therapy
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Cupping &amp; Myofascial Decompression
-            </h2>
+            <SectionIntro label="Decompression Therapy" title="Cupping &amp; Myofascial Decompression" accentColor="var(--color-fascia-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -1185,8 +1013,8 @@ export default function FasciaClient() {
                 ].map((row, i) => (
                   i === 0 ? (
                     <div key={i} style={{ display: 'contents' }}>
-                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', gridColumn: '1 / 2' }}>{row[1]}</div>
-                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-amber-deep)' }}>{row[2]}</div>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-fascia-deep)', gridColumn: '1 / 2' }}>{row[1]}</div>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-fascia-deep)' }}>{row[2]}</div>
                     </div>
                   ) : (
                     <div key={i} style={{ display: 'contents' }}>
@@ -1241,7 +1069,7 @@ export default function FasciaClient() {
                   key={item.step}
                   style={{ position: 'relative', marginBottom: '1rem' }}
                 >
-                  <div className="timeline-node" style={{ background: 'var(--color-amber-deep)' }}>
+                  <div className="timeline-node" style={{ background: 'var(--color-fascia-deep)' }}>
                     {item.step}
                   </div>
                   <p
@@ -1274,8 +1102,8 @@ export default function FasciaClient() {
                 stat="Fibroblasts remodel in minutes"
                 detail="Tensile mechanical load triggers cytoskeletal reorganization, MMP-mediated collagen turnover, and new collagen synthesis in connective tissue fibroblasts."
                 url="https://pubmed.ncbi.nlm.nih.gov/16645126/"
-                accentColor="var(--color-amber-light)"
-                accentTextColor="var(--color-amber-deep)"
+                accentColor="var(--color-fascia-light)"
+                accentTextColor="var(--color-fascia-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1284,8 +1112,8 @@ export default function FasciaClient() {
                 stat="Cupping outperformed laser therapy"
                 detail="RCT showed dry cupping produced greater improvements in pressure pain threshold and cervical range of motion for upper trapezius trigger points vs. low-level laser."
                 url="https://pubmed.ncbi.nlm.nih.gov/29706756/"
-                accentColor="var(--color-amber-light)"
-                accentTextColor="var(--color-amber-deep)"
+                accentColor="var(--color-fascia-light)"
+                accentTextColor="var(--color-fascia-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1294,15 +1122,15 @@ export default function FasciaClient() {
                 stat="Multi-pathway mechanism confirmed"
                 detail="Comprehensive review synthesized cupping's circulatory, neurological, immunological, and fascial mechanisms. The most cited modern mechanism paper."
                 url="https://pubmed.ncbi.nlm.nih.gov/30671385/"
-                accentColor="var(--color-amber-light)"
-                accentTextColor="var(--color-amber-deep)"
+                accentColor="var(--color-fascia-light)"
+                accentTextColor="var(--color-fascia-deep)"
               />
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-fascia-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           FASCIAL FITNESS
@@ -1311,35 +1139,12 @@ export default function FasciaClient() {
         id="fascial-fitness"
         style={{
           padding: 'clamp(5rem, 8vw, 8rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6.5rem)',
-          background: 'color-mix(in srgb, var(--color-cream) 92%, var(--color-violet-mid))',
+          background: 'color-mix(in srgb, var(--color-cream) 92%, var(--color-fascia-light))',
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Movement Science
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Fascial Fitness
-            </h2>
+            <SectionIntro label="Movement Science" title="Fascial Fitness" accentColor="var(--color-fascia-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -1422,8 +1227,8 @@ export default function FasciaClient() {
                 ].map((row, i) => (
                   i === 0 ? (
                     <div key={i} style={{ display: 'contents' }}>
-                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', gridColumn: '1 / 2' }}>{row[1]}</div>
-                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-amber-deep)' }}>{row[2]}</div>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-fascia-deep)', gridColumn: '1 / 2' }}>{row[1]}</div>
+                      <div style={{ background: 'var(--color-surface-raised)', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-fascia-deep)' }}>{row[2]}</div>
                     </div>
                   ) : (
                     <div key={i} style={{ display: 'contents' }}>
@@ -1498,7 +1303,7 @@ export default function FasciaClient() {
             ].map((p) => (
               <ScrollReveal key={p.num}>
                 <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.75rem' }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>{p.num}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', color: 'var(--color-fascia-deep)', margin: '0 0 0.75rem' }}>{p.num}</p>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>{p.title}</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.75, margin: 0 }}>{p.desc}</p>
                 </div>
@@ -1537,7 +1342,7 @@ export default function FasciaClient() {
                   key={item.step}
                   style={{ position: 'relative', marginBottom: '1rem' }}
                 >
-                  <div className="timeline-node" style={{ background: 'var(--color-amber-deep)' }}>
+                  <div className="timeline-node" style={{ background: 'var(--color-fascia-deep)' }}>
                     {item.step}
                   </div>
                   <p
@@ -1570,8 +1375,8 @@ export default function FasciaClient() {
                 stat="Muscle barely shortens during walking"
                 detail="The Achilles tendon, not the calf muscle, does most of the work during locomotion — storing and returning ~35% of each stride's energy through elastic recoil."
                 url="https://pubmed.ncbi.nlm.nih.gov/12068110/"
-                accentColor="var(--color-amber-light)"
-                accentTextColor="var(--color-amber-deep)"
+                accentColor="var(--color-fascia-light)"
+                accentTextColor="var(--color-fascia-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1580,8 +1385,8 @@ export default function FasciaClient() {
                 stat="Fascial fitness: 4-principle framework"
                 detail="Published training guidelines for fascia: elastic recoil, preparatory counter-movement, proprioceptive refinement, and fascial stretching. Foundational paper for the field."
                 url="https://pubmed.ncbi.nlm.nih.gov/23294691/"
-                accentColor="var(--color-amber-light)"
-                accentTextColor="var(--color-amber-deep)"
+                accentColor="var(--color-fascia-light)"
+                accentTextColor="var(--color-fascia-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1589,15 +1394,15 @@ export default function FasciaClient() {
                 source="Fascia Research Congress"
                 stat="6–24 month remodeling timeline"
                 detail="Collagen crimp architecture adapts slowly. Consistent oscillatory training produces measurable elasticity improvements, but structural fascial change requires months, not weeks."
-                accentColor="var(--color-amber-light)"
-                accentTextColor="var(--color-amber-deep)"
+                accentColor="var(--color-fascia-light)"
+                accentTextColor="var(--color-fascia-deep)"
               />
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-fascia-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           COMPLETE TOOLKIT
@@ -1606,35 +1411,12 @@ export default function FasciaClient() {
         id="toolkit"
         style={{
           padding: 'clamp(4.5rem, 8vw, 7rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
-          background: 'color-mix(in srgb, var(--color-cream) 92%, var(--color-violet-mid))',
+          background: 'color-mix(in srgb, var(--color-cream) 92%, var(--color-fascia-light))',
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Methods
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Complete Toolkit
-            </h2>
+            <SectionIntro label="Methods" title="The Complete Toolkit" accentColor="var(--color-fascia-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -1663,7 +1445,7 @@ export default function FasciaClient() {
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-fascia-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           CRANIOSACRAL THERAPY
@@ -1678,30 +1460,7 @@ export default function FasciaClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Practitioner-Assisted
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Craniosacral Therapy
-            </h2>
+            <SectionIntro label="Practitioner-Assisted" title="Craniosacral Therapy" accentColor="var(--color-fascia-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -1718,13 +1477,13 @@ export default function FasciaClient() {
           <ScrollReveal>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
               <div>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>The Dural Connection</p>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-fascia-deep)', margin: '0 0 0.75rem' }}>The Dural Connection</p>
                 <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, margin: 0 }}>
                   The dura mater &mdash; the outermost meningeal layer &mdash; runs as a continuous fascial tube from the inside of the skull to the sacrum. This is real anatomy, not metaphor. CST practitioners apply approximately 5 grams of pressure (the weight of a nickel) to the skull and sacrum, working with this fascial membrane to release restrictions. Modern fascia research confirms the tissue contains abundant mechanoreceptors and has contractile properties via myofibroblasts.
                 </p>
               </div>
               <div>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}>ANS Regulation</p>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-fascia-deep)', margin: '0 0 0.75rem' }}>ANS Regulation</p>
                 <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, margin: 0 }}>
                   The most scientifically credible mechanism: gentle cranial touch may stimulate afferent mechanoreceptors that feed into brainstem nuclei involved in autonomic regulation. A 2024 meta-analysis of HRV studies (Cook et al., PMC11329942) found a moderate short-term increase in parasympathetic activity after CST (HF-HRV SMD = &minus;0.46). A 2023 RCT in firefighter cadets (W&oacute;jcik et al.) showed CST significantly reduced cortisol (p &le; 0.0001) and CRH levels after just 5 sessions.
                 </p>
@@ -1734,18 +1493,18 @@ export default function FasciaClient() {
 
           <ScrollReveal>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginBottom: '3rem' }}>
-              <div style={{ borderLeft: '3px solid var(--color-amber-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11329942/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Cook et al. 2024</a></p>
+              <div style={{ borderLeft: '3px solid var(--color-fascia-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-fascia-deep)', margin: '0 0 0.75rem' }}><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11329942/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Cook et al. 2024</a></p>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>Moderate parasympathetic increase after CST</p>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>HF-HRV meta-analysis shows a significant short-term shift toward vagal tone &mdash; the most objective evidence supporting CST&apos;s nervous system claims.</p>
               </div>
-              <div style={{ borderLeft: '3px solid var(--color-amber-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10970181/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Fernandez-Carnero et al. 2024</a></p>
+              <div style={{ borderLeft: '3px solid var(--color-fascia-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-fascia-deep)', margin: '0 0 0.75rem' }}><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10970181/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Fernandez-Carnero et al. 2024</a></p>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>No significant clinical benefit across 15 RCTs</p>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>The most rigorous 2024 systematic review found CST produces no statistically significant improvements for any musculoskeletal or non-musculoskeletal condition tested.</p>
               </div>
-              <div style={{ borderLeft: '3px solid var(--color-amber-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 0.75rem' }}><a href="https://www.mdpi.com/2076-328X/13/11/914" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>W&oacute;jcik et al. 2023</a></p>
+              <div style={{ borderLeft: '3px solid var(--color-fascia-deep)', padding: '1.5rem 1.75rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-fascia-deep)', margin: '0 0 0.75rem' }}><a href="https://www.mdpi.com/2076-328X/13/11/914" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>W&oacute;jcik et al. 2023</a></p>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem', lineHeight: 1.3 }}>Cortisol significantly reduced after 5 CST sessions</p>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>Firefighter cadets showed significantly reduced stress hormones (cortisol p &le; 0.0001, CRH p = 0.00067) vs. control &mdash; though the study lacked a sham condition.</p>
               </div>
@@ -1753,8 +1512,8 @@ export default function FasciaClient() {
           </ScrollReveal>
 
           <ScrollReveal>
-            <div style={{ background: 'color-mix(in srgb, var(--color-amber-light) 10%, var(--color-cream))', border: '1px solid color-mix(in srgb, var(--color-amber-light) 30%, var(--color-border))', borderRadius: '2px', padding: '2rem 2.25rem', maxWidth: '780px' }}>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-amber-deep)', margin: '0 0 1rem' }}>Honest Boundaries</p>
+            <div style={{ background: 'color-mix(in srgb, var(--color-fascia-light) 10%, var(--color-cream))', border: '1px solid color-mix(in srgb, var(--color-fascia-light) 30%, var(--color-border))', borderRadius: '2px', padding: '2rem 2.25rem', maxWidth: '780px' }}>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-fascia-deep)', margin: '0 0 1rem' }}>Honest Boundaries</p>
               <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, margin: '0 0 1rem' }}>
                 The <strong style={{ color: 'var(--color-text)' }}>cranial rhythmic impulse</strong> &mdash; the foundational theoretical construct of CST &mdash; has poor inter-rater reliability. Multiple studies show practitioners cannot agree on its rate or quality in the same patient. Adult cranial sutures are fused and have minimal clinically significant motion.
               </p>
@@ -1769,7 +1528,7 @@ export default function FasciaClient() {
         </div>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-fascia-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           THE INNER BODY — SPIRIT & ENERGY
@@ -1784,30 +1543,7 @@ export default function FasciaClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Spiritual Dimension
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Inner Body
-            </h2>
+            <SectionIntro label="The Spiritual Dimension" title="The Inner Body" accentColor="var(--color-fascia-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -1841,7 +1577,7 @@ export default function FasciaClient() {
                 title: 'Anatomy Trains & Yoga',
                 subtitle: 'Tom Myers',
                 body: 'Tom Myers mapped the body\'s "Anatomy Trains" — continuous myofascial meridians that run from sole to skull. The Deep Front Line (connecting the inner arches, psoas, diaphragm, and throat) is the body\'s structural and emotional core. Yoga asanas are not arbitrary shapes — they systematically stretch and remodel specific fascial lines. Forward folds target the Superficial Back Line, facilitating the neurological state of introspection.',
-                accent: 'var(--color-amber-light)',
+                accent: 'var(--color-fascia-light)',
               },
               {
                 title: 'Piezoelectricity: The Physical Energy Body',
@@ -1859,7 +1595,7 @@ export default function FasciaClient() {
                 title: 'Why We Cry in Hip Openers',
                 subtitle: 'Psoas, Amygdala & Release',
                 body: 'Deep hip openers — Pigeon pose, Lizard, Yin Dragon — stretch the psoas and the entire Deep Front Line. Because the psoas is innervated by the sympathetic nervous system and activated during the fear response — a pathway that originates in the amygdala but reaches the psoas indirectly through the sympathetic chain — releasing it signals the nervous system that a long-held threat has finally passed. This triggers a parasympathetic cascade: spontaneous tears, trembling, or profound relief. This is not psychological drama — it is fascial biology.',
-                accent: 'var(--color-amber-light)',
+                accent: 'var(--color-fascia-light)',
               },
               {
                 title: 'Fascia as the Organ of Presence',
@@ -2041,30 +1777,7 @@ export default function FasciaClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Advanced Insight
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Practitioner Secrets
-            </h2>
+            <SectionIntro label="Advanced Insight" title="Practitioner Secrets" accentColor="var(--color-fascia-mid)" />
             <p
               style={{
                 color: 'var(--color-text-muted)',
@@ -2105,7 +1818,7 @@ export default function FasciaClient() {
                       width: '2.5rem',
                       height: '2.5rem',
                       borderRadius: '9999px',
-                      background: 'var(--color-amber-deep)',
+                      background: 'var(--color-fascia-deep)',
                       color: '#F5EAE1',
                       display: 'flex',
                       alignItems: 'center',
@@ -2413,6 +2126,6 @@ export default function FasciaClient() {
           </ScrollReveal>
         </div>
       </section>
-    </>
+    </div>
   );
 }

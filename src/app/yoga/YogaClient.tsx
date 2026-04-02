@@ -2,18 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoAccent from '@/components/VideoAccent';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens ──────────────────────────────────────────────
-const VIOLET_DEEP = '#592E6B';
-const VIOLET_MID  = '#D7C2EE';
-const AMBER_DEEP  = '#C07A35';
-const AMBER_LIGHT = '#E4AD75';
+import PageHero from '@/components/PageHero';
+import StickyNav from '@/components/StickyNav';
+import PillBadge from '@/components/PillBadge';
+import InfoCard from '@/components/InfoCard';
 
 // ── Style Card (expandable) ────────────────────────────────────
 interface YogaStyleData {
@@ -28,8 +25,8 @@ interface YogaStyleData {
 }
 
 function intensityColor(level: YogaStyleData['intensity']) {
-  if (level === 'Zero') return { bg: `color-mix(in srgb, ${VIOLET_MID} 30%, var(--color-cream))`, text: VIOLET_DEEP };
-  if (level === 'Low') return { bg: `color-mix(in srgb, ${VIOLET_MID} 25%, var(--color-cream))`, text: VIOLET_DEEP };
+  if (level === 'Zero') return { bg: 'color-mix(in srgb, var(--color-yoga-mid) 30%, var(--color-cream))', text: 'var(--color-yoga-deep)' };
+  if (level === 'Low') return { bg: 'color-mix(in srgb, var(--color-yoga-mid) 25%, var(--color-cream))', text: 'var(--color-yoga-deep)' };
   if (level === 'Moderate') return { bg: 'color-mix(in srgb, var(--color-amber-light) 25%, var(--color-cream))', text: 'var(--color-amber-deep)' };
   return { bg: 'color-mix(in srgb, #985575 20%, var(--color-cream))', text: '#8B3A62' };
 }
@@ -37,10 +34,10 @@ function intensityColor(level: YogaStyleData['intensity']) {
 function StyleCard({ style, isOpen, onToggle }: { style: YogaStyleData; isOpen: boolean; onToggle: () => void }) {
   const ic = intensityColor(style.intensity);
   return (
-    <div style={{ background: 'var(--color-surface-raised)', border: `1px solid ${isOpen ? VIOLET_DEEP : 'var(--color-border)'}`, borderRadius: '2px', overflow: 'hidden', transition: 'border-color 300ms ease', marginBottom: '0.875rem' }}>
+    <div style={{ background: 'var(--color-surface-raised)', border: `1px solid ${isOpen ? 'var(--color-yoga-deep)' : 'var(--color-border)'}`, borderRadius: '2px', overflow: 'hidden', transition: 'border-color 300ms ease', marginBottom: '0.875rem' }}>
       <button onClick={onToggle} style={{ width: '100%', padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
         <div style={{ flex: 1, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.75rem' }}>
-          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: isOpen ? VIOLET_DEEP : 'var(--color-text)', margin: 0, fontStyle: 'normal', transition: 'color 300ms ease' }}>{style.name}</h3>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: isOpen ? 'var(--color-yoga-deep)' : 'var(--color-text)', margin: 0, fontStyle: 'normal', transition: 'color 300ms ease' }}>{style.name}</h3>
           <span style={{ display: 'inline-block', padding: '0.2rem 0.65rem', borderRadius: '9999px', background: ic.bg, fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: ic.text, letterSpacing: '0.05em' }}>{style.intensity}</span>
           <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', fontStyle: 'italic', color: 'var(--color-text-muted)' }}>{style.tradition}</span>
         </div>
@@ -51,13 +48,13 @@ function StyleCard({ style, isOpen, onToggle }: { style: YogaStyleData; isOpen: 
       {isOpen && (
         <div style={{ padding: '0 1.5rem 1.5rem', borderTop: '1px solid var(--color-border)' }}>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'var(--color-text)', margin: '1.25rem 0 1rem', lineHeight: 1.8 }}>{style.description}</p>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>Nervous System</p>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-yoga-deep)', margin: '0 0 0.5rem' }}>Nervous System</p>
           <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>{style.ansBenefit}</p>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>Key Research</p>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-yoga-deep)', margin: '0 0 0.5rem' }}>Key Research</p>
           <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>{style.keyResearch}</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
             {style.bestFor.map((b, i) => (
-              <span key={i} style={{ display: 'inline-block', padding: '0.2rem 0.65rem', borderRadius: '9999px', background: `color-mix(in srgb, ${VIOLET_MID} 20%, var(--color-cream))`, fontFamily: 'var(--font-ui)', fontSize: '0.5625rem', fontWeight: 500, color: VIOLET_DEEP, letterSpacing: '0.04em' }}>{b}</span>
+              <PillBadge key={i} accentColor="var(--color-yoga-mid)" accentTextColor="var(--color-yoga-deep)">{b}</PillBadge>
             ))}
           </div>
         </div>
@@ -70,7 +67,7 @@ function StyleCard({ style, isOpen, onToggle }: { style: YogaStyleData; isOpen: 
 function NidraStage({ number, title, description }: { number: number; title: string; description: string }) {
   return (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-      <div style={{ width: '2rem', height: '2rem', borderRadius: '9999px', background: VIOLET_DEEP, color: '#F5EAE1', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-ui)', fontSize: '0.75rem', fontWeight: 600, flexShrink: 0 }}>{number}</div>
+      <div style={{ width: '2rem', height: '2rem', borderRadius: '9999px', background: 'var(--color-yoga-deep)', color: '#F5EAE1', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-ui)', fontSize: '0.75rem', fontWeight: 600, flexShrink: 0 }}>{number}</div>
       <div>
         <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.0625rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.35rem', fontStyle: 'normal' }}>{title}</h4>
         <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>{description}</p>
@@ -101,39 +98,56 @@ export default function YogaClient() {
   const toggleStyle = (id: string) => setOpenStyle(prev => prev === id ? null : id);
 
   return (
-    <>
+    <div style={{ '--page-accent': 'var(--color-yoga-deep)' } as React.CSSProperties}>
+      <StickyNav
+        accentColor="var(--color-yoga-deep)"
+        sections={[
+          { id: 'active-styles', label: 'Active Styles' },
+          { id: 'passive-styles', label: 'Passive Styles' },
+          { id: 'yoga-nidra', label: 'Yoga Nidra' },
+          { id: 'pose-hold', label: 'Find Your Path' },
+          { id: 'hip-opening', label: 'Hip Opening' },
+        ]}
+      />
+
       {/* HERO */}
-      <section style={{ position: 'relative', minHeight: '85dvh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)', background: 'linear-gradient(160deg, oklch(55% 0.16 310), oklch(72% 0.1 290))', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}><Image src="/images/hero-yoga.webp" alt="Abstract watercolor yoga illustration" fill priority sizes="100vw" style={{ objectFit: 'cover', opacity: 0.35 }} /></div>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.7) 0%, rgba(28,29,55,0.15) 50%, transparent 100%)', zIndex: 1 }} />
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '780px' }}>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: AMBER_LIGHT, margin: '0 0 1rem' }}>The path of unity</p>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.75rem, 7vw, 5.5rem)', fontWeight: 700, color: '#F5EAE1', lineHeight: 1.05, margin: '0 0 1.5rem' }}>Yoga</h1>
-          <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2.5vw, 1.75rem)', fontWeight: 400, fontStyle: 'italic', color: 'rgba(245,234,225,0.85)', margin: '0 0 2rem', lineHeight: 1.45 }}>Every Style. Every Path. One Nervous System.</p>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.875rem, 1.3vw, 1.0625rem)', color: 'rgba(245,234,225,0.75)', margin: 0, lineHeight: 1.75, maxWidth: '60ch' }}>Yoga is not a monolithic practice — it is a diverse spectrum of technologies targeting different physiological systems. From the athletic intensity of Ashtanga to the conscious sleep of Yoga Nidra, each style produces specific neurological adaptations. Find your path.</p>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-yoga.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(55% 0.16 310), oklch(72% 0.1 290))"
+        eyebrow="The path of unity"
+        headline="Yoga"
+        accentColor="var(--color-yoga-mid)"
+        anchorLinks={[
+          { label: 'Active Styles', href: '#active-styles' },
+          { label: 'Passive Styles', href: '#passive-styles' },
+          { label: 'Yoga Nidra', href: '#yoga-nidra' },
+          { label: 'Hip Opening', href: '#hip-opening' },
+        ]}
+      >
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.125rem, 2.5vw, 1.75rem)', fontWeight: 400, fontStyle: 'italic', color: 'rgba(245,234,225,0.85)', margin: '0 0 2rem', lineHeight: 1.45 }}>Every Style. Every Path. One Nervous System.</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.875rem, 1.3vw, 1.0625rem)', color: 'rgba(245,234,225,0.75)', margin: 0, lineHeight: 1.75, maxWidth: '60ch' }}>Yoga is not a monolithic practice — it is a diverse spectrum of technologies targeting different physiological systems. From the athletic intensity of Ashtanga to the conscious sleep of Yoga Nidra, each style produces specific neurological adaptations. Find your path.</p>
+      </PageHero>
 
       {/* STATS */}
       <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw)', background: 'var(--color-cream)' }}>
         <ScrollReveal group>
           <div style={{ maxWidth: '1100px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
-            <StatCard source="UCLA RCTs, 2017–2024" stat="Kirtan Kriya prevents gray matter atrophy" detail="12-min daily Kundalini practice preserves hippocampal connectivity in adults at risk for Alzheimer's." url="https://pubmed.ncbi.nlm.nih.gov/28626952/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
-            <StatCard source="Kjaer et al., 2002 (PET)" stat="Yoga Nidra increases striatal dopamine 65%" detail="The only practice producing delta brainwaves while maintaining conscious awareness. (n=8, preliminary — needs replication.)" url="https://pubmed.ncbi.nlm.nih.gov/11958969/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
-            <StatCard source="Simon et al., 2021 (JAMA Psychiatry)" stat="Kundalini Yoga is evidence-based for GAD" detail="RCT of 226 adults: clinically meaningful alternative to CBT for generalized anxiety." url="https://pubmed.ncbi.nlm.nih.gov/34319365/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
-            <StatCard source="Harvard/MGH RCT, 2023" stat="Hot Yoga: 44% full depression remission" detail="Heat-stress hormesis produces antidepressant effects via HSP70 — even at 1 session/week." url="https://pubmed.ncbi.nlm.nih.gov/37851399/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
+            <StatCard source="UCLA RCTs, 2017–2024" stat="Kirtan Kriya prevents gray matter atrophy" detail="12-min daily Kundalini practice preserves hippocampal connectivity in adults at risk for Alzheimer's." url="https://pubmed.ncbi.nlm.nih.gov/28626952/" accentColor="var(--color-yoga-mid)" accentTextColor="var(--color-yoga-deep)" />
+            <StatCard source="Kjaer et al., 2002 (PET)" stat="Yoga Nidra increases striatal dopamine 65%" detail="The only practice producing delta brainwaves while maintaining conscious awareness. (n=8, preliminary — needs replication.)" url="https://pubmed.ncbi.nlm.nih.gov/11958969/" accentColor="var(--color-yoga-mid)" accentTextColor="var(--color-yoga-deep)" />
+            <StatCard source="Simon et al., 2021 (JAMA Psychiatry)" stat="Kundalini Yoga is evidence-based for GAD" detail="RCT of 226 adults: clinically meaningful alternative to CBT for generalized anxiety." url="https://pubmed.ncbi.nlm.nih.gov/34319365/" accentColor="var(--color-yoga-mid)" accentTextColor="var(--color-yoga-deep)" />
+            <StatCard source="Harvard/MGH RCT, 2023" stat="Hot Yoga: 44% full depression remission" detail="Heat-stress hormesis produces antidepressant effects via HSP70 — even at 1 session/week." url="https://pubmed.ncbi.nlm.nih.gov/37851399/" accentColor="var(--color-yoga-mid)" accentTextColor="var(--color-yoga-deep)" />
           </div>
         </ScrollReveal>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-yoga-mid)" />
 
       {/* 01 — ACTIVE STYLES */}
-      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
-        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>01 — The Active Styles</div>
+      <section id="active-styles" style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: 'var(--color-yoga-deep)' }}>01 — The Active Styles</div>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '2rem' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Yang Yoga — Movement, Heat & Resilience</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Yang Yoga — Movement, Heat &amp; Resilience</h2>
             <p style={{ margin: 0 }}>Active styles temporarily activate the sympathetic nervous system during practice, then facilitate a pronounced parasympathetic rebound. Over months, they train autonomic flexibility: the capacity to mobilize under stress and efficiently downregulate.</p>
           </div>
         </ScrollReveal>
@@ -142,14 +156,14 @@ export default function YogaClient() {
         </div>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-yoga-mid)" />
 
       {/* 02 — PASSIVE STYLES */}
-      <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${VIOLET_MID} 8%, var(--color-cream)) 100%)` }}>
-        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>02 — The Passive Styles</div>
+      <section id="passive-styles" style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, var(--color-yoga-mid) 8%, var(--color-cream)) 100%)' }}>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: 'var(--color-yoga-deep)' }}>02 — The Passive Styles</div>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '2rem' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Yin Yoga — Stillness, Fascia & Restoration</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Yin Yoga — Stillness, Fascia &amp; Restoration</h2>
             <p style={{ margin: 0 }}>Passive styles directly enhance parasympathetic tone. Slow holds, complete support, and sensory withdrawal lower cortisol, increase HRV, and raise GABA levels during the practice itself.</p>
           </div>
         </ScrollReveal>
@@ -165,7 +179,7 @@ export default function YogaClient() {
 
       {/* 03 — YOGA NIDRA */}
       <section id="yoga-nidra" style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
-        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>03 — Yoga Nidra: The Deep Dive</div>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: 'var(--color-yoga-deep)' }}>03 — Yoga Nidra: The Deep Dive</div>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>The Sleeper Who Wakes</h2>
@@ -176,7 +190,7 @@ export default function YogaClient() {
 
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '3rem' }}>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 1.5rem', fontStyle: 'normal' }}>The 8 Stages</h3>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: 'var(--color-yoga-deep)', margin: '0 0 1.5rem', fontStyle: 'normal' }}>The 8 Stages</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <NidraStage number={1} title="Preparation" description="Arriving in savasana. Physical adjustments, breath awareness, establishing receptive consciousness." />
               <NidraStage number={2} title="Sankalpa (Intention)" description="A short personal resolve planted when the subconscious first becomes accessible." />
@@ -192,32 +206,32 @@ export default function YogaClient() {
 
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '3rem' }}>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 1rem', fontStyle: 'normal' }}>The Neuroscience</h3>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: 'var(--color-yoga-deep)', margin: '0 0 1rem', fontStyle: 'normal' }}>The Neuroscience</h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
-              <div style={{ borderLeft: `3px solid ${VIOLET_MID}`, padding: '1.5rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>Dopamine</p>
+              <InfoCard accentColor="var(--color-yoga-mid)">
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-yoga-deep)', margin: '0 0 0.5rem' }}>Dopamine</p>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem' }}>65% striatal dopamine increase</p>
                 <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>Kjaer et al. (2002) PET scan. Replenishes baseline reserves — combats burnout. (n=8; needs replication.)</p>
-              </div>
-              <div style={{ borderLeft: `3px solid ${VIOLET_MID}`, padding: '1.5rem', background: 'var(--color-surface-raised)', borderRadius: '2px' }}>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>DMN Deactivation</p>
+              </InfoCard>
+              <InfoCard accentColor="var(--color-yoga-mid)">
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-yoga-deep)', margin: '0 0 0.5rem' }}>DMN Deactivation</p>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.5rem' }}>Default Mode Network decoupling</p>
                 <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.7 }}>Yadav et al. (2024, Nature Scientific Reports) fMRI: silences the brain&apos;s rumination engine.</p>
-              </div>
+              </InfoCard>
             </div>
 
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 1rem', fontStyle: 'normal' }}>NSDR: Non-Sleep Deep Rest</h3>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: 'var(--color-yoga-deep)', margin: '0 0 1rem', fontStyle: 'normal' }}>NSDR: Non-Sleep Deep Rest</h3>
             <p style={{ margin: '0 0 1.5rem' }}>Dr. Andrew Huberman coined &ldquo;NSDR&rdquo; in 2022 as a secular rebranding. <strong>All NSDR research is Yoga Nidra research.</strong> Boukhris et al. (2024, n=65) found a single 10-minute session improved reaction time, accuracy, and emotional balance — benefits from session one, where meditation requires 8 weeks.</p>
 
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 1rem', fontStyle: 'normal' }}>Trauma Recovery: iRest</h3>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: 'var(--color-yoga-deep)', margin: '0 0 1rem', fontStyle: 'normal' }}>Trauma Recovery: iRest</h3>
             <p style={{ margin: '0 0 1.5rem' }}>Richard Miller adapted Yoga Nidra into <strong>iRest</strong>. No verbal narrative processing = no retraumatization. Now in <strong>35+ VA centers</strong> and 6 DoD sites. Barber et al. (2025): chronic pain patients dis-identified from pain and reduced opioid use.</p>
 
             {/* Comparison table */}
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 1.25rem', fontStyle: 'normal' }}>Yoga Nidra vs. Meditation</h3>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', fontWeight: 600, color: 'var(--color-yoga-deep)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Yoga Nidra vs. Meditation</h3>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'var(--font-body)', fontSize: '0.875rem' }}>
-                <thead><tr style={{ borderBottom: `2px solid ${VIOLET_MID}` }}>
-                  {['Dimension', 'Yoga Nidra', 'Meditation'].map(h => <th key={h} style={{ textAlign: 'left', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: VIOLET_DEEP }}>{h}</th>)}
+                <thead><tr style={{ borderBottom: '2px solid var(--color-yoga-mid)' }}>
+                  {['Dimension', 'Yoga Nidra', 'Meditation'].map(h => <th key={h} style={{ textAlign: 'left', padding: '0.75rem 1rem', fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-yoga-deep)' }}>{h}</th>)}
                 </tr></thead>
                 <tbody>
                   {[['Posture', 'Lying, supported', 'Seated'], ['Guidance', 'Fully guided', 'Self-directed'], ['Effort', 'Effortless', 'Active attention'], ['Brainwaves', 'Theta + Delta', 'Alpha'], ['Time to benefit', '1 session (10 min)', '~8 weeks daily']].map(([d, n, m], i) => (
@@ -244,11 +258,11 @@ export default function YogaClient() {
         </ScrollReveal>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-yoga-mid)" />
 
       {/* 04 — FIND YOUR PATH */}
-      <section id="pose-hold" style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${VIOLET_MID} 10%, var(--color-cream)) 100%)` }}>
-        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>04 — Find Your Path</div>
+      <section id="pose-hold" style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, var(--color-yoga-mid) 10%, var(--color-cream)) 100%)' }}>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: 'var(--color-yoga-deep)' }}>04 — Find Your Path</div>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Which Style Is Right for You?</h2>
@@ -268,7 +282,7 @@ export default function YogaClient() {
               { goal: 'General Stress', style: 'Hatha', why: 'Strongest parasympathetic. Best for all levels.' },
             ].map((r, i) => (
               <div key={i} style={{ display: 'flex', gap: '1.25rem', padding: '1.25rem 0', borderBottom: '1px solid var(--color-border)', flexWrap: 'wrap' }}>
-                <div style={{ minWidth: '140px', flex: '0 0 140px' }}><p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', fontWeight: 600, color: VIOLET_DEEP, margin: 0 }}>{r.goal}</p></div>
+                <div style={{ minWidth: '140px', flex: '0 0 140px' }}><p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-yoga-deep)', margin: 0 }}>{r.goal}</p></div>
                 <div style={{ flex: 1, minWidth: '200px' }}>
                   <p style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.25rem', fontStyle: 'normal' }}>{r.style}</p>
                   <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>{r.why}</p>
@@ -279,11 +293,11 @@ export default function YogaClient() {
         </ScrollReveal>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-yoga-mid)" />
 
       {/* 05 — HIP OPENING */}
-      <section id="hip-opening" style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${VIOLET_MID} 8%, var(--color-cream)) 100%)` }}>
-        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>05 — Hip Opening</div>
+      <section id="hip-opening" style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, var(--color-yoga-mid) 8%, var(--color-cream)) 100%)' }}>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: 'var(--color-yoga-deep)' }}>05 — Hip Opening</div>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '2.5rem' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>Unlock the Body&rsquo;s Keystone</h2>
@@ -297,9 +311,9 @@ export default function YogaClient() {
           <div style={{ overflowX: 'auto', marginBottom: '2.5rem', maxWidth: '780px' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
               <thead>
-                <tr style={{ borderBottom: `2px solid ${VIOLET_MID}` }}>
+                <tr style={{ borderBottom: '2px solid var(--color-yoga-mid)' }}>
                   {['Movement', 'Key Muscles', 'Fascial Line'].map(h => (
-                    <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: VIOLET_DEEP, padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
+                    <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-yoga-deep)', padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -325,7 +339,7 @@ export default function YogaClient() {
 
         {/* Key Poses Grid */}
         <ScrollReveal>
-          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 1.5rem' }}>The Essential Hip Openers</p>
+          <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-yoga-deep)', margin: '0 0 1.5rem' }}>The Essential Hip Openers</p>
         </ScrollReveal>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1rem', marginBottom: '2.5rem', maxWidth: '1100px' }}>
           {[
@@ -346,7 +360,7 @@ export default function YogaClient() {
               <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.5rem' }}>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.0625rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.125rem', fontStyle: 'normal' }}>{pose.name}</h3>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: '0.8125rem', fontStyle: 'italic', color: 'var(--color-text-muted)', margin: '0 0 0.5rem' }}>{pose.sanskrit}</p>
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: VIOLET_DEEP, margin: '0 0 0.5rem' }}>{pose.target}</p>
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-yoga-deep)', margin: '0 0 0.5rem' }}>{pose.target}</p>
                 <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', lineHeight: 1.7, margin: 0 }}>{pose.cue}</p>
               </div>
             </ScrollReveal>
@@ -371,7 +385,7 @@ export default function YogaClient() {
                 { step: '10', text: 'Supine twist each side + savasana. Integration \u2014 do not skip. (3 min)' },
               ].map(item => (
                 <div key={item.step} style={{ position: 'relative', marginBottom: '0.75rem' }}>
-                  <div className="timeline-node" style={{ background: VIOLET_DEEP }}>{item.step}</div>
+                  <div className="timeline-node" style={{ background: 'var(--color-yoga-deep)' }}>{item.step}</div>
                   <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text)', lineHeight: 1.7, margin: 0 }}>{item.text}</p>
                 </div>
               ))}
@@ -407,22 +421,22 @@ export default function YogaClient() {
         {/* Research Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem', marginTop: '2.5rem', maxWidth: '1100px' }}>
           <ScrollReveal>
-            <StatCard source="Reiman et al., 2016" stat="Hip rotation predicts back pain" detail="Reduced hip internal rotation ROM is significantly associated with non-specific low back pain. The most under-addressed hip movement in yoga." url="https://pubmed.ncbi.nlm.nih.gov/27117726/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
+            <StatCard source="Reiman et al., 2016" stat="Hip rotation predicts back pain" detail="Reduced hip internal rotation ROM is significantly associated with non-specific low back pain. The most under-addressed hip movement in yoga." url="https://pubmed.ncbi.nlm.nih.gov/27117726/" accentColor="var(--color-yoga-mid)" accentTextColor="var(--color-yoga-deep)" />
           </ScrollReveal>
           <ScrollReveal>
-            <StatCard source="Grilley, Yin Yoga (2002)" stat="40-degree skeletal variation" detail="Dissection work showed up to 40-degree variation in femoral neck angle between individuals. Pigeon depth is partly bony architecture, not effort." accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
+            <StatCard source="Grilley, Yin Yoga (2002)" stat="40-degree skeletal variation" detail="Dissection work showed up to 40-degree variation in femoral neck angle between individuals. Pigeon depth is partly bony architecture, not effort." accentColor="var(--color-yoga-mid)" accentTextColor="var(--color-yoga-deep)" />
           </ScrollReveal>
           <ScrollReveal>
-            <StatCard source="van der Kolk, 2014" stat="Yoga reduces treatment-resistant PTSD" detail="Yoga emphasizing interoceptive awareness reliably reduced PTSD scores in populations where conventional therapy had failed. Mechanism: restored vagal tone." url="https://pubmed.ncbi.nlm.nih.gov/25004196/" accentColor={VIOLET_MID} accentTextColor={VIOLET_DEEP} />
+            <StatCard source="van der Kolk, 2014" stat="Yoga reduces treatment-resistant PTSD" detail="Yoga emphasizing interoceptive awareness reliably reduced PTSD scores in populations where conventional therapy had failed. Mechanism: restored vagal tone." url="https://pubmed.ncbi.nlm.nih.gov/25004196/" accentColor="var(--color-yoga-mid)" accentTextColor="var(--color-yoga-deep)" />
           </ScrollReveal>
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-yoga-mid)" />
 
       {/* 06 — ANS CONNECTION */}
       <section style={{ padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)', background: 'var(--color-cream)' }}>
-        <div className="section-label" style={{ marginBottom: '2.5rem', color: VIOLET_DEEP }}>06 — The Nervous System Connection</div>
+        <div className="section-label" style={{ marginBottom: '2.5rem', color: 'var(--color-yoga-deep)' }}>06 — The Nervous System Connection</div>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginBottom: '2rem' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 1.25rem', fontStyle: 'normal' }}>All Yoga Is Vagus Nerve Exercise</h2>
@@ -436,21 +450,21 @@ export default function YogaClient() {
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>Slow breathing and physical support stimulate baroreceptors and the ventral vagal complex.</p>
               <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: '#3D8A5A' }}>Restorative &middot; Yin &middot; Hatha &middot; Yoga Nidra</p>
             </div>
-            <div style={{ background: 'var(--color-surface-raised)', borderTop: `3px solid ${AMBER_DEEP}`, borderRadius: '2px', padding: '2rem 1.75rem' }}>
+            <div style={{ background: 'var(--color-surface-raised)', borderTop: '3px solid var(--color-amber-deep)', borderRadius: '2px', padding: '2rem 1.75rem' }}>
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Autonomic Flexibility</h3>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>Sympathetic activation → parasympathetic rebound. Trains stress recovery.</p>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: AMBER_DEEP }}>Ashtanga &middot; Vinyasa &middot; Power &middot; Hot</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: 'var(--color-amber-deep)' }}>Ashtanga &middot; Vinyasa &middot; Power &middot; Hot</p>
             </div>
-            <div style={{ background: 'var(--color-surface-raised)', borderTop: `3px solid ${VIOLET_DEEP}`, borderRadius: '2px', padding: '2rem 1.75rem' }}>
+            <div style={{ background: 'var(--color-surface-raised)', borderTop: '3px solid var(--color-yoga-deep)', borderRadius: '2px', padding: '2rem 1.75rem' }}>
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.75rem', fontStyle: 'normal' }}>Direct Vagal Stimulation</h3>
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: '0 0 1rem', lineHeight: 1.7 }}>Breathwork and chanting stimulate laryngeal and auricular vagal branches.</p>
-              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: VIOLET_DEEP }}>Kundalini</p>
+              <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 500, color: 'var(--color-yoga-deep)' }}>Kundalini</p>
             </div>
           </div>
         </ScrollReveal>
         <ScrollReveal>
           <div style={{ maxWidth: '780px', marginTop: '2.5rem', textAlign: 'center' }}>
-            <Link href="/nervous-system" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: VIOLET_DEEP, textDecoration: 'none' }}>Explore the Nervous System in depth &rarr;</Link>
+            <Link href="/nervous-system" style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-yoga-deep)', textDecoration: 'none' }}>Explore the Nervous System in depth &rarr;</Link>
           </div>
         </ScrollReveal>
       </section>
@@ -474,6 +488,6 @@ export default function YogaClient() {
           </ScrollReveal>
         </div>
       </section>
-    </>
+    </div>
   );
 }

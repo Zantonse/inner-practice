@@ -1,18 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
+import PageHero from '@/components/PageHero';
+import StickyNav from '@/components/StickyNav';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
+import PillBadge from '@/components/PillBadge';
 
 // ── Teal accent tokens ─────────────────────────────────────────
-const TEAL_DEEP    = '#2E7070';
-const TEAL_MID     = '#2E7575';
-const TEAL_LIGHT   = '#A8DADA';
-const TEAL_PALE    = '#E0F4F4';
+const TEAL_DEEP  = 'var(--color-teal-deep)';
+const TEAL_MID   = 'var(--color-teal-mid)';
+const TEAL_LIGHT = 'var(--color-teal-light)';
+const TEAL_PALE  = 'var(--color-teal-pale)';
 
 // ── Technique Accordion Item ──────────────────────────────────
 interface TechniqueData {
@@ -735,7 +740,20 @@ export default function BreatheClient() {
   const filteredVideos = videos.filter(v => v.category === activeVideoCategory);
 
   return (
-    <>
+    <div style={{ '--page-accent': 'var(--color-teal-deep)' } as React.CSSProperties}>
+      <StickyNav
+        accentColor={TEAL_DEEP}
+        sections={[
+          { id: 'nasal',      label: 'Nose vs. Mouth' },
+          { id: 'co2',        label: 'CO₂ & BOLT' },
+          { id: 'science',    label: 'Science' },
+          { id: 'techniques', label: 'Techniques' },
+          { id: 'wellness',   label: 'Wellness' },
+          { id: 'practice',   label: 'Practice' },
+          { id: 'protocols',  label: 'Protocols' },
+          { id: 'connect',    label: 'Connect' },
+        ]}
+      />
       {/* ══════════════════════════════════════════════════════
           HERO
       ══════════════════════════════════════════════════════ */}
@@ -2805,6 +2823,6 @@ export default function BreatheClient() {
           </ScrollReveal>
         </div>
       </section>
-    </>
+    </div>
   );
 }

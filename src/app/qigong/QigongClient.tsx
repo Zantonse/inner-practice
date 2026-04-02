@@ -7,11 +7,11 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (qigong / jade green) ─────────────────────
-const JADE_DEEP = '#1D5038';
-const JADE_MID  = '#A8D5BA';
-const JADE_PALE = '#E6F4EC';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import PillBadge from '@/components/PillBadge';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 // ── Form Card (qigong forms section) ──────────────────────────
 function FormCard({
@@ -31,7 +31,7 @@ function FormCard({
     evidence === 'Strong'
       ? { bg: 'rgba(45,107,79,0.10)', text: '#2D6B4F' }
       : evidence === 'Moderate'
-      ? { bg: JADE_PALE, text: JADE_DEEP }
+      ? { bg: 'var(--color-jade-pale)', text: 'var(--color-jade-deep)' }
       : evidence === 'Low-Moderate'
       ? { bg: 'rgba(228,173,117,0.12)', text: '#8B5E2A' }
       : { bg: 'rgba(139,58,98,0.08)', text: '#8B3A62' };
@@ -41,7 +41,7 @@ function FormCard({
       style={{
         background: 'var(--color-surface-raised)',
         border: '1px solid var(--color-border)',
-        borderLeft: `3px solid ${JADE_MID}`,
+        borderLeft: `3px solid var(--color-jade-mid)`,
         borderRadius: '2px',
         padding: '1.75rem',
       }}
@@ -60,21 +60,9 @@ function FormCard({
           {name}
         </h3>
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-          <span
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.625rem',
-              fontWeight: 600,
-              letterSpacing: '0.08em',
-              padding: '0.2rem 0.6rem',
-              borderRadius: '9999px',
-              background: JADE_PALE,
-              color: JADE_DEEP,
-              border: `1px solid ${JADE_MID}`,
-            }}
-          >
+          <PillBadge accentColor="var(--color-jade-deep)" accentTextColor="var(--color-jade-deep)">
             {duration}
-          </span>
+          </PillBadge>
           <span
             style={{
               fontFamily: 'var(--font-ui)',
@@ -141,119 +129,42 @@ const videoData: Record<VideoTab, Array<{ videoId: string; title: string; descri
   ],
 };
 
+const qigongSections = [
+  { id: 'history', label: 'History' },
+  { id: 'science', label: 'Science' },
+  { id: 'forms', label: 'Forms' },
+  { id: 'qi', label: 'Qi' },
+  { id: 'nervous-system', label: 'Nervous System' },
+  { id: 'evidence', label: 'Evidence' },
+  { id: 'protocol', label: '90 Days' },
+  { id: 'practice', label: 'Practice' },
+];
+
 export default function QigongClient() {
   const [activeVideoTab, setActiveVideoTab] = useState<VideoTab>('ba-duan-jin');
 
   return (
-    <div
-      style={{
-        fontFamily: 'var(--font-body)',
-        fontSize: 'var(--text-body)',
-        lineHeight: 1.8,
-        color: 'var(--color-text)',
-      }}
-    >
+    <div style={{ '--page-accent': 'var(--color-jade-deep)' } as React.CSSProperties}>
+      <StickyNav sections={qigongSections} accentColor="var(--color-jade-deep)" />
 
-      {/* ══════════════════════════════════════════════════════
-          1. HERO
-      ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(35% 0.10 160), oklch(50% 0.12 145))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-qigong.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            QIGONG
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            The Art of Moving Stillness
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            Qigong is where slow movement, breath, and intention converge &mdash; a 3,000-year-old practice
-            that hydrates fascia, activates the vagus nerve, and trains the nervous system through the
-            simplest of gestures.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#history', label: 'History' },
-              { href: '#science', label: 'Science' },
-              { href: '#forms', label: 'Forms' },
-              { href: '#qi', label: 'Qi' },
-              { href: '#nervous-system', label: 'Nervous System' },
-              { href: '#evidence', label: 'Evidence' },
-              { href: '#protocol', label: '90 Days' },
-              { href: '#practice', label: 'Practice' },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: JADE_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(168,213,186,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-qigong.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(35% 0.10 160), oklch(50% 0.12 145))"
+        eyebrow="QIGONG"
+        headline="The Art of Moving Stillness"
+        subtitle="Qigong is where slow movement, breath, and intention converge \u2014 a 3,000-year-old practice that hydrates fascia, activates the vagus nerve, and trains the nervous system through the simplest of gestures."
+        accentColor="var(--color-jade-mid)"
+        anchorLinks={[
+          { label: 'History', href: '#history' },
+          { label: 'Science', href: '#science' },
+          { label: 'Forms', href: '#forms' },
+          { label: 'Qi', href: '#qi' },
+          { label: 'Nervous System', href: '#nervous-system' },
+          { label: 'Evidence', href: '#evidence' },
+          { label: '90 Days', href: '#protocol' },
+          { label: 'Practice', href: '#practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. WHAT QIGONG IS
@@ -277,30 +188,7 @@ export default function QigongClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1rem',
-                }}
-              >
-                3,000 YEARS OF CULTIVATION
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.5rem',
-                }}
-              >
-                What Qigong Is
-              </h2>
+              <SectionIntro label="3,000 YEARS OF CULTIVATION" title="What Qigong Is" />
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 The earliest illustrated record of qigong-like exercises is the <strong>Mawangdui Daoyin Tu</strong>,
                 a silk scroll discovered in a Han dynasty tomb dated 168 BCE. It depicts 44 figures in therapeutic
@@ -354,21 +242,13 @@ export default function QigongClient() {
                 Zhuang where the entire practice is postural. All share the same foundational logic: conscious
                 attention directed through the body cultivates and circulates qi.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${JADE_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: JADE_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '1rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: JADE_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-jade-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-jade-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   The three elements &mdash; movement, breath, and intention &mdash; are not metaphor. They map
                   directly onto modern neuroscience: proprioception, respiratory control, and directed attention
                   are three distinct but interdependent nervous system processes.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -386,22 +266,22 @@ export default function QigongClient() {
                 source="Mawangdui Silk Scroll"
                 stat="168 BCE"
                 detail="The Mawangdui Daoyin Tu — oldest illustrated exercise manual in existence. Excavated in 1973 from a Han dynasty tomb in Hunan Province, China."
-                accentColor={JADE_MID}
-                accentTextColor={JADE_DEEP}
+                accentColor="var(--color-jade-mid)"
+                accentTextColor="var(--color-jade-deep)"
               />
               <StatCard
                 source="Chinese Health Qigong Association"
                 stat="69+"
                 detail="Countries practicing standardized health qigong forms developed and disseminated by the CHQA since its establishment in 2000."
-                accentColor={JADE_MID}
-                accentTextColor={JADE_DEEP}
+                accentColor="var(--color-jade-mid)"
+                accentTextColor="var(--color-jade-deep)"
               />
               <StatCard
                 source="Every form"
                 stat="3"
                 detail="Every qigong form, without exception, combines movement (xing), breath (xi), and intention (yi). The triad is the defining structure of the practice."
-                accentColor={JADE_MID}
-                accentTextColor={JADE_DEEP}
+                accentColor="var(--color-jade-mid)"
+                accentTextColor="var(--color-jade-deep)"
               />
             </div>
           </ScrollReveal>
@@ -409,9 +289,6 @@ export default function QigongClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          3. SECTION DIVIDER
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
@@ -421,48 +298,16 @@ export default function QigongClient() {
         id="science"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${JADE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-jade-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              WHY SLOWNESS HEALS
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Science of Slow Movement
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="WHY SLOWNESS HEALS" title="The Science of Slow Movement">
               Qigong&rsquo;s characteristic slowness is not aesthetic. It targets specific mechanoreceptors,
               optimizes fascial hydration, and may stimulate piezoelectric signaling that ordinary exercise
               &mdash; by being too fast &mdash; completely bypasses. (Piezoelectricity in collagen is well-established in vitro; its functional role in living soft-tissue fascia during movement is biologically plausible but not yet directly confirmed in vivo.)
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Two-column prose */}
@@ -551,21 +396,13 @@ export default function QigongClient() {
                 of the right insula in long-term practitioners, correlating with enhanced vagal tone and emotional
                 regulation capacity.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${JADE_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: JADE_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '1rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: JADE_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-jade-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-jade-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   Slow movement + internal attention = Ruffini activation + interoceptive training. This combination
                   uniquely lowers sympathetic tone while building body awareness &mdash; two outcomes that fast
                   exercise cannot simultaneously produce.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -583,31 +420,28 @@ export default function QigongClient() {
                 stat="43%"
                 detail="Reduction in fall risk in older adults practicing qigong regularly, across a meta-analysis of 22 randomized controlled trials. Balance and proprioception are among the strongest documented effects."
                 url="https://pubmed.ncbi.nlm.nih.gov/29330499/"
-                accentColor={JADE_MID}
-                accentTextColor={JADE_DEEP}
+                accentColor="var(--color-jade-mid)"
+                accentTextColor="var(--color-jade-deep)"
               />
               <StatCard
                 source="Wei et al., 2013 — MRI study"
                 stat="Thicker cortex"
                 detail="Long-term qigong practitioners show thicker right anterior insula and left primary somatosensory cortex — the interoceptive and body-map regions — compared to matched controls."
-                accentColor={JADE_MID}
-                accentTextColor={JADE_DEEP}
+                accentColor="var(--color-jade-mid)"
+                accentTextColor="var(--color-jade-deep)"
               />
               <StatCard
                 source="Schleip, 2012 — Fascia research"
                 stat="2&ndash;3&times;"
                 detail="Greater fascial hydration and fluid exchange with slow sustained loading versus static stretching. The sponge-squeeze mechanism of qigong movement outperforms passive stretch for connective tissue remodeling."
-                accentColor={JADE_MID}
-                accentTextColor={JADE_DEEP}
+                accentColor="var(--color-jade-mid)"
+                accentTextColor="var(--color-jade-deep)"
               />
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          5. SECTION DIVIDER (flip)
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider flip />
 
       {/* ══════════════════════════════════════════════════════
@@ -622,43 +456,11 @@ export default function QigongClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              YOUR PRACTICE MENU
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Forms
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="YOUR PRACTICE MENU" title="The Forms">
               Each major qigong form has a distinct structure, target duration, and evidence base.
               The five forms below represent the most practiced and most researched in both traditional
               and clinical contexts.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Form Cards */}
@@ -788,8 +590,8 @@ export default function QigongClient() {
             {[
               {
                 label: 'Moving Qigong (Dong Gong)',
-                color: JADE_MID,
-                textColor: JADE_DEEP,
+                color: 'var(--color-jade-mid)',
+                textColor: 'var(--color-jade-deep)',
                 desc: 'Continuous flowing sequences that build proprioception, balance, and cardiovascular adaptation. More accessible for beginners and easier to sustain through mental restlessness. Ba Duan Jin, Wu Qin Xi, and Yi Jin Jing are moving forms. Best entry point for most people.',
               },
               {
@@ -845,47 +647,15 @@ export default function QigongClient() {
         id="qi"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${JADE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-jade-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              THE HONEST QUESTION
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Qi Through a Scientific Lens
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="THE HONEST QUESTION" title="Qi Through a Scientific Lens">
               Qi is the most contested concept in qigong. Here is what the research actually says,
               and where scientific translation is reasonable versus where it is speculative.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Two-column */}
@@ -962,7 +732,7 @@ export default function QigongClient() {
               <div
                 style={{
                   background: 'var(--color-surface-raised)',
-                  border: `1px solid ${JADE_MID}`,
+                  border: `1px solid var(--color-jade-mid)`,
                   borderRadius: '2px',
                   padding: '1.25rem',
                   marginTop: '1rem',
@@ -975,7 +745,7 @@ export default function QigongClient() {
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: JADE_DEEP,
+                    color: 'var(--color-jade-deep)',
                     margin: '0 0 0.5rem',
                   }}
                 >
@@ -1056,8 +826,8 @@ export default function QigongClient() {
               },
               {
                 status: 'Strong',
-                color: JADE_DEEP,
-                bg: JADE_PALE,
+                color: 'var(--color-jade-deep)',
+                bg: 'var(--color-jade-pale)',
                 findings: 'Anxiety and depression reduction, lipid profile improvement, immune function (NK cells, IgA), fatigue reduction in chronic disease',
               },
               {
@@ -1115,9 +885,6 @@ export default function QigongClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          8. SECTION DIVIDER (unconditional)
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
@@ -1132,43 +899,11 @@ export default function QigongClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              YOUR MOVING MEDITATION
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Qigong &amp; Your Nervous System
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="YOUR MOVING MEDITATION" title="Qigong &amp; Your Nervous System">
               Qigong is one of the most thoroughly studied mind-body practices for autonomic regulation.
               Its effects on HRV, cortisol, and blood pressure are among the best-replicated findings
               in the mind-body medicine literature.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1262,22 +997,22 @@ export default function QigongClient() {
                 stat="d = 0.45"
                 detail="Effect size for HF-HRV improvement across qigong and tai chi RCTs — a moderate, clinically significant increase in vagal tone. Among the most robust autonomic effects of any mind-body practice."
                 url="https://pubmed.ncbi.nlm.nih.gov/32354619/"
-                accentColor={JADE_MID}
-                accentTextColor={JADE_DEEP}
+                accentColor="var(--color-jade-mid)"
+                accentTextColor="var(--color-jade-deep)"
               />
               <StatCard
                 source="Wang et al., 2014 — RCT"
                 stat="-23%"
                 detail="Reduction in salivary cortisol after 8 weeks of regular qigong practice (3 sessions/week, 60 min). Cortisol normalization was sustained at 12-week follow-up."
-                accentColor={JADE_MID}
-                accentTextColor={JADE_DEEP}
+                accentColor="var(--color-jade-mid)"
+                accentTextColor="var(--color-jade-deep)"
               />
               <StatCard
                 source="Lee et al., 2007 — meta-analysis"
                 stat="-12.1/-8.5"
                 detail="Average reduction in systolic/diastolic blood pressure (mmHg) across qigong hypertension trials (Lee et al., 2007). The authors noted significant heterogeneity and risk of bias across included studies. No head-to-head trials against antihypertensive medications have been conducted."
-                accentColor={JADE_MID}
-                accentTextColor={JADE_DEEP}
+                accentColor="var(--color-jade-mid)"
+                accentTextColor="var(--color-jade-deep)"
               />
             </div>
           </ScrollReveal>
@@ -1291,48 +1026,16 @@ export default function QigongClient() {
         id="evidence"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${JADE_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-jade-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              WHAT THE RESEARCH SHOWS
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Clinical Evidence by Condition
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '2rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="WHAT THE RESEARCH SHOWS" title="Clinical Evidence by Condition">
               Qigong has been studied across a wide range of clinical populations. The evidence varies
               significantly by condition, form, duration, and trial quality. What follows are the most
               replicated findings.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1348,15 +1051,15 @@ export default function QigongClient() {
                 condition: 'Chronic Pain',
                 effect: 'd = 0.43',
                 detail: 'Meta-analysis of 13 RCTs (Lee et al., 2015). Significant reduction in pain intensity and disability across musculoskeletal, fibromyalgia, and neck pain populations. Effect persists at 3-month follow-up.',
-                color: JADE_MID,
-                textColor: JADE_DEEP,
+                color: 'var(--color-jade-mid)',
+                textColor: 'var(--color-jade-deep)',
               },
               {
                 condition: 'Anxiety & Depression',
                 effect: 'd = 0.52 / d = 0.42',
                 detail: 'Wang et al. (2014) systematic review. Anxiety effect (d=0.52) outperforms depression effect (d=0.42) but both are clinically meaningful. Particularly strong in cancer patients and older adults.',
-                color: JADE_MID,
-                textColor: JADE_DEEP,
+                color: 'var(--color-jade-mid)',
+                textColor: 'var(--color-jade-deep)',
               },
               {
                 condition: 'Hypertension',
@@ -1469,9 +1172,6 @@ export default function QigongClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          11. SECTION DIVIDER (flip)
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider flip />
 
       {/* ══════════════════════════════════════════════════════
@@ -1486,43 +1186,11 @@ export default function QigongClient() {
       >
         <div style={{ maxWidth: '860px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              YOUR PATH INTO PRACTICE
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Your First 90 Days
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '52ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="YOUR PATH INTO PRACTICE" title="Your First 90 Days">
               Qigong is a skill that reveals itself slowly. The first 90 days are about establishing
               the habit, learning the form, and beginning to feel the subtle effects that become obvious
               only after consistent practice.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div className="timeline" style={{ paddingLeft: '2.5rem' }}>
@@ -1546,7 +1214,7 @@ export default function QigongClient() {
               <div key={item.step} style={{ position: 'relative', marginBottom: '1.25rem' }}>
                 <div
                   className="timeline-node"
-                  style={{ background: JADE_DEEP }}
+                  style={{ background: 'var(--color-jade-deep)' }}
                 >
                   {item.step}
                 </div>
@@ -1634,12 +1302,11 @@ export default function QigongClient() {
       {/* ══════════════════════════════════════════════════════
           13. "Now, practice." SEPARATOR + VIDEOS
       ══════════════════════════════════════════════════════ */}
-      {/* Section break — jade */}
       <div
         id="practice"
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: JADE_DEEP,
+          background: 'var(--color-jade-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -1651,7 +1318,7 @@ export default function QigongClient() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
             fontStyle: 'italic',
-            color: JADE_MID,
+            color: 'var(--color-jade-mid)',
             margin: 0,
             whiteSpace: 'nowrap',
           }}
@@ -1720,9 +1387,9 @@ export default function QigongClient() {
                   textTransform: 'uppercase',
                   padding: '0.5rem 1.125rem',
                   borderRadius: '9999px',
-                  border: `1px solid ${activeVideoTab === tab.key ? JADE_DEEP : 'var(--color-border)'}`,
+                  border: `1px solid ${activeVideoTab === tab.key ? 'var(--color-jade-deep)' : 'var(--color-border)'}`,
                   background:
-                    activeVideoTab === tab.key ? JADE_DEEP : 'var(--color-surface-raised)',
+                    activeVideoTab === tab.key ? 'var(--color-jade-deep)' : 'var(--color-surface-raised)',
                   color: activeVideoTab === tab.key ? '#ffffff' : 'var(--color-text-muted)',
                   cursor: 'pointer',
                   transition: 'all 200ms ease',
@@ -1832,7 +1499,7 @@ export default function QigongClient() {
               {
                 href: '/fascia',
                 label: 'Fascia',
-                desc: 'The thixotropic gel beneath every qigong movement &mdash; hydration, piezoelectricity, and the connective tissue web.',
+                desc: 'The thixotropic gel beneath every qigong movement \u2014 hydration, piezoelectricity, and the connective tissue web.',
               },
               {
                 href: '/breathe',
@@ -1847,57 +1514,57 @@ export default function QigongClient() {
               {
                 href: '/meditate',
                 label: 'Meditate',
-                desc: 'Focused attention, open monitoring, and interoceptive meditation &mdash; the &ldquo;intention&rdquo; element of qigong deepened.',
+                desc: 'Focused attention, open monitoring, and interoceptive meditation \u2014 the \u201cintention\u201d element of qigong deepened.',
               },
               {
                 href: '/somatics',
                 label: 'Somatics',
-                desc: 'Body-based trauma processing, Feldenkrais, and somatic experiencing &mdash; the embodiment continuum.',
+                desc: 'Body-based trauma processing, Feldenkrais, and somatic experiencing \u2014 the embodiment continuum.',
               },
               {
                 href: '/sleep',
                 label: 'Sleep',
-                desc: 'How qigong&rsquo;s HRV and cortisol effects translate into deeper sleep and stronger overnight autonomic recovery.',
+                desc: 'How qigong\u2019s HRV and cortisol effects translate into deeper sleep and stronger overnight autonomic recovery.',
               },
               {
                 href: '/chakras',
                 label: 'Chakras',
-                desc: 'The subtle energy centers of yogic anatomy &mdash; the energetic map that qigong&rsquo;s meridian system parallels and intersects.',
+                desc: 'The subtle energy centers of yogic anatomy \u2014 the energetic map that qigong\u2019s meridian system parallels and intersects.',
               },
               {
                 href: '/trauma',
                 label: 'Trauma',
-                desc: 'How qigong&rsquo;s slow, rhythmic movement discharges stored survival responses and supports intergenerational healing through the nervous system.',
+                desc: 'How qigong\u2019s slow, rhythmic movement discharges stored survival responses and supports intergenerational healing through the nervous system.',
               },
               {
                 href: '/nutrition',
                 label: 'Nutrition',
-                desc: 'Traditional Chinese Medicine and qigong both center on Jing — the foundational essence that nutrition either replenishes or depletes.',
+                desc: 'Traditional Chinese Medicine and qigong both center on Jing \u2014 the foundational essence that nutrition either replenishes or depletes.',
               },
               {
                 href: '/temperature',
                 label: 'Temperature',
-                desc: 'Qigong cultivates internal heat (nei gong) through breath and movement — a complementary approach to cold and heat exposure protocols.',
+                desc: 'Qigong cultivates internal heat (nei gong) through breath and movement \u2014 a complementary approach to cold and heat exposure protocols.',
               },
               {
                 href: '/nature',
                 label: 'Nature',
-                desc: 'Classical qigong is practiced outdoors to absorb Qi from the natural environment — trees, earth, sky, and seasonal rhythms.',
+                desc: 'Classical qigong is practiced outdoors to absorb Qi from the natural environment \u2014 trees, earth, sky, and seasonal rhythms.',
               },
               {
                 href: '/taichi',
                 label: 'Tai Chi',
-                desc: 'The martial expression of qigong — silk-reeling, rooting, and yielding as a complete moving meditation practice.',
+                desc: 'The martial expression of qigong \u2014 silk-reeling, rooting, and yielding as a complete moving meditation practice.',
               },
               {
                 href: '/fasting',
                 label: 'Fasting',
-                desc: 'Traditional Chinese Medicine and qigong both emphasize cultivating Jing — fasting conserves and clarifies the foundational essence.',
+                desc: 'Traditional Chinese Medicine and qigong both emphasize cultivating Jing \u2014 fasting conserves and clarifies the foundational essence.',
               },
               {
                 href: '/psychedelics',
                 label: 'Psychedelics',
-                desc: 'Both open the same interoceptive channels — qi sensitivity and expanded body awareness share neurological underpinnings.',
+                desc: 'Both open the same interoceptive channels \u2014 qi sensitivity and expanded body awareness share neurological underpinnings.',
               },
             ].map(link => (
               <ScrollReveal key={link.href}>
@@ -1921,7 +1588,7 @@ export default function QigongClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: JADE_DEEP,
+                        color: 'var(--color-jade-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -1947,7 +1614,7 @@ export default function QigongClient() {
           <ScrollReveal>
             <blockquote
               style={{
-                borderLeft: `3px solid ${JADE_MID}`,
+                borderLeft: `3px solid var(--color-jade-mid)`,
                 paddingLeft: '1.5rem',
                 margin: 0,
               }}

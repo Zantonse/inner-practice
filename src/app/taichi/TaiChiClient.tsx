@@ -7,11 +7,11 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (tai chi / warm earth) ───────────────────────
-const EARTH_DEEP = '#5A4E3C';
-const EARTH_MID  = '#A89880';
-const EARTH_PALE = '#EDE8DF';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import PillBadge from '@/components/PillBadge';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 // ── Style Card (five tai chi families) ─────────────────────────
 function StyleCard({
@@ -47,21 +47,9 @@ function StyleCard({
         {name}
       </h3>
       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem', alignItems: 'center' }}>
-        <span
-          style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: '0.625rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            padding: '0.2rem 0.6rem',
-            borderRadius: '9999px',
-            background: EARTH_PALE,
-            color: EARTH_DEEP,
-            border: `1px solid ${EARTH_MID}`,
-          }}
-        >
+        <PillBadge accentColor="var(--color-earth-deep)" accentTextColor="var(--color-earth-deep)">
           {character}
-        </span>
+        </PillBadge>
         <span
           style={{
             fontFamily: 'var(--font-ui)',
@@ -90,14 +78,7 @@ function IngredientCard({
   description: string;
 }) {
   return (
-    <div
-      style={{
-        borderLeft: `3px solid ${EARTH_MID}`,
-        padding: '1.25rem 1.5rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-      }}
-    >
+    <InfoCard accentColor="var(--color-earth-mid)">
       <p
         style={{
           fontFamily: 'var(--font-ui)',
@@ -105,7 +86,7 @@ function IngredientCard({
           fontWeight: 600,
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
-          color: EARTH_MID,
+          color: 'var(--color-earth-mid)',
           margin: '0 0 0.25rem',
         }}
       >
@@ -125,7 +106,7 @@ function IngredientCard({
       <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.7, margin: 0 }}>
         {description}
       </p>
-    </div>
+    </InfoCard>
   );
 }
 
@@ -161,117 +142,38 @@ const videoData: Record<VideoTab, Array<{ videoId: string; title: string; descri
   ],
 };
 
+const taichiSections = [
+  { id: 'styles', label: 'Styles' },
+  { id: 'evidence', label: 'Evidence' },
+  { id: 'mechanisms', label: 'Mechanisms' },
+  { id: 'connections', label: 'Connections' },
+  { id: 'getting-started', label: 'Getting Started' },
+  { id: 'practice', label: 'Practice' },
+];
+
 export default function TaiChiClient() {
   const [activeVideoTab, setActiveVideoTab] = useState<VideoTab>('24-form');
 
   return (
-    <div
-      style={{
-        fontFamily: 'var(--font-body)',
-        fontSize: 'var(--text-body)',
-        lineHeight: 1.8,
-        color: 'var(--color-text)',
-      }}
-    >
+    <div style={{ '--page-accent': 'var(--color-earth-deep)' } as React.CSSProperties}>
+      <StickyNav sections={taichiSections} accentColor="var(--color-earth-deep)" />
 
-      {/* ══════════════════════════════════════════════════════
-          1. HERO
-      ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(35% 0.06 60), oklch(50% 0.08 45))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-taichi.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            The Moving Meditation
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            Tai Chi
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            A martial art refined into medicine. Tai chi reduces falls by 58%, slows cognitive decline,
-            matches physical therapy for chronic pain &mdash; and every movement is a lesson in fascial
-            loading, vagal toning, and embodied presence.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#styles', label: 'Styles' },
-              { href: '#evidence', label: 'Evidence' },
-              { href: '#mechanisms', label: 'Mechanisms' },
-              { href: '#connections', label: 'Connections' },
-              { href: '#getting-started', label: 'Getting Started' },
-              { href: '#practice', label: 'Practice' },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: EARTH_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(168,152,128,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-taichi.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(35% 0.06 60), oklch(50% 0.08 45))"
+        eyebrow="The Moving Meditation"
+        headline="Tai Chi"
+        subtitle="A martial art refined into medicine. Tai chi reduces falls by 58%, slows cognitive decline, matches physical therapy for chronic pain \u2014 and every movement is a lesson in fascial loading, vagal toning, and embodied presence."
+        accentColor="var(--color-earth-mid)"
+        anchorLinks={[
+          { label: 'Styles', href: '#styles' },
+          { label: 'Evidence', href: '#evidence' },
+          { label: 'Mechanisms', href: '#mechanisms' },
+          { label: 'Connections', href: '#connections' },
+          { label: 'Getting Started', href: '#getting-started' },
+          { label: 'Practice', href: '#practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. HISTORY & STYLES
@@ -308,30 +210,7 @@ export default function TaiChiClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1rem',
-                }}
-              >
-                Origin &amp; Lineage
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.5rem',
-                }}
-              >
-                History &amp; Styles
-              </h2>
+              <SectionIntro label="Origin &amp; Lineage" title="History &amp; Styles" />
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 Tai chi chuan (&ldquo;Supreme Ultimate Fist&rdquo;) traces to 17th-century Chen Village in Henan
                 province, where the Chen family developed a martial system integrating the Taoist philosophy of
@@ -393,7 +272,7 @@ export default function TaiChiClient() {
                       gap: '0.75rem',
                     }}
                   >
-                    <span style={{ fontWeight: 600, color: EARTH_DEEP }}>{row.dimension}</span>
+                    <span style={{ fontWeight: 600, color: 'var(--color-earth-deep)' }}>{row.dimension}</span>
                     <span style={{ color: 'var(--color-text)' }}>{row.taichi}</span>
                     <span style={{ color: 'var(--color-text-muted)' }}>{row.qigong}</span>
                   </div>
@@ -525,9 +404,6 @@ export default function TaiChiClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          3. SECTION DIVIDER
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
@@ -537,48 +413,16 @@ export default function TaiChiClient() {
         id="evidence"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${EARTH_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-earth-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              What the Research Shows
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Clinical Evidence
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="What the Research Shows" title="Clinical Evidence">
               Tai chi has been studied in over 500 clinical trials. The evidence base is strongest
               for falls prevention, cognitive decline, and chronic pain &mdash; three domains where
               conventional medicine has the fewest effective options.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Headline StatCards */}
@@ -596,24 +440,24 @@ export default function TaiChiClient() {
                 stat="58% fewer falls"
                 detail="The largest RCT of tai chi for falls prevention. 670 community-dwelling adults at high fall risk randomized to tai chi vs stretch-and-strength. Tai chi reduced falls by 58% over 24 weeks — the largest effect size ever recorded for a falls intervention."
                 url="https://pubmed.ncbi.nlm.nih.gov/30882847/"
-                accentColor={EARTH_MID}
-                accentTextColor={EARTH_DEEP}
+                accentColor="var(--color-earth-mid)"
+                accentTextColor="var(--color-earth-deep)"
               />
               <StatCard
                 source="Lam et al., Annals of Internal Medicine, 2019"
                 stat="Slows MCI&rarr;dementia"
                 detail="3-year RCT in adults with Mild Cognitive Impairment. Tai chi significantly slowed conversion from MCI to dementia compared to cognitive training and aerobic exercise. The only intervention to show this profile over 36 months."
                 url="https://pubmed.ncbi.nlm.nih.gov/30778162/"
-                accentColor={EARTH_MID}
-                accentTextColor={EARTH_DEEP}
+                accentColor="var(--color-earth-mid)"
+                accentTextColor="var(--color-earth-deep)"
               />
               <StatCard
                 source="Wang et al., BMJ, 2011"
                 stat="As effective as PT"
                 detail="High-quality RCT in knee osteoarthritis showing tai chi matched physical therapy for pain reduction and functional improvement. No serious adverse events. Sustained at 52-week follow-up."
                 url="https://pubmed.ncbi.nlm.nih.gov/21908496/"
-                accentColor={EARTH_MID}
-                accentTextColor={EARTH_DEEP}
+                accentColor="var(--color-earth-mid)"
+                accentTextColor="var(--color-earth-deep)"
               />
             </div>
           </ScrollReveal>
@@ -676,21 +520,14 @@ export default function TaiChiClient() {
                 global cognition scores, and showed superior effects on memory and processing speed
                 compared to cognitive training alone.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${EARTH_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: EARTH_PALE,
-                  borderRadius: '0 2px 2px 0',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: EARTH_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-earth-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-earth-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   Tao et al. (2017) showed that 12 weeks of tai chi produced measurable increases in
                   cortical thickness in regions associated with memory and executive function, and
                   increased hippocampal volume &mdash; the same brain structure that shrinks in
                   Alzheimer&rsquo;s disease.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -721,7 +558,7 @@ export default function TaiChiClient() {
               <div
                 style={{
                   background: 'var(--color-surface-raised)',
-                  border: `1px solid ${EARTH_MID}`,
+                  border: `1px solid var(--color-earth-mid)`,
                   borderRadius: '2px',
                   padding: '1.75rem',
                 }}
@@ -733,7 +570,7 @@ export default function TaiChiClient() {
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: EARTH_DEEP,
+                    color: 'var(--color-earth-deep)',
                     margin: '0 0 0.75rem',
                   }}
                 >
@@ -756,7 +593,7 @@ export default function TaiChiClient() {
               <div
                 style={{
                   background: 'var(--color-surface-raised)',
-                  border: `1px solid ${EARTH_MID}`,
+                  border: `1px solid var(--color-earth-mid)`,
                   borderRadius: '2px',
                   padding: '1.75rem',
                 }}
@@ -768,7 +605,7 @@ export default function TaiChiClient() {
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: EARTH_DEEP,
+                    color: 'var(--color-earth-deep)',
                     margin: '0 0 0.75rem',
                   }}
                 >
@@ -799,22 +636,18 @@ export default function TaiChiClient() {
             {[
               {
                 domain: 'Cardiovascular',
-                color: EARTH_MID,
                 summary: 'Meta-analyses suggest tai chi may reduce systolic blood pressure by 5–12 mmHg in some populations. While promising, these reductions have not been directly compared to antihypertensive medication in head-to-head trials. Effect may be mediated by autonomic rebalancing and improved arterial compliance.',
               },
               {
                 domain: 'Heart Failure',
-                color: EARTH_MID,
                 summary: 'Yeh et al. (2011, JACC Heart Failure) found tai chi significantly improved quality of life, exercise capacity, and mood in chronic heart failure patients — with no adverse events across 6 months.',
               },
               {
                 domain: 'Mental Health',
-                color: EARTH_MID,
                 summary: 'Multiple RCTs document significant reductions in anxiety and depression scores for mild-to-moderate presentations. Effect sizes vary across studies; no head-to-head trials against SSRIs have been conducted. Mechanism may include HRV elevation and mindful movement.',
               },
               {
                 domain: 'PTSD (Irwin 2014)',
-                color: EARTH_MID,
                 summary: 'Irwin et al. (2014) demonstrated that mind-body practices including tai chi reduced inflammatory markers (CRP, IL-6) linked to PTSD and trauma-induced dysregulation. Social engagement component amplifies effect.',
               },
             ].map(item => (
@@ -825,7 +658,7 @@ export default function TaiChiClient() {
                     border: '1px solid var(--color-border)',
                     borderRadius: '2px',
                     padding: '1.5rem',
-                    borderTop: `3px solid ${item.color}`,
+                    borderTop: `3px solid var(--color-earth-mid)`,
                   }}
                 >
                   <h4
@@ -850,9 +683,6 @@ export default function TaiChiClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          5. SECTION DIVIDER (flip)
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider flip />
 
       {/* ══════════════════════════════════════════════════════
@@ -867,43 +697,11 @@ export default function TaiChiClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Why It Works
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Mechanisms
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Why It Works" title="Mechanisms">
               The breadth of tai chi&rsquo;s clinical benefits is explained by four overlapping
               physiological mechanisms &mdash; each operating through a different system, each
               reinforcing the others.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Fascial tensegrity illustration */}
@@ -1027,29 +825,19 @@ export default function TaiChiClient() {
                 practitioners versus non-practitioners and found significantly greater cortical thickness
                 in prefrontal, motor, and somatosensory regions &mdash; and larger hippocampal volume.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${EARTH_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: EARTH_PALE,
-                  borderRadius: '0 2px 2px 0',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: EARTH_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-earth-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-earth-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   The hippocampus is the memory-formation and spatial navigation hub that shrinks earliest
                   in Alzheimer&rsquo;s disease. Tao et al.&rsquo;s finding of <strong>enlarged hippocampal
                   volume</strong> in tai chi practitioners provides a structural explanation for Lam&rsquo;s
                   clinical finding that tai chi slows MCI-to-dementia conversion over 3 years.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          7. SECTION DIVIDER
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
@@ -1059,47 +847,15 @@ export default function TaiChiClient() {
         id="connections"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${EARTH_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-earth-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              How Tai Chi Relates to Other Practices
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Tai Chi &amp; Site Practices
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="How Tai Chi Relates to Other Practices" title="Tai Chi &amp; Site Practices">
               Tai chi is not an isolated practice. Understanding how it amplifies and is amplified by
               the other practices on this site reveals the deeper architecture of embodied health.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1112,49 +868,42 @@ export default function TaiChiClient() {
             {[
               {
                 practice: 'Qigong',
-                color: EARTH_MID,
                 relationship: 'Foundational complement',
                 description: 'Qigong is the parent category from which tai chi emerges. Standing qigong (zhan zhuang) develops the rootedness that tai chi form requires. Many practitioners train qigong alongside tai chi to deepen internal awareness and fill the gaps between form sessions.',
                 href: '/qigong',
               },
               {
                 practice: 'Fascia',
-                color: EARTH_MID,
                 relationship: 'Structural mechanism',
                 description: 'Silk-reeling and slow continuous weight-bearing directly hydrate and load the fascial network. The myofascial chains described in Anatomy Trains are the medium through which tai chi\'s structural integration operates. Fascia research is the modern scientific translation of qi meridian theory.',
                 href: '/fascia',
               },
               {
                 practice: 'Nervous System',
-                color: EARTH_MID,
                 relationship: 'Primary benefit pathway',
                 description: 'HRV elevation (d=0.40), sympathetic downregulation, and ventral vagal activation are core tai chi mechanisms. The practice trains the polyvagal hierarchy through: social engagement (group practice), slow rhythm (respiratory sinus arrhythmia), and soft attention (prefrontal-amygdala regulation).',
                 href: '/nervous-system',
               },
               {
                 practice: 'Sleep',
-                color: EARTH_MID,
                 relationship: 'Irwin 2014 — inflammatory bridge',
                 description: 'Irwin et al. (2014) showed that mind-body practices including tai chi reduced pro-inflammatory cytokines (CRP, IL-6, TNF-alpha) that underlie both poor sleep and chronic disease. Tai chi practice also reduces evening cortisol, directly supporting the parasympathetic conditions required for sleep onset.',
                 href: '/sleep',
               },
               {
                 practice: 'Meditation',
-                color: EARTH_MID,
                 relationship: 'Moving versus still',
                 description: 'Tai chi and sitting meditation activate many of the same neural circuits — prefrontal regulation, default mode network quieting, interoceptive awareness. Tai chi provides these benefits in a moving, load-bearing context that sedentary meditation cannot match. Many practitioners use tai chi as their primary meditation vehicle.',
                 href: '/meditate',
               },
               {
                 practice: 'Breathwork',
-                color: EARTH_MID,
                 relationship: 'Shared autonomic mechanism',
                 description: 'Traditional tai chi synchronizes breath with movement: inhale on expansion phases, exhale on compression. This breath-movement coupling creates the same baroreflex resonance as coherence breathing (5.5 bpm). Explicit breathwork practice deepens this capacity and transfers back into the form.',
                 href: '/breathe',
               },
               {
                 practice: 'Trauma',
-                color: EARTH_MID,
                 relationship: 'Bottom-up somatic processing',
                 description: 'Trauma lives in the body as chronic muscular holding, autonomic dysregulation, and disrupted proprioception. Tai chi addresses all three: slow movement discharges held tension, the meditative attention trains interoception, and the non-threatening social context rebuilds the felt sense of safety in embodied presence.',
                 href: '/trauma',
@@ -1171,7 +920,7 @@ export default function TaiChiClient() {
                       border: '1px solid var(--color-border)',
                       borderRadius: '2px',
                       padding: '1.5rem',
-                      borderTop: `3px solid ${item.color}`,
+                      borderTop: `3px solid var(--color-earth-mid)`,
                       height: '100%',
                       boxSizing: 'border-box',
                     }}
@@ -1183,7 +932,7 @@ export default function TaiChiClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: EARTH_DEEP,
+                        color: 'var(--color-earth-deep)',
                         margin: '0 0 0.25rem',
                       }}
                     >
@@ -1211,9 +960,6 @@ export default function TaiChiClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          9. SECTION DIVIDER (flip)
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider flip />
 
       {/* ══════════════════════════════════════════════════════
@@ -1228,43 +974,11 @@ export default function TaiChiClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Where to Begin
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Getting Started
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Where to Begin" title="Getting Started">
               The most important principle: start with a form you can practice daily, in the style
               that matches your current body. Depth comes from repetition over years &mdash;
               not from choosing the &ldquo;correct&rdquo; style at the outset.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Form recommendations */}
@@ -1300,18 +1014,11 @@ export default function TaiChiClient() {
                 these until they are automatic before adding the next section. Expecting to learn the
                 full form in a single session is the most common failure mode.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${EARTH_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: EARTH_PALE,
-                  borderRadius: '0 2px 2px 0',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: EARTH_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-earth-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-earth-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   Best for: all adults, general health, research-backed outcomes. Widely taught globally.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
 
             <ScrollReveal>
@@ -1337,18 +1044,11 @@ export default function TaiChiClient() {
                 Sun style is the form used in the majority of falls prevention trials, and is specifically
                 recommended in physical therapy literature as an adjunct to post-surgical rehabilitation.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${EARTH_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: EARTH_PALE,
-                  borderRadius: '0 2px 2px 0',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: EARTH_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-earth-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-earth-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   Best for: older adults, post-surgical rehab, chronic knee/hip conditions, fall prevention programs.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -1388,7 +1088,7 @@ export default function TaiChiClient() {
               <div key={item.step} style={{ position: 'relative', marginBottom: '1.25rem' }}>
                 <div
                   className="timeline-node"
-                  style={{ background: EARTH_DEEP }}
+                  style={{ background: 'var(--color-earth-deep)' }}
                 >
                   {item.step}
                 </div>
@@ -1420,9 +1120,6 @@ export default function TaiChiClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          11. SECTION DIVIDER
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
@@ -1431,48 +1128,16 @@ export default function TaiChiClient() {
       <section
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${EARTH_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-earth-pale))`,
         }}
       >
         <div style={{ maxWidth: '860px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Risk Profile
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Safety Considerations
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '2.5rem',
-                maxWidth: '52ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Risk Profile" title="Safety Considerations">
               Tai chi has an exceptionally favorable safety profile. In clinical trials across thousands
               of participants, serious adverse events are rare. The most relevant considerations are
               joint loading specifics for practitioners with existing conditions.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1552,7 +1217,7 @@ export default function TaiChiClient() {
                   border: '1px solid var(--color-border)',
                   borderRadius: '2px',
                   padding: '1.5rem',
-                  borderTop: `3px solid ${EARTH_MID}`,
+                  borderTop: `3px solid var(--color-earth-mid)`,
                 }}
               >
                 <h4
@@ -1582,12 +1247,11 @@ export default function TaiChiClient() {
       {/* ══════════════════════════════════════════════════════
           13. "Now, practice." SEPARATOR + VIDEOS
       ══════════════════════════════════════════════════════ */}
-      {/* Section break — warm earth */}
       <div
         id="practice"
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: EARTH_DEEP,
+          background: 'var(--color-earth-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -1683,9 +1347,9 @@ export default function TaiChiClient() {
                   textTransform: 'uppercase',
                   padding: '0.5rem 1.125rem',
                   borderRadius: '9999px',
-                  border: `1px solid ${activeVideoTab === tab.key ? EARTH_DEEP : 'var(--color-border)'}`,
+                  border: `1px solid ${activeVideoTab === tab.key ? 'var(--color-earth-deep)' : 'var(--color-border)'}`,
                   background:
-                    activeVideoTab === tab.key ? EARTH_DEEP : 'var(--color-surface-raised)',
+                    activeVideoTab === tab.key ? 'var(--color-earth-deep)' : 'var(--color-surface-raised)',
                   color: activeVideoTab === tab.key ? '#ffffff' : 'var(--color-text-muted)',
                   cursor: 'pointer',
                   transition: 'all 200ms ease',
@@ -1874,7 +1538,7 @@ export default function TaiChiClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: EARTH_DEEP,
+                        color: 'var(--color-earth-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -1900,7 +1564,7 @@ export default function TaiChiClient() {
           <ScrollReveal>
             <blockquote
               style={{
-                borderLeft: `3px solid ${EARTH_MID}`,
+                borderLeft: `3px solid var(--color-earth-mid)`,
                 paddingLeft: '1.5rem',
                 margin: 0,
               }}

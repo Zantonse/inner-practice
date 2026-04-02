@@ -7,11 +7,11 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (psychedelics / deep violet) ──────────────────
-const VIOLET_DEEP = '#5C3D7A';
-const VIOLET_MID  = '#9B7DBF';
-const VIOLET_PALE = '#EDE3F7';
+import StickyNav from '@/components/StickyNav';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
+import PillBadge from '@/components/PillBadge';
 
 // ── Molecule Card ──────────────────────────────────────────────
 function MoleculeCard({
@@ -33,7 +33,7 @@ function MoleculeCard({
     evidenceLevel === 'Strong'
       ? { bg: 'rgba(45,106,79,0.10)', text: '#2D6A4F' }
       : evidenceLevel === 'Moderate'
-      ? { bg: VIOLET_PALE, text: VIOLET_DEEP }
+      ? { bg: 'var(--color-psyche-pale)', text: 'var(--color-psyche-deep)' }
       : { bg: 'rgba(228,173,117,0.15)', text: '#8B5E2A' };
 
   return (
@@ -58,21 +58,9 @@ function MoleculeCard({
         {name}
       </h3>
       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
-        <span
-          style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: '0.625rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            padding: '0.2rem 0.6rem',
-            borderRadius: '9999px',
-            background: VIOLET_PALE,
-            color: VIOLET_DEEP,
-            border: `1px solid ${VIOLET_MID}`,
-          }}
-        >
+        <PillBadge accentColor="var(--color-psyche-deep)" accentTextColor="var(--color-psyche-deep)">
           {duration}
-        </span>
+        </PillBadge>
         <span
           style={{
             fontFamily: 'var(--font-ui)',
@@ -84,6 +72,7 @@ function MoleculeCard({
             background: evidenceColor.bg,
             color: evidenceColor.text,
             border: '1px solid var(--color-border)',
+            display: 'inline-block',
           }}
         >
           {evidenceLevel}
@@ -99,6 +88,7 @@ function MoleculeCard({
             background: 'var(--color-surface-raised)',
             color: 'var(--color-text-muted)',
             border: '1px solid var(--color-border)',
+            display: 'inline-block',
           }}
         >
           {clinicalStatus}
@@ -109,7 +99,7 @@ function MoleculeCard({
           fontFamily: 'var(--font-ui)',
           fontSize: '0.75rem',
           fontWeight: 600,
-          color: VIOLET_DEEP,
+          color: 'var(--color-psyche-deep)',
           margin: '0 0 0.625rem',
           fontStyle: 'italic',
         }}
@@ -231,108 +221,42 @@ export default function PsychedelicsClient() {
         fontSize: 'var(--text-body)',
         lineHeight: 1.8,
         color: 'var(--color-text)',
-      }}
+        '--page-accent': 'var(--color-psyche-deep)',
+      } as React.CSSProperties}
     >
+      <StickyNav
+        accentColor="var(--color-psyche-deep)"
+        sections={[
+          { id: 'molecules', label: 'Molecules' },
+          { id: 'neuroscience', label: 'Neuroscience' },
+          { id: 'evidence', label: 'Evidence' },
+          { id: 'connections', label: 'Connections' },
+          { id: 'safety', label: 'Safety' },
+          { id: 'microdosing', label: 'Microdosing' },
+          { id: 'practice', label: 'Practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           1. HERO
       ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(25% 0.15 300), oklch(40% 0.12 285))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-psychedelics.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            The Catalysts
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            Psychedelics &amp; Neuroplasticity
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            Psilocybin produces a 71% depression response rate (Davis et al., 2021). MDMA-assisted therapy reported 67% PTSD remission in Phase 3 trials, though the FDA declined approval in 2024 citing methodological concerns.
-            The mechanism: these molecules temporarily suppress the brain&rsquo;s ego network and trigger
-            a surge of neuroplasticity that makes every other practice on this site more effective.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#molecules', label: 'Molecules' },
-              { href: '#neuroscience', label: 'Neuroscience' },
-              { href: '#evidence', label: 'Evidence' },
-              { href: '#connections', label: 'Connections' },
-              { href: '#safety', label: 'Safety' },
-              { href: '#microdosing', label: 'Microdosing' },
-              { href: '#practice', label: 'Practice' },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: VIOLET_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(155,125,191,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-psychedelics.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(25% 0.15 300), oklch(40% 0.12 285))"
+        eyebrow="The Catalysts"
+        headline="Psychedelics &amp; Neuroplasticity"
+        subtitle="Psilocybin produces a 71% depression response rate (Davis et al., 2021). MDMA-assisted therapy reported 67% PTSD remission in Phase 3 trials, though the FDA declined approval in 2024 citing methodological concerns. The mechanism: these molecules temporarily suppress the brain's ego network and trigger a surge of neuroplasticity that makes every other practice on this site more effective."
+        accentColor="var(--color-psyche-mid)"
+        anchorLinks={[
+          { href: '#molecules', label: 'Molecules' },
+          { href: '#neuroscience', label: 'Neuroscience' },
+          { href: '#evidence', label: 'Evidence' },
+          { href: '#connections', label: 'Connections' },
+          { href: '#safety', label: 'Safety' },
+          { href: '#microdosing', label: 'Microdosing' },
+          { href: '#practice', label: 'Practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. THE MOLECULES
@@ -346,43 +270,11 @@ export default function PsychedelicsClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Pharmacological Landscape
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Molecules
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="The Pharmacological Landscape" title="The Molecules">
               Five compounds dominate current research. Each works through distinct receptor mechanisms
               with different durations, risk profiles, and clinical applications. Understanding the
               differences matters for informed decision-making.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -409,14 +301,7 @@ export default function PsychedelicsClient() {
 
           {/* Distinction callout */}
           <ScrollReveal>
-            <div
-              style={{
-                borderLeft: `3px solid ${VIOLET_MID}`,
-                padding: '1.25rem 1.5rem',
-                background: VIOLET_PALE,
-                borderRadius: '0 2px 2px 0',
-              }}
-            >
+            <InfoCard accentColor="var(--color-psyche-mid)">
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
@@ -424,7 +309,7 @@ export default function PsychedelicsClient() {
                   fontWeight: 600,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  color: VIOLET_DEEP,
+                  color: 'var(--color-psyche-deep)',
                   margin: '0 0 0.5rem',
                 }}
               >
@@ -437,7 +322,7 @@ export default function PsychedelicsClient() {
                 subjective profiles differ substantially. Grouping all five as simply &ldquo;psychedelics&rdquo; obscures
                 meaningful clinical differences.
               </p>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
@@ -445,7 +330,7 @@ export default function PsychedelicsClient() {
       {/* ══════════════════════════════════════════════════════
           3. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-psyche-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           4. NEUROSCIENCE — CENTERPIECE
@@ -454,48 +339,16 @@ export default function PsychedelicsClient() {
         id="neuroscience"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${VIOLET_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-psyche-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              What Happens in the Brain
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Neuroscience of Psychedelics
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="What Happens in the Brain" title="Neuroscience of Psychedelics">
               Four converging discoveries explain why these compounds produce lasting change: DMN suppression,
               a neuroplasticity surge, dendritic spine growth, and a fundamental increase in neural entropy.
               Together they describe the most powerful known catalyst for brain change in a single session.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Two-column prose */}
@@ -581,21 +434,13 @@ export default function PsychedelicsClient() {
                 persisting for at least one month. Dendritic spines are the physical substrates of synaptic
                 connections &mdash; more spines means more synaptic capacity.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${VIOLET_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: VIOLET_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '1rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: VIOLET_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-psyche-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-psyche-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   The stressed animals &mdash; which had lost synaptic density &mdash; showed the greatest
                   recovery. This is a direct structural mechanism for why psychedelics reverse the synaptic
                   loss seen in chronic stress and depression.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
 
             <ScrollReveal>
@@ -642,24 +487,24 @@ export default function PsychedelicsClient() {
                 stat="DMN"
                 detail="Suppressed during psychedelic states. The default mode network — responsible for self-referential thought and the ego — shows decreased blood flow and connectivity under psilocybin. The correlation between DMN suppression and therapeutic outcome is robust across studies."
                 url="https://pubmed.ncbi.nlm.nih.gov/22308440/"
-                accentColor={VIOLET_MID}
-                accentTextColor={VIOLET_DEEP}
+                accentColor="var(--color-psyche-mid)"
+                accentTextColor="var(--color-psyche-deep)"
               />
               <StatCard
                 source="Shao et al., Neuron, 2021"
                 stat="24 hrs"
                 detail="New dendritic spines form within 24 hours of a single psilocybin dose. A 10% increase in spine density was observed in the prefrontal cortex of mice — the region most affected by stress-induced synaptic loss."
                 url="https://pubmed.ncbi.nlm.nih.gov/34228959/"
-                accentColor={VIOLET_MID}
-                accentTextColor={VIOLET_DEEP}
+                accentColor="var(--color-psyche-mid)"
+                accentTextColor="var(--color-psyche-deep)"
               />
               <StatCard
                 source="Shao et al., Neuron, 2021"
                 stat="1+ month"
                 detail="Structural changes to dendritic spines persist for at least one month after a single session. This extended plasticity window is the mechanism behind the integration period — the brain remains unusually malleable for weeks post-session."
                 url="https://pubmed.ncbi.nlm.nih.gov/34228959/"
-                accentColor={VIOLET_MID}
-                accentTextColor={VIOLET_DEEP}
+                accentColor="var(--color-psyche-mid)"
+                accentTextColor="var(--color-psyche-deep)"
               />
             </div>
           </ScrollReveal>
@@ -669,7 +514,7 @@ export default function PsychedelicsClient() {
       {/* ══════════════════════════════════════════════════════
           5. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-psyche-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           6. CLINICAL EVIDENCE
@@ -683,43 +528,11 @@ export default function PsychedelicsClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Research Record
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Clinical Evidence
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="The Research Record" title="Clinical Evidence">
               The clinical trial record for psychedelic therapy is now extensive enough to draw clear
               conclusions. The effect sizes are large &mdash; often larger than existing treatments &mdash;
               and durable. The landmark studies below represent the strongest evidence.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Depression */}
@@ -751,8 +564,8 @@ export default function PsychedelicsClient() {
                 stat="71%"
                 detail="Response rate for treatment-resistant depression after two doses of psilocybin-assisted therapy. 54% achieved remission. Effects maintained at 12-month follow-up. This is the largest effect size ever recorded for a depression treatment in a controlled trial."
                 url="https://pubmed.ncbi.nlm.nih.gov/33263722/"
-                accentColor={VIOLET_MID}
-                accentTextColor={VIOLET_DEEP}
+                accentColor="var(--color-psyche-mid)"
+                accentTextColor="var(--color-psyche-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -761,15 +574,15 @@ export default function PsychedelicsClient() {
                 stat="Psilocybin ≥ Escitalopram"
                 detail="Head-to-head RCT comparing psilocybin to the leading SSRI (escitalopram) for major depression. Psilocybin showed faster onset, higher remission rates, and superior patient-reported well-being at 6 weeks. First direct comparison to standard-of-care antidepressant."
                 url="https://pubmed.ncbi.nlm.nih.gov/33852780/"
-                accentColor={VIOLET_MID}
-                accentTextColor={VIOLET_DEEP}
+                accentColor="var(--color-psyche-mid)"
+                accentTextColor="var(--color-psyche-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
               <div
                 style={{
                   background: 'var(--color-surface-raised)',
-                  border: `1px solid ${VIOLET_MID}`,
+                  border: `1px solid var(--color-psyche-mid)`,
                   borderRadius: '2px',
                   padding: '1.75rem',
                 }}
@@ -781,7 +594,7 @@ export default function PsychedelicsClient() {
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: VIOLET_DEEP,
+                    color: 'var(--color-psyche-deep)',
                     margin: '0 0 1rem',
                   }}
                 >
@@ -827,8 +640,8 @@ export default function PsychedelicsClient() {
                 stat="67%"
                 detail="PTSD remission rate with MDMA-assisted therapy in Phase 3 trial. The placebo group achieved 32% remission. Participants had chronic, treatment-resistant PTSD averaging 14 years duration. Note: the FDA declined approval in August 2024, citing concerns about functional unblinding (participants could tell if they received MDMA), limited participant diversity, and inadequate safety data on cardiac and abuse-potential risks. Further trials are being planned."
                 url="https://pubmed.ncbi.nlm.nih.gov/34650228/"
-                accentColor={VIOLET_MID}
-                accentTextColor={VIOLET_DEEP}
+                accentColor="var(--color-psyche-mid)"
+                accentTextColor="var(--color-psyche-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -892,8 +705,8 @@ export default function PsychedelicsClient() {
                 stat="80%"
                 detail="Reduction in depression and anxiety in cancer patients facing end-of-life. 80% of participants rated psilocybin-assisted therapy as the most meaningful experience of their lives. Effects persisted at 6-month follow-up."
                 url="https://pubmed.ncbi.nlm.nih.gov/27909165/"
-                accentColor={VIOLET_MID}
-                accentTextColor={VIOLET_DEEP}
+                accentColor="var(--color-psyche-mid)"
+                accentTextColor="var(--color-psyche-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -902,15 +715,15 @@ export default function PsychedelicsClient() {
                 stat="80%"
                 detail="Smoking cessation at 6-month follow-up in a pilot study of psilocybin-assisted therapy — compared to 35% for the best existing pharmacological treatments. The mystical experience quality correlated with successful abstinence."
                 url="https://pubmed.ncbi.nlm.nih.gov/25213996/"
-                accentColor={VIOLET_MID}
-                accentTextColor={VIOLET_DEEP}
+                accentColor="var(--color-psyche-mid)"
+                accentTextColor="var(--color-psyche-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
               <div
                 style={{
                   background: 'var(--color-surface-raised)',
-                  border: `1px solid ${VIOLET_MID}`,
+                  border: `1px solid var(--color-psyche-mid)`,
                   borderRadius: '2px',
                   padding: '1.75rem',
                 }}
@@ -922,7 +735,7 @@ export default function PsychedelicsClient() {
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: VIOLET_DEEP,
+                    color: 'var(--color-psyche-deep)',
                     margin: '0 0 0.75rem',
                   }}
                 >
@@ -943,7 +756,7 @@ export default function PsychedelicsClient() {
       {/* ══════════════════════════════════════════════════════
           7. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-psyche-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           8. PSYCHEDELICS & SITE PRACTICES
@@ -952,48 +765,16 @@ export default function PsychedelicsClient() {
         id="connections"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${VIOLET_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-psyche-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Amplifier Effect
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Psychedelics &amp; Site Practices
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="The Amplifier Effect" title="Psychedelics &amp; Site Practices">
               Every other practice on this site is amplified during the post-psychedelic neuroplasticity
               window. The elevated BDNF, increased synaptic density, and reduced ego rigidity create
               optimal conditions for practice to produce lasting change.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1010,42 +791,42 @@ export default function PsychedelicsClient() {
                 connection: 'Same DMN Suppression',
                 desc: 'Advanced meditators show DMN suppression similar to low-dose psychedelics. The practices converge on the same neurological mechanism. Post-psychedelic states make it easier to access the meditative no-self because the brain has recently practiced that state. Integration meditation accelerates the consolidation of insights.',
                 href: '/meditate',
-                color: VIOLET_MID,
+                color: 'var(--color-psyche-mid)',
               },
               {
                 practice: 'Nervous System',
                 connection: 'Autonomic Reset',
                 desc: 'Psychedelic sessions produce a profound autonomic reset — often the deepest parasympathetic state many people have accessed. Nervous system practices in the weeks following help stabilize this new baseline and prevent regression to chronic sympathetic dominance.',
                 href: '/nervous-system',
-                color: VIOLET_MID,
+                color: 'var(--color-psyche-mid)',
               },
               {
                 practice: 'Trauma',
                 connection: 'MDMA & Ventral Vagal Safety',
                 desc: "MDMA creates a state of ventral vagal safety — Polyvagal Theory's optimal social engagement state — that makes it possible to approach traumatic material without triggering the freeze or fight-flight response. This is the neurophysiological mechanism of why MDMA-assisted therapy works where talk therapy often fails.",
                 href: '/trauma',
-                color: VIOLET_MID,
+                color: 'var(--color-psyche-mid)',
               },
               {
                 practice: 'Chakras',
                 connection: 'Somatic Energy at Chakra Points',
                 desc: 'Many psychedelic experiences include intense somatic sensations localized to areas corresponding to traditional chakra points — particularly heart, solar plexus, and third eye. Working with these sensations somatically during integration can anchor experiential insights in the body.',
                 href: '/chakras',
-                color: VIOLET_MID,
+                color: 'var(--color-psyche-mid)',
               },
               {
                 practice: 'Sleep',
                 connection: 'Improved Post-Session',
                 desc: "Sleep architecture often improves in the weeks following a psychedelic session, particularly slow-wave sleep — the same stage gated by the neuroplasticity processes that psychedelics trigger. Better sleep deepens the consolidation of the session's insights and structural brain changes.",
                 href: '/sleep',
-                color: VIOLET_MID,
+                color: 'var(--color-psyche-mid)',
               },
               {
                 practice: 'Nature',
                 connection: 'Amplified Biophilia',
                 desc: 'Psychedelics reliably amplify the felt connection to nature — what E.O. Wilson called biophilia. Post-session, time in natural settings deepens integration and often maintains the expanded sense of connection that emerges during the experience itself.',
                 href: '/nature',
-                color: VIOLET_MID,
+                color: 'var(--color-psyche-mid)',
               },
             ].map(item => (
               <ScrollReveal key={item.practice}>
@@ -1067,7 +848,7 @@ export default function PsychedelicsClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: VIOLET_DEEP,
+                        color: 'var(--color-psyche-deep)',
                         margin: '0 0 0.25rem',
                       }}
                     >
@@ -1098,7 +879,7 @@ export default function PsychedelicsClient() {
       {/* ══════════════════════════════════════════════════════
           9. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-psyche-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           10. SAFETY, SET & SETTING
@@ -1112,43 +893,11 @@ export default function PsychedelicsClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Risk, Context &amp; Preparation
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Safety, Set &amp; Setting
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Risk, Context &amp; Preparation" title="Safety, Set &amp; Setting">
               Psychedelics have a strong safety profile in clinical and controlled contexts, but significant
               risks in unsupervised settings. The three-part framework &mdash; set (mindset), setting
               (environment), and integration (follow-through) &mdash; determines a large proportion of outcomes.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Medical risks */}
@@ -1289,7 +1038,7 @@ export default function PsychedelicsClient() {
               <div key={item.step} style={{ position: 'relative', marginBottom: '1.25rem' }}>
                 <div
                   className="timeline-node"
-                  style={{ background: VIOLET_DEEP }}
+                  style={{ background: 'var(--color-psyche-deep)' }}
                 >
                   {item.step}
                 </div>
@@ -1364,14 +1113,7 @@ export default function PsychedelicsClient() {
 
           {/* Legal status */}
           <ScrollReveal>
-            <div
-              style={{
-                borderLeft: `3px solid ${VIOLET_MID}`,
-                padding: '1.25rem 1.5rem',
-                background: VIOLET_PALE,
-                borderRadius: '0 2px 2px 0',
-              }}
-            >
+            <InfoCard accentColor="var(--color-psyche-mid)">
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
@@ -1379,7 +1121,7 @@ export default function PsychedelicsClient() {
                   fontWeight: 600,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  color: VIOLET_DEEP,
+                  color: 'var(--color-psyche-deep)',
                   margin: '0 0 0.5rem',
                 }}
               >
@@ -1397,7 +1139,7 @@ export default function PsychedelicsClient() {
               <p style={{ fontSize: '0.875rem', color: 'var(--color-text)', lineHeight: 1.75, margin: 0 }}>
                 <strong>LSD / DMT / Ayahuasca:</strong> Schedule I (US). Ayahuasca religious ceremonies protected under Freedom of Religion in Brazil, Peru, and under some US court precedents.
               </p>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
@@ -1405,7 +1147,7 @@ export default function PsychedelicsClient() {
       {/* ══════════════════════════════════════════════════════
           11. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-psyche-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           12. MICRODOSING
@@ -1414,48 +1156,16 @@ export default function PsychedelicsClient() {
         id="microdosing"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${VIOLET_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-psyche-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Sub-Perceptual Dosing
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Microdosing: Honest Assessment
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Sub-Perceptual Dosing" title="Microdosing: Honest Assessment">
               Microdosing &mdash; taking sub-perceptual doses (typically 1/10th of a full dose) on a
               regular schedule &mdash; has become widely popular based on compelling self-reports. The
               controlled research tells a more complicated story.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1479,16 +1189,8 @@ export default function PsychedelicsClient() {
               >
                 The Positive Evidence
               </h3>
-              <div
-                style={{
-                  borderLeft: `3px solid ${VIOLET_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: VIOLET_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginBottom: '1rem',
-                }}
-              >
-                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, color: VIOLET_DEEP, margin: '0 0 0.375rem' }}>
+              <InfoCard accentColor="var(--color-psyche-mid)">
+                <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, color: 'var(--color-psyche-deep)', margin: '0 0 0.375rem' }}>
                   Polito &amp; Stevenson, 2019
                 </p>
                 <p style={{ fontSize: '0.875rem', color: 'var(--color-text)', lineHeight: 1.7, margin: 0 }}>
@@ -1496,8 +1198,8 @@ export default function PsychedelicsClient() {
                   mood, creativity, and energy. Negative effects included increased neuroticism and
                   physiological discomfort in some participants. No control group.
                 </p>
-              </div>
-              <p style={{ lineHeight: 1.85, marginBottom: '0.875rem' }}>
+              </InfoCard>
+              <p style={{ lineHeight: 1.85, marginBottom: '0.875rem', marginTop: '1rem' }}>
                 Anecdotal reports from thousands of practitioners describe improved mood, enhanced
                 creativity, reduced anxiety, and &ldquo;emotional smoothing.&rdquo; The self-report data is
                 consistent across cultures and substances (psilocybin mushrooms and LSD are most common).
@@ -1604,7 +1306,7 @@ export default function PsychedelicsClient() {
         id="practice"
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: VIOLET_DEEP,
+          background: 'var(--color-psyche-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -1685,9 +1387,9 @@ export default function PsychedelicsClient() {
                   textTransform: 'uppercase',
                   padding: '0.5rem 1.125rem',
                   borderRadius: '9999px',
-                  border: `1px solid ${activeVideoTab === tab.key ? VIOLET_DEEP : 'var(--color-border)'}`,
+                  border: `1px solid ${activeVideoTab === tab.key ? 'var(--color-psyche-deep)' : 'var(--color-border)'}`,
                   background:
-                    activeVideoTab === tab.key ? VIOLET_DEEP : 'var(--color-surface-raised)',
+                    activeVideoTab === tab.key ? 'var(--color-psyche-deep)' : 'var(--color-surface-raised)',
                   color: activeVideoTab === tab.key ? '#ffffff' : 'var(--color-text-muted)',
                   cursor: 'pointer',
                   transition: 'all 200ms ease',
@@ -1865,7 +1567,7 @@ export default function PsychedelicsClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: VIOLET_DEEP,
+                        color: 'var(--color-psyche-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -1891,7 +1593,7 @@ export default function PsychedelicsClient() {
           <ScrollReveal>
             <div
               style={{
-                borderLeft: `3px solid ${VIOLET_MID}`,
+                borderLeft: `3px solid var(--color-psyche-mid)`,
                 paddingLeft: '1.5rem',
                 margin: 0,
               }}

@@ -7,11 +7,11 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (sleep / circadian teal) ─────────────────────
-const TEAL_DEEP = '#1B4D5C';
-const TEAL_MID  = '#A3C4CC';
-const TEAL_PALE = '#E8F2F4';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import PillBadge from '@/components/PillBadge';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 // ── Timing Card (24-hour practice table) ──────────────────────
 function TimingCard({
@@ -24,73 +24,71 @@ function TimingCard({
   practices: string;
 }) {
   return (
-    <div
-      style={{
-        borderLeft: `3px solid ${TEAL_MID}`,
-        padding: '1.25rem 1.5rem',
-        background: 'var(--color-surface-raised)',
-        borderRadius: '2px',
-        display: 'grid',
-        gridTemplateColumns: 'minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.6fr)',
-        gap: '1rem',
-        alignItems: 'start',
-      }}
-    >
-      <div>
-        <p
-          style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: '0.6875rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: TEAL_DEEP,
-            margin: '0 0 0.25rem',
-          }}
-        >
-          Window
-        </p>
-        <p style={{ fontSize: '0.875rem', color: 'var(--color-text)', margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
-          {window}
-        </p>
+    <InfoCard accentColor="var(--color-sleep-mid)">
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.6fr)',
+          gap: '1rem',
+          alignItems: 'start',
+        }}
+      >
+        <div>
+          <p
+            style={{
+              fontFamily: 'var(--font-ui)',
+              fontSize: '0.6875rem',
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: 'var(--color-sleep-deep)',
+              margin: '0 0 0.25rem',
+            }}
+          >
+            Window
+          </p>
+          <p style={{ fontSize: '0.875rem', color: 'var(--color-text)', margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
+            {window}
+          </p>
+        </div>
+        <div>
+          <p
+            style={{
+              fontFamily: 'var(--font-ui)',
+              fontSize: '0.6875rem',
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: 'var(--color-sleep-deep)',
+              margin: '0 0 0.25rem',
+            }}
+          >
+            Biological State
+          </p>
+          <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>
+            {state}
+          </p>
+        </div>
+        <div>
+          <p
+            style={{
+              fontFamily: 'var(--font-ui)',
+              fontSize: '0.6875rem',
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: 'var(--color-sleep-deep)',
+              margin: '0 0 0.25rem',
+            }}
+          >
+            Recommended Practices
+          </p>
+          <p style={{ fontSize: '0.875rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.6 }}>
+            {practices}
+          </p>
+        </div>
       </div>
-      <div>
-        <p
-          style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: '0.6875rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: TEAL_DEEP,
-            margin: '0 0 0.25rem',
-          }}
-        >
-          Biological State
-        </p>
-        <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.6 }}>
-          {state}
-        </p>
-      </div>
-      <div>
-        <p
-          style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: '0.6875rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: TEAL_DEEP,
-            margin: '0 0 0.25rem',
-          }}
-        >
-          Recommended Practices
-        </p>
-        <p style={{ fontSize: '0.875rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.6 }}>
-          {practices}
-        </p>
-      </div>
-    </div>
+    </InfoCard>
   );
 }
 
@@ -112,14 +110,14 @@ function TechniqueCard({
     timing === 'Morning Only'
       ? { bg: 'rgba(228,173,117,0.15)', text: '#8B5E2A' }
       : timing === 'Evening'
-      ? { bg: `${TEAL_PALE}`, text: TEAL_DEEP }
+      ? { bg: `var(--color-sleep-pale)`, text: 'var(--color-sleep-deep)' }
       : { bg: 'var(--color-surface-raised)', text: 'var(--color-text-muted)' };
 
   const evidenceColor =
     evidence === 'Strong'
       ? { bg: 'rgba(45,106,79,0.10)', text: '#2D6A4F' }
       : evidence === 'Moderate'
-      ? { bg: `${TEAL_PALE}`, text: TEAL_DEEP }
+      ? { bg: `var(--color-sleep-pale)`, text: 'var(--color-sleep-deep)' }
       : { bg: 'rgba(139,58,98,0.08)', text: '#8B3A62' };
 
   return (
@@ -144,21 +142,9 @@ function TechniqueCard({
         {name}
       </h3>
       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
-        <span
-          style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: '0.625rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            padding: '0.2rem 0.6rem',
-            borderRadius: '9999px',
-            background: TEAL_PALE,
-            color: TEAL_DEEP,
-            border: `1px solid ${TEAL_MID}`,
-          }}
-        >
+        <PillBadge accentColor="var(--color-sleep-deep)" accentTextColor="var(--color-sleep-deep)">
           {ratio}
-        </span>
+        </PillBadge>
         <span
           style={{
             fontFamily: 'var(--font-ui)',
@@ -326,119 +312,42 @@ const videoData: Record<VideoTab, Array<{ videoId: string; title: string; descri
   ],
 };
 
+const sleepSections = [
+  { id: 'science', label: 'Architecture' },
+  { id: 'circadian', label: 'Circadian' },
+  { id: 'hrv', label: 'HRV' },
+  { id: 'yoga-nidra', label: 'Yoga Nidra' },
+  { id: 'breathwork', label: 'Breathwork' },
+  { id: 'hygiene', label: 'Hygiene' },
+  { id: 'wind-down', label: 'Wind-Down' },
+  { id: 'practice', label: 'Practice' },
+];
+
 export default function SleepClient() {
   const [activeVideoTab, setActiveVideoTab] = useState<VideoTab>('yoga-nidra');
 
   return (
-    <div
-      style={{
-        fontFamily: 'var(--font-body)',
-        fontSize: 'var(--text-body)',
-        lineHeight: 1.8,
-        color: 'var(--color-text)',
-      }}
-    >
+    <div style={{ '--page-accent': 'var(--color-sleep-deep)' } as React.CSSProperties}>
+      <StickyNav sections={sleepSections} accentColor="var(--color-sleep-deep)" />
 
-      {/* ══════════════════════════════════════════════════════
-          1. HERO
-      ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(35% 0.08 210), oklch(52% 0.10 195))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-sleep.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            Sleep &amp; Circadian Rhythm
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            Where Every Practice Comes to Rest
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            Sleep is when the nervous system does its deepest regulation &mdash; glymphatic clearance,
-            emotional memory consolidation, autonomic restoration. Every practice on this site either
-            prepares you for sleep or benefits from it.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#science', label: 'Architecture' },
-              { href: '#circadian', label: 'Circadian' },
-              { href: '#hrv', label: 'HRV' },
-              { href: '#yoga-nidra', label: 'Yoga Nidra' },
-              { href: '#breathwork', label: 'Breathwork' },
-              { href: '#hygiene', label: 'Hygiene' },
-              { href: '#wind-down', label: 'Wind-Down' },
-              { href: '#practice', label: 'Practice' },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: TEAL_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(163,196,204,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-sleep.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(35% 0.08 210), oklch(52% 0.10 195))"
+        eyebrow="Sleep &amp; Circadian Rhythm"
+        headline="Where Every Practice Comes to Rest"
+        subtitle="Sleep is when the nervous system does its deepest regulation \u2014 glymphatic clearance, emotional memory consolidation, autonomic restoration. Every practice on this site either prepares you for sleep or benefits from it."
+        accentColor="var(--color-sleep-mid)"
+        anchorLinks={[
+          { label: 'Architecture', href: '#science' },
+          { label: 'Circadian', href: '#circadian' },
+          { label: 'HRV', href: '#hrv' },
+          { label: 'Yoga Nidra', href: '#yoga-nidra' },
+          { label: 'Breathwork', href: '#breathwork' },
+          { label: 'Hygiene', href: '#hygiene' },
+          { label: 'Wind-Down', href: '#wind-down' },
+          { label: 'Practice', href: '#practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. WHAT SLEEP ACTUALLY IS
@@ -462,30 +371,7 @@ export default function SleepClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1rem',
-                }}
-              >
-                The Architecture of Rest
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.5rem',
-                }}
-              >
-                What Happens When You Sleep
-              </h2>
+              <SectionIntro label="The Architecture of Rest" title="What Happens When You Sleep" />
               <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 Sleep is governed by two simultaneous processes. <strong>Process S</strong> (sleep pressure) is
                 homeostatic: adenosine accumulates during waking hours and drives the need to sleep. Every hour
@@ -524,21 +410,13 @@ export default function SleepClient() {
                 SWS is when the majority of daily growth hormone is secreted. REM is when emotional memories
                 are consolidated and threat responses are recalibrated.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${TEAL_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: TEAL_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '1rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: TEAL_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-sleep-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-sleep-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   Cutting sleep to 6 hours eliminates the final REM-rich cycle &mdash; a 25% loss of total
                   REM sleep. This is why 6 hours &ldquo;feels fine&rdquo; but impairs emotional regulation and
                   threat perception the same day.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
 
             <ScrollReveal>
@@ -569,23 +447,23 @@ export default function SleepClient() {
                 stat="60%"
                 detail="Brain cells shrink by 60% during sleep, expanding the interstitial space to allow glymphatic clearance of metabolic waste — including beta-amyloid and tau."
                 url="https://pubmed.ncbi.nlm.nih.gov/24136970/"
-                accentColor={TEAL_MID}
-                accentTextColor={TEAL_DEEP}
+                accentColor="var(--color-sleep-mid)"
+                accentTextColor="var(--color-sleep-deep)"
               />
               <StatCard
                 source="Nedergaard Lab, 2013"
                 stat="2&times; faster"
                 detail="Glymphatic clearance rate during sleep vs waking. The system is essentially inactive while awake — making sleep the only window for deep brain detoxification."
                 url="https://pubmed.ncbi.nlm.nih.gov/24136970/"
-                accentColor={TEAL_MID}
-                accentTextColor={TEAL_DEEP}
+                accentColor="var(--color-sleep-mid)"
+                accentTextColor="var(--color-sleep-deep)"
               />
               <StatCard
                 source="Takahashi et al., 1968"
                 stat="Majority"
                 detail="The majority of daily growth hormone is secreted during slow-wave sleep (Takahashi et al., 1968). Physical recovery, tissue repair, immune consolidation — all gated behind SWS."
-                accentColor={TEAL_MID}
-                accentTextColor={TEAL_DEEP}
+                accentColor="var(--color-sleep-mid)"
+                accentTextColor="var(--color-sleep-deep)"
               />
             </div>
           </ScrollReveal>
@@ -655,9 +533,6 @@ export default function SleepClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          3. SECTION DIVIDER
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
@@ -667,48 +542,16 @@ export default function SleepClient() {
         id="circadian"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${TEAL_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-sleep-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              When You Practice Matters
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Circadian Code
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="When You Practice Matters" title="The Circadian Code">
               Your suprachiasmatic nucleus (SCN) orchestrates a 24-hour hormonal and physiological
               rhythm. The same practice can be activating or sedating depending on when it is
               performed. Timing is not optional &mdash; it is the mechanism.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Circadian prose */}
@@ -830,8 +673,8 @@ export default function SleepClient() {
               {
                 label: 'Midday Window',
                 time: 'Wake + 5–8 hrs',
-                color: TEAL_MID,
-                textColor: TEAL_DEEP,
+                color: 'var(--color-sleep-mid)',
+                textColor: 'var(--color-sleep-deep)',
                 desc: 'The natural alertness dip at the midday is a built-in NSDR window. A 10–20 minute Yoga Nidra or NSDR protocol here supports recovery and may improve cognitive performance for the rest of the afternoon.',
               },
               {
@@ -886,14 +729,7 @@ export default function SleepClient() {
 
           {/* Chronotype note */}
           <ScrollReveal>
-            <div
-              style={{
-                borderLeft: `3px solid ${TEAL_MID}`,
-                padding: '1.25rem 1.5rem',
-                background: TEAL_PALE,
-                borderRadius: '0 2px 2px 0',
-              }}
-            >
+            <InfoCard accentColor="var(--color-sleep-mid)">
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
@@ -901,7 +737,7 @@ export default function SleepClient() {
                   fontWeight: 600,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  color: TEAL_DEEP,
+                  color: 'var(--color-sleep-deep)',
                   margin: '0 0 0.5rem',
                 }}
               >
@@ -914,14 +750,11 @@ export default function SleepClient() {
                 &mdash; with HRV, mood, and metabolic consequences similar to perpetual jet lag.
                 Chronotype is substantially genetic (PER3, CLOCK genes) and changes with age.
               </p>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          5. SECTION DIVIDER (flip)
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider flip />
 
       {/* ══════════════════════════════════════════════════════
@@ -936,43 +769,11 @@ export default function SleepClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Your Autonomic Report Card
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              HRV During Sleep
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Your Autonomic Report Card" title="HRV During Sleep">
               Heart Rate Variability during sleep reflects autonomic recovery state in real time.
               Each sleep stage produces a distinct HRV signature &mdash; and your overnight
               pattern is the most honest measure of whether your daytime practices are working.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1022,7 +823,7 @@ export default function SleepClient() {
               <div
                 style={{
                   background: 'var(--color-surface-raised)',
-                  border: `1px solid ${TEAL_MID}`,
+                  border: `1px solid var(--color-sleep-mid)`,
                   borderRadius: '2px',
                   padding: '1.75rem',
                   marginBottom: '1.5rem',
@@ -1035,7 +836,7 @@ export default function SleepClient() {
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: TEAL_DEEP,
+                    color: 'var(--color-sleep-deep)',
                     margin: '0 0 1rem',
                   }}
                 >
@@ -1081,14 +882,7 @@ export default function SleepClient() {
                 </div>
               </div>
 
-              <div
-                style={{
-                  borderLeft: `3px solid ${TEAL_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: TEAL_PALE,
-                  borderRadius: '0 2px 2px 0',
-                }}
-              >
+              <InfoCard accentColor="var(--color-sleep-mid)">
                 <p
                   style={{
                     fontFamily: 'var(--font-ui)',
@@ -1096,7 +890,7 @@ export default function SleepClient() {
                     fontWeight: 600,
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
-                    color: TEAL_DEEP,
+                    color: 'var(--color-sleep-deep)',
                     margin: '0 0 0.375rem',
                   }}
                 >
@@ -1107,7 +901,7 @@ export default function SleepClient() {
                   algorithms and measurement windows. Track trends in <em>your own</em> data rather
                   than comparing absolute numbers across devices or other people.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -1162,7 +956,7 @@ export default function SleepClient() {
                     border: '1px solid var(--color-border)',
                     borderRadius: '2px',
                     padding: '1.5rem',
-                    borderTop: `3px solid ${item.direction === 'positive' ? TEAL_MID : '#8B3A62'}`,
+                    borderTop: `3px solid ${item.direction === 'positive' ? 'var(--color-sleep-mid)' : '#8B3A62'}`,
                   }}
                 >
                   <h4
@@ -1194,48 +988,16 @@ export default function SleepClient() {
         id="yoga-nidra"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${TEAL_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-sleep-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Bridge Between Practice and Sleep
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Yoga Nidra &amp; Non-Sleep Deep Rest
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="The Bridge Between Practice and Sleep" title="Yoga Nidra &amp; Non-Sleep Deep Rest">
               Yoga Nidra occupies a unique position in the practice landscape: it is the only
               tradition that deliberately cultivates consciousness at the sleep&ndash;wake boundary,
               working with the hypnagogic state as a tool for nervous system restoration.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Two-column intro */}
@@ -1300,7 +1062,7 @@ export default function SleepClient() {
               <div
                 style={{
                   background: 'var(--color-surface-raised)',
-                  border: `1px solid ${TEAL_MID}`,
+                  border: `1px solid var(--color-sleep-mid)`,
                   borderRadius: '2px',
                   padding: '1.25rem',
                 }}
@@ -1312,7 +1074,7 @@ export default function SleepClient() {
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: TEAL_DEEP,
+                    color: 'var(--color-sleep-deep)',
                     margin: '0 0 0.5rem',
                   }}
                 >
@@ -1356,8 +1118,8 @@ export default function SleepClient() {
                 stat="65% dopamine release"
                 detail="First PET neuroimaging study of Yoga Nidra. Found 65% increase in endogenous dopamine in the ventral striatum during practice — comparable to the dopamine effects of sleep itself."
                 url="https://pubmed.ncbi.nlm.nih.gov/10555870/"
-                accentColor={TEAL_MID}
-                accentTextColor={TEAL_DEEP}
+                accentColor="var(--color-sleep-mid)"
+                accentTextColor="var(--color-sleep-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1365,8 +1127,8 @@ export default function SleepClient() {
                 source="Kumar et al., 2008"
                 stat="Theta dominance confirmed"
                 detail="EEG study documenting progressive theta wave dominance during Yoga Nidra stages 3–5. Theta power correlated with depth of relaxation and inversely with sympathetic measures."
-                accentColor={TEAL_MID}
-                accentTextColor={TEAL_DEEP}
+                accentColor="var(--color-sleep-mid)"
+                accentTextColor="var(--color-sleep-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -1374,8 +1136,8 @@ export default function SleepClient() {
                 source="Miller (iRest) — multiple RCTs"
                 stat="PTSD symptom reduction"
                 detail="Integrative Restoration (iRest) — a clinical Yoga Nidra adaptation — showed significant reduction in PTSD symptoms, depression, and insomnia in military veteran populations across several trials."
-                accentColor={TEAL_MID}
-                accentTextColor={TEAL_DEEP}
+                accentColor="var(--color-sleep-mid)"
+                accentTextColor="var(--color-sleep-deep)"
               />
             </ScrollReveal>
           </div>
@@ -1477,7 +1239,7 @@ export default function SleepClient() {
                       fontWeight: 600,
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: TEAL_DEEP,
+                      color: 'var(--color-sleep-deep)',
                       margin: '0 0 0.25rem',
                     }}
                   >
@@ -1498,7 +1260,7 @@ export default function SleepClient() {
                     style={{
                       fontFamily: 'var(--font-ui)',
                       fontSize: '0.75rem',
-                      color: TEAL_DEEP,
+                      color: 'var(--color-sleep-deep)',
                       fontStyle: 'italic',
                       margin: '0 0 0.75rem',
                     }}
@@ -1515,9 +1277,6 @@ export default function SleepClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          8. SECTION DIVIDER (unconditional)
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider />
 
       {/* ══════════════════════════════════════════════════════
@@ -1532,43 +1291,11 @@ export default function SleepClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Breathing Your Way to Sleep
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Breathwork Techniques for Sleep
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Breathing Your Way to Sleep" title="Breathwork Techniques for Sleep">
               Breath is the only autonomic function you can consciously control. The techniques
               below leverage specific mechanisms &mdash; baroreflex, CO2 tolerance, exhale-to-inhale
               ratio &mdash; to shift toward the parasympathetic state required for sleep initiation.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1654,49 +1381,17 @@ export default function SleepClient() {
         id="hygiene"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${TEAL_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-sleep-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Environment of Safety
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Sleep Hygiene Through the Nervous System
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '2rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="The Environment of Safety" title="Sleep Hygiene Through the Nervous System">
               Polyvagal theory reframes sleep hygiene: you are not just creating the right
               temperature and darkness &mdash; you are creating the environmental conditions that
               allow the nervous system to neuroceptively register safety. The body will not sleep
               deeply when it perceives threat, vigilance, or unfinished survival tasks.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1764,7 +1459,7 @@ export default function SleepClient() {
                     style={{
                       fontFamily: 'var(--font-ui)',
                       fontSize: '0.75rem',
-                      color: TEAL_DEEP,
+                      color: 'var(--color-sleep-deep)',
                       fontWeight: 600,
                       margin: '0 0 0.75rem',
                     }}
@@ -1820,9 +1515,6 @@ export default function SleepClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          11. SECTION DIVIDER (flip)
-      ══════════════════════════════════════════════════════ */}
       <SectionDivider flip />
 
       {/* ══════════════════════════════════════════════════════
@@ -1837,42 +1529,10 @@ export default function SleepClient() {
       >
         <div style={{ maxWidth: '860px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Your Evening Sequence
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Wind-Down Protocol
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '52ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="Your Evening Sequence" title="The Wind-Down Protocol">
               Sleep is not a switch. The transition from waking to sleep is a 60&ndash;90 minute physiological
               cascade &mdash; and your job is to create the conditions for it to unfold without interference.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div className="timeline" style={{ paddingLeft: '2.5rem' }}>
@@ -1911,7 +1571,7 @@ export default function SleepClient() {
               <div key={item.step} style={{ position: 'relative', marginBottom: '1.25rem' }}>
                 <div
                   className="timeline-node"
-                  style={{ background: TEAL_DEEP }}
+                  style={{ background: 'var(--color-sleep-deep)' }}
                 >
                   {item.step}
                 </div>
@@ -1946,12 +1606,11 @@ export default function SleepClient() {
       {/* ══════════════════════════════════════════════════════
           13. "Now, practice." SEPARATOR + VIDEOS
       ══════════════════════════════════════════════════════ */}
-      {/* Section break — remapped to teal */}
       <div
         id="practice"
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: TEAL_DEEP,
+          background: 'var(--color-sleep-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -1963,7 +1622,7 @@ export default function SleepClient() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
             fontStyle: 'italic',
-            color: TEAL_MID,
+            color: 'var(--color-sleep-mid)',
             margin: 0,
             whiteSpace: 'nowrap',
           }}
@@ -2032,9 +1691,9 @@ export default function SleepClient() {
                   textTransform: 'uppercase',
                   padding: '0.5rem 1.125rem',
                   borderRadius: '9999px',
-                  border: `1px solid ${activeVideoTab === tab.key ? TEAL_DEEP : 'var(--color-border)'}`,
+                  border: `1px solid ${activeVideoTab === tab.key ? 'var(--color-sleep-deep)' : 'var(--color-border)'}`,
                   background:
-                    activeVideoTab === tab.key ? TEAL_DEEP : 'var(--color-surface-raised)',
+                    activeVideoTab === tab.key ? 'var(--color-sleep-deep)' : 'var(--color-surface-raised)',
                   color: activeVideoTab === tab.key ? '#ffffff' : 'var(--color-text-muted)',
                   cursor: 'pointer',
                   transition: 'all 200ms ease',
@@ -2228,7 +1887,7 @@ export default function SleepClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: TEAL_DEEP,
+                        color: 'var(--color-sleep-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -2254,7 +1913,7 @@ export default function SleepClient() {
           <ScrollReveal>
             <blockquote
               style={{
-                borderLeft: `3px solid ${TEAL_MID}`,
+                borderLeft: `3px solid var(--color-sleep-mid)`,
                 paddingLeft: '1.5rem',
                 margin: 0,
               }}

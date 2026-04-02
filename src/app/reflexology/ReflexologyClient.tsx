@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -8,10 +8,10 @@ import SectionDivider from '@/components/SectionDivider';
 import StatCard from '@/components/StatCard';
 
 // ── Accent tokens (warm terracotta) ───────────────────────────
-const TERRA_DEEP  = '#7A4030';
-const TERRA_MID   = '#C4735A';
-const TERRA_LIGHT = '#E8B49A';
-const TERRA_PALE  = '#F5E5DF';
+const TERRA_DEEP  = 'var(--color-terra-deep)';
+const TERRA_MID   = 'var(--color-terra-mid)';
+const TERRA_LIGHT = 'var(--color-terra-light)';
+const TERRA_PALE  = 'var(--color-terra-pale)';
 
 // ── Technique Data Interface (adapted for reflexology) ────────
 interface TechniqueData {
@@ -597,7 +597,7 @@ export default function ReflexologyClient() {
   }
 
   return (
-    <div style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)', lineHeight: 1.8, color: 'var(--color-text)' }}>
+    <div style={{ '--page-accent': TERRA_MID, fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)', lineHeight: 1.8, color: 'var(--color-text)' } as React.CSSProperties}>
 
       {/* ══════════════════════════════════════════════════════
           HERO

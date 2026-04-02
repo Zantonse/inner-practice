@@ -6,11 +6,9 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import StatCard from '@/components/StatCard';
 import StickyNav from '@/components/StickyNav';
-
-// ── Accent tokens (sage / eucalyptus) ──────────────────────────
-const SAGE_DEEP = '#3D5A47';
-const SAGE_MID = '#7BA68C';
-const SAGE_LIGHT = '#C8E0D0';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
 
 // ── Modalities Data ────────────────────────────────────────────
 const modalities = [
@@ -147,7 +145,7 @@ function RatingBadge({ type, label }: { type: string; label: string }) {
   const styles: Record<string, { background: string; color: string }> = {
     moderate: { background: 'rgba(45,106,79,0.1)', color: '#2D6A4F' },
     'low-moderate': { background: 'rgba(107,80,16,0.1)', color: '#6B5010' },
-    emerging: { background: 'rgba(61,90,71,0.08)', color: SAGE_DEEP },
+    emerging: { background: 'rgba(61,90,71,0.08)', color: 'var(--color-sage-deep)' },
     null: { background: 'rgba(120,120,120,0.1)', color: '#666' },
   };
   const s = styles[type] ?? styles.null;
@@ -204,9 +202,9 @@ function EvidenceBadge({ rating }: { rating: string }) {
 // ── Main Component ────────────────────────────────────────────
 export default function MassageClient() {
   return (
-    <div style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)', lineHeight: 1.8, color: 'var(--color-text)' }}>
+    <div style={{ '--page-accent': 'var(--color-sage-deep)' } as React.CSSProperties & Record<string, string>}>
       <StickyNav
-        accentColor={SAGE_DEEP}
+        accentColor="var(--color-sage-deep)"
         sections={[
           { id: 'science', label: 'Science' },
           { id: 'modalities', label: 'Modalities' },
@@ -220,96 +218,22 @@ export default function MassageClient() {
       {/* ══════════════════════════════════════════════════════
           1. HERO
       ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(38% 0.08 155), oklch(28% 0.06 160))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-massage.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-        {/* Gradient overlay */}
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,29,55,0.65) 0%, transparent 100%)' }} />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            The Science of Therapeutic Touch
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '14ch',
-            }}
-          >
-            Massage
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            From mechanotransduction to polyvagal co-regulation &mdash; how therapeutic touch
-            reshapes fascia, quiets the nervous system, and why the evidence is more nuanced
-            than wellness marketing suggests.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {['Science', 'Modalities', 'Evidence', 'Nervous System', 'Practice', 'Connection'].map(label => (
-              <a
-                key={label}
-                href={`#${label.toLowerCase().replace(' ', '-')}`}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: SAGE_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid ${SAGE_MID}`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-massage.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(38% 0.08 155), oklch(28% 0.06 160))"
+        eyebrow="The Science of Therapeutic Touch"
+        headline="Massage"
+        subtitle="From mechanotransduction to polyvagal co-regulation \u2014 how therapeutic touch reshapes fascia, quiets the nervous system, and why the evidence is more nuanced than wellness marketing suggests."
+        accentColor="var(--color-sage-mid)"
+        anchorLinks={[
+          { label: 'Science', href: '#science' },
+          { label: 'Modalities', href: '#modalities' },
+          { label: 'Evidence', href: '#evidence' },
+          { label: 'Nervous System', href: '#nervous-system' },
+          { label: 'Practice', href: '#practice' },
+          { label: 'Connection', href: '#connection' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. INTRO QUOTE SECTION
@@ -317,7 +241,7 @@ export default function MassageClient() {
       <section
         style={{
           padding: 'clamp(3.5rem, 7vw, 6rem) max(1.5rem, 8vw)',
-          background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${SAGE_LIGHT} 8%, var(--color-cream)) 100%)`,
+          background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, var(--color-sage-light) 8%, var(--color-cream)) 100%)`,
           textAlign: 'center',
         }}
       >
@@ -391,16 +315,12 @@ export default function MassageClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>Mechanisms</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1rem' }}>
-              The Science of Touch
-            </h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '58ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+            <SectionIntro label="Mechanisms" title="The Science of Touch">
               Mechanical pressure on tissue is not merely relaxing &mdash; it triggers a cascade
               of molecular events. Mechanotransduction converts physical force into biochemical
               signal within minutes, altering gene expression, fascial viscosity, and neural
               firing patterns simultaneously.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Science illustration */}
@@ -503,8 +423,8 @@ export default function MassageClient() {
                 source="Crane et al., 2012 &mdash; Science Translational Medicine"
                 stat="Massage reduces NF-\u03baB + boosts mitochondria"
                 detail="Muscle biopsies after exercise showed massage reduced the master inflammatory transcription factor while simultaneously activating mitochondrial biogenesis \u2014 a dual effect distinct from hormonal changes."
-                accentColor={SAGE_MID}
-                accentTextColor={SAGE_DEEP}
+                accentColor="var(--color-sage-mid)"
+                accentTextColor="var(--color-sage-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -512,8 +432,8 @@ export default function MassageClient() {
                 source="Kirkness & Scarlata, 2025 (proposed) \u2014 Int J Mol Sci"
                 stat="The CHA axis: fascia\u2019s molecular switch"
                 detail="The Ca\u00b2\u207a\u2013Hyaluronan axis proposes that massage-induced calcium influx controls whether fascial tissue maintains stability (high-MW HA) or enters active remodeling (low-MW HA fragments)."
-                accentColor={SAGE_MID}
-                accentTextColor={SAGE_DEEP}
+                accentColor="var(--color-sage-mid)"
+                accentTextColor="var(--color-sage-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -521,15 +441,15 @@ export default function MassageClient() {
                 source="Ackerley et al., 2014 \u2014 J Neuroscience"
                 stat="CT afferents peak at 3\u20136 cm/s"
                 detail="Microneurography confirmed unmyelinated C-tactile fibers in hairy skin respond maximally to slow stroking at skin temperature \u2014 the exact speed of Swedish effleurage."
-                accentColor={SAGE_MID}
-                accentTextColor={SAGE_DEEP}
+                accentColor="var(--color-sage-mid)"
+                accentTextColor="var(--color-sage-deep)"
               />
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-sage-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           4. MODALITIES GUIDE
@@ -538,20 +458,16 @@ export default function MassageClient() {
         id="modalities"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 92%, ${SAGE_LIGHT})`,
+          background: `color-mix(in srgb, var(--color-cream) 92%, var(--color-sage-light))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>Modalities</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1rem' }}>
-              The Complete Modalities Guide
-            </h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '58ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+            <SectionIntro label="Modalities" title="The Complete Modalities Guide">
               Eleven major modalities, each with a distinct mechanism, evidence base, and clinical
               application. Choosing correctly matters &mdash; the wrong modality for a nervous
               system condition can increase sympathetic arousal rather than reduce it.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Modality cards grid */}
@@ -564,9 +480,9 @@ export default function MassageClient() {
                   <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', color: 'var(--color-text-muted)', fontStyle: 'italic', margin: '0 0 0.875rem', letterSpacing: '0.02em' }}>{m.origin}</p>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text)', lineHeight: 1.7, margin: '0 0 0.75rem' }}>{m.technique}</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                    <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', margin: 0 }}><strong style={{ color: SAGE_DEEP }}>Pressure:</strong> {m.pressure}</p>
-                    <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', margin: 0 }}><strong style={{ color: SAGE_DEEP }}>Best for:</strong> {m.bestFor}</p>
-                    <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', margin: 0 }}><strong style={{ color: SAGE_DEEP }}>Clothing:</strong> {m.clothing} &nbsp;&bull;&nbsp; <strong style={{ color: SAGE_DEEP }}>Oil:</strong> {m.oil}</p>
+                    <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', margin: 0 }}><strong style={{ color: 'var(--color-sage-deep)' }}>Pressure:</strong> {m.pressure}</p>
+                    <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', margin: 0 }}><strong style={{ color: 'var(--color-sage-deep)' }}>Best for:</strong> {m.bestFor}</p>
+                    <p style={{ fontSize: '0.8125rem', color: 'var(--color-text-muted)', margin: 0 }}><strong style={{ color: 'var(--color-sage-deep)' }}>Clothing:</strong> {m.clothing} &nbsp;&bull;&nbsp; <strong style={{ color: 'var(--color-sage-deep)' }}>Oil:</strong> {m.oil}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -579,9 +495,9 @@ export default function MassageClient() {
             <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem' }}>
               <table style={{ width: '100%', minWidth: '700px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${SAGE_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid var(--color-sage-mid)` }}>
                     {['Modality', 'Pressure', 'Clothing', 'Oil', 'Evidence', 'Best For'].map(h => (
-                      <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: SAGE_DEEP, padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
+                      <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-sage-deep)', padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -603,7 +519,7 @@ export default function MassageClient() {
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-sage-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           5. EVIDENCE
@@ -617,17 +533,13 @@ export default function MassageClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>Clinical Evidence</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1rem' }}>
-              What the Evidence Actually Shows
-            </h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', maxWidth: '58ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+            <SectionIntro label="Clinical Evidence" title="What the Evidence Actually Shows">
               The 2024 JAMA Network Open evidence map by <strong>Mak et al.</strong> synthesized
               129 systematic reviews across 13 conditions and found <strong>zero high-certainty
               conclusions</strong> and only seven moderate-certainty findings. This is a methodology
               problem, not a mechanism problem &mdash; the neuroscience and cell biology are
               mechanistically robust.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Structural problems grid */}
@@ -674,9 +586,9 @@ export default function MassageClient() {
             <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem', marginBottom: '3.5rem' }}>
               <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${SAGE_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid var(--color-sage-mid)` }}>
                     {['Condition', 'Rating', 'Key Source', 'Notes'].map(h => (
-                      <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: SAGE_DEEP, padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
+                      <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-sage-deep)', padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -703,8 +615,8 @@ export default function MassageClient() {
                 source="Mak et al., 2024 \u2014 JAMA Network Open"
                 stat="0 high-certainty conclusions from 129 reviews"
                 detail="The largest evidence map of massage for pain found zero high-certainty and only 7 moderate-certainty conclusions across 13 conditions \u2014 a methodology problem, not a mechanism problem."
-                accentColor={SAGE_MID}
-                accentTextColor={SAGE_DEEP}
+                accentColor="var(--color-sage-mid)"
+                accentTextColor="var(--color-sage-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -712,8 +624,8 @@ export default function MassageClient() {
                 source="Davis, Alabed & Chico, 2020 \u2014 BMJ Open"
                 stat="n=1,012: No performance enhancement"
                 detail="The largest meta-analysis found null effects on strength, sprint, jump, and endurance. Only flexibility and DOMS showed small but significant benefit."
-                accentColor={SAGE_MID}
-                accentTextColor={SAGE_DEEP}
+                accentColor="var(--color-sage-mid)"
+                accentTextColor="var(--color-sage-deep)"
               />
             </ScrollReveal>
             <ScrollReveal>
@@ -721,15 +633,15 @@ export default function MassageClient() {
                 source="Field, 2005 \u2014 Touch Research Institute"
                 stat="Cortisol \u221231%, Serotonin +28%"
                 detail="The classic biochemical signature \u2014 but a 2011 review of 18 RCTs found cortisol effects very small and nonsignificant. The benefits are real; cortisol may not be the mechanism."
-                accentColor={SAGE_MID}
-                accentTextColor={SAGE_DEEP}
+                accentColor="var(--color-sage-mid)"
+                accentTextColor="var(--color-sage-deep)"
               />
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-sage-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           6. NERVOUS SYSTEM
@@ -738,21 +650,17 @@ export default function MassageClient() {
         id="nervous-system"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 92%, ${SAGE_LIGHT})`,
+          background: `color-mix(in srgb, var(--color-cream) 92%, var(--color-sage-light))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>Neural Pathways</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1rem' }}>
-              Massage and the Nervous System
-            </h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '58ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+            <SectionIntro label="Neural Pathways" title="Massage and the Nervous System">
               Massage shifts the autonomic balance toward parasympathetic dominance &mdash; measurably
               increasing vagal tone and heart rate variability (HRV). The polyvagal framework (Porges,
               2011) explains how this happens through hierarchical neural circuits, and why the
               practitioner&rsquo;s own nervous system state is a therapeutic variable.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Nervous system illustration */}
@@ -855,9 +763,9 @@ export default function MassageClient() {
             <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem' }}>
               <table style={{ width: '100%', minWidth: '640px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${SAGE_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid var(--color-sage-mid)` }}>
                     {['Massage Type', 'Primary Neural Pathway', 'Polyvagal State', 'Key Application'].map(h => (
-                      <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: SAGE_DEEP, padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
+                      <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-sage-deep)', padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -877,7 +785,7 @@ export default function MassageClient() {
         </div>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-sage-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           7. SELF-PRACTICE
@@ -891,16 +799,12 @@ export default function MassageClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', margin: '0 0 1rem' }}>Self-Massage</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h2)', fontWeight: 400, color: 'var(--color-text)', margin: '0 0 1rem' }}>
-              Your Self-Practice Toolkit
-            </h2>
-            <p style={{ color: 'var(--color-text-muted)', marginBottom: '3rem', maxWidth: '58ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}>
+            <SectionIntro label="Self-Massage" title="Your Self-Practice Toolkit">
               Self-massage with the right tools can replicate many of the fascial, neural, and
               autonomic effects of professional treatment. Evidence for foam rolling and massage
               guns is now moderate-to-strong for DOMS, flexibility, and pre-workout ROM preparation.
               The key variable &mdash; as with professional massage &mdash; is pressure calibration.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Tools photo */}
@@ -922,9 +826,9 @@ export default function MassageClient() {
             <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -0.5rem', padding: '0 0.5rem', marginBottom: '3.5rem' }}>
               <table style={{ width: '100%', minWidth: '620px', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${SAGE_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid var(--color-sage-mid)` }}>
                     {['Tool', 'Cost', 'Evidence', 'Best For', 'Key Limitation'].map(h => (
-                      <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: SAGE_DEEP, padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
+                      <th key={h} style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-sage-deep)', padding: '0.75rem 1rem', textAlign: 'left' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -951,9 +855,9 @@ export default function MassageClient() {
             {protocols.map((p) => (
               <ScrollReveal key={p.label}>
                 <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.5rem', height: '100%' }}>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: SAGE_DEEP, margin: '0 0 0.25rem' }}>{p.label}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-sage-deep)', margin: '0 0 0.25rem' }}>{p.label}</p>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--color-text)', margin: '0 0 0.25rem', fontStyle: 'normal' }}>{p.title}</h4>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: SAGE_MID, margin: '0 0 1rem', fontWeight: 500 }}>{p.duration}</p>
+                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'var(--color-sage-mid)', margin: '0 0 1rem', fontWeight: 500 }}>{p.duration}</p>
                   <ol style={{ paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
                     {p.steps.map((step, i) => (
                       <li key={i} style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.65 }}>{step}</li>
@@ -966,14 +870,8 @@ export default function MassageClient() {
 
           {/* Safety / Contraindications box */}
           <ScrollReveal>
-            <div style={{
-              background: `color-mix(in srgb, ${SAGE_LIGHT} 12%, var(--color-cream))`,
-              border: `1px solid ${SAGE_MID}`,
-              borderLeft: `4px solid ${SAGE_DEEP}`,
-              borderRadius: '2px',
-              padding: '2rem',
-            }}>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: SAGE_DEEP, margin: '0 0 1.5rem', fontStyle: 'normal' }}>Critical Safety Contraindications</h3>
+            <InfoCard accentColor="var(--color-sage-deep)">
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-sage-deep)', margin: '0 0 1.5rem', fontStyle: 'normal' }}>Critical Safety Contraindications</h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '2rem' }}>
                 <div>
                   <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#B91C1C', margin: '0 0 0.75rem' }}>Absolute Contraindications</p>
@@ -990,17 +888,17 @@ export default function MassageClient() {
                       <li key={i} style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.65 }}>{c}</li>
                     ))}
                   </ul>
-                  <p style={{ fontSize: '0.8125rem', color: SAGE_DEEP, fontWeight: 600, margin: '1.25rem 0 0', fontFamily: 'var(--font-ui)' }}>
+                  <p style={{ fontSize: '0.8125rem', color: 'var(--color-sage-deep)', fontWeight: 600, margin: '1.25rem 0 0', fontFamily: 'var(--font-ui)' }}>
                     Target intensity: 4&ndash;7/10 discomfort. Pain above 7 is counterproductive.
                   </p>
                 </div>
               </div>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
 
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-sage-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           8. CONNECTION
@@ -1038,7 +936,7 @@ export default function MassageClient() {
               <ScrollReveal key={c.href}>
                 <Link href={c.href} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
                   <div style={{ background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)', borderRadius: '2px', padding: '1.5rem', transition: 'border-color 300ms ease' }}>
-                    <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: SAGE_DEEP, margin: '0 0 0.5rem' }}>{c.label}</p>
+                    <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-sage-deep)', margin: '0 0 0.5rem' }}>{c.label}</p>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.7, margin: 0 }}>{c.desc}</p>
                   </div>
                 </Link>
@@ -1071,10 +969,10 @@ export default function MassageClient() {
                     fontWeight: 500,
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
-                    color: SAGE_DEEP,
+                    color: 'var(--color-sage-deep)',
                     textDecoration: 'none',
                     padding: '0.5rem 1rem',
-                    border: `1px solid ${SAGE_MID}`,
+                    border: `1px solid var(--color-sage-mid)`,
                     borderRadius: '2px',
                     transition: 'background 200ms ease',
                   }}

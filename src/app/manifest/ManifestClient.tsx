@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -8,9 +9,9 @@ import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
 
 // ─── Accent tokens ─────────────────────────────────────────────────────────
-const GOLD_DEEP  = '#7A5A1E';
-const GOLD_MID   = '#D4A74A';
-const GOLD_LIGHT = '#F0D68A';
+const GOLD_DEEP  = 'var(--color-manifest-deep)';
+const GOLD_MID   = 'var(--color-manifest-mid)';
+const GOLD_LIGHT = 'var(--color-manifest-light)';
 
 // ─── Interfaces ────────────────────────────────────────────────────────────
 interface ManifestPoint { id: string; title: string; body: string; }
@@ -415,7 +416,7 @@ function ProtocolStepCard({ step, isLast }: { step: ProtocolStep; isLast: boolea
 // ─── Main Export ────────────────────────────────────────────────────────────
 export default function ManifestClient() {
   return (
-    <>
+    <div style={{ '--page-accent': GOLD_MID } as React.CSSProperties}>
       {/* Hero */}
       <section style={{
         position: 'relative',
@@ -626,6 +627,6 @@ export default function ManifestClient() {
           </div>
         </ScrollReveal>
       </section>
-    </>
+    </div>
   );
 }

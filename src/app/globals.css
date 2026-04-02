@@ -28,7 +28,7 @@
 
   /* Surface */
   --color-surface:       #F5EAE1;
-  --color-surface-raised: #EDE9FE;
+  --color-surface-raised: #F0EBE4;
   --color-border:        #D9D8DD;
 
   /* Typography scale */
@@ -313,45 +313,358 @@ button:focus-visible {
     oklch(97% 0.01 60));
 }
 
-/* --- Breathwork / Teal accent ----------------------------- */
+/* --- Page Accent Tokens ---------------------------------- */
 :root {
+  /* Breathwork / Teal */
   --color-teal-deep:  #2E7070;
   --color-teal-mid:   #2E7575;
   --color-teal-light: #A8DADA;
   --color-teal-pale:  #E0F4F4;
-}
 
-/* --- Nervous System / Rose accent ------------------------- */
-:root {
+  /* Nervous System / Rose */
   --color-rose-deep:  #8B3A62;
   --color-rose-mid:   #985575;
   --color-rose-light: #E8B4CF;
   --color-rose-pale:  #F5E0EC;
+
+  /* Float / Indigo-Navy */
+  --color-float-deep:  #1B2E4A;
+  --color-float-mid:   #4A7FB5;
+  --color-float-light: #C5D9ED;
+  --color-float-pale:  #E8F0F8;
+
+  /* Massage / Sage */
+  --color-sage-deep:  #3D5A47;
+  --color-sage-mid:   #7BA68C;
+  --color-sage-light: #C8E0D0;
+  --color-sage-pale:  #E8F0EA;
+
+  /* Chakras / Amethyst */
+  --color-amethyst-deep:  #4E2D78;
+  --color-amethyst-mid:   #B39DDB;
+  --color-amethyst-light: #D4C8E8;
+  --color-amethyst-pale:  #EDE3F7;
+
+  /* Wim Hof / Frost */
+  --color-frost-deep:  #1B3A4B;
+  --color-frost-mid:   #4A90A4;
+  --color-frost-light: #A3D4E0;
+  --color-frost-pale:  #E3F2F6;
+
+  /* Fascia / Deep Teal-Green */
+  --color-fascia-deep:  #1B5A5A;
+  --color-fascia-mid:   #5AA8A0;
+  --color-fascia-light: #B0D8D4;
+  --color-fascia-pale:  #E0F0EE;
+
+  /* Sleep / Deep Teal */
+  --color-sleep-deep:  #1B4D5C;
+  --color-sleep-mid:   #A3C4CC;
+  --color-sleep-light: #C8DDE4;
+  --color-sleep-pale:  #E8F2F4;
+
+  /* Reiki / Gold */
+  --color-reiki-deep:  #6B5010;
+  --color-reiki-mid:   #D4A843;
+  --color-reiki-light: #F0D68A;
+  --color-reiki-pale:  #F8EED0;
+
+  /* Qigong / Jade */
+  --color-jade-deep:  #1D5038;
+  --color-jade-mid:   #A8D5BA;
+  --color-jade-light: #C8E4D2;
+  --color-jade-pale:  #E6F4EC;
+
+  /* Tai Chi / Earth */
+  --color-earth-deep:  #5A4E3C;
+  --color-earth-mid:   #A89880;
+  --color-earth-light: #D0C8B8;
+  --color-earth-pale:  #EDE8DF;
+
+  /* Psychedelics / Violet */
+  --color-psyche-deep:  #5C3D7A;
+  --color-psyche-mid:   #9B7DBF;
+  --color-psyche-light: #C8B4DB;
+  --color-psyche-pale:  #EDE3F7;
+
+  /* Reflexology / Terra */
+  --color-terra-deep:  #7A4030;
+  --color-terra-mid:   #C4735A;
+  --color-terra-light: #E8B49A;
+  --color-terra-pale:  #F5E5DF;
+
+  /* Nature / Sage-Green */
+  --color-nature-deep:  #2D5038;
+  --color-nature-mid:   #8AAF7E;
+  --color-nature-light: #C0D8B8;
+  --color-nature-pale:  #E2EDDF;
+
+  /* Fasting / Gold */
+  --color-fasting-deep:  #7A6B3C;
+  --color-fasting-mid:   #B8A874;
+  --color-fasting-light: #D8D0B0;
+  --color-fasting-pale:  #F0EBDB;
+
+  /* Trauma / Amber */
+  --color-trauma-deep:  #6B4528;
+  --color-trauma-mid:   #C4956A;
+  --color-trauma-light: #E0C8A8;
+  --color-trauma-pale:  #F5E6D8;
+
+  /* Temperature / Ice */
+  --color-ice-deep:  #1F5A7A;
+  --color-ice-mid:   #7BB8D4;
+  --color-ice-light: #B0D4E4;
+  --color-ice-pale:  #DFF0F7;
+
+  /* Somatics / Indigo */
+  --color-indigo-deep:  #2D3A6A;
+  --color-indigo-mid:   #6B7DB8;
+  --color-indigo-light: #A8B4D4;
+  --color-indigo-pale:  #E0E4F0;
+
+  /* Nutrition / Olive */
+  --color-olive-deep:  #3D4D28;
+  --color-olive-mid:   #8FA076;
+  --color-olive-light: #C0D0A8;
+  --color-olive-pale:  #E8EDDF;
+
+  /* Sound Healing / Amber */
+  --color-sound-deep:  #6B5010;
+  --color-sound-mid:   #D4A843;
+  --color-sound-light: #F0D68A;
+  --color-sound-pale:  #F8EED0;
+
+  /* Manifest / Gold */
+  --color-manifest-deep:  #7A5A1E;
+  --color-manifest-mid:   #D4A74A;
+  --color-manifest-light: #F0D68A;
+  --color-manifest-pale:  #F8EED0;
+
+  /* Yoga — aliases to global violet */
+  --color-yoga-deep:  #592E6B;
+  --color-yoga-mid:   #D7C2EE;
+  --color-yoga-light: #EDE9FE;
+  --color-yoga-pale:  #F5F0FF;
+
+  /* Meditate — aliases to global violet */
+  --color-meditate-deep:  #592E6B;
+  --color-meditate-mid:   #D7C2EE;
+  --color-meditate-light: #EDE9FE;
+  --color-meditate-pale:  #F5F0FF;
 }
 
+/* --- Dark Mode: Page Accents ----------------------------- */
 [data-theme="dark"] {
   --color-teal-deep:  #7ECACA;
   --color-teal-mid:   #2E7575;
   --color-teal-light: #2E6060;
   --color-teal-pale:  #1A3838;
-}
 
-[data-theme="dark"] {
   --color-rose-deep:  #E8A0C4;
   --color-rose-mid:   #985575;
   --color-rose-light: #6B2A4A;
   --color-rose-pale:  #2A1420;
+
+  --color-float-deep:  #A0C4E0;
+  --color-float-mid:   #4A7FB5;
+  --color-float-light: #2A4060;
+  --color-float-pale:  #141E30;
+
+  --color-sage-deep:  #A0D4B0;
+  --color-sage-mid:   #5A8A68;
+  --color-sage-light: #2A4A34;
+  --color-sage-pale:  #142018;
+
+  --color-amethyst-deep:  #C8A8E8;
+  --color-amethyst-mid:   #7A5AA0;
+  --color-amethyst-light: #3A2858;
+  --color-amethyst-pale:  #1E1430;
+
+  --color-frost-deep:  #A0D4E0;
+  --color-frost-mid:   #4A8090;
+  --color-frost-light: #2A4A54;
+  --color-frost-pale:  #141E24;
+
+  --color-fascia-deep:  #7ECACA;
+  --color-fascia-mid:   #3A8880;
+  --color-fascia-light: #1E4A48;
+  --color-fascia-pale:  #0E2424;
+
+  --color-sleep-deep:  #A0CCD8;
+  --color-sleep-mid:   #5A8A98;
+  --color-sleep-light: #2A4A54;
+  --color-sleep-pale:  #141E24;
+
+  --color-reiki-deep:  #E8C878;
+  --color-reiki-mid:   #A88838;
+  --color-reiki-light: #5A4818;
+  --color-reiki-pale:  #2A2010;
+
+  --color-jade-deep:  #80D0A0;
+  --color-jade-mid:   #3A8858;
+  --color-jade-light: #1E4A30;
+  --color-jade-pale:  #0E2418;
+
+  --color-earth-deep:  #C8B8A0;
+  --color-earth-mid:   #887860;
+  --color-earth-light: #4A4030;
+  --color-earth-pale:  #242018;
+
+  --color-psyche-deep:  #C8A0E0;
+  --color-psyche-mid:   #7A5A9A;
+  --color-psyche-light: #3A284A;
+  --color-psyche-pale:  #1E1428;
+
+  --color-terra-deep:  #E0A888;
+  --color-terra-mid:   #A06848;
+  --color-terra-light: #5A3020;
+  --color-terra-pale:  #2A1810;
+
+  --color-nature-deep:  #90C880;
+  --color-nature-mid:   #5A8850;
+  --color-nature-light: #2A4A24;
+  --color-nature-pale:  #142012;
+
+  --color-fasting-deep:  #D0C890;
+  --color-fasting-mid:   #908058;
+  --color-fasting-light: #4A4028;
+  --color-fasting-pale:  #242014;
+
+  --color-trauma-deep:  #E0B890;
+  --color-trauma-mid:   #A07848;
+  --color-trauma-light: #5A3820;
+  --color-trauma-pale:  #2A1C10;
+
+  --color-ice-deep:  #A0D0E8;
+  --color-ice-mid:   #5A90A8;
+  --color-ice-light: #2A4A5A;
+  --color-ice-pale:  #141E28;
+
+  --color-indigo-deep:  #A0B0D8;
+  --color-indigo-mid:   #5A6A98;
+  --color-indigo-light: #2A3050;
+  --color-indigo-pale:  #141828;
+
+  --color-olive-deep:  #B0C888;
+  --color-olive-mid:   #708050;
+  --color-olive-light: #384028;
+  --color-olive-pale:  #1C2014;
+
+  --color-sound-deep:  #E8C878;
+  --color-sound-mid:   #A88838;
+  --color-sound-light: #5A4818;
+  --color-sound-pale:  #2A2010;
+
+  --color-manifest-deep:  #E0C070;
+  --color-manifest-mid:   #A88838;
+  --color-manifest-light: #5A4818;
+  --color-manifest-pale:  #2A2010;
+
+  --color-yoga-deep:  #C8A8E8;
+  --color-yoga-mid:   #7B5BA6;
+  --color-yoga-light: #3A2858;
+  --color-yoga-pale:  #1E1430;
+
+  --color-meditate-deep:  #C8A8E8;
+  --color-meditate-mid:   #7B5BA6;
+  --color-meditate-light: #3A2858;
+  --color-meditate-pale:  #1E1430;
 }
 
 @theme inline {
-  --color-teal-deep:  var(--color-teal-deep);
-  --color-teal-mid:   var(--color-teal-mid);
-  --color-teal-light: var(--color-teal-light);
-  --color-teal-pale:  var(--color-teal-pale);
-  --color-rose-deep:  var(--color-rose-deep);
-  --color-rose-mid:   var(--color-rose-mid);
-  --color-rose-light: var(--color-rose-light);
-  --color-rose-pale:  var(--color-rose-pale);
+  --color-teal-deep:    var(--color-teal-deep);
+  --color-teal-mid:     var(--color-teal-mid);
+  --color-teal-light:   var(--color-teal-light);
+  --color-teal-pale:    var(--color-teal-pale);
+  --color-rose-deep:    var(--color-rose-deep);
+  --color-rose-mid:     var(--color-rose-mid);
+  --color-rose-light:   var(--color-rose-light);
+  --color-rose-pale:    var(--color-rose-pale);
+  --color-float-deep:   var(--color-float-deep);
+  --color-float-mid:    var(--color-float-mid);
+  --color-float-light:  var(--color-float-light);
+  --color-float-pale:   var(--color-float-pale);
+  --color-sage-deep:    var(--color-sage-deep);
+  --color-sage-mid:     var(--color-sage-mid);
+  --color-sage-light:   var(--color-sage-light);
+  --color-sage-pale:    var(--color-sage-pale);
+  --color-amethyst-deep:  var(--color-amethyst-deep);
+  --color-amethyst-mid:   var(--color-amethyst-mid);
+  --color-amethyst-light: var(--color-amethyst-light);
+  --color-amethyst-pale:  var(--color-amethyst-pale);
+  --color-frost-deep:   var(--color-frost-deep);
+  --color-frost-mid:    var(--color-frost-mid);
+  --color-frost-light:  var(--color-frost-light);
+  --color-frost-pale:   var(--color-frost-pale);
+  --color-fascia-deep:  var(--color-fascia-deep);
+  --color-fascia-mid:   var(--color-fascia-mid);
+  --color-fascia-light: var(--color-fascia-light);
+  --color-fascia-pale:  var(--color-fascia-pale);
+  --color-sleep-deep:   var(--color-sleep-deep);
+  --color-sleep-mid:    var(--color-sleep-mid);
+  --color-sleep-light:  var(--color-sleep-light);
+  --color-sleep-pale:   var(--color-sleep-pale);
+  --color-reiki-deep:   var(--color-reiki-deep);
+  --color-reiki-mid:    var(--color-reiki-mid);
+  --color-reiki-light:  var(--color-reiki-light);
+  --color-reiki-pale:   var(--color-reiki-pale);
+  --color-jade-deep:    var(--color-jade-deep);
+  --color-jade-mid:     var(--color-jade-mid);
+  --color-jade-light:   var(--color-jade-light);
+  --color-jade-pale:    var(--color-jade-pale);
+  --color-earth-deep:   var(--color-earth-deep);
+  --color-earth-mid:    var(--color-earth-mid);
+  --color-earth-light:  var(--color-earth-light);
+  --color-earth-pale:   var(--color-earth-pale);
+  --color-psyche-deep:  var(--color-psyche-deep);
+  --color-psyche-mid:   var(--color-psyche-mid);
+  --color-psyche-light: var(--color-psyche-light);
+  --color-psyche-pale:  var(--color-psyche-pale);
+  --color-terra-deep:   var(--color-terra-deep);
+  --color-terra-mid:    var(--color-terra-mid);
+  --color-terra-light:  var(--color-terra-light);
+  --color-terra-pale:   var(--color-terra-pale);
+  --color-nature-deep:  var(--color-nature-deep);
+  --color-nature-mid:   var(--color-nature-mid);
+  --color-nature-light: var(--color-nature-light);
+  --color-nature-pale:  var(--color-nature-pale);
+  --color-fasting-deep:  var(--color-fasting-deep);
+  --color-fasting-mid:   var(--color-fasting-mid);
+  --color-fasting-light: var(--color-fasting-light);
+  --color-fasting-pale:  var(--color-fasting-pale);
+  --color-trauma-deep:  var(--color-trauma-deep);
+  --color-trauma-mid:   var(--color-trauma-mid);
+  --color-trauma-light: var(--color-trauma-light);
+  --color-trauma-pale:  var(--color-trauma-pale);
+  --color-ice-deep:     var(--color-ice-deep);
+  --color-ice-mid:      var(--color-ice-mid);
+  --color-ice-light:    var(--color-ice-light);
+  --color-ice-pale:     var(--color-ice-pale);
+  --color-indigo-deep:  var(--color-indigo-deep);
+  --color-indigo-mid:   var(--color-indigo-mid);
+  --color-indigo-light: var(--color-indigo-light);
+  --color-indigo-pale:  var(--color-indigo-pale);
+  --color-olive-deep:   var(--color-olive-deep);
+  --color-olive-mid:    var(--color-olive-mid);
+  --color-olive-light:  var(--color-olive-light);
+  --color-olive-pale:   var(--color-olive-pale);
+  --color-sound-deep:   var(--color-sound-deep);
+  --color-sound-mid:    var(--color-sound-mid);
+  --color-sound-light:  var(--color-sound-light);
+  --color-sound-pale:   var(--color-sound-pale);
+  --color-manifest-deep:  var(--color-manifest-deep);
+  --color-manifest-mid:   var(--color-manifest-mid);
+  --color-manifest-light: var(--color-manifest-light);
+  --color-manifest-pale:  var(--color-manifest-pale);
+  --color-yoga-deep:    var(--color-yoga-deep);
+  --color-yoga-mid:     var(--color-yoga-mid);
+  --color-yoga-light:   var(--color-yoga-light);
+  --color-yoga-pale:    var(--color-yoga-pale);
+  --color-meditate-deep:  var(--color-meditate-deep);
+  --color-meditate-mid:   var(--color-meditate-mid);
+  --color-meditate-light: var(--color-meditate-light);
+  --color-meditate-pale:  var(--color-meditate-pale);
 }
 
 .grad-hero-breathwork {
@@ -626,7 +939,8 @@ button:focus-visible {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
+  padding: 0.625rem 0.75rem;
+  min-height: 44px;
   border-radius: 4px;
   transition: color 300ms ease, background-color 200ms ease;
   white-space: nowrap;
@@ -895,6 +1209,15 @@ details > summary::-webkit-details-marker { display: none; }
   }
 }
 
+/* --- Sticky Section Nav ----------------------------------- */
+.sticky-nav-desktop { display: flex; }
+.sticky-nav-mobile  { display: none; }
+
+@media (max-width: 1440px) {
+  .sticky-nav-desktop { display: none !important; }
+  .sticky-nav-mobile  { display: block !important; }
+}
+
 /* --- Screen Reader Only ----------------------------------- */
 .sr-only {
   position: absolute;
@@ -936,4 +1259,47 @@ details > summary::-webkit-details-marker { display: none; }
     min-height: 30dvh !important;
     flex: none !important;
   }
+}
+
+/* --- Hero Entrance Animation ----------------------------- */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-eyebrow {
+  animation: hero-fade-up 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 100ms both;
+}
+
+.hero-title {
+  animation: hero-fade-up 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 220ms both;
+}
+
+.hero-subtitle {
+  animation: hero-fade-up 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 360ms both;
+}
+
+.hero-links {
+  animation: hero-fade-up 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 480ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow,
+  .hero-title,
+  .hero-subtitle,
+  .hero-links {
+    animation: none;
+  }
+}
+
+/* --- Per-Page Selection Color ----------------------------- */
+::selection {
+  background-color: var(--page-accent, var(--color-violet-deep));
+  color: #F5EAE1;
 }

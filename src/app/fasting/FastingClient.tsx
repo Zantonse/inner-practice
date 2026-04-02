@@ -1,17 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (fasting / warm gold) ────────────────────────
-const GOLD_DEEP = '#7A6B3C';
-const GOLD_MID  = '#B8A874';
-const GOLD_PALE = '#F0EBDB';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import PillBadge from '@/components/PillBadge';
+import InfoCard from '@/components/InfoCard';
+import StickyNav from '@/components/StickyNav';
 
 // ── Fasting Type Card ──────────────────────────────────────────
 function FastingTypeCard({
@@ -29,7 +28,7 @@ function FastingTypeCard({
     difficulty === 'Easy'
       ? { bg: 'rgba(45,106,79,0.10)', text: '#2D6A4F' }
       : difficulty === 'Moderate'
-      ? { bg: GOLD_PALE, text: GOLD_DEEP }
+      ? { bg: 'var(--color-fasting-pale)', text: 'var(--color-fasting-deep)' }
       : { bg: 'rgba(139,58,98,0.08)', text: '#8B3A62' };
 
   return (
@@ -54,21 +53,9 @@ function FastingTypeCard({
         {name}
       </h3>
       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
-        <span
-          style={{
-            fontFamily: 'var(--font-ui)',
-            fontSize: '0.625rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            padding: '0.2rem 0.6rem',
-            borderRadius: '9999px',
-            background: GOLD_PALE,
-            color: GOLD_DEEP,
-            border: `1px solid ${GOLD_MID}`,
-          }}
-        >
+        <PillBadge accentColor="var(--color-fasting-mid)" accentTextColor="var(--color-fasting-deep)">
           {window}
-        </span>
+        </PillBadge>
         <span
           style={{
             fontFamily: 'var(--font-ui)',
@@ -118,7 +105,7 @@ function TraditionCard({
           fontWeight: 600,
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
-          color: GOLD_DEEP,
+          color: 'var(--color-fasting-deep)',
           margin: '0 0 0.25rem',
         }}
       >
@@ -257,118 +244,51 @@ const traditions = [
   },
 ];
 
+const stickyNavSections = [
+  { id: 'types', label: 'Types' },
+  { id: 'autophagy', label: 'Autophagy' },
+  { id: 'circadian', label: 'Circadian' },
+  { id: 'brain', label: 'Brain' },
+  { id: 'traditions', label: 'Traditions' },
+  { id: 'protocols', label: 'Protocols' },
+  { id: 'practice', label: 'Practice' },
+];
+
 export default function FastingClient() {
   const [activeVideoTab, setActiveVideoTab] = useState<VideoTab>('science');
 
   return (
     <div
       style={{
+        '--page-accent': 'var(--color-fasting-deep)',
         fontFamily: 'var(--font-body)',
         fontSize: 'var(--text-body)',
         lineHeight: 1.8,
         color: 'var(--color-text)',
-      }}
+      } as React.CSSProperties}
     >
+      <StickyNav sections={stickyNavSections} accentColor="var(--color-fasting-deep)" />
 
       {/* ══════════════════════════════════════════════════════
           1. HERO
       ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(35% 0.08 75), oklch(50% 0.10 60))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-fasting.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            THE CELLULAR RESET
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            Fasting &amp; Autophagy
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            When you stop eating, your cells start cleaning. Autophagy &mdash; the Nobel Prize-winning
-            discovery &mdash; is your body&rsquo;s recycling system, and fasting is a well-established trigger for the process.
-            Every contemplative tradition on Earth independently discovered this.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#types', label: 'Types' },
-              { href: '#autophagy', label: 'Autophagy' },
-              { href: '#circadian', label: 'Circadian' },
-              { href: '#brain', label: 'Brain' },
-              { href: '#traditions', label: 'Traditions' },
-              { href: '#protocols', label: 'Protocols' },
-              { href: '#practice', label: 'Practice' },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: GOLD_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(184,168,116,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-fasting.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(35% 0.08 75), oklch(50% 0.10 60))"
+        eyebrow="THE CELLULAR RESET"
+        headline="Fasting &amp; Autophagy"
+        subtitle="When you stop eating, your cells start cleaning. Autophagy — the Nobel Prize-winning discovery — is your body's recycling system, and fasting is a well-established trigger for the process. Every contemplative tradition on Earth independently discovered this."
+        accentColor="var(--color-fasting-mid)"
+        anchorLinks={[
+          { href: '#types', label: 'Types' },
+          { href: '#autophagy', label: 'Autophagy' },
+          { href: '#circadian', label: 'Circadian' },
+          { href: '#brain', label: 'Brain' },
+          { href: '#traditions', label: 'Traditions' },
+          { href: '#protocols', label: 'Protocols' },
+          { href: '#practice', label: 'Practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. TYPES OF FASTING
@@ -383,43 +303,14 @@ export default function FastingClient() {
         <div style={{ maxWidth: '1100px' }}>
 
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              A Spectrum of Approaches
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Types of Fasting
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="A Spectrum of Approaches"
+              title="Types of Fasting"
             >
               Fasting is not one thing. From the gentle 12-hour overnight fast to multi-day extended
               fasts, each protocol creates different metabolic states and activates different biological
               pathways. Start with the easiest and build progressively.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Type cards */}
@@ -469,7 +360,7 @@ export default function FastingClient() {
                 }}
               >
                 <thead>
-                  <tr style={{ borderBottom: `2px solid ${GOLD_MID}` }}>
+                  <tr style={{ borderBottom: `2px solid var(--color-fasting-mid)` }}>
                     {['Protocol', 'Fast Duration', 'Autophagy', 'Adherence', 'Best For'].map(h => (
                       <th
                         key={h}
@@ -481,7 +372,7 @@ export default function FastingClient() {
                           fontWeight: 600,
                           letterSpacing: '0.08em',
                           textTransform: 'uppercase',
-                          color: GOLD_DEEP,
+                          color: 'var(--color-fasting-deep)',
                         }}
                       >
                         {h}
@@ -502,7 +393,7 @@ export default function FastingClient() {
                       key={i}
                       style={{
                         borderBottom: '1px solid var(--color-border)',
-                        background: i % 2 === 0 ? 'transparent' : GOLD_PALE,
+                        background: i % 2 === 0 ? 'transparent' : 'var(--color-fasting-pale)',
                       }}
                     >
                       {row.map((cell, j) => (
@@ -530,7 +421,7 @@ export default function FastingClient() {
       {/* ══════════════════════════════════════════════════════
           3. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-fasting-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           4. AUTOPHAGY
@@ -539,48 +430,19 @@ export default function FastingClient() {
         id="autophagy"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${GOLD_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-fasting-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              The Nobel Prize-Winning Discovery
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Autophagy: Your Cellular Recycling System
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="The Nobel Prize-Winning Discovery"
+              title="Autophagy: Your Cellular Recycling System"
             >
               In 2016, Yoshinori Ohsumi was awarded the Nobel Prize in Physiology or Medicine for
               elucidating the mechanisms of autophagy &mdash; the process by which cells break down
               and recycle their own damaged components. Fasting is its most well-documented known trigger.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Two-column: mechanism */}
@@ -642,20 +504,12 @@ export default function FastingClient() {
                 <li><strong style={{ color: 'var(--color-text)' }}>Intracellular pathogens</strong> (xenophagy) — bacteria and viruses sequestered and degraded</li>
                 <li><strong style={{ color: 'var(--color-text)' }}>Excess lipid droplets</strong> (lipophagy) — triglyceride stores released for energy</li>
               </ul>
-              <div
-                style={{
-                  borderLeft: `3px solid ${GOLD_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: GOLD_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '1rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: GOLD_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-fasting-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-fasting-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   Autophagy reaches meaningful induction at 12&ndash;16 hours of fasting in most people.
                   The rate accelerates significantly after 24 hours and peaks during extended multi-day fasts.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -674,38 +528,31 @@ export default function FastingClient() {
                 stat="2016 Nobel Prize"
                 detail="Yoshinori Ohsumi awarded the Nobel Prize in Physiology or Medicine for discovering the mechanisms of autophagy — the cellular self-eating process that fasting triggers and that is impaired in aging, cancer, and neurodegeneration."
                 url="https://www.nobelprize.org/prizes/medicine/2016/ohsumi/facts/"
-                accentColor={GOLD_MID}
-                accentTextColor={GOLD_DEEP}
+                accentColor="var(--color-fasting-mid)"
+                accentTextColor="var(--color-fasting-deep)"
               />
               <StatCard
                 source="Alirezaei et al., 2010; Hartman et al."
                 stat="12–16 hrs"
                 detail="Autophagy induction begins at 12–16 hours of fasting in most metabolically healthy individuals. The precise threshold varies with metabolic flexibility — regular fasters may induce autophagy earlier."
                 url="https://pubmed.ncbi.nlm.nih.gov/20534972/"
-                accentColor={GOLD_MID}
-                accentTextColor={GOLD_DEEP}
+                accentColor="var(--color-fasting-mid)"
+                accentTextColor="var(--color-fasting-deep)"
               />
               <StatCard
                 source="Mattson et al., Nat Rev Neurosci, 2018"
                 stat="50–400% BDNF increase"
                 detail="Brain-derived neurotrophic factor rises 50–400% during fasting, depending on duration and individual. BDNF supports neurogenesis, synaptic plasticity, and is the primary mechanism behind fasting-associated cognitive clarity."
                 url="https://pubmed.ncbi.nlm.nih.gov/29321682/"
-                accentColor={GOLD_MID}
-                accentTextColor={GOLD_DEEP}
+                accentColor="var(--color-fasting-mid)"
+                accentTextColor="var(--color-fasting-deep)"
               />
             </div>
           </ScrollReveal>
 
           {/* Ohsumi callout */}
           <ScrollReveal>
-            <div
-              style={{
-                borderLeft: `3px solid ${GOLD_MID}`,
-                padding: '1.25rem 1.5rem',
-                background: GOLD_PALE,
-                borderRadius: '0 2px 2px 0',
-              }}
-            >
+            <InfoCard accentColor="var(--color-fasting-mid)">
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
@@ -713,7 +560,7 @@ export default function FastingClient() {
                   fontWeight: 600,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  color: GOLD_DEEP,
+                  color: 'var(--color-fasting-deep)',
                   margin: '0 0 0.5rem',
                 }}
               >
@@ -725,7 +572,7 @@ export default function FastingClient() {
                 exist in every eukaryotic cell — from yeast to humans. The conservation across 2 billion
                 years of evolution signals how fundamental this mechanism is to cellular survival.
               </p>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
@@ -733,7 +580,7 @@ export default function FastingClient() {
       {/* ══════════════════════════════════════════════════════
           5. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-fasting-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           6. CIRCADIAN EATING
@@ -747,44 +594,15 @@ export default function FastingClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Satchin Panda &amp; the Circadian Clock
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              When You Eat Is When You Are
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="Satchin Panda &amp; the Circadian Clock"
+              title="When You Eat Is When You Are"
             >
               Satchin Panda&rsquo;s research at the Salk Institute revealed that circadian timing of food
               intake &mdash; not just what you eat &mdash; governs metabolic health. Every organ has its
               own peripheral clock, and when you eat out of phase with your circadian biology, the consequences
               rival the effects of poor diet.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -846,21 +664,13 @@ export default function FastingClient() {
                 in pre-diabetic men improved insulin sensitivity, blood pressure, and oxidative stress
                 independently of weight loss &mdash; suggesting circadian alignment itself drives metabolic benefits.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${GOLD_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: GOLD_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '0.875rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: GOLD_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-fasting-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-fasting-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   Circadian alignment &mdash; matching your eating window to daylight hours &mdash; appears to
                   matter more than the window duration itself. A 10-hour window from 7am&ndash;5pm outperforms
                   a 10-hour window from noon&ndash;10pm metabolically.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -883,8 +693,8 @@ export default function FastingClient() {
               {
                 label: 'Standard Window',
                 time: '8am – 6pm',
-                color: GOLD_MID,
-                textColor: GOLD_DEEP,
+                color: 'var(--color-fasting-mid)',
+                textColor: 'var(--color-fasting-deep)',
                 desc: 'Practical and well-studied. An 8–10 hour window starting with breakfast and ending with an early dinner. Achieves most of the metabolic and circadian benefits without social disruption.',
               },
               {
@@ -942,7 +752,7 @@ export default function FastingClient() {
       {/* ══════════════════════════════════════════════════════
           7. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-fasting-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           8. FASTING & THE BRAIN
@@ -951,49 +761,20 @@ export default function FastingClient() {
         id="brain"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${GOLD_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-fasting-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Neurological Effects
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Fasting &amp; the Brain
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="Neurological Effects"
+              title="Fasting &amp; the Brain"
             >
               The cognitive clarity many practitioners report during fasting is not placebo. It reflects
               real neurochemical shifts: a metabolic switch from glucose to ketones, a dramatic rise in
               BDNF, and a calming of the default mode network that practitioners in every contemplative
               tradition have described as &ldquo;mental brightness.&rdquo;
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1059,7 +840,7 @@ export default function FastingClient() {
               <div
                 style={{
                   background: 'var(--color-surface-raised)',
-                  border: `1px solid ${GOLD_MID}`,
+                  border: `1px solid var(--color-fasting-mid)`,
                   borderRadius: '2px',
                   padding: '1.25rem',
                 }}
@@ -1071,7 +852,7 @@ export default function FastingClient() {
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: GOLD_DEEP,
+                    color: 'var(--color-fasting-deep)',
                     margin: '0 0 0.5rem',
                   }}
                 >
@@ -1123,7 +904,7 @@ export default function FastingClient() {
                     border: '1px solid var(--color-border)',
                     borderRadius: '2px',
                     padding: '1.5rem',
-                    borderTop: `3px solid ${item.direction === 'positive' ? GOLD_MID : '#8B3A62'}`,
+                    borderTop: `3px solid ${item.direction === 'positive' ? 'var(--color-fasting-mid)' : '#8B3A62'}`,
                   }}
                 >
                   <h4
@@ -1151,7 +932,7 @@ export default function FastingClient() {
       {/* ══════════════════════════════════════════════════════
           9. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-fasting-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           10. CONTEMPLATIVE TRADITIONS
@@ -1165,44 +946,15 @@ export default function FastingClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              Cross-Cultural Convergence
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Every Tradition Discovered Fasting
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="Cross-Cultural Convergence"
+              title="Every Tradition Discovered Fasting"
             >
               Without communication between them, every major spiritual tradition on Earth independently
               arrived at fasting as a central practice. This convergence is not coincidence &mdash; it reflects
               a consistent human discovery that voluntary food deprivation produces real changes in consciousness,
               perception, and inner life. Modern neuroscience is now mapping the mechanisms beneath those reports.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -1226,14 +978,7 @@ export default function FastingClient() {
 
           {/* Convergence callout */}
           <ScrollReveal>
-            <div
-              style={{
-                borderLeft: `3px solid ${GOLD_MID}`,
-                padding: '1.25rem 1.5rem',
-                background: GOLD_PALE,
-                borderRadius: '0 2px 2px 0',
-              }}
-            >
+            <InfoCard accentColor="var(--color-fasting-mid)">
               <p
                 style={{
                   fontFamily: 'var(--font-ui)',
@@ -1241,7 +986,7 @@ export default function FastingClient() {
                   fontWeight: 600,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  color: GOLD_DEEP,
+                  color: 'var(--color-fasting-deep)',
                   margin: '0 0 0.5rem',
                 }}
               >
@@ -1255,7 +1000,7 @@ export default function FastingClient() {
                 of the default mode network: these are the neuroscientific correlates of what practitioners
                 across millennia described as purification, clarity, and presence.
               </p>
-            </div>
+            </InfoCard>
           </ScrollReveal>
         </div>
       </section>
@@ -1263,7 +1008,7 @@ export default function FastingClient() {
       {/* ══════════════════════════════════════════════════════
           11. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-fasting-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           12. PROTOCOLS
@@ -1272,48 +1017,19 @@ export default function FastingClient() {
         id="protocols"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${GOLD_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-fasting-pale))`,
         }}
       >
         <div style={{ maxWidth: '860px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              A Progressive On-Ramp
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Starting a Fasting Practice
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '52ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
+            <SectionIntro
+              label="A Progressive On-Ramp"
+              title="Starting a Fasting Practice"
             >
               Fasting is a skill, not a willpower test. Metabolic flexibility &mdash; the ability to
               switch between glucose and fat fuel &mdash; is trained gradually. The 3-phase progression
               below builds the physiology before the duration.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Timeline */}
@@ -1338,7 +1054,7 @@ export default function FastingClient() {
               <div key={item.step} style={{ position: 'relative', marginBottom: '1.25rem' }}>
                 <div
                   className="timeline-node"
-                  style={{ background: GOLD_DEEP }}
+                  style={{ background: 'var(--color-fasting-deep)' }}
                 >
                   {item.step}
                 </div>
@@ -1432,7 +1148,7 @@ export default function FastingClient() {
         id="practice"
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: GOLD_DEEP,
+          background: 'var(--color-fasting-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -1512,9 +1228,9 @@ export default function FastingClient() {
                   textTransform: 'uppercase',
                   padding: '0.5rem 1.125rem',
                   borderRadius: '9999px',
-                  border: `1px solid ${activeVideoTab === tab.key ? GOLD_DEEP : 'var(--color-border)'}`,
+                  border: `1px solid ${activeVideoTab === tab.key ? 'var(--color-fasting-deep)' : 'var(--color-border)'}`,
                   background:
-                    activeVideoTab === tab.key ? GOLD_DEEP : 'var(--color-surface-raised)',
+                    activeVideoTab === tab.key ? 'var(--color-fasting-deep)' : 'var(--color-surface-raised)',
                   color: activeVideoTab === tab.key ? '#ffffff' : 'var(--color-text-muted)',
                   cursor: 'pointer',
                   transition: 'all 200ms ease',
@@ -1703,7 +1419,7 @@ export default function FastingClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: GOLD_DEEP,
+                        color: 'var(--color-fasting-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -1729,7 +1445,7 @@ export default function FastingClient() {
           <ScrollReveal>
             <blockquote
               style={{
-                borderLeft: `3px solid ${GOLD_MID}`,
+                borderLeft: `3px solid var(--color-fasting-mid)`,
                 paddingLeft: '1.5rem',
                 margin: 0,
               }}

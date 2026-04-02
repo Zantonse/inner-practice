@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,12 +8,17 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
+import PageHero from '@/components/PageHero';
+import StickyNav from '@/components/StickyNav';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
+import PillBadge from '@/components/PillBadge';
 
 // ── Rose accent tokens (Nervous System) ────────────────────────
-const ROSE_DEEP  = '#8B3A62';
-const ROSE_MID   = '#985575';
-const ROSE_LIGHT = '#E8B4CF';
-const ROSE_PALE  = '#F5E0EC';
+const ROSE_DEEP  = 'var(--color-rose-deep)';
+const ROSE_MID   = 'var(--color-rose-mid)';
+const ROSE_LIGHT = 'var(--color-rose-light)';
+const ROSE_PALE  = 'var(--color-rose-pale)';
 
 // ── Technique Accordion ────────────────────────────────────────
 interface TechniqueData {
@@ -782,7 +788,19 @@ export default function NervousSystemClient() {
     setOpenExercise(prev => (prev === id ? null : id));
 
   return (
-    <>
+    <div style={{ '--page-accent': 'var(--color-rose-deep)' } as React.CSSProperties}>
+      <StickyNav
+        accentColor={ROSE_DEEP}
+        sections={[
+          { id: 'vagus-anatomy', label: 'Vagus Nerve' },
+          { id: 'polyvagal', label: 'Polyvagal' },
+          { id: 'techniques', label: 'Techniques' },
+          { id: 'eye-exercises', label: 'Eye Exercises' },
+          { id: 'wim-hof', label: 'Wim Hof' },
+          { id: 'hrv', label: 'HRV' },
+          { id: 'meta-layer', label: 'Meta-Layer' },
+        ]}
+      />
       {/* ══════════════════════════════════════════════════════
           HERO
       ══════════════════════════════════════════════════════ */}
@@ -932,6 +950,7 @@ export default function NervousSystemClient() {
           01 — VAGUS NERVE ANATOMY
       ══════════════════════════════════════════════════════ */}
       <section
+        id="vagus-anatomy"
         style={{
           padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
           background: 'var(--color-cream)',
@@ -1076,6 +1095,7 @@ export default function NervousSystemClient() {
           02 — POLYVAGAL THEORY
       ══════════════════════════════════════════════════════ */}
       <section
+        id="polyvagal"
         style={{
           padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
           background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${ROSE_PALE} 20%, var(--color-cream)) 100%)`,
@@ -1197,6 +1217,7 @@ export default function NervousSystemClient() {
           03 — 19 STIMULATION TECHNIQUES
       ══════════════════════════════════════════════════════ */}
       <section
+        id="techniques"
         style={{
           padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
           background: 'var(--color-cream)',
@@ -1260,6 +1281,7 @@ export default function NervousSystemClient() {
           04 — EYE MOVEMENT EXERCISES
       ══════════════════════════════════════════════════════ */}
       <section
+        id="eye-exercises"
         style={{
           padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
           background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${ROSE_PALE} 15%, var(--color-cream)) 100%)`,
@@ -1328,6 +1350,7 @@ export default function NervousSystemClient() {
           05 — THE WIM HOF METHOD
       ══════════════════════════════════════════════════════ */}
       <section
+        id="wim-hof"
         style={{
           padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
           background: 'var(--color-cream)',
@@ -1590,6 +1613,7 @@ export default function NervousSystemClient() {
           06 — HRV / MEASURING PROGRESS
       ══════════════════════════════════════════════════════ */}
       <section
+        id="hrv"
         style={{
           padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
           background: `linear-gradient(180deg, var(--color-cream) 0%, color-mix(in srgb, ${ROSE_PALE} 20%, var(--color-cream)) 100%)`,
@@ -1726,6 +1750,7 @@ export default function NervousSystemClient() {
           07 — THE META-LAYER
       ══════════════════════════════════════════════════════ */}
       <section
+        id="meta-layer"
         style={{
           padding: 'clamp(3rem, 6vw, 5rem) max(1.5rem, 8vw) clamp(4rem, 7vw, 6rem)',
           background: 'var(--color-cream)',
@@ -2204,6 +2229,6 @@ export default function NervousSystemClient() {
           </ScrollReveal>
         </div>
       </section>
-    </>
+    </div>
   );
 }

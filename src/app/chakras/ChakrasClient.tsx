@@ -7,11 +7,11 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
 import VideoFacade from '@/components/VideoFacade';
 import StatCard from '@/components/StatCard';
-
-// ── Accent tokens (chakras / rainbow + amethyst) ────────────────
-const AMETHYST_DEEP = '#4E2D78';
-const AMETHYST_MID = '#B39DDB';
-const AMETHYST_PALE = '#EDE3F7';
+import StickyNav from '@/components/StickyNav';
+import PageHero from '@/components/PageHero';
+import SectionIntro from '@/components/SectionIntro';
+import InfoCard from '@/components/InfoCard';
+import PillBadge from '@/components/PillBadge';
 
 const CHAKRA = {
   root:        { deep: '#C62828', mid: '#EF5350', pale: '#FFEBEE', name: 'Root', sanskrit: 'Muladhara', element: 'Earth', mantra: 'LAM', location: 'Base of spine', gland: 'Adrenals', plexus: 'Coccygeal/Sacral' },
@@ -62,108 +62,44 @@ export default function ChakrasClient() {
         fontSize: 'var(--text-body)',
         lineHeight: 1.8,
         color: 'var(--color-text)',
-      }}
+        '--page-accent': 'var(--color-amethyst-deep)',
+      } as React.CSSProperties}
     >
+      <StickyNav
+        accentColor="var(--color-amethyst-deep)"
+        sections={[
+          { id: 'history', label: 'History' },
+          { id: 'the-seven-chakras', label: 'The Seven Chakras' },
+          { id: 'science', label: 'Science' },
+          { id: 'practice-map', label: 'Practice Map' },
+          { id: 'balancing', label: 'Balancing' },
+          { id: 'kundalini', label: 'Kundalini' },
+          { id: 'protocol', label: 'Protocol' },
+          { id: 'practice', label: 'Practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           1. HERO
       ══════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '85dvh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(3rem, 8vw, 6rem) max(1.5rem, 8vw) clamp(4rem, 8vw, 7rem)',
-          background: 'linear-gradient(160deg, oklch(30% 0.12 300), oklch(45% 0.15 280), oklch(35% 0.10 320))',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Hero image */}
-        <Image
-          src="/images/hero-chakras.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.35 }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.6875rem',
-              fontWeight: 500,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'rgba(245,234,225,0.7)',
-              margin: '0 0 1.25rem',
-            }}
-          >
-            THE ENERGY CENTERS
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-hero)',
-              fontWeight: 700,
-              color: '#F5EAE1',
-              lineHeight: 1.05,
-              margin: '0 0 1.5rem',
-              maxWidth: '18ch',
-            }}
-          >
-            The Body-Mind Map
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--text-body-lg)',
-              color: 'rgba(245,234,225,0.85)',
-              margin: '0 0 2.5rem',
-              maxWidth: '52ch',
-              lineHeight: 1.75,
-            }}
-          >
-            Seven energy centers, mapped to nerve plexuses, endocrine glands, and polyvagal states.
-            The chakra system is the oldest map of where and why every practice on this site works.
-          </p>
-
-          {/* Anchor nav */}
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {[
-              { href: '#history', label: 'History' },
-              { href: '#the-seven-chakras', label: 'The Seven Chakras' },
-              { href: '#science', label: 'Science' },
-              { href: '#practice-map', label: 'Practice Map' },
-              { href: '#balancing', label: 'Balancing' },
-              { href: '#kundalini', label: 'Kundalini' },
-              { href: '#protocol', label: 'Protocol' },
-              { href: '#practice', label: 'Practice' },
-            ].map(item => (
-              <a
-                key={item.href}
-                href={item.href}
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: AMETHYST_MID,
-                  textDecoration: 'none',
-                  borderBottom: `1px solid rgba(179,157,219,0.5)`,
-                  paddingBottom: '0.25rem',
-                  transition: 'opacity 200ms ease',
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-chakras.webp"
+        backgroundGradient="linear-gradient(160deg, oklch(30% 0.12 300), oklch(45% 0.15 280), oklch(35% 0.10 320))"
+        eyebrow="THE ENERGY CENTERS"
+        headline="The Body-Mind Map"
+        subtitle="Seven energy centers, mapped to nerve plexuses, endocrine glands, and polyvagal states. The chakra system is the oldest map of where and why every practice on this site works."
+        accentColor="var(--color-amethyst-mid)"
+        anchorLinks={[
+          { href: '#history', label: 'History' },
+          { href: '#the-seven-chakras', label: 'The Seven Chakras' },
+          { href: '#science', label: 'Science' },
+          { href: '#practice-map', label: 'Practice Map' },
+          { href: '#balancing', label: 'Balancing' },
+          { href: '#kundalini', label: 'Kundalini' },
+          { href: '#protocol', label: 'Protocol' },
+          { href: '#practice', label: 'Practice' },
+        ]}
+      />
 
       {/* ══════════════════════════════════════════════════════
           2. HISTORY & ORIGINS
@@ -187,37 +123,16 @@ export default function ChakrasClient() {
             }}
           >
             <ScrollReveal>
-              <p
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  margin: '0 0 1rem',
-                }}
+              <SectionIntro
+                label="3,500 YEARS OF MAPPING THE BODY"
+                title="History &amp; Origins"
               >
-                3,500 YEARS OF MAPPING THE BODY
-              </p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-h2)',
-                  fontWeight: 400,
-                  color: 'var(--color-text)',
-                  margin: '0 0 1.5rem',
-                }}
-              >
-                History &amp; Origins
-              </h2>
-              <p style={{ lineHeight: 1.85, marginBottom: '1rem' }}>
                 The most influential chakra text in the Western world is the <strong>Sat-Cakra-Nirupana</strong>
                 (1577 CE), written by Purnananda Swami. This Sanskrit tantric text systematized the six-center
                 model that underlies most modern chakra maps. Its English translation by Arthur Avalon
                 (Sir John Woodroffe) in 1919 — <em>The Serpent Power</em> — introduced the system to Western
                 esoteric and theosophical circles.
-              </p>
+              </SectionIntro>
               <p style={{ lineHeight: 1.85, margin: 0 }}>
                 The original intent was not wellness or metaphor. The chakra system was developed as a
                 <strong> visualization technology for spiritual transformation</strong> — a map for moving
@@ -275,22 +190,22 @@ export default function ChakrasClient() {
                 source="Purnananda Swami"
                 stat="1577 CE"
                 detail="Sat-Cakra-Nirupana systematized the six-center model that underlies most modern chakra maps. Translated by Arthur Avalon (Woodroffe) in 1919 as The Serpent Power."
-                accentColor={AMETHYST_MID}
-                accentTextColor={AMETHYST_DEEP}
+                accentColor="var(--color-amethyst-mid)"
+                accentTextColor="var(--color-amethyst-deep)"
               />
               <StatCard
                 source="Christopher Hills"
                 stat="1977"
                 detail="Mapped the rainbow color sequence now used worldwide, correlating each chakra to a band of the visible light spectrum. This innovation is now widely mistaken for ancient tradition."
-                accentColor={AMETHYST_MID}
-                accentTextColor={AMETHYST_DEEP}
+                accentColor="var(--color-amethyst-mid)"
+                accentTextColor="var(--color-amethyst-deep)"
               />
               <StatCard
                 source="The standard model"
                 stat="7"
                 detail="Though traditions used 5, 6, 9, 12, or 21 centers, the seven-chakra model has become the universal reference point — a modern synthesis, not a single received canon."
-                accentColor={AMETHYST_MID}
-                accentTextColor={AMETHYST_DEEP}
+                accentColor="var(--color-amethyst-mid)"
+                accentTextColor="var(--color-amethyst-deep)"
               />
             </div>
           </ScrollReveal>
@@ -300,7 +215,7 @@ export default function ChakrasClient() {
       {/* ══════════════════════════════════════════════════════
           3. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-amethyst-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           4. THE SEVEN CHAKRAS
@@ -309,48 +224,16 @@ export default function ChakrasClient() {
         id="the-seven-chakras"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${AMETHYST_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-amethyst-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              THE SEVEN CENTERS
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Seven Chakras
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="THE SEVEN CENTERS" title="The Seven Chakras">
               Each chakra corresponds to a nerve plexus, an endocrine gland, a psychological domain,
               and an elemental quality. The physical correspondences are the bridge between ancient
               mapping and modern anatomy.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
@@ -449,22 +332,13 @@ export default function ChakrasClient() {
                           { label: chakra.element },
                           { label: `Mantra: ${chakra.mantra}` },
                         ].map(pill => (
-                          <span
+                          <PillBadge
                             key={pill.label}
-                            style={{
-                              fontFamily: 'var(--font-ui)',
-                              fontSize: '0.625rem',
-                              fontWeight: 600,
-                              letterSpacing: '0.06em',
-                              padding: '0.25rem 0.625rem',
-                              borderRadius: '9999px',
-                              background: chakra.pale,
-                              color: chakra.deep,
-                              border: `1px solid ${chakra.mid}`,
-                            }}
+                            accentColor={chakra.deep}
+                            accentTextColor={chakra.deep}
                           >
                             {pill.label}
-                          </span>
+                          </PillBadge>
                         ))}
                       </div>
                     </div>
@@ -583,7 +457,7 @@ export default function ChakrasClient() {
       {/* ══════════════════════════════════════════════════════
           5. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-amethyst-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           6. THE SCIENCE
@@ -597,43 +471,11 @@ export default function ChakrasClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              THE BRIDGE
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Science
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="THE BRIDGE" title="The Science">
               Polyvagal theory, neuropeptide biology, and autonomic neuroscience provide a
               physiological substrate for the chakra map. The correspondences are not perfect —
               but they are not arbitrary.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Polyvagal overlay */}
@@ -705,21 +547,13 @@ export default function ChakrasClient() {
                 locations. She described these sites as &ldquo;nodes of information exchange&rdquo; —
                 exactly the function chakras were described as serving.
               </p>
-              <div
-                style={{
-                  borderLeft: `3px solid ${AMETHYST_MID}`,
-                  padding: '1rem 1.25rem',
-                  background: AMETHYST_PALE,
-                  borderRadius: '0 2px 2px 0',
-                  marginTop: '1rem',
-                }}
-              >
-                <p style={{ fontSize: '0.875rem', color: AMETHYST_DEEP, margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+              <InfoCard accentColor="var(--color-amethyst-mid)">
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-amethyst-deep)', margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
                   The honest framing: the chakra system was not derived from anatomy — but its
                   phenomenological mapping often converges with what modern neuroscience has
                   independently discovered about where and how the body processes information.
                 </p>
-              </div>
+              </InfoCard>
             </ScrollReveal>
           </div>
 
@@ -833,7 +667,7 @@ export default function ChakrasClient() {
       {/* ══════════════════════════════════════════════════════
           7. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-amethyst-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           8. PRACTICE CROSS-REFERENCE MAP
@@ -842,48 +676,16 @@ export default function ChakrasClient() {
         id="practice-map"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${AMETHYST_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-amethyst-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              EVERY PRACTICE HAS A CHAKRA
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              The Practice Map
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="EVERY PRACTICE HAS A CHAKRA" title="The Practice Map">
               Each modality on this site works through specific chakras. Understanding which
               center a practice targets helps you choose the right tool for the stuck point
               you are working with.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div
@@ -921,7 +723,7 @@ export default function ChakrasClient() {
                   { technique: 'Lower Dantian work', chakra: 'Root / Sacral', color: CHAKRA.sacral.deep },
                   { technique: 'Middle Dantian', chakra: 'Heart', color: CHAKRA.heart.deep },
                   { technique: 'Upper Dantian', chakra: 'Third Eye', color: CHAKRA.thirdEye.deep },
-                  { technique: 'Microcosmic Orbit', chakra: 'All centers', color: AMETHYST_DEEP },
+                  { technique: 'Microcosmic Orbit', chakra: 'All centers', color: 'var(--color-amethyst-deep)' },
                 ],
               },
               {
@@ -929,7 +731,7 @@ export default function ChakrasClient() {
                 href: '/reiki',
                 entries: [
                   { technique: 'Level 1 self-healing', chakra: 'Root / Sacral', color: CHAKRA.sacral.deep },
-                  { technique: 'Byosen scanning', chakra: 'All centers', color: AMETHYST_DEEP },
+                  { technique: 'Byosen scanning', chakra: 'All centers', color: 'var(--color-amethyst-deep)' },
                   { technique: 'Cho Ku Rei symbol', chakra: 'Root', color: CHAKRA.root.deep },
                   { technique: 'Hon Sha Ze Sho Nen', chakra: 'Third Eye / Crown', color: CHAKRA.crown.deep },
                 ],
@@ -961,14 +763,14 @@ export default function ChakrasClient() {
                   { technique: 'Body scan', chakra: 'Root through Sacral', color: CHAKRA.sacral.deep },
                   { technique: 'Loving-kindness (metta)', chakra: 'Heart', color: CHAKRA.heart.deep },
                   { technique: 'Open awareness', chakra: 'Third Eye / Crown', color: CHAKRA.crown.deep },
-                  { technique: 'Chakra visualization', chakra: 'All centers', color: AMETHYST_DEEP },
+                  { technique: 'Chakra visualization', chakra: 'All centers', color: 'var(--color-amethyst-deep)' },
                 ],
               },
               {
                 modality: 'Sleep',
                 href: '/sleep',
                 entries: [
-                  { technique: 'Yoga Nidra', chakra: 'Root → Crown progression', color: AMETHYST_DEEP },
+                  { technique: 'Yoga Nidra', chakra: 'Root → Crown progression', color: 'var(--color-amethyst-deep)' },
                   { technique: '4-7-8 breathing', chakra: 'Heart / Throat', color: CHAKRA.throat.deep },
                   { technique: 'Body scan pre-sleep', chakra: 'Root / Sacral', color: CHAKRA.root.deep },
                   { technique: 'Dream incubation', chakra: 'Third Eye', color: CHAKRA.thirdEye.deep },
@@ -991,7 +793,7 @@ export default function ChakrasClient() {
                       fontWeight: 700,
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: AMETHYST_DEEP,
+                      color: 'var(--color-amethyst-deep)',
                       margin: '0 0 1rem',
                     }}
                   >
@@ -1029,7 +831,7 @@ export default function ChakrasClient() {
       {/* ══════════════════════════════════════════════════════
           9. SECTION DIVIDER (flip)
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider flip />
+      <SectionDivider flip accentColor="var(--color-amethyst-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           10. OPENING & BALANCING
@@ -1043,44 +845,12 @@ export default function ChakrasClient() {
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              WORKING WITH YOUR CHAKRAS
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Opening &amp; Balancing
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '2rem',
-                maxWidth: '60ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="WORKING WITH YOUR CHAKRAS" title="Opening &amp; Balancing">
               In autonomic terms, an &ldquo;open&rdquo; chakra is one where the associated plexus
               receives adequate neural tone — where blood flow, innervation, and hormonal signaling
               are appropriately regulated. &ldquo;Closing&rdquo; is the protective contraction that
               occurs in response to threat or trauma. The practices below work through this lens.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           {/* Technique table */}
@@ -1149,7 +919,7 @@ export default function ChakrasClient() {
       {/* ══════════════════════════════════════════════════════
           11. SECTION DIVIDER
       ══════════════════════════════════════════════════════ */}
-      <SectionDivider />
+      <SectionDivider accentColor="var(--color-amethyst-mid)" />
 
       {/* ══════════════════════════════════════════════════════
           12. KUNDALINI & SAFETY
@@ -1158,49 +928,17 @@ export default function ChakrasClient() {
         id="kundalini"
         style={{
           padding: 'clamp(4rem, 7vw, 6.5rem) max(1.5rem, 8vw) clamp(3.5rem, 6vw, 5.5rem)',
-          background: `color-mix(in srgb, var(--color-cream) 90%, ${AMETHYST_PALE})`,
+          background: `color-mix(in srgb, var(--color-cream) 90%, var(--color-amethyst-pale))`,
         }}
       >
         <div style={{ maxWidth: '1100px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              THE SERPENT ENERGY
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Kundalini &amp; Safety
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '56ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="THE SERPENT ENERGY" title="Kundalini &amp; Safety">
               Kundalini is described as a dormant energy coiled at the base of the spine that,
               when awakened, rises through the chakra column toward the crown. Classical texts
               treat this as the central event of spiritual transformation — and a process that
               requires careful preparation.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div style={{ margin: '2.5rem 0', borderRadius: '2px', overflow: 'hidden', border: '1px solid var(--color-border)' }}>
@@ -1346,43 +1084,11 @@ export default function ChakrasClient() {
       >
         <div style={{ maxWidth: '860px' }}>
           <ScrollReveal>
-            <p
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                margin: '0 0 1rem',
-              }}
-            >
-              BUILD FROM THE GROUND UP
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 400,
-                color: 'var(--color-text)',
-                margin: '0 0 0.75rem',
-              }}
-            >
-              Bottom-Up Protocol
-            </h2>
-            <p
-              style={{
-                color: 'var(--color-text-muted)',
-                marginBottom: '3rem',
-                maxWidth: '52ch',
-                fontSize: 'var(--text-body-lg)',
-                lineHeight: 1.75,
-              }}
-            >
+            <SectionIntro label="BUILD FROM THE GROUND UP" title="Bottom-Up Protocol">
               The classical and trauma-informed advice converges: begin at the root, establish safety,
               and move upward. Attempting to work with upper chakras before the lower ones are stable
               is the most common error in chakra practice.
-            </p>
+            </SectionIntro>
           </ScrollReveal>
 
           <div className="timeline" style={{ paddingLeft: '2.5rem' }}>
@@ -1455,7 +1161,7 @@ export default function ChakrasClient() {
         id="practice"
         style={{
           padding: '2.5rem max(1.5rem, 8vw)',
-          background: AMETHYST_DEEP,
+          background: 'var(--color-amethyst-deep)',
           display: 'flex',
           alignItems: 'center',
           gap: '1.5rem',
@@ -1467,7 +1173,7 @@ export default function ChakrasClient() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
             fontStyle: 'italic',
-            color: AMETHYST_MID,
+            color: 'var(--color-amethyst-mid)',
             margin: 0,
             whiteSpace: 'nowrap',
           }}
@@ -1536,9 +1242,9 @@ export default function ChakrasClient() {
                   textTransform: 'uppercase',
                   padding: '0.5rem 1.125rem',
                   borderRadius: '9999px',
-                  border: `1px solid ${activeVideoTab === tab.key ? AMETHYST_DEEP : 'var(--color-border)'}`,
+                  border: `1px solid ${activeVideoTab === tab.key ? 'var(--color-amethyst-deep)' : 'var(--color-border)'}`,
                   background:
-                    activeVideoTab === tab.key ? AMETHYST_DEEP : 'var(--color-surface-raised)',
+                    activeVideoTab === tab.key ? 'var(--color-amethyst-deep)' : 'var(--color-surface-raised)',
                   color: activeVideoTab === tab.key ? '#ffffff' : 'var(--color-text-muted)',
                   cursor: 'pointer',
                   transition: 'all 200ms ease',
@@ -1757,7 +1463,7 @@ export default function ChakrasClient() {
                         fontWeight: 600,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: AMETHYST_DEEP,
+                        color: 'var(--color-amethyst-deep)',
                         margin: '0 0 0.5rem',
                       }}
                     >
@@ -1783,7 +1489,7 @@ export default function ChakrasClient() {
           <ScrollReveal>
             <blockquote
               style={{
-                borderLeft: `3px solid ${AMETHYST_MID}`,
+                borderLeft: `3px solid var(--color-amethyst-mid)`,
                 paddingLeft: '1.5rem',
                 margin: 0,
               }}
