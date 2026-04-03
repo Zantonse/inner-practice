@@ -108,7 +108,7 @@ type VideoTab = 'ba-duan-jin' | 'zhan-zhuang' | 'general';
 const videoData: Record<VideoTab, Array<{ videoId: string; title: string; description: string }>> = {
   'ba-duan-jin': [
     {
-      videoId: '3DkvDrirPpg',
+      videoId: '4pYrOGHl7Do',
       title: 'Ba Duan Jin — Eight Brocades',
       description: 'The complete Ba Duan Jin sequence, the most widely practiced and clinically researched qigong form. All eight movements from Two Hands Hold Up the Heavens to Bouncing on the Toes. Suitable for all fitness levels with no equipment required.',
     },
